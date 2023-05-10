@@ -1,0 +1,235 @@
+---
+title: "May-September 2022 Fieldwork Summary"
+date: "2022-10-25"
+output: pdf_document
+---
+<p> This is a quick summary of the fish caught at 13 sites during the Mandeville lab's May - September 2022 Leuciscidae sampling efforts. We sampled 910 fish in total. RMarkdown script has been adapted from Amy Pitura. </p>
+
+```{r, echo=FALSE, message=FALSE}
+setwd("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work")
+dfFishes <- read.csv("Leuciscid_Metadata_Apr2023.csv")
+library("ggplot2")
+library("RColorBrewer")
+library("tidyverse")
+library("dplyr")
+
+nb.cols <- 28
+mycolours <- colorRampPalette(brewer.pal(8, "Set3"))(nb.cols) # extending Set3 to include 28 colours for our 13 sites
+
+theme_set(theme_bw())
+```
+
+```{r, echo=FALSE, message=FALSE}
+
+# Modifying Charlotte Ward's fish to all say Costello Creek as location
+
+dfFishes$Waterbody[dfFishes$Waterbody_Code == "OP2"] <- "Costello_Creek"
+dfFishes$Waterbody[dfFishes$Waterbody_Code == "OP7"] <- "Costello_Creek"
+dfFishes$Waterbody[dfFishes$Waterbody_Code == "Weir DS"] <- "Costello_Creek"
+
+# Modifying data frames to work for each plot
+
+dfFishes2 <- dfFishes %>% group_by(Common_Name) %>%   mutate(count_name_occurr = n()) #group by common name so that we can refer to this for sorting the bars by size
+
+dfFishes3 <- dfFishes2 %>% group_by(Waterbody) %>%   mutate(count_name_occurr2 = n()) #group by waterbody so that we can refer to this for sorting the bars by size
+
+# Creating a data frame with only the species of interest
+
+dfFishes_SOI<-dfFishes[!(dfFishes$Common_Name=="Johnny_darter" | dfFishes$Common_Name=="Fathead_minnow" | dfFishes$Common_Name=="Brook_trout" | dfFishes$Common_Name=="Bluntnose_minnow" | dfFishes$Common_Name=="White_sucker" | dfFishes$Common_Name=="Northern_Redbelly_Dace" | dfFishes$Common_Name=="NA*****"),] # delete other species bc i'm not using them
+
+dfFishes2_SOI <- dfFishes_SOI %>% group_by(Common_Name) %>%   mutate(count_name_occurr = n()) #group by common name so that we can refer to this for sorting the bars by size
+
+dfFishes3_SOI <- dfFishes2_SOI %>% group_by(Waterbody) %>%   mutate(count_name_occurr2 = n()) #group by waterbody so that we can refer to this for sorting the bars by size
+
+```
+
+
+
+# Species Totals AMP22
+
+```{r, echo=F, fig.width=6, fig.height=5, warning=F}
+
+ggplot(dfFishes2, aes(reorder(Common_Name, count_name_occurr), #species on the x axis, in ascending order 
+                      fill=Common_Name)) + #colours the bars with the bin information
+  geom_bar(stat="count") + #uses number of individuals 
+  labs(y = "Number of Individuals Captured", #rename y axis 
+       x = "Species", #rename x axis
+       fill = "yaddyyada") +  #rename legend title
+  scale_fill_manual(values = mycolours) + 
+  ggtitle("Species Totals") +
+  theme(legend.position="none") + #remove legend
+  geom_text(stat = "count", aes(label=..count..), #uses data counts for labels
+            size = 3, #size of labels
+            colour = "black", #label colours
+            position = position_stack(vjust= 0.5)) + #labels centered in middle of bar
+  coord_flip() #make the x axis readable
+```
+
+# Species Totals AMP22 SOI
+
+```{r, echo=F, fig.width=6, fig.height=5, warning=F}
+
+ggplot(dfFishes2_SOI, aes(reorder(Common_Name, count_name_occurr), #species on the x axis, in ascending order 
+                      fill=Common_Name)) + #colours the bars with the bin information
+  geom_bar(stat="count") + #uses number of individuals 
+  labs(y = "Number of Individuals Captured", #rename y axis 
+       x = "Species", #rename x axis
+       fill = "yaddyyada") +  #rename legend title
+  scale_fill_manual(values = mycolours) + 
+  ggtitle("Species Totals") +
+  theme(legend.position="none") + #remove legend
+  geom_text(stat = "count", aes(label=..count..), #uses data counts for labels
+            size = 3, #size of labels
+            colour = "black", #label colours
+            position = position_stack(vjust= 0.5)) + #labels centered in middle of bar
+  coord_flip() #make the x axis readable
+```
+
+
+# Species Capture Breakdown AMP22
+
+```{r, echo=F, fig.width=11, fig.height=9, warning=FALSE}
+
+ggplot(dfFishes2, aes(reorder(Common_Name, count_name_occurr), #species on the x axis, in ascending order
+                      fill=Waterbody)) + #colours the bars with the bin information
+  geom_bar(stat="count") + #uses number of individuals 
+  ggtitle("Species Capture Breakdwon") +
+  labs(y = "Number of Individuals Captured", #rename y axis 
+       x = "Species", #rename x axis
+       fill = "Waterbody") +  #rename legend title
+  scale_fill_manual(values = mycolours) + 
+  geom_text(stat = "count", aes(label=..count..), #uses data counts for labels
+            size = 3, #size of labels
+            colour = "black", #label colours
+            position = position_stack(vjust= 0.5)) + #labels centered in middle of bar
+  coord_flip() #make the x axis readable
+```
+
+# Species Capture Breakdown AMP22 SOI
+
+```{r, echo=F, fig.width=11, fig.height=9, warning=FALSE}
+
+ggplot(dfFishes2_SOI, aes(reorder(Common_Name, count_name_occurr), #species on the x axis, in ascending order
+                      fill=Waterbody)) + #colours the bars with the bin information
+  geom_bar(stat="count") + #uses number of individuals 
+  ggtitle("Species Capture Breakdwon") +
+  labs(y = "Number of Individuals Captured", #rename y axis 
+       x = "Species", #rename x axis
+       fill = "Waterbody") +  #rename legend title
+  scale_fill_manual(values = mycolours) + 
+  geom_text(stat = "count", aes(label=..count..), #uses data counts for labels
+            size = 3, #size of labels
+            colour = "black", #label colours
+            position = position_stack(vjust= 0.5)) + #labels centered in middle of bar
+  coord_flip() #make the x axis readable
+```
+
+# Site Totals AMP22
+
+```{r, echo=F, fig.width=6, fig.height=6, warning=FALSE}
+
+ggplot(dfFishes3, aes(reorder(Waterbody, count_name_occurr2), #species on the x axis
+                      fill=Waterbody)) + #colours the bars with the bin information
+  geom_bar(stat="count") + #uses number of individuals 
+  ggtitle("Site Totals") +
+  labs(y = "Number of Individuals Captured", #rename y axis 
+       x = "Site", #rename x axis
+       fill = "yaddyyada") +  #rename legend title
+  scale_fill_manual(values = mycolours) + 
+  theme(legend.position="none") +
+  geom_text(stat = "count", aes(label=..count..), #uses data counts for labels
+            size = 3, #size of labels
+            colour = "black", #label colours
+            position = position_stack(vjust= 0.5)) + #labels centered in middle of bar
+  coord_flip() #make the x axis readable
+```
+
+# Site Totals AMP22 SOI
+
+```{r, echo=F, fig.width=6, fig.height=6, warning=FALSE}
+
+ggplot(dfFishes3_SOI, aes(reorder(Waterbody, count_name_occurr2), #species on the x axis
+                      fill=Waterbody)) + #colours the bars with the bin information
+  geom_bar(stat="count") + #uses number of individuals 
+  ggtitle("Site Totals") +
+  labs(y = "Number of Individuals Captured", #rename y axis 
+       x = "Site", #rename x axis
+       fill = "yaddyyada") +  #rename legend title
+  scale_fill_manual(values = mycolours) + 
+  theme(legend.position="none") +
+  geom_text(stat = "count", aes(label=..count..), #uses data counts for labels
+            size = 3, #size of labels
+            colour = "black", #label colours
+            position = position_stack(vjust= 0.5)) + #labels centered in middle of bar
+  coord_flip() #make the x axis readable
+```
+
+# Site Capture Breakdown AMP22
+
+```{r, echo=F, fig.width=7, fig.height=7, warning=FALSE}
+
+ggplot(dfFishes3, aes(reorder(Waterbody, count_name_occurr2), #species on the x axis
+                      fill=Common_Name)) + #colours the bars with the bin information
+  geom_bar(stat="count") + #uses number of individuals 
+  ggtitle("Site Capture Breakdown") + # title on the plot
+  labs(y = "Number of Individuals Captured", #rename y axis 
+       x = "Site", #rename x axis
+       fill = "Species") +  #rename legend title
+  scale_fill_manual(values = mycolours) +  
+  geom_text(stat = "count", aes(label=..count..), #uses data counts for labels
+            size = 3, #size of labels
+            colour = "black", #label colours
+            position = position_stack(vjust= 0.5)) + #labels centered in middle of bar
+  coord_flip() #make the x axis readable
+```
+
+
+# Site Capture Breakdown AMP22 SOI
+
+```{r, echo=F, fig.width=7, fig.height=7, warning=FALSE}
+
+ggplot(dfFishes3_SOI, aes(reorder(Waterbody, count_name_occurr2), #species on the x axis
+                      fill=Common_Name)) + #colours the bars with the bin information
+  geom_bar(stat="count") + #uses number of individuals 
+  ggtitle("Site Capture Breakdown") + # title on the plot
+  labs(y = "Number of Individuals Captured", #rename y axis 
+       x = "Site", #rename x axis
+       fill = "Species") +  #rename legend title
+  scale_fill_manual(values = mycolours) +  
+  geom_text(stat = "count", aes(label=..count..), #uses data counts for labels
+            size = 3, #size of labels
+            colour = "black", #label colours
+            position = position_stack(vjust= 0.5)) + #labels centered in middle of bar
+  coord_flip() #make the x axis readable
+```
+
+
+# Species Pairs per Site Heatmap AMP22 SOI
+
+```{r, echo=F, fig.width=7, fig.height=7, warning=FALSE}
+
+FishesSStable <- table("Species"=dfFishes2_SOI$Common_Name, "Site"=dfFishes2_SOI$Waterbody) # pull out just site and species names and put into table so that it calculates frequency at each site, for each species
+dfFishesSS <- data.frame(FishesSStable)
+
+#swapping 0s to NAs
+dfFishesSS[dfFishesSS == 0] <- NA
+
+#removing rows w Freq == NA
+dfFishesSS2<-dfFishesSS[-which(is.na(dfFishesSS$Freq)),]
+
+
+ggplot(dfFishesSS2, aes(Species, Site)) + 
+  geom_tile(aes(fill=Freq)) + #makes it a heatmap and colour-codes based on frequency
+  scale_fill_gradient(low="white", high="dark red", #changes colour scheme + low values are now light
+                      name="Number of\nIndividuals") + #changes name of legend to Frequency
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 0.5, vjust = 0.5)) + #rotates text: put this after theme_bw or it won't work
+  geom_text(data=subset(dfFishesSS2,Freq != 0), #data labels: does not label zeros
+            stat="identity", aes(label=Freq), #uses data counts
+            color="black", #changes colour
+            size=3) + #changes size of words 
+  coord_flip()
+
+
+
+```
