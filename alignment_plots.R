@@ -13,7 +13,7 @@ ass <- data.frame(read.delim2("assembled_reads_25apr23_final.txt", sep = "\t"))
 ass <- ass %>% mutate(percent = (assembled/raw)*100)
 
 #import metadata
-metadata <- read.csv("Leuciscid_Metadata_Apr2023.csv")
+metadata <- read.csv("Leuciscid_Metadata_May2023.csv")
 
 # identify and remove the snake without ANY sequenced reads
 dfNA <- ass[!complete.cases(ass),]
@@ -145,6 +145,8 @@ theme_set(theme_bw())
 merged_noNA <- filter(merged, !is.na(Common_Name))
 merged_SOI <- filter(merged_noNA, Common_Name == "Central_Stoneroller" | Common_Name == "Common_Shiner" | Common_Name == "Creek_Chub" | Common_Name == "Hornyhead_Chub" | Common_Name == "Longnose_Dace" | Common_Name == "River_Chub" | Common_Name == "Rosyface_Shiner" | Common_Name == "Striped_Shiner" | Common_Name == "Western_Blacknose_Dace")
 
+mean(merged_SOI$percent)
+
 density_SOI <- ggplot(merged_SOI, aes(percent)) +
   geom_density(aes(fill=factor(Common_Name)), alpha=0.5) +
   labs(x="Percent of reads aligned",
@@ -253,6 +255,8 @@ filtered_names <- read.delim("./PCA/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_in
 names(filtered_names) <- "FishID"
 merged_filtered <- merge(filtered_names, merged, by.x="FishID", by.y="ind", all.x=F)
 
+mean(merged_filtered$percent)
+
 
 density_filtered <- ggplot(merged_filtered, aes(percent)) +
   geom_density(aes(fill=factor(Common_Name)), alpha=0.5) +
@@ -332,16 +336,17 @@ popViewport()
 pushViewport(plotViewport(layout.pos.col=1, layout.pos.row=12))
 grid.draw(dotplot_species_SOI_plate)
 popViewport()
-
-dev.off()
-
-
 pushViewport(plotViewport(layout.pos.col=1, layout.pos.row=1))
 grid.draw(density_filtered)
 popViewport()
 pushViewport(plotViewport(layout.pos.col=1, layout.pos.row=3))
 grid.draw(dotplot_species_filtered)
 popViewport()
+
+dev.off()
+
+
+
 
 
 

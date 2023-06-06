@@ -7,13 +7,12 @@ output: pdf_document
 
 ```{r, echo=FALSE, message=FALSE}
 setwd("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work")
-dfFishes <- read.csv("Leuciscid_Metadata_Apr2023.csv")
-library("ggplot2")
+dfFishes <- read.csv("Leuciscid_Metadata_May2023.csv")
 library("RColorBrewer")
 library("tidyverse")
-library("dplyr")
+library("ggplot2")
 
-nb.cols <- 28
+nb.cols <- 29
 mycolours <- colorRampPalette(brewer.pal(8, "Set3"))(nb.cols) # extending Set3 to include 28 colours for our 13 sites
 
 theme_set(theme_bw())
@@ -26,6 +25,10 @@ theme_set(theme_bw())
 dfFishes$Waterbody[dfFishes$Waterbody_Code == "OP2"] <- "Costello_Creek"
 dfFishes$Waterbody[dfFishes$Waterbody_Code == "OP7"] <- "Costello_Creek"
 dfFishes$Waterbody[dfFishes$Waterbody_Code == "Weir DS"] <- "Costello_Creek"
+
+dfFishes$Waterbody_Code[dfFishes$Waterbody == "Costello_Creek"] <- "COS"
+
+dfFishes[dfFishes$Waterbody == "CC"]
 
 # Modifying data frames to work for each plot
 
@@ -208,7 +211,7 @@ ggplot(dfFishes3_SOI, aes(reorder(Waterbody, count_name_occurr2), #species on th
 
 ```{r, echo=F, fig.width=7, fig.height=7, warning=FALSE}
 
-FishesSStable <- table("Species"=dfFishes2_SOI$Common_Name, "Site"=dfFishes2_SOI$Waterbody) # pull out just site and species names and put into table so that it calculates frequency at each site, for each species
+FishesSStable <- table("Species"=dfFishes2_SOI$Common_Name, "Site"=dfFishes2_SOI$Waterbody_Code) # pull out just site and species names and put into table so that it calculates frequency at each site, for each species
 dfFishesSS <- data.frame(FishesSStable)
 
 #swapping 0s to NAs
@@ -227,7 +230,7 @@ ggplot(dfFishesSS2, aes(Species, Site)) +
   geom_text(data=subset(dfFishesSS2,Freq != 0), #data labels: does not label zeros
             stat="identity", aes(label=Freq), #uses data counts
             color="black", #changes colour
-            size=3) + #changes size of words 
+            size=3) +  #changes size of words 
   coord_flip()
 
 
