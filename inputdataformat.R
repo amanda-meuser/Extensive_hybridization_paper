@@ -3,7 +3,7 @@
 # March 2019 -- Vivaswat Shastry
 # Modified by Amanda Meuser and Liz Mandeville December 2022
 
-## USAGE: Rscript inputdataformat.R file1.vcf CHANGE LINE 205 FOR VALUE OF k NEEDED FOR ENTROPY
+## USAGE: Rscript inputdataformat.R file.vcf ploidy_inds.txt CHANGE LINE 205 FOR VALUE OF k NEEDED FOR ENTROPY
 
 #install.packages("vcfR", repos='https://cloud.r-project.org/')
 #install.packages("MASS", repos='https://cloud.r-project.org/')
@@ -202,7 +202,7 @@ pcSummary<-summary(pcout) #AM: plot proportion of variance (middle row) for PC1 
 
 print("4. k-means, lda and writing initial admixture proportions to file")
 
-for(k in 1:8){
+for(k in 1:3){
 	init.admix<-matrix(0, nrow=nind, ncol=k)
 	init.admix[miss.inds,]<-rep(1/k, k)
 

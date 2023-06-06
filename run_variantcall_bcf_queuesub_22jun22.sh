@@ -2,9 +2,10 @@
 
 ## usage:
 ## sbatch run_variantcall_bcf.sh /path/to/reference/ /path/to/output/folder/ /path/to/bam/files/ 
+## example: sbatch ../../run_variantcall_bcf_queuesub_22jun22.sh /project/rrg-emandevi/communal_genomes/creekchub_hifiasm_nov2022/creekchub_assembly_hifiasm_nov2022.bp.p_ctg.fa /project/rrg-emandevi/hybrid_ameuser/EGM19_cc/bcftools/ /project/rrg-emandevi/hybrid_ameuser/EGM19_cc/bwa/
 
 #SBATCH --account=rrg-emandevi
-#SBATCH --time=2-00:00:00 ## days-hours:minutes:seconds
+#SBATCH --time=5-00:00:00 ## days-hours:minutes:seconds
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16 # number of threads
 #SBATCH --mem=128000 # requested memory (in MB)

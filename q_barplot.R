@@ -1,12 +1,12 @@
 ## Script to plot q values from HDF5 files as a barplot and creating caterpiller plots
-## Created by Jillian Campbell and/or Liz Mandeville?
-## Modified by Amanda Meuser -- March 2023 
+## Created by Jillian Campbell and Liz Mandeville
+## Modified by Amanda Meuser -- May 2023 
 
 ## USAGE: Rscript q_barplot.R k_value nametag /path/to/names_file.txt path/to/hdf5/files.hdf5 
-        ## names_file.txt should contain a list of all indivs in the HDF5 files
+        ## names_file.txt should contain a list of all indivs in the HDF5 files, without a header
         ## nametag is the chunk of text that will go in the name of the output files
 
-        # Rscript q_barplot.R 3 EGM19_target /project/rrg-emandevi/hybrid_ameuser/plotting_entropy/EGM19_target/names_target2.txt /project/rrg-emandevi/hybrid_ameuser/entropy/EGM19_target/EGM19_target_27jul22_miss0.4_mac3_Q30_DP3_ind95_maf001_k3_150k_rep1_qk3inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/entropy/EGM19_target/EGM19_target_27jul22_miss0.4_mac3_Q30_DP3_ind95_maf001_k3_150k_rep2_qk3inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/entropy/EGM19_target/EGM19_target_27jul22_miss0.4_mac3_Q30_DP3_ind95_maf001_k3_150k_rep3_qk3inds.hdf5
+        # Rscript ../../q_barplot.R 7 AMP22_target AMP22_target_indivs_filtered.txt /project/rrg-emandevi/hybrid_ameuser/AMP22/entropy/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k7_150k_rep1_qk7inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/AMP22/entropy/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k7_150k_rep2_qk7inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/AMP22/entropy/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k7_150k_rep3_qk7inds.hdf5
 
 
 # install packages
@@ -15,13 +15,16 @@
 
 # BiocManager::install("rhdf5")
 # install.packages("RColorBrewer")
+# install.packages("abind")
 # install.packages("tidyverse")
 
 # load packages
 print("Loading packages...")
 library(rhdf5)
 library(RColorBrewer)
-library(tidyverse)
+library(abind)
+library(tibble)
+library(dplyr)
 
 args <- commandArgs(TRUE)
 
@@ -46,11 +49,21 @@ hdf5path1
 hdf5path2
 hdf5path3
 
-# extracts colours from set3 and puts in object, could try pulling in k here
+# manually read in files
+# k <- 12 
+# names_file <- "AMP22_target_indivs_filtered.txt"
+# nametag <- AMP22_target
+# hdf5path1 <- "/project/rrg-emandevi/hybrid_ameuser/AMP22/entropy/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep1_qk12inds.hdf5"
+# hdf5path2 <- "/project/rrg-emandevi/hybrid_ameuser/AMP22/entropy/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep2_qk12inds.hdf5"	
+# hdf5path3 <- "/project/rrg-emandevi/hybrid_ameuser/AMP22/entropy/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep3_qk12inds.hdf5"
+
+
+# extracts k colours from set3 and puts in object
 colour <- brewer.pal(k, "Set3")
 
+
 # creating table with ind names
-names_list <- read.table(names_file, header=T, col.names = c("ind"))
+names_list <- read.table(names_file, header=F, col.names = c("ind"))
 print("Here's the first few individuals...")
 head(names_list)
 
@@ -142,11 +155,37 @@ q <- as.matrix(q)
 print("Removed indexing column. Dimensions:")
 dim(q)
 
+# manually read in species info
+# species <- read.table("AMP22_target_species_filtered.txt", header=F, col.names = c("species"))
 
-#looking at confidence intervals - number should be really small! (not working rn)
-# q.ci <- apply(q, 2:3, quantile, probs=c(0.025,0.975))
-# q.ci.width <- q.ci[2,2,]-q.ci[1,2,]
-# mean(q.ci.width)
+# manually bind species data 
+#q_species <- cbind(species, q)
+
+# create a table of mean q values for each column, for each species
+#mean_q_species <- q_species %>% group_by(species) %>% summarize(meanV1 = mean(V1), meanV2 = mean(V2), meanV3 = mean(V3), meanV4 = mean(V4), meanV5 = mean(V5), meanV6 = mean(V6), meanV7 = mean(V7), meanV8 = mean(V8), meanV9 = mean(V9))
+#(mean_q_species <- q_species %>% group_by(species) %>% summarize(across(everything(), list(mean))))
+
+# save table as a text file
+#write.table(mean_q_species, paste0("AMP22_target_entropy_k",k,"_species_q.txt"), sep = "\t", row.names = F, quote = F)
+
+# add names and save this as a text file
+#q_sp.names <- cbind(names_list, species, q)
+#write.table(q_sp.names, paste0("AMP22_target_entropy_k",k,"_indivs_q.txt"), sep = "\t", row.names = F, quote = F)
+
+# find row based on AMP ID
+#q_species[q_species$ind == 'AMP22_0800',]
+
+
+# using dataframes that are pre-demensionality reduction to get confidence intervals
+allq <- abind(data1.q, data2.q, data3.q, along=1)
+#head(allq)
+
+#looking at CIs - number should be really small!
+q.ci <- apply(allq, 2:3, quantile, probs=c(0.025,0.975))
+q.ci.width <- q.ci[2,2,]-q.ci[1,2,]
+print("Mean width of confidence intervals -- should be quite small:")
+mean(q.ci.width)
+
 
 #combining name file with q file
 q.names <- data.frame(cbind(names_list, q))
@@ -161,8 +200,8 @@ K<-(k+1)
 
 print("Creating barplot...")
 #plotting proportion of ancestry
-pdf(paste0("q_barplot_",nametag,"_k",k,".pdf"), width = 11, height = 8) #GET THE NAMING CONVENTION SAME AS NAME FOR CATERPILLER PLOTS
-barplot(t(q.names[order(q.names$V1),2:K]), 
+pdf(paste0("q_barplot_",nametag,"_k",k,"_moreorder.pdf"), width = 11, height = 8) #GET THE NAMING CONVENTION SAME AS NAME FOR CATERPILLER PLOTS
+barplot(t(q.names[order(q.names$V6, q.names$V1, decreasing = c(T,F)),2:K]), 
         beside=F, 
         col=colour,
         names.arg =q.names$ind[order(q.names$V1)], 
@@ -173,7 +212,7 @@ barplot(t(q.names[order(q.names$V1),2:K]),
         ylab="proportion of ancestry",
         xlab ="Sample ID",
         legend = T,
-        xlim = c(0,150))
+        xlim = c(0,600))
 dev.off()
 
 
