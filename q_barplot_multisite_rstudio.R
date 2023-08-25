@@ -30,7 +30,7 @@ k <- 12
 hdf5path1 <- "AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep1_qk12inds.hdf5"
 hdf5path2 <- "AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep2_qk12inds.hdf5"	
 hdf5path3 <- "AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep3_qk12inds.hdf5"
-metadata <- "../Leuciscid_Metadata_OFAT_May2023_filtered.csv"
+metadata <- "../Leuciscid_Metadata_OFAT_May2023_filtered_old.csv"
 
 # extracts k colours from set3 and puts in object
 #colour <- brewer.pal(k, "Set3")
@@ -108,18 +108,21 @@ print("Read in metadata...")
 metadata <- read.csv(metadata, header = T)
 
 #pull out columns and bind to q values
-q_metadata <- cbind(metadata$Mandeville_ID, metadata$Common_Name, metadata$Waterbody, metadata$Waterbody_Code, metadata$Plate, metadata$Lab, q)
-q_metadata <- as.data.frame(q_metadata)
+metadata_cols <- metadata[c(1,2,4,6,8,21)]
+q_metadata <- cbind(metadata_cols, q)
 
-#rename the new columns and alter the C.Ward waterbody codes
-names(q_metadata)[1:6] <- c("Mandeville_ID", "Common_Name", "Waterbody","Waterbody_Code", "Plate", "Lab")
+#alter the C.Ward waterbody codes
+q_metadata$Waterbody[q_metadata$Waterbody_Code == "OP2"] <- "Costello_Creek"
+q_metadata$Waterbody[q_metadata$Waterbody_Code == "OP7"] <- "Costello_Creek"
+q_metadata$Waterbody[q_metadata$Waterbody_Code == "Weir DS"] <- "Costello_Creek"
 q_metadata$Waterbody_Code[q_metadata$Waterbody == "Costello_Creek"] <- "COS"
+
 #drop indivs from barcode plate 13
 q_metadata <- q_metadata[q_metadata$Plate != "AMP22_LP13",]
 #check inds per year
-inds_per_year <- aggregate(q_metadata$Mandeville_ID, by=list(q_metadata$Lab), length)
+inds_per_year <- q_metadata %>% count(Lab)
 #remove columns unecessary for downstream plotting
-q_metadata <- q_metadata[-c(3,5,6)]
+q_metadata <- q_metadata[-c(2,5:6)]
 
 # make sure the q columns are numeric data, then round values of q to 3 decimal places 
 q_metadata <- type.convert(q_metadata, as.is=T)
@@ -127,7 +130,7 @@ q_metadata <- type.convert(q_metadata, as.is=T)
 q_metadata_round <- q_metadata %>% mutate_if(is.numeric, round, digits=3)
 
 #merge ID and common name
-q_metadata_round$ID_species <- paste(q_metadata_round$Mandeville_ID, q_metadata_round$Common_Name, sep="/")
+#q_metadata_round$ID_species <- paste(q_metadata_round$Mandeville_ID, q_metadata_round$Common_Name, sep="/")
 
 #split data by waterbody code
 #split_q_metadata_round <- split(q_metadata_round, f=q_metadata_round$Waterbody_Code)
@@ -154,9 +157,13 @@ inds_per_site <- aggregate(q_metadata_round$Mandeville_ID, by=list(q_metadata_ro
 min_inds <- as.data.frame(inds_per_site$Group.1[inds_per_site$x >=15])
 colnames(min_inds) <- "Waterbody_Code"
 
+# OR do all sites
+min_inds <- as.data.frame(inds_per_site$Group.1[inds_per_site$x >=1])
+colnames(min_inds) <- "Waterbody_Code"
 
-pdf(paste0("q_barplot_AMP22_",k,"_all_sites_min_15inds.pdf"), width = 12, height = 15) 
-par(mfrow=c(5,4), mar=c(4,3,2,1))
+
+pdf(paste0("q_barplot_AMP22_",k,"_all_sites.pdf"), width = 12, height = 20) 
+par(mfrow=c(7,4), mar=c(4,3,2,1))
 
 for (i in 1:nrow(min_inds)){
 
@@ -186,13 +193,15 @@ for (i in 1:nrow(min_inds)){
 }
 
 plot(1:10,1:10, type="n", axes=F, xlab="", ylab="")
-legend("center", legend = c("Common Shiner", "Central Stoneroller", "Hornyhead Chub", "Longnose Dace", "Striped Shiner", "River Chub", "V7", "Roseyface Shiner", "Creek Chub", "Western Blacknose Dace", "V11", "V12"), col = colour, pch=15, pt.cex=3.75, cex=1.4, ncol = 1)
+plot(1:10,1:10, type="n", axes=F, xlab="", ylab="")
+plot(1:10,1:10, type="n", axes=F, xlab="", ylab="")
+legend("center", legend = c("Common Shiner", "Central Stoneroller", "Hornyhead Chub", "Longnose Dace", "Striped Shiner", "River Chub", expression(italic("Pimephales sp.")), "Roseyface Shiner", "Creek Chub", "Western Blacknose Dace", "V11", "V12"), col = colour, pch=15, pt.cex=3.75, cex=1.2, ncol = 1, bty = "n")
 
 mtext("Proportion of Ancestry", side=1, cex=1, outer=T, line=-2)
 mtext("Individuals", side=2, cex=1, outer=T, line=-2)
 
-
 dev.off()
+
 
 #k=12
 #legend.text = c("CS", "CSR", "HHC", "LND", "SS", "RC", "V7", "RFS", "CC", "BND", "V11", "V12"),

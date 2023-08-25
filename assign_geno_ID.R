@@ -1,9 +1,9 @@
 # creating a loop for classifying hybrid status
 
 library(stringr)
-library(ggplot2)
-library(dplyr)
+library(tidyverse)
 library(RColorBrewer)
+library(patchwork)
 
 #=======================================================
 # SIMULATED DATA
@@ -90,15 +90,26 @@ metadata <- read.csv("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/Leu
 plate13inds <- filter(metadata, Plate == "AMP22_LP13")
 plate13inds <- plate13inds[,4]
 plate13inds <- as.data.frame(plate13inds)
-names(plate13inds) <- "ind"
-x <- anti_join(x, plate13inds)
+names(plate13inds) <- "Mandeville_ID"
+x <- anti_join(x, plate13inds) #removed 69 inds (not all plate 13 inds made it thru filtering)
 nrowx <- nrow(x)
+
+#save plate 13 inds list
+#write.table(plate13inds, "Plate13_inds.txt", quote = F, row.names = F)
+# add paths and save again
+plate13inds$Mandeville_ID = paste0('/project/rrg-emandevi/hybrid_ameuser/AMP22/bwa/', plate13inds$Mandeville_ID, '.sorted.bam')
+#write.table(plate13inds, "Plate13_inds_paths.txt", quote = F, row.names = F)
+
+#double check plate 13 inds are gone
+#RLplates <- metadata[c(4,8)]
+#hmm <- merge(x,RLplates, by = "Mandeville_ID")
+#table(hmm$Plate)
 
 # assign species to entropy populations
 #k=9
 #names(x)[3:11] <- c("Creek_Chub", "Longnose_Dace", "Striped_Shiner", "Rosyface_Shiner", "Central_Stoneroller", "Common_Shiner", "River_Chub", "Western_Blacknose_Dace", "Hornyhead_Chub")
 #k=12
-names(x)[3:14] <-c("Common_Shiner", "Central_Stoneroller", "Hornyhead_Chub", "Longnose_Dace", "Striped_Shiner", "River_Chub", "V7", "Rosyface_Shiner", "Creek_Chub", "Western_Blacknose_Dace", "V11", "V12")
+names(x)[3:14] <-c("Common_Shiner", "Central_Stoneroller", "Hornyhead_Chub", "Longnose_Dace", "Striped_Shiner", "River_Chub", "Pimephales_sp", "Rosyface_Shiner", "Creek_Chub", "Western_Blacknose_Dace", "V11", "V12")
 
 # create new columns
 # Geno_ID (will contain Common_Name or "hybrid")
@@ -240,23 +251,174 @@ dfallstats[4,1] <- (nrowx - (dfallstats[1,1] + dfallstats[2,1] + dfallstats[3,1]
 dfallstats[,2] <- "x"
 dfallstats[,3] <- c("1", "2", "3", "4")
 
+palette <- brewer.pal(5, "Spectral")
 
 # plot
 (stacked_plot_single <- ggplot(dfallstats, aes(fill=V3, y=State, x=V2)) + 
     geom_bar(position="stack", stat="identity") +
     ylab("Number of individuals")+
-    xlab("")+
+    theme(axis.title.x=element_blank(),
+          axis.text.x=element_blank(),
+          axis.ticks.x=element_blank()) +
     geom_text(aes(label = State), size = 3, hjust = 0.5, vjust = 3, position = "stack") +
-    scale_fill_manual(values = c("#FBC4DE", "#FDFA9E", "#E264A0", "#A0E49F"), 
+    scale_fill_manual(values = c(palette[2], palette[3], palette[4], palette[5]), 
                       name = "Legend", 
-                      labels = c("2-species hybrid", "Multi-species hybrid", "Correct Pheno ID (Non-hybrid)", "Incorrect Pheno ID (Non-hybrid)")) )
+                      labels = c("2-species hybrid", "Multi-species hybrid", "Correct Pheno ID (Parental)", "Incorrect Pheno ID (Parental)")) )
 
 
-#pdf(paste0("genomic_IDs_stats_1bar_k",k,".pdf"))
-#stacked_plot_single
-#dev.off()
+# pdf(paste0("genomic_IDs_stats_1bar_k",k,".pdf"))
+# stacked_plot_single
+# dev.off()
 
 
+#---------------------------------------------------------------------------
+# Plot number of each parental (phenotypic and genomic) and each hybrid
+#---------------------------------------------------------------------------
+
+x_copy <- x
+colnames(x_copy)[1:2] <- c("Mandeville_ID", "Common_Name")
+
+x_copy$Geno_ID_simple = NA
+
+for (i in 1:nrow(x_copy)){ 
+  if (x_copy$Multi_Status[i] == 1){
+    x_copy$Geno_ID_simple[i] <- "Multi"
+  } 
+  else {
+    x_copy$Geno_ID_simple[i] <- x_copy$Geno_ID[i]
+  }
+}
+
+
+x_hybrids <- filter(x_copy, x_copy$Hybrid_Status == 1)
+x_parentals <- filter(x_copy, x_copy$Hybrid_Status == 0)
+x_parentals <- x_parentals %>% count(Geno_ID)
+
+# prelim plots
+barplot(x_hybrids$n)
+barplot(x_parentals$n)
+
+# species by genomic ID
+(parent_plot_geno <- ggplot(data=x_parentals, aes(x=(reorder(Geno_ID, -n)), y=n, fill = (reorder(Geno_ID, -n)))) +
+  geom_bar(stat="identity", width=0.85, size = 2)+
+  scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#969696"), name = "Species by genomic ID")+
+  geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
+  theme(axis.text.x = element_blank(), legend.position = c(0.85, 0.75)) +
+  xlab(" ") + 
+  ylab("Number of individuals")) 
+
+# species by phenotypic ID
+x_pheno <- x_copy %>% count(Common_Name)
+
+(parent_plot_pheno <- ggplot(data=x_pheno, aes(x=(reorder(Common_Name, -n)), y=n, fill = (reorder(Common_Name, -n)))) +
+  geom_bar(stat="identity", width=0.85, size = 2)+
+  scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60"), name = "Species by phenotypic ID")+
+  geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
+  theme(axis.text.x = element_blank(), legend.position = c(0.85, 0.75)) +
+  xlab(" ") + 
+  ylab("Number of individuals")) 
+
+# split pheno ID by year
+x_copy$Year = NA
+
+for (i in 1:nrow(x_copy)){
+  if (str_detect(x_copy[i,1], "EGM19|AMP19") == TRUE){
+    x_copy$Year[i] <- "2019"
+  }
+  else if (str_detect(x_copy[i,1], "AMP22") == TRUE){
+    x_copy$Year[i] <- "2022"
+  }
+}
+
+x_pheno_year <- x_copy %>% group_by(Year) %>% count(Common_Name)
+
+(parent_plot_year <- ggplot(x_pheno_year, aes(fill=(reorder(Common_Name, -n)), y=n, x=Year)) + 
+  geom_bar(position=position_dodge2(width = 0.9, preserve ="single"), stat="identity")+
+  scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#CAB2D6","#FB9A99","#8C510A","#E5DF60"), name = "Species by phenotypic ID")+
+  geom_text(position = position_dodge2(width = 0.9, preserve ="single"), aes(label=n), vjust=-0.3, color="black", size=4)+
+  theme(legend.position = c(0.87, 0.75)) +
+  ylab("Number of individuals"))
+
+
+# pdf(file = "AMP22_number_of_inds_wo_13.pdf", width = 10)
+# parent_plot_pheno
+# parent_plot_geno
+# parent_plot_year
+# dev.off()
+
+
+
+# need to group the hybrids together so that there's fewer groups
+# split up the names
+x_hybrids <- x_hybrids %>%
+  separate(Geno_ID_simple, c('Species_1', 'Species_2'), ' x ', remove=F)
+# alphabetize the names
+x_hybrids$Geno_ID_order = NA
+for (i in 1:nrow(x_hybrids)){
+  a <- x_hybrids$Species_1[i]
+  b <- x_hybrids$Species_2[i]
+  x_hybrids$Geno_ID_order[i] = ifelse(a < b, paste(a, b, sep =' x '), paste(b, a, sep =' x ')) # always writes the names the same way
+}
+
+# swap NAs back for 'Multi' and remove
+x_hybrids <- x_hybrids %>% mutate(Geno_ID_order = replace_na(Geno_ID_order, "Multi"))
+x_hybrids <- x_hybrids %>% filter(Geno_ID_order != "Multi")
+
+# drop extra columns and resort
+x_hybrids <- x_hybrids[-(1:3)]
+x_hybrids <- x_hybrids %>% count(Geno_ID_order)
+
+nb.cols <- 29
+mycolours <- colorRampPalette(brewer.pal(11, "Spectral"))(nb.cols)
+
+# species by genomic ID PUT LEGEND ON THE PLOT
+(hybrid_plot <- ggplot(data=x_hybrids, aes(x=(reorder(Geno_ID_order, -n)), y=n, fill = (reorder(Geno_ID_order, -n)))) +
+  geom_bar(stat="identity", width=0.85, size = 2)+
+  scale_fill_manual(values = mycolours, name = "Two-species hybrid crosses")+
+  geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
+  theme(axis.text.x = element_blank(), legend.text=element_text(size=7), legend.position = c(0.7, 0.65)) +
+  xlab(" ") + 
+  ylab("Number of individuals"))
+
+
+# also create heatmap!
+# split, reorganize, count, then split again
+x_hybrids <- filter(x_copy, x_copy$Hybrid_Status == 1)
+x_hybrids_heatmap <- x_hybrids %>% filter(Geno_ID_simple != "Multi")
+
+x_hybrids_heatmap <- x_hybrids_heatmap %>%
+  separate(Geno_ID_simple, c('Species_1', 'Species_2'), ' x ', remove=F)
+
+x_hybrids_heatmap$Geno_ID_order = NA
+for (i in 1:nrow(x_hybrids_heatmap)){
+  a <- x_hybrids_heatmap$Species_1[i]
+  b <- x_hybrids_heatmap$Species_2[i]
+  x_hybrids_heatmap$Geno_ID_order[i] = ifelse(a < b, paste(a, b, sep =' x '), paste(b, a, sep =' x '))
+}
+
+x_hybrids_heatmap <- x_hybrids_heatmap[23]
+x_hybrids_heatmap <- x_hybrids_heatmap %>%
+  count(Geno_ID_order) %>%
+  separate(Geno_ID_order, c('Species_1', 'Species_2'), ' x ', remove=F)
+x_hybrids_heatmap <- x_hybrids_heatmap[-1]
+
+palette <- brewer.pal(8, "Set2")
+
+(heatmap <- ggplot(data = x_hybrids_heatmap, aes(Species_2, Species_1, fill = n))+
+  geom_tile(color = "white")+
+  #theme_classic()+ 
+  scale_fill_gradient2(low = palette[8], high = palette[2], mid = palette[7], 
+                       midpoint = 22, limit = c(0,43), space = "Lab", 
+                       name="Number of\nhybrids found") +
+  theme(axis.text.x = element_text(angle = 20, vjust = 0.85, 
+                                   size = 9, hjust = 0.55), 
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())+
+  coord_fixed())
+
+# pdf("AMP22_species_crosses_heatmap.pdf", width = 10, height = 8)
+# heatmap
+# dev.off()
 
 #---------------------------------------------------------------------------
 # break this down by site !!
@@ -268,27 +430,20 @@ metadata$Waterbody[metadata$Waterbody_Code == "OP7"] <- "Costello_Creek"
 metadata$Waterbody[metadata$Waterbody_Code == "Weir DS"] <- "Costello_Creek"
 metadata$Waterbody_Code[metadata$Waterbody == "Costello_Creek"] <- "COS"
 # split types by site
-meta_names <- metadata$Mandeville_ID
-meta_sites <- metadata$Waterbody_Code
-meta_namesandsites <- as.data.frame(cbind(meta_names, meta_sites))
-colnames(meta_namesandsites) <- c("Mandeville_ID", "Waterbody_Code")
-colnames(x)[1:2] <- c("Mandeville_ID", "Common_Name")
-x_sites <- merge(x, meta_namesandsites, by.x = "Mandeville_ID", by.y = "Mandeville_ID")
+meta_namesandsites <- metadata[c(4,3)]
+x_sites <- merge(x, meta_namesandsites, by = "Mandeville_ID")
 
 # simplify hybrid type and plot
 x_sites$Hybrid_Type_Simple = NA
 
 for (i in 1:nrow(x_sites)){
-  if (str_detect(x[i,15],'x\\s+\\w+\\s+x') == TRUE){
+  if (x$Multi_Status[i] == 1){
     x_sites$Hybrid_Type_Simple[i] <- "Multi-species hybrid"
   }
-  else if(str_detect(x[i,15],'x') == TRUE & str_detect(x[i,15],'x fishiness') == FALSE){
+  else if(x$Multi_Status[i] == 0 & x$Hybrid_Status[i] == 1){
     x_sites$Hybrid_Type_Simple[i] <- "2-species hybrid" 
   }
-  else if (str_detect(x[i,15],'x fishiness') == TRUE){
-    x_sites$Hybrid_Type_Simple[i] <- "Multi-species hybrid"
-  }
-  else if(str_detect(x[i,15],'x') == FALSE){
+  else if(x$Hybrid_Status[i] == 0){
     x_sites$Hybrid_Type_Simple[i] <- "Parental"
   }
 }
@@ -318,19 +473,53 @@ x_order = x_count[!duplicated(x_count$Waterbody_Code), ]$Waterbody_Code
 x_count$Waterbody_Code <- factor(x_count$Waterbody_Code, levels = x_order)
 
 # plot 
-ggplot(x_count, aes(fill=Hybrid_Type_Simple, y=n, x=Waterbody_Code)) + 
+(hyb_per_site <- ggplot(x_count, aes(fill=Hybrid_Type_Simple, y=n, x=Waterbody_Code)) + 
   geom_bar(position="fill", stat="identity")+ 
   ylab("Proportion of total individuals") +
   xlab("Waterbody") + 
-  scale_fill_brewer(palette="Spectral", name="Hybrid Type")
+  scale_fill_brewer(palette="Spectral", name="Hybrid Type")+
+  theme(legend.position = c(0.9, 0.15)))
+
+# pdf("AMP22_target_hybrids_per_site.pdf", width = 10)
+# hyb_per_site
+# dev.off()
+
+#---------------------------------------------------------------------------
+# Identify more inds that don't match their pheno ID for barcoding
+#---------------------------------------------------------------------------
+
+# pull all mis-IDs into a separate CSV file
+misIDs <- x %>% filter(Pheno_Correct == 1)
+misID_parental <- misIDs %>% filter(Hybrid_Status == 0)
+misID_hybrid <- misIDs %>% filter(Hybrid_Status == 1)
+
+# pull out any hybrids where the pheno ID isn't either of the geno ID hybrid inds
+misID_hybrid$Odd = NA
+
+for (i in 1:nrow(misID_hybrid)){
+  if (str_detect(misID_hybrid[i,15], misID_hybrid[i,2]) == TRUE){
+    misID_hybrid$Odd[i] <- 0
+  }
+  else if (str_detect(misID_hybrid[i,15], misID_hybrid[i,2]) == FALSE){
+    misID_hybrid$Odd[i] <- 1
+  }
+}
+
+misID_hybrid_odd <- misID_hybrid %>% filter(misID_hybrid$Odd == 1)
+
+# remove the pimephales sp (already barcoded) and the x fishiness
+misID_hybrid_odd <- misID_hybrid_odd %>% filter(!str_detect(misID_hybrid_odd$Geno_ID, 'fish|Pimephales_sp'))
+
+(table_hybrids <- table(misID_hybrid_odd$Geno_ID)) # maybe we could do 1 of each unique hybrid pairing (12 inds)
+
+# add the parentals back in
+misID_hybrid_odd <- misID_hybrid_odd[-19]
+misIDs_barcode <- rbind(misID_hybrid_odd, misID_parental)
+misIDs_barcode <- misIDs_barcode[-c(3:14)]
+#write.csv(misIDs_barcode, "AMP22_Leuciscid_OddMisIDs_k12.csv", row.names = F, quote = F)
 
 
-
-
-
-
-
-
+#-----------------------------------------------------------------------------
 
 # put mis-ID's into a separate data frame and merge  
 misIDs <- subset(x, Pheno_Correct %in% 1 & Hybrid_Status %in% 0)
@@ -347,7 +536,7 @@ table_plate <- as.data.frame(table(misID_metadata$Plate))
 #write.table(table_plate, file = paste0("MisIDs_per_plate_k",k,".txt"), quote = F, row.names = F, col.names = F)
 
 
-
+#-----------------------------------------------------------------------------
 
 # put multi-species hybrids in their own table                           
 multihybrids <- subset(x,  Multi_Status %in% 1)
@@ -373,7 +562,7 @@ table_plate_hybrid <- as.data.frame(table(hybrids_metadata$Plate))
 
 
 
-
+#-----------------------------------------------------------------------------
 
 # segregate the V7 ancestry weirdos
 V7_weirdos <- filter(x, str_detect(x[,15],'V7'))
@@ -381,6 +570,7 @@ V7_weirdos <- filter(x, str_detect(x[,15],'V7'))
 #export as csv file
 #write.csv(V7_weirdos, "V7_ancestry_indivs.csv", row.names = F)
 
+#-----------------------------------------------------------------------------
 
 # pull out CS, CC, and CSxCC hybrids
 CSxCC <- filter(x, Geno_ID == "Creek_Chub" | Geno_ID == "Common_Shiner" | Geno_ID == "Creek_Chub x Common_Shiner" | Geno_ID == "Common_Shiner x Creek_Chub")
@@ -444,143 +634,79 @@ write.csv(x_metadata, paste0("old_AMP22_genoID_k",k,"_Jun2023.csv"), row.names =
       # Pulling in Q data
 #############################################################################################
 
-k2q_per_species <- read.delim("AMP22_CSxCC_genoID_entropy_list_k2_Geno_ID_q.txt", header = T, sep = "\t")
-k2qQ_values <- read.delim("AMP22_CSxCC_genoID_entropy_list_k2_indivs_q_Q.txt", header = T, sep = "\t")
+k2q_per_species <- read.delim("AMP22_CSxCC_woP13_entropy_list_k2_Geno_ID_q.txt", header = T, sep = "\t")
+k2qQ_values <- read.delim("AMP22_CSxCC_woP13_entropy_list_k2_indivs_q_Q.txt", header = T, sep = "\t")
 
 # filter out plate 13
 # load metadata
 metadata <- read.csv("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/Leuciscid_Metadata_May2023.csv")
 # get list of and drop 84 inds from plate 13 inds
-plate13inds <- filter(metadata, Plate == "AMP22_LP13")
-plate13inds <- plate13inds[,4]
-plate13inds <- as.data.frame(plate13inds)
-colnames(plate13inds) <- "Mandeville_ID"
-xQ <- anti_join(k2qQ_values, plate13inds)
-nrowxQ <- nrow(xQ)
+# plate13inds <- filter(metadata, Plate == "AMP22_LP13")
+# plate13inds <- plate13inds[,4]
+# plate13inds <- as.data.frame(plate13inds)
+# colnames(plate13inds) <- "Mandeville_ID"
+# xQ <- anti_join(k2qQ_values, plate13inds)
+# nrowxQ <- nrow(xQ)
 
+xQ <- k2qQ_values
 
 # create new columns
 # Geno_ID (will contain Common_Name or "hybrid")
 # Pheno_correct (binary, 0=correct, 1=incorrect)
 # Hybrid_Status (binary, 0=hybrid, 1=parental)
-xQ$Hybrid_Type = NA
-xQ$Parental_Status = NA
-xQ$Hybrid_Status = NA
-xQ$F1_Status = NA
-xQ$F2_Status = NA
-xQ$F3_Status = NA
-xQ$BC1_Status = NA
-xQ$BC2_Status = NA
-xQ$Other_Status = NA
+xQ$Hybrid_Type = 0
+xQ$Parental_Status = 0
+xQ$Hybrid_Status = 0
+xQ$F1_Status = 0
+xQ$F2_Status = 0
+xQ$F3_Status = 0
+xQ$BC1_Status = 0
+xQ$BC2_Status = 0
+xQ$Other_Status = 0
 
 
 # classifies as type of hybrid (deciding on these values )
 for (i in 1:nrow(xQ)){ 
-  if (xQ[i,3] >= 0 & xQ[i,3] <= 0.125 & xQ[i,4] >= 0 & xQ[i,4] <= 0.125) {
+  if (xQ[i,3] >= 0 & xQ[i,3] <= 0.1 & xQ[i,4] >= 0 & xQ[i,4] <= 0.2) {
     xQ$Hybrid_Type[i] <- "P1" #Parental left side
     xQ$Parental_Status[i] = 1
-    xQ$Hybrid_Status[i] = 0
-    xQ$F1_Status[i] = 0
-    xQ$F2_Status[i] = 0
-    xQ$F3_Status[i] = 0
-    xQ$BC1_Status[i] = 0
-    xQ$BC2_Status[i] = 0
-    xQ$Other_Status[i] = 0
-  } else if (xQ[i,3] >= 0.125 & xQ[i,3] <= 0.25 & xQ[i,4] >= 0.125 & xQ[i,4] <= 0.375) {
-    xQ$Hybrid_Type[i] <- "BC2P1" #Back cross 2 to left parental
+  } 
+  else if (xQ[i,3] >= 0.1875 & xQ[i,3] <= 0.3125 & xQ[i,4] >= 0.375 & xQ[i,4] <= 0.625) {
+    xQ$Hybrid_Type[i] <- "BC1P1" #Back cross 2 to left parental
     xQ$Parental_Status[i] = 0
     xQ$Hybrid_Status[i] = 1
-    xQ$F1_Status[i] = 0
-    xQ$F2_Status[i] = 0
-    xQ$F3_Status[i] = 0
-    xQ$BC1_Status[i] = 0
-    xQ$BC2_Status[i] = 1
-    xQ$Other_Status[i] = 0
-  } else if (xQ[i,3] >= 0.25 & xQ[i,3] <= 0.375 & xQ[i,4] >= 0.375 & xQ[i,4] <= 0.625) {
-    xQ$Hybrid_Type[i] <- "BC1P1" #Back cross 1 to left parental
-    xQ$Parental_Status[i] = 0
-    xQ$Hybrid_Status[i] = 1
-    xQ$F1_Status[i] = 0
-    xQ$F2_Status[i] = 0
-    xQ$F3_Status[i] = 0
-    xQ$BC1_Status[i] = 1
-    xQ$BC2_Status[i] = 0
-    xQ$Other_Status[i] = 0
-  } else if (xQ[i,3] >= 0.375 & xQ[i,3] <= 0.625 & xQ[i,4] >= 0.75 & xQ[i,4] <= 1) {
+  } 
+  else if (xQ[i,3] >= 0.375 & xQ[i,3] <= 0.625 & xQ[i,4] >= 0.75 & xQ[i,4] <= 1) {
     xQ$Hybrid_Type[i] <- "F1" #First gen hybrid
-    xQ$Parental_Status[i] = 0
     xQ$Hybrid_Status[i] = 1
     xQ$F1_Status[i] = 1
-    xQ$F2_Status[i] = 0
-    xQ$F3_Status[i] = 0
-    xQ$BC1_Status[i] = 0
-    xQ$BC2_Status[i] = 0
-    xQ$Other_Status[i] = 0
-  } else if (xQ[i,3] >= 0.375 & xQ[i,3] <= 0.625 & xQ[i,4] >= 0.375 & xQ[i,4] <= 0.75) {
+  } 
+  else if (xQ[i,3] >= 0.375 & xQ[i,3] <= 0.625 & xQ[i,4] >= 0.375 & xQ[i,4] <= 0.625) {
     xQ$Hybrid_Type[i] <- "F2" #Second gen hybrid
-    xQ$Parental_Status[i] = 0
     xQ$Hybrid_Status[i] = 1
-    xQ$F1_Status[i] = 0
     xQ$F2_Status[i] = 1
-    xQ$F3_Status[i] = 0
-    xQ$BC1_Status[i] = 0
-    xQ$BC2_Status[i] = 0
-    xQ$Other_Status[i] = 0
-  } else if (xQ[i,3] >= 0.375 & xQ[i,3] <= 0.625 & xQ[i,4] >= 0.125 & xQ[i,4] <= 0.375) {
+  } 
+  else if (xQ[i,3] >= 0.375 & xQ[i,3] <= 0.625 & xQ[i,4] >= 0.25 & xQ[i,4] <= 0.375) {
     xQ$Hybrid_Type[i] <- "F3" #Third gen hybrid
-    xQ$Parental_Status[i] = 0
     xQ$Hybrid_Status[i] = 1
-    xQ$F1_Status[i] = 0
-    xQ$F2_Status[i] = 0
     xQ$F3_Status[i] = 1
-    xQ$BC1_Status[i] = 0
-    xQ$BC2_Status[i] = 0
-    xQ$Other_Status[i] = 0
-  } else if (xQ[i,3] >= 0.625 & xQ[i,3] <= 0.75 & xQ[i,4] >= 0.375 & xQ[i,4] <= 0.625) {
+  } 
+  else if (xQ[i,3] >= 0.6875 & xQ[i,3] <= 0.8125 & xQ[i,4] >= 0.375 & xQ[i,4] <= 0.625) {
     xQ$Hybrid_Type[i] <- "BC1P2" #Back cross 1 to right parental
-    xQ$Parental_Status[i] = 0
     xQ$Hybrid_Status[i] = 1
-    xQ$F1_Status[i] = 0
-    xQ$F2_Status[i] = 0
-    xQ$F3_Status[i] = 0
     xQ$BC1_Status[i] = 1
-    xQ$BC2_Status[i] = 0
-    xQ$Other_Status[i] = 0
-  } else if (xQ[i,3] >= 0.75 & xQ[i,3] <= 0.875 & xQ[i,4] >= 0.125 & xQ[i,4] <= 0.375) {
-    xQ$Hybrid_Type[i] <- "BC2P2" #Back cross 2 to right parental
-    xQ$Parental_Status[i] = 0
-    xQ$Hybrid_Status[i] = 1
-    xQ$F1_Status[i] = 0
-    xQ$F2_Status[i] = 0
-    xQ$F3_Status[i] = 0
-    xQ$BC1_Status[i] = 0
-    xQ$BC2_Status[i] = 1
-    xQ$Other_Status[i] = 0
-  } else if (xQ[i,3] >= 0.875 & xQ[i,3] <= 1 & xQ[i,4] >= 0 & xQ[i,4] <= 0.125) {
+  } 
+  else if (xQ[i,3] >= 0.9 & xQ[i,3] <= 1 & xQ[i,4] >= 0 & xQ[i,4] <= 0.2) {
     xQ$Hybrid_Type[i] <- "P2" #Parental right side
     xQ$Parental_Status[i] = 1
-    xQ$Hybrid_Status[i] = 0
-    xQ$F1_Status[i] = 0
-    xQ$F2_Status[i] = 0
-    xQ$F3_Status[i] = 0
-    xQ$BC1_Status[i] = 0
-    xQ$BC2_Status[i] = 0
-    xQ$Other_Status[i] = 0
-  } else {
+  } 
+  else {
     xQ$Hybrid_Type[i] <- "Other" #Other
-    xQ$Parental_Status[i] = 0
-    xQ$Hybrid_Status[i] = 0
-    xQ$F1_Status[i] = 0
-    xQ$F2_Status[i] = 0
-    xQ$F3_Status[i] = 0
-    xQ$BC1_Status[i] = 0
-    xQ$BC2_Status[i] = 0
-    xQ$Other_Status[i] = 0
   } 
 }
 
 # save data frame
-#write.csv(xQ, "AMP22_genoID_k2_BNDxCS_old.csv", row.names = F, quote = F)
+#write.csv(xQ, "AMP22_woP13_k2_CSxCC_old.csv", row.names = F, quote = F)
 
 
 #summarize the hybrid types found
@@ -589,7 +715,7 @@ dftable_types <- as.data.frame(table_types)
 colnames(dftable_types)[1] <- "Hybrid_Type"
 
 #save to compare to other species crosses
-#write.csv(dftable_types, paste0("AMP22_hybrid_types_BNDxCS_old.csv"), row.names = F, quote = F)
+#write.csv(dftable_types, paste0("AMP22_hybrid_types_CSxCC_old.csv"), row.names = F, quote = F)
 
 #edit metadata
 metadata$Waterbody[metadata$Waterbody_Code == "OP2"] <- "Costello_Creek"
@@ -628,11 +754,11 @@ xQ_order = xQ_count[!duplicated(xQ_count$Waterbody_Code), ]$Waterbody_Code
 xQ_count$Waterbody_Code <- factor(xQ_count$Waterbody_Code, levels = xQ_order)
 
 # plot 
-ggplot(xQ_count, aes(fill=Hybrid_Type, y=n, x=Waterbody_Code)) + 
+(alltypes <- ggplot(xQ_count, aes(fill=Hybrid_Type, y=n, x=Waterbody_Code)) + 
   geom_bar(position="fill", stat="identity")+ 
   ylab("Proportion of total individuals") +
   xlab("Waterbody") + 
-  scale_fill_brewer(palette="Spectral", name="Hybrid Type")
+  scale_fill_brewer(palette="Spectral", name="Hybrid Type"))
 
 #------------------------------------------------------------
 # simplify hybrid type and replot
@@ -656,7 +782,7 @@ for (i in 1:nrow(xQ_sites)){
 
 xQ_count_simple <- xQ_sites %>% group_by(Waterbody_Code) %>% count(Hybrid_Type_Simple)
 #save to compare to other species crosses
-#write.csv(xQ_count_simple, paste0("AMP22_hybrid_types_persite_BNDxCS.csv"), row.names = F, quote = F)
+#write.csv(xQ_count_simple, paste0("AMP22_hybrid_types_persite_CSxCC.csv"), row.names = F, quote = F)
 
 # create frequency column
 sumsQ <- xQ_count_simple %>% 
@@ -679,11 +805,14 @@ xQ_order = xQ_count_simple[!duplicated(xQ_count_simple$Waterbody_Code), ]$Waterb
 # tell it how we want the levels
 xQ_count_simple$Waterbody_Code <- factor(xQ_count_simple$Waterbody_Code, levels = xQ_order)
 
+
+
 # plot
 ggplot(xQ_count_simple, aes(fill=Hybrid_Type_Simple, y=n, x=Waterbody_Code)) + 
   geom_bar(position="fill", stat="identity")+ 
-  ylab("Proportion of total individuals") +
-  scale_fill_brewer(palette="Spectral")
+  ylab("Proportion of total individuals")+ 
+  xlab("Waterbody")+
+  scale_fill_brewer(palette="Spectral", name="Hybrid Type")
 
 
 #------------------------------------------------------------
@@ -696,7 +825,7 @@ xQ_count_noparental <- filter(xQ_count_simple, Hybrid_Type_Simple != "Parental")
 # order by the frequency column
 xQ_count_noparental = xQ_count_noparental %>% 
   group_by(Waterbody_Code) %>% 
-  arrange(desc(Hybrid_Type_Simple))# what it sorts by
+  arrange(desc(Hybrid_Type_Simple), desc(proportion))# what it sorts by
 
 # create the object w the levels in order
 xQ_order = xQ_count_noparental[!duplicated(xQ_count_noparental$Waterbody_Code), ]$Waterbody_Code
@@ -704,56 +833,21 @@ xQ_order = xQ_count_noparental[!duplicated(xQ_count_noparental$Waterbody_Code), 
 xQ_count_noparental$Waterbody_Code <- factor(xQ_count_noparental$Waterbody_Code, levels = xQ_order)
 
 # plot
-ggplot(xQ_count_noparental, aes(fill=Hybrid_Type_Simple, y=n, x=Waterbody_Code)) + 
-  geom_bar(position="fill", stat="identity") + 
+(noparentals <- ggplot(xQ_count_noparental, aes(fill=Hybrid_Type_Simple, y=n, x=Waterbody_Code)) + 
+  geom_bar(position="fill", stat="identity") +
   ylab("Proportion of hybrid individuals") +
-  scale_fill_brewer(palette="Spectral")
+  xlab("Waterbody")+
+  scale_fill_brewer(palette="Spectral", name="Hybrid Type"))
 
 
 
 #------------------------------------------------------------
-# merge the 3 csv files of hybrid types for each pairing
+# save the with and without parentals plots
 #------------------------------------------------------------
 
-BNDxCC <- read.csv("AMP22_genoID_k2_BNDxCC_old.csv")
-BNDxCS <- read.csv("AMP22_genoID_k2_BNDxCS_old.csv")
-CSxCC <- read.csv("AMP22_genoID_k2_CSxCC_old.csv")
-
-CSxCC$q_col1 <- round(CSxCC$q_col1, digits = 3)
-CSxCC$Q_col2 <- round(CSxCC$Q_col2, digits = 3) 
-
-dflist <- list(BNDxCC, BNDxCS, CSxCC)
-  
-lapply(dflist, function(x) {
-  x$q_col1 <- NULL
-  x$Q_col2 <- NULL 
-})
-
-# run this on all 3 data frames
-x <- CSxCC
-  for (i in 1:nrow(x)){
-    if(str_detect(x$Hybrid_Type[i],'^P1|^P2') == TRUE){
-      x$Hybrid_Type[i] <- "Parental" 
-    }
-    else if (str_detect(x$Hybrid_Type[i],'BC1') == TRUE){
-      x$Hybrid_Type[i] <- "BC1"
-    }
-    else if (str_detect(x$Hybrid_Type[i],'BC2') == TRUE){
-      x$Hybrid_Type[i] <- "BC2"
-    }
-    else {
-      x$Hybrid_Type[i] <- x$Hybrid_Type[i]
-    }
-  }
-CSxCC <- x
-
-
-temp <- merge(BNDxCC, BNDxCS, by.x = c("Mandeville_ID", "Geno_ID", "Hybrid_Type", "Parental_Status", "Hybrid_Status", "F1_Status", "F2_Status", "F3_Status", "BC1_Status", "BC2_Status", "Other_Status"), by.y = c("Mandeville_ID", "Geno_ID", "Hybrid_Type", "Parental_Status", "Hybrid_Status", "F1_Status", "F2_Status", "F3_Status", "BC1_Status", "BC2_Status", "Other_Status"), all.x = T, all.y = T)
-BNDxCSxCC <- merge(temp, CSxCC, by.x = c("Mandeville_ID", "Geno_ID", "Hybrid_Type", "Parental_Status", "Hybrid_Status", "F1_Status", "F2_Status", "F3_Status", "BC1_Status", "BC2_Status", "Other_Status"), by.y = c("Mandeville_ID", "Geno_ID", "Hybrid_Type", "Parental_Status", "Hybrid_Status", "F1_Status", "F2_Status", "F3_Status", "BC1_Status", "BC2_Status", "Other_Status"), all.x = T, all.y = T)
-
-
-nrow(BNDxCSxCC[duplicated(BNDxCSxCC$Mandeville_ID), ]) #10, so there's 10 inds w different outcomes for hybrid_status
-dups <- BNDxCSxCC[duplicated(BNDxCSxCC$Mandeville_ID)|duplicated(BNDxCSxCC$Mandeville_ID, fromLast=TRUE),]
-# i think i should compare q and Q values in both entropy files and see where the issues are, try grouping all the inds into a category of some sort
-
+pdf("AMP22_CSxCC_woP13_hybrid_types.pdf", width = 10, height = 12)
+alltypes + noparentals + 
+  plot_annotation(tag_levels = 'A')+
+  plot_layout(ncol = 1)
+dev.off()
 

@@ -7,6 +7,8 @@ library(corrplot)
 library(corrr)
 library(caret)
 library(randomForest)
+library(ggpubr)
+library(patchwork)
 
 #======================================================================
 # Example 1 https://www.simplilearn.com/tutorials/data-science-tutorial/random-forest-in-r
@@ -143,6 +145,64 @@ data_test$Survived <- predict(model, newdata = data_test)
 data_test$Survived # this should be 0s and 1s so not sure what's going on...
 
 #======================================================================
+# Example 4 (RFE) https://towardsdatascience.com/effective-feature-selection-recursive-feature-elimination-using-r-148ff998e4f7
+#======================================================================
+
+library("dplyr")
+library("faux")
+library("DataExplorer")
+library("caret")
+library("randomForest")
+
+# Import the dataset
+file = "https://raw.githubusercontent.com/okanbulut/tds/main/feature_selection_rfe/heart.csv"
+data <- read.csv(file, header = TRUE)
+head(data)
+
+# Set the seed for reproducibility
+set.seed(2021)
+
+# Add four pseudo variables into the data
+data <- mutate(data,
+               # random categorical variable
+               catvar = as.factor(sample(sample(letters[1:3], nrow(data), replace = TRUE))),
+               
+               # random continuous variable (mean = 10, sd = 2, r = 0)
+               contvar1 = rnorm(nrow(data), mean = 10, sd = 2),
+               
+               # continuous variable with low correlation (mean = 10, sd = 2, r = 0.2)
+               contvar2 = rnorm_pre(data$target, mu = 10, sd = 2, r = 0.2, empirical = TRUE),
+               
+               # continuous variable with moderate correlation (mean = 10, sd = 2, r = 0.5)
+               contvar3 = rnorm_pre(data$target, mu = 10, sd = 2, r = 0.5, empirical = TRUE))
+
+data <- data %>%
+  # Save categorical features as factors
+  mutate_at(c("sex", "cp", "fbs", "restecg", "exang", "slope", "thal", "target", "catvar"), 
+            as.factor) %>%
+  # Center and scale numeric features
+  mutate_if(is.numeric, scale)
+
+# Features
+x <- data %>%
+  select(-target, -catvar, -contvar1, -contvar2, -contvar3) %>%
+  as.data.frame()
+
+# Target variable
+y <- data$target
+
+# Training: 80%; Test: 20%
+set.seed(2021)
+inTrain <- createDataPartition(y, p = .80, list = FALSE)[,1]
+
+x_train <- x[ inTrain, ]
+x_test  <- x[-inTrain, ]
+
+y_train <- y[ inTrain]
+y_test  <- y[-inTrain]
+
+
+#======================================================================
 # Parentals, 2-sp. hybrids, and multi-sp. hybrids (might focus this to hybrids vs parentals...)
 #======================================================================
 
@@ -177,6 +237,7 @@ for (i in 1:nrow(all_fish)){
 }
 
 # create counts of hybrid types
+colnames(all_fish)[1:2] <- c("Mandeville_ID", "Common_Name")
 all_fish_details <- merge(all_fish, metadata, by = c("Mandeville_ID", "Common_Name"))
 fish_count <- all_fish_details %>% group_by(Waterbody_Code) %>% count(Hybrid_Type_Simple)
 
@@ -201,7 +262,7 @@ fish_wide <- fish_wide %>% pivot_wider(names_from = Hybrid_Type_Simple, values_f
 site_fish_data <- merge(fish_wide, site_data, by = "Waterbody_Code")
 
 #remove variables that I don't need (waterbody name, lab name, and notes, variables in km2)
-site_fish_data <- site_fish_data[-c(4:5,23:38,60)]
+site_fish_data <- site_fish_data[-c(1,4:5,23:38,60)]
 
 #create testing and training sets
 set.seed(5)
@@ -210,10 +271,10 @@ fish_train <- site_fish_data[samp, ]
 fish_test <- site_fish_data[-samp, ]
 
 # remove the proportion of hybrids and parentals from the testing data
-fish_test_real_response <- fish_test[c(2:3)]
-fish_test <- fish_test[-c(2:3)]
+fish_test_real_response <- fish_test[c(1:2)]
+fish_test <- fish_test[-c(1:2)]
 # remove proportion of parentals from training data (we can infer proportion of parentals from prop of hybrids)
-fish_train <- fish_train[-3]
+fish_train <- fish_train[-2]
 
 
 # convert Hybrid to a factor
@@ -224,23 +285,23 @@ variables <- colnames(fish_train)
 
 # set this 
 trControl = trainControl(method = "cv",
-                         number = 10,
+                         number = 5,
                          search = "grid") # Use 10 folds and grid search for cross-validation
 
 # TRAIN THE MODEL!!!!!!!!!! (can i use a . to replace all the variable names?)
 set.seed(12)
-default_model <- train(Hybrid ~ Lat + Long + Drainage_area_km2 + Shape_factor + Length_main_channel_km + Max_channel_elevation_m + Min_channel_elevation_m + Slope_main_channel_m_km + Slope_main_channel_percent + Area_lakes_divide_wetlands_km2 + Area_lakes_km2 + Area_wetlands_km2 + Mean_elevation_m + Max_elevation_m + Mean_slope_percent + Annual_mean_temp_C + Annual_precipitation_mm + Clear_Open_Water_percent + Marsh_percent + Swamp_percent + Fen_percent + Bog_percent + Sparse_Treed_percent + Treed_Upland_percent + Deciduous_Treed_percent + Mixed_Treed_percent + Coniferous_Treed_percent + Plantations_Treed_Cultivated_percent + Hedge_Rows_percent + Tallgrass_Woodland_percent + Sand_Gravel_Mine_Tailings_Extraction_percent + Community_Infrastructure_percent + Agriculture_and_Undifferentiated_Rural_Land_Use_percent + Total_agriculture_percent + Total_urban_and_development_percent + Total_treed_percent + Total_wetland_percent + Open_water_percent, # Hybrid is a function of the variables we decided to include
+default_model <- train(Hybrid ~ ., # Hybrid is a function of the variables we decided to include
                data = fish_train, # Use the train data frame as the training data
                method = 'rf',# Use the 'random forest' algorithm
                trControl = trControl)
 
 
 
-default_model # best value of mtry is 2: "mtry" is a hyper-parameter of the random forest model that determines how many variables the model uses to split the trees
+default_model # best value of mtry is 2: "mtry" is a hyper-parameter of the random forest model that determines how many variables the trees consider for each node split (often is more than 1)
 # i can make the model try all mtry values rather than just 2, 20 and 38, and have it tell me which is best
 set.seed(1234)
 tuneGrid <- expand.grid(.mtry = c(1: 38))
-rf_mtry <- train(Hybrid ~ Lat + Long + Drainage_area_km2 + Shape_factor + Length_main_channel_km + Max_channel_elevation_m + Min_channel_elevation_m + Slope_main_channel_m_km + Slope_main_channel_percent + Area_lakes_divide_wetlands_km2 + Area_lakes_km2 + Area_wetlands_km2 + Mean_elevation_m + Max_elevation_m + Mean_slope_percent + Annual_mean_temp_C + Annual_precipitation_mm + Clear_Open_Water_percent + Marsh_percent + Swamp_percent + Fen_percent + Bog_percent + Sparse_Treed_percent + Treed_Upland_percent + Deciduous_Treed_percent + Mixed_Treed_percent + Coniferous_Treed_percent + Plantations_Treed_Cultivated_percent + Hedge_Rows_percent + Tallgrass_Woodland_percent + Sand_Gravel_Mine_Tailings_Extraction_percent + Community_Infrastructure_percent + Agriculture_and_Undifferentiated_Rural_Land_Use_percent + Total_agriculture_percent + Total_urban_and_development_percent + Total_treed_percent + Total_wetland_percent + Open_water_percent,
+rf_mtry <- train(Hybrid ~ .,
                  data = fish_train,
                  method = "rf",
                  tuneGrid = tuneGrid,
@@ -256,7 +317,7 @@ store_maxnode <- list()
 tuneGrid <- expand.grid(.mtry = best_mtry)
 for (maxnodes in c(3:37)) { # try 3 to 37 nodes
   set.seed(1234)
-  rf_maxnode <- train(Hybrid ~ Lat + Long + Drainage_area_km2 + Shape_factor + Length_main_channel_km + Max_channel_elevation_m + Min_channel_elevation_m + Slope_main_channel_m_km + Slope_main_channel_percent + Area_lakes_divide_wetlands_km2 + Area_lakes_km2 + Area_wetlands_km2 + Mean_elevation_m + Max_elevation_m + Mean_slope_percent + Annual_mean_temp_C + Annual_precipitation_mm + Clear_Open_Water_percent + Marsh_percent + Swamp_percent + Fen_percent + Bog_percent + Sparse_Treed_percent + Treed_Upland_percent + Deciduous_Treed_percent + Mixed_Treed_percent + Coniferous_Treed_percent + Plantations_Treed_Cultivated_percent + Hedge_Rows_percent + Tallgrass_Woodland_percent + Sand_Gravel_Mine_Tailings_Extraction_percent + Community_Infrastructure_percent + Agriculture_and_Undifferentiated_Rural_Land_Use_percent + Total_agriculture_percent + Total_urban_and_development_percent + Total_treed_percent + Total_wetland_percent + Open_water_percent,
+  rf_maxnode <- train(Hybrid ~ .,
                       data = fish_train,
                       method = "rf",
                       tuneGrid = tuneGrid,
@@ -275,7 +336,7 @@ summary(results_mtry) # everything between 5 and 37 have the same RMSE so i gues
 store_maxtrees <- list()
 for (ntree in c(250, 300, 350, 400, 450, 500, 550, 600, 800, 1000, 2000)) {
   set.seed(5678)
-  rf_maxtrees <- train(Hybrid ~ Lat + Long + Drainage_area_km2 + Shape_factor + Length_main_channel_km + Max_channel_elevation_m + Min_channel_elevation_m + Slope_main_channel_m_km + Slope_main_channel_percent + Area_lakes_divide_wetlands_km2 + Area_lakes_km2 + Area_wetlands_km2 + Mean_elevation_m + Max_elevation_m + Mean_slope_percent + Annual_mean_temp_C + Annual_precipitation_mm + Clear_Open_Water_percent + Marsh_percent + Swamp_percent + Fen_percent + Bog_percent + Sparse_Treed_percent + Treed_Upland_percent + Deciduous_Treed_percent + Mixed_Treed_percent + Coniferous_Treed_percent + Plantations_Treed_Cultivated_percent + Hedge_Rows_percent + Tallgrass_Woodland_percent + Sand_Gravel_Mine_Tailings_Extraction_percent + Community_Infrastructure_percent + Agriculture_and_Undifferentiated_Rural_Land_Use_percent + Total_agriculture_percent + Total_urban_and_development_percent + Total_treed_percent + Total_wetland_percent + Open_water_percent,
+  rf_maxtrees <- train(Hybrid ~ .,
                        data = fish_train,
                        method = "rf",
                        tuneGrid = tuneGrid,
@@ -290,7 +351,7 @@ for (ntree in c(250, 300, 350, 400, 450, 500, 550, 600, 800, 1000, 2000)) {
 results_tree <- resamples(store_maxtrees)
 summary(results_tree) # best value (when looking at max RMSE) seems to be 1000
 
-best_rf <- train(Hybrid ~ Lat + Long + Drainage_area_km2 + Shape_factor + Length_main_channel_km + Max_channel_elevation_m + Min_channel_elevation_m + Slope_main_channel_m_km + Slope_main_channel_percent + Area_lakes_divide_wetlands_km2 + Area_lakes_km2 + Area_wetlands_km2 + Mean_elevation_m + Max_elevation_m + Mean_slope_percent + Annual_mean_temp_C + Annual_precipitation_mm + Clear_Open_Water_percent + Marsh_percent + Swamp_percent + Fen_percent + Bog_percent + Sparse_Treed_percent + Treed_Upland_percent + Deciduous_Treed_percent + Mixed_Treed_percent + Coniferous_Treed_percent + Plantations_Treed_Cultivated_percent + Hedge_Rows_percent + Tallgrass_Woodland_percent + Sand_Gravel_Mine_Tailings_Extraction_percent + Community_Infrastructure_percent + Agriculture_and_Undifferentiated_Rural_Land_Use_percent + Total_agriculture_percent + Total_urban_and_development_percent + Total_treed_percent + Total_wetland_percent + Open_water_percent,
+best_rf <- train(Hybrid ~ .,
                  data = fish_train,
                 method = "rf",
                 tuneGrid = tuneGrid,
@@ -300,7 +361,7 @@ best_rf <- train(Hybrid ~ Lat + Long + Drainage_area_km2 + Shape_factor + Length
                 ntree = 1000,
                 maxnodes = 5)
 
-best_rf <- randomForest(Hybrid ~ Lat + Long + Drainage_area_km2 + Shape_factor + Length_main_channel_km + Max_channel_elevation_m + Min_channel_elevation_m + Slope_main_channel_m_km + Slope_main_channel_percent + Area_lakes_divide_wetlands_km2 + Area_lakes_km2 + Area_wetlands_km2 + Mean_elevation_m + Max_elevation_m + Mean_slope_percent + Annual_mean_temp_C + Annual_precipitation_mm + Clear_Open_Water_percent + Marsh_percent + Swamp_percent + Fen_percent + Bog_percent + Sparse_Treed_percent + Treed_Upland_percent + Deciduous_Treed_percent + Mixed_Treed_percent + Coniferous_Treed_percent + Plantations_Treed_Cultivated_percent + Hedge_Rows_percent + Tallgrass_Woodland_percent + Sand_Gravel_Mine_Tailings_Extraction_percent + Community_Infrastructure_percent + Agriculture_and_Undifferentiated_Rural_Land_Use_percent + Total_agriculture_percent + Total_urban_and_development_percent + Total_treed_percent + Total_wetland_percent + Open_water_percent,
+best_rf <- randomForest(Hybrid ~ .,
                  data = fish_train,
                  method = "rf",
                  tuneGrid = tuneGrid,
@@ -360,17 +421,17 @@ control <- rfeControl(functions = rfFuncs, # random forest
                       number = 10) # number of folds
 
 #create testing and training sets (i need the response variable in it's own data frame)
-set.seed(500)
+set.seed(888)
 samp <- sample(nrow(site_fish_data), 0.8 * nrow(site_fish_data))
 x_train <- site_fish_data[samp, ]
 x_test <- site_fish_data[-samp, ]
 
 # copy and remove the proportion of hybrids and parentals from the testing and training data, as well as site names
-y_train <- as.matrix(x_train[2])
-y_test <- as.matrix(x_test[2])
+y_train <- as.matrix(x_train[1])
+y_test <- as.matrix(x_test[1])
 
-x_train <- x_train[-c(1,3)]
-x_test <- x_test[-(1:3)]
+x_train <- x_train[-c(1:2)]
+x_test <- x_test[-(1:2)]
 
 
 
@@ -388,40 +449,41 @@ result_rfe1
 
 # Print the selected features
 (variables_new <- predictors(result_rfe1))
-#write.csv(variables_new, "random_forest_variables_RFE.csv", row.names = F)
+#write.csv(variables_new, "random_forest_variables_RFE2.csv", row.names = F)
 
-varimp_data <- data.frame(feature = row.names(varImp(result_rfe1))[1:19],
-                          importance = varImp(result_rfe1)[1:19, 1])
+varimp_data <- data.frame(feature = row.names(varImp(result_rfe1))[1:8],
+                          importance = varImp(result_rfe1)[1:8, 1])
 
 (RFE_variables_importance <- ggplot(data = varimp_data, 
        aes(x = reorder(feature, -importance), y = importance, fill = feature)) +
-  geom_bar(stat="identity") + labs(x = "Features", y = "Variable Importance") + 
+  geom_bar(stat="identity") + labs(x = "Variables", y = "Variable Importance") + 
   geom_text(aes(label = round(importance, 2)), vjust=1.6, color="white", size=4) + 
   theme_bw() + theme(legend.position = "none") + 
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)))
 
-pdf("RFE_variables.pdf", width = 12, height = 8)
-RFE_MSE_variables
-RFE_variables_importance
+pdf("RFE_variables.pdf", width = 12, height = 12)
+RFE_MSE_variables + RFE_variables_importance + 
+  plot_layout(ncol = 1) + 
+  plot_annotation(tag_levels = 'A')
 dev.off()
 
 
 
 
 # Rerun the model with only the chosen variables!
-set.seed(5648)
-default_model <- train(Hybrid ~ Lat + Annual_mean_temp_C + Total_treed_percent + Annual_precipitation_mm + Deciduous_Treed_percent + Total_wetland_percent + Community_Infrastructure_percent + Total_urban_and_development_percent + Mixed_Treed_percent + Max_channel_elevation_m + Max_elevation_m + Treed_Upland_percent + Agriculture_and_Undifferentiated_Rural_Land_Use_percent + Mean_elevation_m + Total_agriculture_percent + Marsh_percent + Hedge_Rows_percent + Coniferous_Treed_percent + Swamp_percent, # Hybrid is a function of the variables we decided to include
+set.seed(56488)
+default_model <- train(Hybrid ~ Marsh_percent + Long + Plantations_Treed_Cultivated_percent + Slope_main_channel_m_km + Slope_main_channel_percent + Max_elevation_m + Max_channel_elevation_m + Total_urban_and_development_percent, # Hybrid is a function of the variables we decided to include
                        data = fish_train, # Use the train data frame as the training data
                        method = 'rf',# Use the 'random forest' algorithm
                        trControl = trControl)
 
 
 
-default_model # best value of mtry is 19
+default_model # best value of mtry is 8
 
-set.seed(879)
-tuneGrid <- expand.grid(.mtry = c(1: 19))
-rf_mtry <- train(Hybrid ~ Lat + Annual_mean_temp_C + Total_treed_percent + Annual_precipitation_mm + Deciduous_Treed_percent + Total_wetland_percent + Community_Infrastructure_percent + Total_urban_and_development_percent + Mixed_Treed_percent + Max_channel_elevation_m + Max_elevation_m + Treed_Upland_percent + Agriculture_and_Undifferentiated_Rural_Land_Use_percent + Mean_elevation_m + Total_agriculture_percent + Marsh_percent + Hedge_Rows_percent + Coniferous_Treed_percent + Swamp_percent,
+set.seed(8798)
+tuneGrid <- expand.grid(.mtry = c(1: 8))
+rf_mtry <- train(Hybrid ~ Marsh_percent + Long + Plantations_Treed_Cultivated_percent + Slope_main_channel_m_km + Slope_main_channel_percent + Max_elevation_m + Max_channel_elevation_m + Total_urban_and_development_percent,
                  data = fish_train,
                  method = "rf",
                  tuneGrid = tuneGrid,
@@ -435,9 +497,9 @@ best_mtry <- rf_mtry$bestTune$mtry  # that value is stored here
 # now, i'm gonna optimize the value of maxnodes
 store_maxnode <- list()
 tuneGrid <- expand.grid(.mtry = best_mtry)
-for (maxnodes in c(2:18)) { # try 3 to 37 nodes
-  set.seed(1234)
-  rf_maxnode <- train(Hybrid ~ Lat + Annual_mean_temp_C + Total_treed_percent + Annual_precipitation_mm + Deciduous_Treed_percent + Total_wetland_percent + Community_Infrastructure_percent + Total_urban_and_development_percent + Mixed_Treed_percent + Max_channel_elevation_m + Max_elevation_m + Treed_Upland_percent + Agriculture_and_Undifferentiated_Rural_Land_Use_percent + Mean_elevation_m + Total_agriculture_percent + Marsh_percent + Hedge_Rows_percent + Coniferous_Treed_percent + Swamp_percent,
+for (maxnodes in c(2:8)) { # try 3 to 37 nodes
+  set.seed(12348)
+  rf_maxnode <- train(Hybrid ~ Marsh_percent + Long + Plantations_Treed_Cultivated_percent + Slope_main_channel_m_km + Slope_main_channel_percent + Max_elevation_m + Max_channel_elevation_m + Total_urban_and_development_percent,
                       data = fish_train,
                       method = "rf",
                       tuneGrid = tuneGrid,
@@ -450,40 +512,38 @@ for (maxnodes in c(2:18)) { # try 3 to 37 nodes
   store_maxnode[[current_iteration]] <- rf_maxnode
 }
 results_mtry <- resamples(store_maxnode)
-summary(results_mtry) # again everything between 5 and 19 have the same RMSE so i guess it doesn't really matter how many nodes? i guess i'll just go with 5 then, for simplicity's sake
+summary(results_mtry) # again everything between 3 and 8 have the same RMSE so i guess it doesn't really matter how many nodes? i guess i'll just go with 3 then, for simplicity's sake
 
 # now try to optimize number of trees
 store_maxtrees <- list()
 for (ntree in c(250, 300, 350, 400, 450, 500, 550, 600, 800, 1000, 2000, 2500, 3000)) {
-  set.seed(5678)
-  rf_maxtrees <- train(Hybrid ~ Lat + Annual_mean_temp_C + Total_treed_percent + Annual_precipitation_mm + Deciduous_Treed_percent + Total_wetland_percent + Community_Infrastructure_percent + Total_urban_and_development_percent + Mixed_Treed_percent + Max_channel_elevation_m + Max_elevation_m + Treed_Upland_percent + Agriculture_and_Undifferentiated_Rural_Land_Use_percent + Mean_elevation_m + Total_agriculture_percent + Marsh_percent + Hedge_Rows_percent + Coniferous_Treed_percent + Swamp_percent,
+  set.seed(56788)
+  rf_maxtrees <- train(Hybrid ~ Marsh_percent + Long + Plantations_Treed_Cultivated_percent + Slope_main_channel_m_km + Slope_main_channel_percent + Max_elevation_m + Max_channel_elevation_m + Total_urban_and_development_percent,
                        data = fish_train,
                        method = "rf",
                        tuneGrid = tuneGrid,
                        trControl = trControl,
                        importance = TRUE,
                        nodesize = 14,
-                       maxnodes = 5,
+                       maxnodes = 3,
                        ntree = ntree)
   key <- toString(ntree)
   store_maxtrees[[key]] <- rf_maxtrees
 }
 results_tree <- resamples(store_maxtrees)
-summary(results_tree) # best value (when looking at max RMSE) seems to be 2000
+summary(results_tree) # best value (when looking at max RMSE) seems to be 350
 
-best_rf <- randomForest(Hybrid ~ Lat + Annual_mean_temp_C + Total_treed_percent + Annual_precipitation_mm + Deciduous_Treed_percent + Total_wetland_percent + Community_Infrastructure_percent + Total_urban_and_development_percent + Mixed_Treed_percent + Max_channel_elevation_m + Max_elevation_m + Treed_Upland_percent + Agriculture_and_Undifferentiated_Rural_Land_Use_percent + Mean_elevation_m + Total_agriculture_percent + Marsh_percent + Hedge_Rows_percent + Coniferous_Treed_percent + Swamp_percent,
+best_rf <- randomForest(Hybrid ~ Marsh_percent + Long + Plantations_Treed_Cultivated_percent + Slope_main_channel_m_km + Slope_main_channel_percent + Max_elevation_m + Max_channel_elevation_m + Total_urban_and_development_percent,
                  data = fish_train,
                  method = "rf",
                  tuneGrid = tuneGrid,
                  trControl = trControl,
                  importance = TRUE,
                  nodesize = 14,
-                 ntree = 2000,
-                 maxnodes = 5)
+                 ntree = 350,
+                 maxnodes = 3)
 
 prediction <- predict(best_rf, fish_test)
-confusionMatrix(prediction, fish_test) #not working, idk how it's meant to
-
 
 
 fish_test$Hybrid <- predict(best_rf, newdata = fish_test)
@@ -500,74 +560,158 @@ mean(fish_test$Diff) # 16% ish
 varImpPlot(best_rf, main = "Importance of variables", cex = 0.55)
 
 #save as a PDF
-pdf("Random_forest_importance_19_variables.pdf", width = 24, height = 12)
-varImpPlot(best_rf, main = "Importance of variables", cex = 1, lcolor = "violet", pch = 19)
+# pdf("Random_forest_importance_8_variables.pdf", width = 12, height = 6)
+# varImpPlot(best_rf, main = " ", cex = 1, lcolor = "violet", pch = 19)
+# mtext("A", side=3, cex=2, outer=T, line=-6, adj = 0.03)
+# mtext("B", side=3, cex=2, outer=T, line=-6, adj = 0.53)
+# dev.off()
+
+
+
+#======================================================================
+# Exploring the data more with Sam (linear regression and scatter plot)
+#======================================================================
+
+# scatter plots for all 38 variables 
+par(mfrow = c(5,8))
+par(mar = c(4,4,1,1))
+
+for (col in names(site_fish_data)){
+  if (col != "Hybrid" & col != "Parental"){
+    plot(site_fish_data[[col]], site_fish_data$Hybrid,
+         xlab = col,
+         ylab = "Proportion of hybrids")
+  }
+}
+
+
+# create a histogram and QQ plot to make sure each variable is normally distributed, if not then exclude
+# histograms
+par(mfrow = c(5,8))
+par(mar = c(4,4,1,1))
+
+for (col in names(site_fish_data)){
+  if (col != "Hybrid" & col != "Parental"){
+    hist(site_fish_data[[col]],
+         xlab = col,
+         ylab = "Frequency")
+  }
+}
+
+
+# QQ plot
+par(mfrow = c(5,8))
+par(mar = c(4,4,1,1))
+
+for (col in names(site_fish_data)){
+  if (col != "Hybrid" & col != "Parental"){
+    qqnorm(site_fish_data[[col]],
+              xlab = col)
+    qqline(site_fish_data[[col]], 
+           col = "steelblue", 
+           lwd = 2)
+  }
+}
+
+# shapiro-wilk normality test, looking for p-value > 0.01 to show that distribution does not deviate from hypothesis of normality
+(shapiro_test <- apply(site_fish_data, 2, shapiro.test))
+# annual precipitation, max elevation, mean elevation, slope main channel (% and km) and shape factor are the only ones that fit the bill...
+
+# could do a boxplot to look at outliers to make sure there aren't any crazy outliers, if so, delete but there probs won't be any
+
+# try log-transforming the data and then checking again for normality
+
+log_sfd <- log(site_fish_data[5:40]) # introduced lots of -Inf, i think where there were 0s
+log_sfd[log_sfd == "-Inf"] <- NA # replace them w NA
+
+# add the first 4 columns back in
+log_sfd <- cbind(site_fish_data[1:4], log_sfd)
+
+# try log transforming Hybrid, instead
+#log_Hybrid <- log(site_fish_data[1])
+#log_Hybrid <- cbind(log_Hybrid, site_fish_data[2:40])
+
+
+# plot
+# scatter plots for all 38 variables 
+par(mfrow = c(5,8))
+par(mar = c(4,4,1,1))
+
+for (col in names(log_sfd)){
+  if (col != "Hybrid" & col != "Parental"){
+    plot(log_sfd[[col]], log_sfd$Hybrid,
+         xlab = col,
+         ylab = "Proportion of hybrids")
+  }
+}
+
+
+# histograms
+par(mfrow = c(5,8))
+par(mar = c(4,4,1,1))
+
+for (col in names(log_sfd)){
+  if (col != "Hybrid" & col != "Parental"){
+    hist(log_sfd[[col]],
+         xlab = col,
+         ylab = "Frequency")
+  }
+}
+
+
+# QQ plot
+par(mfrow = c(5,8))
+par(mar = c(4,4,1,1))
+
+for (col in names(log_sfd)){
+  if (col != "Hybrid" & col != "Parental"){
+    qqnorm(log_sfd[[col]],
+           xlab = col)
+    qqline(log_sfd[[col]], 
+           col = "steelblue", 
+           lwd = 2)
+  }
+}
+
+# shapiro-wilk normality test on log-transformed data
+#shap <- log_sfd[-c(25,32)]
+#(shapiro_test <- apply(log_sfd, 2, shapiro.test))
+
+
+#reset to default
+par(mfrow = c(1,1))
+par(mar = c(5.1, 4.1, 4.1, 2.1))
+
+
+
+#lm() for running linear regression
+# * b/w variables is interactions (does all combinations) but + is just variables on their own
+log_lm <- log_sfd[c(1,3,11,17,19,28:30,38:40)] # keeping 10 predictor variables
+
+# remove cols if have NAs
+log_lm <- log_lm[-c(6:8,11)] # now keeping 7 variables
+
+lm_model <- lm(Hybrid ~., data = log_lm)
+summary(lm_model)
+
+# plotting the multiple linear regressions (https://www.statology.org/plot-multiple-linear-regression-in-r/)
+library(car)
+
+pdf("linear_model_6variables.pdf")
+avPlots(lm_model, main = " ")
+mtext("A", side=3, cex=1.5, outer=T, line=-2, adj = 0.02)
+mtext("B", side=3, cex=1.5, outer=T, line=-2, adj = 0.52)
+mtext("C", side=3, cex=1.5, outer=T, line=-13, adj = 0.02)
+mtext("D", side=3, cex=1.5, outer=T, line=-13, adj = 0.52)
+mtext("E", side=3, cex=1.5, outer=T, line=-24, adj = 0.02)
+mtext("F", side=3, cex=1.5, outer=T, line=-24, adj = 0.52)
 dev.off()
 
-varImp(best_rf) # not displaying in order - also why does example show % ?
-?varImp()
 
-#======================================================================
-# Example 4 (RFE) https://towardsdatascience.com/effective-feature-selection-recursive-feature-elimination-using-r-148ff998e4f7
-#======================================================================
-
-library("dplyr")
-library("faux")
-library("DataExplorer")
-library("caret")
-library("randomForest")
-
-# Import the dataset
-file = "https://raw.githubusercontent.com/okanbulut/tds/main/feature_selection_rfe/heart.csv"
-data <- read.csv(file, header = TRUE)
-head(data)
-
-# Set the seed for reproducibility
-set.seed(2021)
-
-# Add four pseudo variables into the data
-data <- mutate(data,
-               # random categorical variable
-               catvar = as.factor(sample(sample(letters[1:3], nrow(data), replace = TRUE))),
-               
-               # random continuous variable (mean = 10, sd = 2, r = 0)
-               contvar1 = rnorm(nrow(data), mean = 10, sd = 2),
-               
-               # continuous variable with low correlation (mean = 10, sd = 2, r = 0.2)
-               contvar2 = rnorm_pre(data$target, mu = 10, sd = 2, r = 0.2, empirical = TRUE),
-               
-               # continuous variable with moderate correlation (mean = 10, sd = 2, r = 0.5)
-               contvar3 = rnorm_pre(data$target, mu = 10, sd = 2, r = 0.5, empirical = TRUE))
-
-data <- data %>%
-  # Save categorical features as factors
-  mutate_at(c("sex", "cp", "fbs", "restecg", "exang", "slope", "thal", "target", "catvar"), 
-            as.factor) %>%
-  # Center and scale numeric features
-  mutate_if(is.numeric, scale)
-
-# Features
-x <- data %>%
-  select(-target, -catvar, -contvar1, -contvar2, -contvar3) %>%
-  as.data.frame()
-
-# Target variable
-y <- data$target
-
-# Training: 80%; Test: 20%
-set.seed(2021)
-inTrain <- createDataPartition(y, p = .80, list = FALSE)[,1]
-
-x_train <- x[ inTrain, ]
-x_test  <- x[-inTrain, ]
-
-y_train <- y[ inTrain]
-y_test  <- y[-inTrain]
-
-#======================================================================
-# Big 3 hybrids (F1s, F2s, BC1s, etc)
-#======================================================================
-
-BNDxCC_hybrids <- read.csv("AMP22_hybrid_types_persite_BNDxCC.csv")
-BNDxCS_hybrids <- read.csv("AMP22_hybrid_types_persite_BNDxCS.csv")
-CSxCC_hybrids <- read.csv("AMP22_hybrid_types_persite_CSxCC.csv")
+# Box-Cox transformation: runs a bunch of transformations to find the one that makes the data the most normal
+# library(car)
+# 
+# lm_model <- lm(Hybrid ~., data = site_fish_data)
+# summary(lm_model)
+# 
+# boxCox(lm_model, plotit = T)

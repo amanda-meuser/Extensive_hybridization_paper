@@ -7,13 +7,13 @@ library(rhdf5)
 library(tidyverse)
 
 # import point estimates file
-g <- read.table("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/PCA/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_pntest_mean_gl.txt", header=F) 
+g <- read.table("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/PCA_old/pntest_files/pntest_mean_gl_target_03may23_woP13.txt", header=F) 
 
 # import .imiss file
 imiss <- read.table("out_03may23_0.6_tidy.imiss", header=T) 
 
 # import names list
-names <- read.table("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/PCA/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_indivs_final.txt", header=F) 
+names <- read.table("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/names_files/names_target_03may23_woP13.txt", header=F) 
 colnames(names) <- "FishID"
 
 
@@ -26,11 +26,11 @@ details$Waterbody[details$Waterbody_Code == "OP7"] <- "Costello_Creek"
 details$Waterbody[details$Waterbody_Code == "Weir DS"] <- "Costello_Creek"
 
 # get list of and drop 84 inds from plate 13 inds
-#plate13inds <- filter(details, Plate == "AMP22_LP13")
-#plate13inds <- plate13inds[,4]
-#plate13inds <- as.data.frame(plate13inds)
-#names(plate13inds) <- "Mandeville_ID"
-#details <- anti_join(details, plate13inds)
+# plate13inds <- filter(details, Plate == "AMP22_LP13")
+# plate13inds <- plate13inds[,4]
+# plate13inds <- as.data.frame(plate13inds)
+# names(plate13inds) <- "Mandeville_ID"
+# details <- anti_join(details, plate13inds)
 
 # check for indivs missing species IS
 fishinfo_raw <- merge(names, details, by.x="FishID", by.y="Mandeville_ID", all.x=F, all.y=F)
@@ -87,11 +87,10 @@ colors <-c(
 "#D04576",
 "#6B3128",
 "#6BA684")
-
-
 morecolors <- rep(colors,3)
-symbols <- rep(1:14,3)
 
+
+symbols <- rep(1:14,3)
 parentals2 <- c("#DF65B0", #BND
                 "#A6CEE3", #CC
                 "#FDBF6F", #CS
@@ -107,7 +106,7 @@ parentals2 <- c("#DF65B0", #BND
 
 #----------------------------------------------------------------------------
 #plot PC1 and PC2 for species
-pdf("PCA_AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_indivs.pdf", width = 12, height = 18)
+pdf("PCA_AMP22_target_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_PHENO_ID.pdf", width = 12, height = 18)
 
 par(mfrow=c(3,2))
 plot(pcgcov$x[,1], pcgcov$x[,2], type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""))
@@ -172,7 +171,7 @@ for(i in 1:(length(unique(fishinfo$Common_Name)))){
   points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),5], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),6], pch=symbols[i], col=parentals2[i])
 }
 
-legend("bottomleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
+legend("topleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 #----------------------------------------------------------------------------
 #plot PC6 and PC7 for species
@@ -501,7 +500,7 @@ extracted <- cbind(ids,genos)
 colnames(extracted) <- c("Mandeville_ID", "Geno_ID_simple")
 
 #merge w details
-details_Geno_ID <- merge(details, extracted, by.x = "Mandeville_ID", by.y = "Mandeville_ID")
+details_Geno_ID <- merge(details, extracted, by = "Mandeville_ID")
 
 
 
@@ -514,6 +513,8 @@ percent_data_missing = 1-(n_data_present/total_data)
 # replace blank species datat w Ns
 fishinfo <- fishinfo_raw
 fishinfo$Species <- replace_na(fishinfo$Species, "N")
+
+fishinfo$Geno_ID_simple[fishinfo$Geno_ID_simple == "V7"] <- "Pimephales_sp"
 
 
 nind <- dim(g)[2]
@@ -552,14 +553,14 @@ parentals2 <- c("#8E0152", #hybrid
                 "#FB9A99", #RFS
                 "#B2DF8A", #RC
                 "#8C510A", #CSR
-                "#969696", #v7
+                "#969696", #Pimeph
                 "#E5DF60") #SS
                 
 
 
 
 #plot PC1 and PC2 for species
-pdf("PCA_AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_GENO_ID.pdf", width = 12, height = 18)
+pdf("PCA_AMP22_target_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_GENO_ID.pdf", width = 12, height = 18)
 
 par(mfrow=c(3,2))
 plot(pcgcov$x[,1], pcgcov$x[,2], type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""))
@@ -591,8 +592,7 @@ legend("topleft", legend=unique(fishinfo$Geno_ID_simple), pch=symbols, col=paren
 
 #----------------------------------------------------------------------------
 #plot PC3 and PC4 for species
-#pdf("PCA3,4_AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_indivs_final.pdf")
-#par(mfrow=c(1,2))
+
 plot(pcgcov$x[,3], pcgcov$x[,4], type="n", xlab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""), ylab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""))
 
 #loop iterates over locations and adds a different colour for each one
@@ -624,7 +624,7 @@ for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
   points(pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]),5], pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]),6], pch=symbols[i], col=parentals2[i])
 }
 
-legend("bottomleft", legend=unique(fishinfo$Geno_ID_simple), pch=symbols, col=parentals2, ncol=1, cex=1)
+legend("topleft", legend=unique(fishinfo$Geno_ID_simple), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 #----------------------------------------------------------------------------
 #plot PC6 and PC7 for species
@@ -639,4 +639,275 @@ for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
 legend("bottomleft", legend=unique(fishinfo$Geno_ID_simple), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 dev.off()
+
+
+
+
+
+############################################################################################
+############################ MISSINGNESS VS PCA ############################################
+############################################################################################
+
+# missingness vs PC1
+
+names(plate13inds) <- "INDV"
+imiss <- anti_join(imiss, plate13inds)
+
+# merge metadata with missingness file
+missing_fish <- merge(imiss, fishinfo, by.x="INDV", by.y="FishID", all.x=F, all.y=T)
+
+parentals2 <- c("#8E0152", #hybrid
+                "#DF65B0", #BND
+                "#CAB2D6", #LND
+                "#A6CEE3", #CC
+                "#35978F", #HHC
+                "#FDBF6F", #CS
+                "#FB9A99", #RFS
+                "#B2DF8A", #RC
+                "#8C510A", #CSR
+                "#969696", #Pimeph
+                "#E5DF60") #SS
+
+symbols_geno <- as.integer(c(8,1,9,2,4,3,5,6,7,10))
+
+
+pdf("F_MISSxPC_AMP22_target_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_GENO_ID.pdf", width = 8, height = 16)
+par(mfrow=c(2,1))
+plot(pcgcov$x[,1], missing_fish$F_MISS, type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab="Proportion of missing data")
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(missing_fish$Geno_ID_simple)))){
+  points(pcgcov$x[which(missing_fish$Geno_ID_simple==unique(missing_fish$Geno_ID_simple)[i]),1], missing_fish$F_MISS[which(missing_fish$Geno_ID_simple==unique(missing_fish$Geno_ID_simple)[i])], pch=symbols_geno[i], col=parentals2[i])
+}
+
+legend("topleft", legend=unique(missing_fish$Geno_ID_simple), pch=symbols_geno, col=parentals2, ncol=1, cex=0.75)
+mtext("A", side=3, cex=1.5, outer=T, line=-4, adj = 0.05)
+
+#dev.off()
+
+#----------------------------------------------------------------------------
+
+# missingness vs PC2
+
+#pdf("F_MISSxPC2_AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_indivs.pdf")
+
+plot(pcgcov$x[,2], missing_fish$F_MISS, type="n", xlab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""), ylab="Proportion of missing data")
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(missing_fish$Geno_ID_simple)))){
+  points(pcgcov$x[which(missing_fish$Geno_ID_simple==unique(missing_fish$Geno_ID_simple)[i]),2], missing_fish$F_MISS[which(missing_fish$Geno_ID_simple==unique(missing_fish$Geno_ID_simple)[i])], pch=symbols_geno[i], col=parentals2[i])
+}
+
+legend("topleft", legend=unique(missing_fish$Geno_ID_simple), pch=symbols_geno, col=parentals2, ncol=1, cex=0.75)
+mtext("B", side=3, cex=1.5, outer=T, line=-44, adj = 0.05)
+
+dev.off()
+
+
+parentals_pheno <- c("#DF65B0", #BND
+                "#A6CEE3", #CC
+                "#FDBF6F", #CS
+                "#35978F", #HHC
+                "#FB9A99", #RFS
+                "#B2DF8A", #RC
+                "#8C510A", #CSR
+                "#E5DF60", #SS
+                "#CAB2D6") #LND
+
+parentals_geno <- c("#8E0152", #hybrid
+                "#DF65B0", #BND
+                "#CAB2D6", #LND
+                "#A6CEE3", #CC
+                "#35978F", #HHC
+                "#FDBF6F", #CS
+                "#FB9A99", #RFS
+                "#B2DF8A", #RC
+                "#8C510A", #CSR
+                "#969696", #Pimeph
+                "#E5DF60") #SS
+
+symbols_pheno <- as.integer(c(1,2,3,4,5,6,7,12,9))
+symbols_geno <- as.integer(c(8,1,9,2,4,3,5,6,7,10))
+
+####################################################################################################################################################################################################################################################################################################################################################################################
+###############                             MERGING GENO AND PHENO                                           ###############
+###############                                 PLOTS INTO ONE                                               ###############
+####################################################################################################################################################################################################################################################################################################################################################################################
+
+#plot PC1 and PC2 for species PHENO
+pdf("PCA_AMP22_target_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_PHENO_AND_GENO_ID_1_2_TO_3_4.pdf", width = 12, height = 18)
+
+par(mfrow=c(3,2))
+plot(pcgcov$x[,1], pcgcov$x[,2], type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""))
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(fishinfo$Common_Name)))){
+  points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),1], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 2], pch=symbols_pheno[i], col=parentals_pheno[i])
+}
+
+legend("bottomleft", legend=unique(fishinfo$Common_Name), pch=symbols_pheno, col=parentals_pheno, ncol=1, cex=1)
+mtext("A", side=3, cex=1.5, outer=T, line=-4, adj = 0.02)
+
+#dev.off()
+
+#----------------------------------------------------------------------------
+#plot PC1 and PC2 for species GENO
+plot(pcgcov$x[,1], pcgcov$x[,2], type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""))
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
+  points(pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]),1], pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]), 2], pch=symbols_geno[i], col=parentals_geno[i])
+}
+
+legend("bottomleft", legend=unique(fishinfo$Geno_ID_simple), pch=symbols_geno, col=parentals_geno, ncol=1, cex=1)
+mtext("B", side=3, cex=1.5, outer=T, line=-4, adj = 0.52)
+
+#dev.off()
+
+#----------------------------------------------------------------------------
+#plot PC2 and PC3 for species PHENO
+
+plot(pcgcov$x[,2], pcgcov$x[,3], type="n", xlab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""), ylab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""))
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(fishinfo$Common_Name)))){
+  points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),2], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 3], pch=symbols_pheno[i], col=parentals_pheno[i])
+}
+
+legend("topleft", legend=unique(fishinfo$Common_Name), pch=symbols_pheno, col=parentals_pheno, ncol=1, cex=1)
+mtext("C", side=3, cex=1.5, outer=T, line=-49, adj = 0.02)
+
+#dev.off()
+
+#----------------------------------------------------------------------------
+#plot PC2 and PC3 for species GENO
+
+plot(pcgcov$x[,2], pcgcov$x[,3], type="n", xlab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""), ylab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""))
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
+  points(pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]),2], pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]), 3], pch=symbols_geno[i], col=parentals_geno[i])
+}
+
+legend("topleft", legend=unique(fishinfo$Geno_ID_simple), pch=symbols_geno, col=parentals_geno, ncol=1, cex=1)
+mtext("D", side=3, cex=1.5, outer=T, line=-49, adj = 0.52)
+
+#dev.off()
+
+#----------------------------------------------------------------------------
+#plot PC3 and PC4 for species PHENO
+
+plot(pcgcov$x[,3], pcgcov$x[,4], type="n", xlab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""), ylab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""))
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(fishinfo$Common_Name)))){
+  points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),3], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 4], pch=symbols_pheno[i], col=parentals_pheno[i])
+}
+
+legend("bottomleft", legend=unique(fishinfo$Common_Name), pch=symbols_pheno, col=parentals_pheno, ncol=1, cex=1)
+mtext("E", side=3, cex=1.5, outer=T, line=-95, adj = 0.02)
+
+
+#----------------------------------------------------------------------------
+#plot PC3 and PC4 for species GENO
+
+plot(pcgcov$x[,3], pcgcov$x[,4], type="n", xlab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""), ylab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""))
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
+  points(pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]),3], pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]), 4], pch=symbols_geno[i], col=parentals_geno[i])
+}
+
+legend("bottomleft", legend=unique(fishinfo$Geno_ID_simple), pch=symbols_geno, col=parentals_geno, ncol=1, cex=1)
+mtext("F", side=3, cex=1.5, outer=T, line=-95, adj = 0.52)
+
+
+dev.off()
+
+
+
+
+#----------------------------------------------------------------------------
+#plot PC4 and PC5 for species PHENO
+pdf("PCA_AMP22_target_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_PHENO_AND_GENO_ID_4_5_TO_6_7.pdf", width = 12, height = 18)
+par(mfrow=c(3,2))
+
+
+plot(pcgcov$x[,4], pcgcov$x[,5], type="n", xlab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""), ylab=paste("PC5 (",(imp$importance[,5][[2]]*100), "% )", sep=""))
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(fishinfo$Common_Name)))){
+  points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),4], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 5], pch=symbols_pheno[i], col=parentals_pheno[i])
+}
+
+legend("topleft", legend=unique(fishinfo$Common_Name), pch=symbols_pheno, col=parentals_pheno, ncol=1, cex=1)
+mtext("G", side=3, cex=1.5, outer=T, line=-4, adj = 0.02)
+
+#----------------------------------------------------------------------------
+#plot PC4 and PC5 for species GENO
+
+plot(pcgcov$x[,4], pcgcov$x[,5], type="n", xlab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""), ylab=paste("PC5 (",(imp$importance[,5][[2]]*100), "% )", sep=""))
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
+  points(pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]),4], pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]), 5], pch=symbols_geno[i], col=parentals_geno[i])
+}
+
+legend("topleft", legend=unique(fishinfo$Geno_ID_simple), pch=symbols_geno, col=parentals_geno, ncol=1, cex=1)
+mtext("H", side=3, cex=1.5, outer=T, line=-4, adj = 0.52)
+
+#----------------------------------------------------------------------------
+#plot PC5 and PC6 for species PHENO
+
+plot(pcgcov$x[,5], pcgcov$x[,6], type="n", xlab=paste("PC5 (",(imp$importance[,5][[2]]*100), "% )", sep=""), ylab=paste("PC6 (",(imp$importance[,6][[2]]*100), "% )", sep=""))
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(fishinfo$Common_Name)))){
+  points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),5], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),6], pch=symbols_pheno[i], col=parentals_pheno[i])
+}
+
+legend("topleft", legend=unique(fishinfo$Common_Name), pch=symbols_pheno, col=parentals_pheno, ncol=1, cex=1)
+mtext("I", side=3, cex=1.5, outer=T, line=-49, adj = 0.02)
+
+#----------------------------------------------------------------------------
+#plot PC5 and PC6 for species GENO
+
+plot(pcgcov$x[,5], pcgcov$x[,6], type="n", xlab=paste("PC5 (",(imp$importance[,5][[2]]*100), "% )", sep=""), ylab=paste("PC6 (",(imp$importance[,6][[2]]*100), "% )", sep=""))
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
+  points(pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]),5], pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]),6], pch=symbols_geno[i], col=parentals_geno[i])
+}
+
+legend("topleft", legend=unique(fishinfo$Geno_ID_simple), pch=symbols_geno, col=parentals_geno, ncol=1, cex=1)
+mtext("J", side=3, cex=1.5, outer=T, line=-49, adj = 0.52)
+
+#----------------------------------------------------------------------------
+#plot PC6 and PC7 for species PHENO
+
+plot(pcgcov$x[,6], pcgcov$x[,7], type="n", xlab=paste("PC6 (",(imp$importance[,6][[2]]*100), "% )", sep=""), ylab=paste("PC7 (",(imp$importance[,7][[2]]*100), "% )", sep=""))
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(fishinfo$Common_Name)))){
+  points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),6], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 7], pch=symbols_pheno[i], col=parentals_pheno[i])
+}
+
+legend("bottomleft", legend=unique(fishinfo$Common_Name), pch=symbols_pheno, col=parentals_pheno, ncol=1, cex=1)
+mtext("K", side=3, cex=1.5, outer=T, line=-95, adj = 0.02)
+
+#----------------------------------------------------------------------------
+#plot PC6 and PC7 for species GENO
+
+plot(pcgcov$x[,6], pcgcov$x[,7], type="n", xlab=paste("PC6 (",(imp$importance[,6][[2]]*100), "% )", sep=""), ylab=paste("PC7 (",(imp$importance[,7][[2]]*100), "% )", sep=""))
+
+#loop iterates over locations and adds a different colour for each one
+for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
+  points(pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]),6], pcgcov$x[which(fishinfo$Geno_ID_simple==unique(fishinfo$Geno_ID_simple)[i]), 7], pch=symbols_geno[i], col=parentals_geno[i])
+}
+
+legend("bottomleft", legend=unique(fishinfo$Geno_ID_simple), pch=symbols_geno, col=parentals_geno, ncol=1, cex=1)
+mtext("L", side=3, cex=1.5, outer=T, line=-95, adj = 0.52)
+
+dev.off()
+
 
