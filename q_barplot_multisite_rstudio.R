@@ -18,7 +18,6 @@
 # install.packages("tidyverse")
 
 # load packages
-print("Loading packages...")
 library(rhdf5)
 library(RColorBrewer)
 library(abind)
@@ -161,8 +160,13 @@ colnames(min_inds) <- "Waterbody_Code"
 min_inds <- as.data.frame(inds_per_site$Group.1[inds_per_site$x >=1])
 colnames(min_inds) <- "Waterbody_Code"
 
+# # change for doing sites with V7/Pimephales ancestry
+# V7_ind_sites <- as.data.frame(q_metadata_round$Waterbody_Code[q_metadata_round$V7 > 0.04])
+# colnames(V7_ind_sites) <- "Waterbody_Code"
+# V7_ind_sites <- unique(V7_ind_sites)
+# min_inds <- V7_ind_sites
 
-pdf(paste0("q_barplot_AMP22_",k,"_all_sites.pdf"), width = 12, height = 20) 
+pdf(paste0("q_barplot_AMP22_",k,"_V7_sites.pdf"), width = 12, height = 20) 
 par(mfrow=c(7,4), mar=c(4,3,2,1))
 
 for (i in 1:nrow(min_inds)){
@@ -187,18 +191,19 @@ for (i in 1:nrow(min_inds)){
         horiz = T,
         axes = F)
 
-  axis(1, at=c(0,0.5,1), labels=c(0,0.5,1))
+  axis(1, at=c(0,0.5,1), labels=c(0,0.5,1), cex.axis = 1.5)
 
   mtext(paste("Site ",min_inds$Waterbody_Code[i], ", n=", inds_per_site$x[inds_per_site$Group.1 == min_inds$Waterbody_Code[i]], sep=""), side=3, cex=1.5)
 }
 
 plot(1:10,1:10, type="n", axes=F, xlab="", ylab="")
 plot(1:10,1:10, type="n", axes=F, xlab="", ylab="")
-plot(1:10,1:10, type="n", axes=F, xlab="", ylab="")
+plot(1:10,1:10, type="n", axes=F, xlab="", ylab="", frame.plot=FALSE)
+box(bty="n")
 legend("center", legend = c("Common Shiner", "Central Stoneroller", "Hornyhead Chub", "Longnose Dace", "Striped Shiner", "River Chub", expression(italic("Pimephales sp.")), "Roseyface Shiner", "Creek Chub", "Western Blacknose Dace", "V11", "V12"), col = colour, pch=15, pt.cex=3.75, cex=1.2, ncol = 1, bty = "n")
 
-mtext("Proportion of Ancestry", side=1, cex=1, outer=T, line=-2)
-mtext("Individuals", side=2, cex=1, outer=T, line=-2)
+mtext("Proportion of Ancestry", side=1, cex=2, outer=T, line=-2)
+mtext("Individuals", side=2, cex=2, outer=T, line=-2)
 
 dev.off()
 
@@ -212,4 +217,11 @@ dev.off()
 #k=9
 #legend.text = c("CC", "LND", "SS", "RFS", "CSR", "CS", "RC", "BND", "HHC"),
 # colour <- c("#8E0152", "#6A3D9A", "#FFFF33", "#E31A1C", "#543005", "#FF7F00", "#33A02C", "#000000", "#1F78B4")
+
+
+# only the Algonquin sites
+
+algonquin_sites <- filter(q_metadata_round, Waterbody_Code == "COS" | Waterbody_Code == "SIC")
+
+
         

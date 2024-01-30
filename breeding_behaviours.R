@@ -8,13 +8,14 @@ library(stringr)
 library(ggplot2)
 library(RColorBrewer)
 library(waffle)
+library(patchwork)
 
 # import hybrid data
 # I'm going to exclude multi-species fishies from this (for now)
-
 fishies <- read.csv("old_AMP22_genoID_multispecies_k12_Jun2023.csv")
 fishies <- fishies %>% filter(Multi_Status == 0)
-
+# also remove any Pimephales bc they weren't sampled properly
+fishies <- fishies %>% filter(!str_detect(fishies$Geno_ID,'Pimephales') == TRUE)
 
 # check what combos are present to make it easier to write the loop
 (table_fishies <- as.data.frame(table(fishies$Geno_ID)))
@@ -38,7 +39,7 @@ dict[["Striped_Shiner"]] <- "NGBH"
 dict[["Hornyhead_Chub"]] <- "NB"
 dict[["River_Chub"]] <- "NB"
 dict[["Rosyface_Shiner"]] <- "NA"
-dict[["V7"]] <- "GS"
+dict[["Pimephales_sp"]] <- "GS"
 
 # assign the breeding behaviours
 for(i in rownames(fishies)) {
@@ -73,7 +74,6 @@ ggplot(table_breeding, aes(fill=Breeding_Behaviour, y=Freq, x=Hybrid_Status)) +
   geom_bar(position="dodge", stat="identity")
 
 
-
 # split up hybrids and parentals
 hybrids <- filter(fishies, (str_detect(fishies$Breeding_Behaviour,'x') == TRUE))
 parentals <- filter(fishies, (str_detect(fishies$Breeding_Behaviour,'x') == FALSE))
@@ -81,32 +81,62 @@ parentals <- filter(fishies, (str_detect(fishies$Breeding_Behaviour,'x') == FALS
 (table_hybrids <- as.data.frame(table(hybrids$Breeding_Behaviour)))
 (table_parentals <- as.data.frame(table(parentals$Breeding_Behaviour)))
 colnames(table_hybrids)[1] <- "Breeding_Behaviour"
+colnames(table_hybrids)[2] <- "Observed"
 colnames(table_parentals)[1] <- "Breeding_Behaviour"
 
 
 (waffle_hybrids <- table_hybrids %>%
-  ggplot(aes(fill = Breeding_Behaviour, values = Freq)) + 
-  geom_waffle(n_rows = 7, size = 0.33, colour = "white") +
+  ggplot(aes(fill = Breeding_Behaviour, values = Observed)) + 
+  geom_waffle(n_rows = 7, size = 0.33, colour = "white", na.rm = FALSE) +
   coord_equal() +
-  #theme_enhance_waffle() + 
-  scale_fill_brewer(palette = "Set2", name = "Hybrid crosses") +
-  labs(title="Breeding Behaviours - Hybrids"))
+  #theme_enhance_waffle() + labs(title="Breeding Behaviours - Hybrids") + 
+  scale_fill_brewer(palette = "Set2", name = "Hybrid crosses"))
 
 
 (waffle_parentals <- table_parentals %>%
   ggplot(aes(fill = Breeding_Behaviour, values = Freq)) + 
-  geom_waffle(n_rows = 20, size = 0.33, colour = "white") +
+  geom_waffle(n_rows = 20, size = 0.33, colour = "white", na.rm = FALSE) +
   coord_equal() +
-  #theme_enhance_waffle() + 
-  scale_fill_brewer(palette = "Set2", name = "Behaviour") +
-  labs(title="Breeding Behaviours - Parentals"))
+  #theme_enhance_waffle() + labs(title="Breeding Behaviours - Parentals") +  
+  scale_fill_brewer(palette = "Set2", name = "Parental Behaviour"))
 
 
-pdf("AMP22_target_Breeding_behaviours.pdf", width = 10, height = 8)
-par(mfrow = c(2,1))
-waffle_parentals
-waffle_hybrids
+pdf("AMP22_target_Breeding_behaviours_new.pdf", width = 8, height = 8)
+waffle_parentals + waffle_hybrids + 
+  plot_layout(ncol = 1) +
+  #plot_layout(guides = 'collect') +
+  plot_annotation(tag_levels = 'A')
 dev.off()
+
+
+#---------------------------------------------------------------------------
+# Looking for significant differences b/w expected and observed # of hybrids
+#---------------------------------------------------------------------------
+
+# treat the # of parentals like allele frequencies, then calculate expected counts of 'genotype' frequencies aka hybrids b/w the parental breeding behaviour types
+# p + q + r = 1
+# p^2 + 2pq + 2pr + q^2 + 2qr + r^2 = 1
+
+# calculate allele frequencies
+propNA <- table_parentals$Freq[1] / sum(table_parentals$Freq)
+propNB <- table_parentals$Freq[2] / sum(table_parentals$Freq)
+propNGBH <- table_parentals$Freq[3] / sum(table_parentals$Freq)
+
+# calculate genotype frequencies and expected values
+totalObsv <- sum(table_hybrids$Observed)
+table_hybrids$Expected <- NA
+table_hybrids$Expected[1] <- round((2 * propNA * propNB) * totalObsv, digits = 1) # 2pq
+table_hybrids$Expected[2] <- round((2 * propNA * propNGBH) * totalObsv, digits = 1) # 2pr
+table_hybrids$Expected[3] <- round((propNB^2) * totalObsv, digits = 1) # q^2
+table_hybrids$Expected[4] <- round((2 * propNB * propNGBH) * totalObsv, digits = 1) # 2qr
+table_hybrids$Expected[5] <- round((propNGBH^2) * totalObsv, digits = 1) # r^2
+
+
+# chi square test
+# H0: no relationship between breeding behaviour and hybridization patterns
+# H1: there is a significant difference between expected and observed numbers of hybrids between groups so there is some sort of influence of breeding behaviour on hybridization, as individuals are not assorting independently 
+test <- chisq.test(table_hybrids[,2:3])
+test # p-value is non-significant, so we do not reject the null hypothesis, and the population is in HWE
 
 
 #---------------------------------------------------------------------------

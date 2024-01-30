@@ -9,71 +9,71 @@ library(patchwork)
 # SIMULATED DATA
 #=======================================================
 
-#import simulated data for testing
-sim <- read.csv("entropy_simulated.csv")
-
-# assign species to entropy populations
-names(sim)[4:8] <- c("Big_Chub", "Fat_Dace", "Pearl_Chub", "Rainbow_Dace", "Scarlet_Minnow")
-
-# create new columns
-# Geno_ID (will contain Common_Name or "hybrid")
-# Pheno_correct (binary, 0=correct, 1=incorrect)
-# Hybrid_Status (binary, 0=hybrid, 1=parental)
-sim$Geno_ID = NA
-sim$Pheno_Correct = NA
-sim$Hybrid_Status = NA
-
-# assigns hybrids as 'hybrid'
-for (i in 1:nrow(sim)){ #assuming the col indexes, might be better to use names
-  for (j in 4:8){
-    if (sim[i,j] > 0.9) {
-      sim$Geno_ID[i] <- colnames(sim)[j]
-      break
-    }
-    else {
-      sim$Geno_ID[i] <- "hybrid"
-    }
-  }
-}
-
-
-#creating a jump table for the hybrid abbreviations
-
-
-# inserts name of what is in the hybrids
-for (i in 1:nrow(sim)){ #assuming the col indexes, might be better to use names
-  for (j in 4:8){
-    if (sim[i,j] > 0.9) {
-      sim$Geno_ID[i] <- colnames(sim)[j]
-      break
-    }
-    else { # pulls the columns names for 4:8, sorts them by cell value, then takes the largest 1:2 (largest 2) 
-      holder <- colnames(sim[i, 4:8])[order(sim[i, 4:8], decreasing=TRUE)[1:2]]
-      sim$Geno_ID[i] <- paste(holder[1],"x",holder[2])
-    }
-  }
-}
-
-# assign 0 or 1 for whether whether the ind is a hybrid
-for (i in 1:nrow(sim)){
-  if(str_detect(sim[i,10],'x') == TRUE){
-    sim$Hybrid_Status[i] <- 1 #hybrid
-  }
-  else {
-    sim$Hybrid_Status[i] <- 0 #parental
-  }
-}
-
-
-# assign 0 or 1 for whether phenotypic ID was correct 
-for (i in 1:nrow(sim)){
-  if(identical(sim[i,2],sim[i,10]) == FALSE){
-    sim$Pheno_Correct[i] <- 1 #mis-ID
-  }
-  else {
-    sim$Pheno_Correct[i] <- 0 #correct ID
-  }
-}
+# #import simulated data for testing
+# sim <- read.csv("entropy_simulated.csv")
+# 
+# # assign species to entropy populations
+# names(sim)[4:8] <- c("Big_Chub", "Fat_Dace", "Pearl_Chub", "Rainbow_Dace", "Scarlet_Minnow")
+# 
+# # create new columns
+# # Geno_ID (will contain Common_Name or "hybrid")
+# # Pheno_correct (binary, 0=correct, 1=incorrect)
+# # Hybrid_Status (binary, 0=hybrid, 1=parental)
+# sim$Geno_ID = NA
+# sim$Pheno_Correct = NA
+# sim$Hybrid_Status = NA
+# 
+# # assigns hybrids as 'hybrid'
+# for (i in 1:nrow(sim)){ #assuming the col indexes, might be better to use names
+#   for (j in 4:8){
+#     if (sim[i,j] > 0.9) {
+#       sim$Geno_ID[i] <- colnames(sim)[j]
+#       break
+#     }
+#     else {
+#       sim$Geno_ID[i] <- "hybrid"
+#     }
+#   }
+# }
+# 
+# 
+# #creating a jump table for the hybrid abbreviations
+# 
+# 
+# # inserts name of what is in the hybrids
+# for (i in 1:nrow(sim)){ #assuming the col indexes, might be better to use names
+#   for (j in 4:8){
+#     if (sim[i,j] > 0.9) {
+#       sim$Geno_ID[i] <- colnames(sim)[j]
+#       break
+#     }
+#     else { # pulls the columns names for 4:8, sorts them by cell value, then takes the largest 1:2 (largest 2)
+#       holder <- colnames(sim[i, 4:8])[order(sim[i, 4:8], decreasing=TRUE)[1:2]]
+#       sim$Geno_ID[i] <- paste(holder[1],"x",holder[2])
+#     }
+#   }
+# }
+# 
+# # assign 0 or 1 for whether whether the ind is a hybrid
+# for (i in 1:nrow(sim)){
+#   if(str_detect(sim[i,10],'x') == TRUE){
+#     sim$Hybrid_Status[i] <- 1 #hybrid
+#   }
+#   else {
+#     sim$Hybrid_Status[i] <- 0 #parental
+#   }
+# }
+# 
+# 
+# # assign 0 or 1 for whether phenotypic ID was correct
+# for (i in 1:nrow(sim)){
+#   if(identical(sim[i,2],sim[i,10]) == FALSE){
+#     sim$Pheno_Correct[i] <- 1 #mis-ID
+#   }
+#   else {
+#     sim$Pheno_Correct[i] <- 0 #correct ID
+#   }
+# }
 
 
 #=======================================================
@@ -270,6 +270,92 @@ palette <- brewer.pal(5, "Spectral")
 # stacked_plot_single
 # dev.off()
 
+#---------------------------------------------------------------------------
+# Creating the plot above but with more detail
+#---------------------------------------------------------------------------
+
+# identify hybrids where the pheno ID isn't either of the geno ID hybrid inds
+# 0 = the phenotype parental is at least one species in the hybrid cross
+# 1 = the phenotype is none of the species in the cross
+x$Hybrid_Match = NA
+for (i in 1:nrow(x)){
+  if (str_detect(x[i,15], x[i,2]) == TRUE){
+    x$Hybrid_Match[i] <- 0
+  }
+  else if (str_detect(x[i,15], x[i,2]) == FALSE){
+    x$Hybrid_Match[i] <- 1
+  }
+}
+
+# Create counts for each category in this crazy stacked plot
+stackedA <- data.frame(matrix(nrow = 1, ncol = 1))
+stackedA$Parental <- sum(x$Hybrid_Status == 0)
+stackedA$ProbParent <- sum(str_detect(x[,15], "x fishiness"))
+stackedA$ThreespH <- sum(x$Multi_Status) - stackedA$ProbParent
+stackedA$TwospH <- sum(x$Hybrid_Status) - (stackedA$ProbParent + stackedA$ThreespH)
+stackedA$matrix.nrow...1..ncol...1. = NULL
+
+# flip and make plot A
+stackedAt <- as.data.frame(t(stackedA))
+stackedAt$V2 <- "x"
+stackedAt$V3 <- c("1", "2", "3", "4")
+
+colours <- brewer.pal(10, "Paired")
+#"#A6CEE3" "#1F78B4" "#B2DF8A" "#33A02C" "#FB9A99" "#E31A1C" "#FDBF6F" "#FF7F00" "#CAB2D6" "#6A3D9A"
+
+(stackedA_plot <- ggplot(stackedAt, aes(fill=V3, y=V1, x=V2)) + 
+    geom_bar(position="stack", stat="identity") +
+    ylab("Number of individuals")+
+    theme(axis.title.x=element_blank(),
+          axis.text.x=element_blank(),
+          axis.ticks.x=element_blank()) +
+    geom_text(aes(label = V1), size = 3, position = position_stack(vjust = 0.5)) +
+    scale_fill_manual(values = c(colours[2], colours[4], colours[8], colours[6]), 
+                      labels = c("Parentals", "Uncertain Hybrids", "3-species hybrid", "2-species hybrid")) +
+    guides(fill=guide_legend(title="Grouped Genomic IDs")))
+
+# Create counts for each category in the second crazy stacked plot
+stackedB <- data.frame(matrix(nrow = 1, ncol = 1))
+stackedB$MissP <- sum(x$Pheno_Correct) - sum(x$Hybrid_Status)
+stackedB$MatchP <- stackedA$Parental - stackedB$MissP
+fishy <- x %>% filter(str_detect(x[,15], "x fishiness"))
+stackedB$MatchPP <- sum(str_detect(fishy[,15], fishy[,2]))
+stackedB$MissPP <- nrow(fishy) - stackedB$MatchPP
+ThreespH <- x %>% filter(x$Multi_Status == 1)
+ThreespH <-  ThreespH %>% filter(!str_detect(ThreespH[,15], "x fishiness"))
+stackedB$MatchThreespH <- sum(ThreespH$Hybrid_Match == 0) #all match, awesome!
+stackedB$MissTwospH <- stackedA$TwospH - (sum(x$Hybrid_Status == 1 & x$Hybrid_Match == 0 & x$Multi_Status == 0))
+stackedB$MatchTwospH <- sum(x$Hybrid_Status == 1 & x$Hybrid_Match == 0 & x$Multi_Status == 0) 
+stackedB$matrix.nrow...1..ncol...1. = NULL
+
+# flip and create plot B!!
+stackedBt <- as.data.frame(t(stackedB))
+stackedBt$V2 <- "x"
+stackedBt$V3 <- c("1", "2", "3", "4", "5", "6", "7")
+
+nb.cols <- 12
+mycolours <- colorRampPalette(brewer.pal(8, "Paired"))(nb.cols)
+#"#A6CEE3" "#5097C5" "#4794A8" "#A4D58D" "#6CBC56" "#579E3F" "#D69B85" "#F05F60" "#E52923" "#F59258" "#FDA746" "#FF7F00"
+
+(stackedB_plot <- ggplot(stackedBt, aes(fill=V3, y=V1, x=V2)) + 
+    geom_bar(position="stack", stat="identity") +
+    ylab("Number of individuals")+
+    theme(axis.title.x=element_blank(),
+          axis.text.x=element_blank(),
+          axis.ticks.x=element_blank(), 
+          axis.title.y = element_blank(),
+          axis.text.y=element_blank(),
+          axis.ticks.y=element_blank()) +
+    geom_text(aes(label = V1), size = 3, position = position_stack(vjust = 0.5)) +
+    scale_fill_manual(values = c(mycolours[1], mycolours[3], colours[3], mycolours[5], mycolours[10], colours[5], mycolours[8]), 
+                      labels = c("Mismatched Parentals", "Matching Parentals", "Mismatched Uncertain Hybrids", "Matching Uncertain Hybrids", "Matching 3-species Hybrids", "Mismatched 2-species Hybrids", "Matching 2-species Hybrids")) +
+    guides(fill=guide_legend(title="Mismatch of Phenotypic \nand Genomic IDs")))
+
+# pdf("genomic_IDs_stats_2bars_k12.pdf")
+# stackedA_plot + stackedB_plot +
+#   plot_annotation(tag_levels = 'A') +
+#   plot_layout(guides = 'collect')
+# dev.off()
 
 #---------------------------------------------------------------------------
 # Plot number of each parental (phenotypic and genomic) and each hybrid
@@ -301,7 +387,7 @@ barplot(x_parentals$n)
 # species by genomic ID
 (parent_plot_geno <- ggplot(data=x_parentals, aes(x=(reorder(Geno_ID, -n)), y=n, fill = (reorder(Geno_ID, -n)))) +
   geom_bar(stat="identity", width=0.85, size = 2)+
-  scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#969696"), name = "Species by genomic ID")+
+  scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#969696"), name = "Species by Phenotypic \nIdentity", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Rosyface Shiner", "Longnose Dace", "Central Stoneroller", "Pimephales sp."))+
   geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
   theme(axis.text.x = element_blank(), legend.position = c(0.85, 0.75)) +
   xlab(" ") + 
@@ -312,11 +398,18 @@ x_pheno <- x_copy %>% count(Common_Name)
 
 (parent_plot_pheno <- ggplot(data=x_pheno, aes(x=(reorder(Common_Name, -n)), y=n, fill = (reorder(Common_Name, -n)))) +
   geom_bar(stat="identity", width=0.85, size = 2)+
-  scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60"), name = "Species by phenotypic ID")+
+  scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60"), name = "Species", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Rosyface Shiner", "Longnose Dace", "Central Stoneroller", "Striped Shiner"))+
   geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
-  theme(axis.text.x = element_blank(), legend.position = c(0.85, 0.75)) +
+  theme(axis.text.x = element_blank(), legend.position = "none") +
   xlab(" ") + 
   ylab("Number of individuals")) 
+
+(parent_plot_pheno2 <- ggplot(data=x_pheno, aes(x=(reorder(Common_Name, -n)), y=n, fill = (reorder(Common_Name, -n)))) +
+    geom_bar(stat="identity", width=0.85, size = 2)+
+    scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60"), name = "Species", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Rosyface Shiner", "Longnose Dace", "Central Stoneroller", "Striped Shiner"))+
+    geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
+    theme(axis.text.x = element_blank(), legend.position = "none")+
+    labs(x = "",  y = "Number of individuals", title = "Thesis Data Set", subtitle = "731 inds, 12228 SNPs"))
 
 # split pheno ID by year
 x_copy$Year = NA
@@ -334,7 +427,7 @@ x_pheno_year <- x_copy %>% group_by(Year) %>% count(Common_Name)
 
 (parent_plot_year <- ggplot(x_pheno_year, aes(fill=(reorder(Common_Name, -n)), y=n, x=Year)) + 
   geom_bar(position=position_dodge2(width = 0.9, preserve ="single"), stat="identity")+
-  scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#CAB2D6","#FB9A99","#8C510A","#E5DF60"), name = "Species by phenotypic ID")+
+  scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#CAB2D6","#FB9A99","#8C510A","#E5DF60"), name = "Species", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Rosyface Shiner", "Longnose Dace", "Central Stoneroller", "Striped Shiner"))+
   geom_text(position = position_dodge2(width = 0.9, preserve ="single"), aes(label=n), vjust=-0.3, color="black", size=4)+
   theme(legend.position = c(0.87, 0.75)) +
   ylab("Number of individuals"))
@@ -346,7 +439,50 @@ x_pheno_year <- x_copy %>% group_by(Year) %>% count(Common_Name)
 # parent_plot_year
 # dev.off()
 
+# pdf("AMP22_number_of_inds_pheno_only.pdf", width = 14, height = 16)
+# parent_plot_pheno + parent_plot_year +
+#   plot_annotation(tag_levels = 'A') +
+#   plot_layout(ncol = 1, guides = 'collect')
+# dev.off()
 
+#---------------------------------------------------------------------------
+# compare # of inds by pheno ID across data sets
+#---------------------------------------------------------------------------
+
+inds_august <- read.delim("../comparing_datasets/indivs_august.txt", header = F)
+inds_newest <- read.delim("../comparing_datasets/indivs_newest.txt", header = F)
+
+# merge w whole data set to get metadata
+meta_august <- merge(metadata, inds_august, by.x = "Mandeville_ID", by.y = "V1")
+meta_newest <- merge(metadata, inds_newest, by.x = "Mandeville_ID", by.y = "V1")
+
+# count inds per species
+count_august <- meta_august %>% count(Common_Name)
+count_newest <- meta_newest %>% count(Common_Name)
+
+(parent_plot_pheno_august <- ggplot(data=count_august, aes(x=(reorder(Common_Name, -n)), y=n, fill = (reorder(Common_Name, -n)))) +
+    geom_bar(stat="identity", width=0.85, size = 2)+
+    scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60", "grey66", "grey34"), name = "Species", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Longnose Dace", "Rosyface Shiner","Central Stoneroller", "Striped Shiner", "Fathead Minnow", "Bluntnose Minnow"))+
+    geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
+    theme(axis.text.x = element_blank()) +#, legend.position = "none"
+    labs(x = "",  y = "Number of individuals", title = "August Data Set", subtitle = "802 inds, 8349 SNPs"))
+
+(parent_plot_pheno_newest <- ggplot(data=count_newest, aes(x=(reorder(Common_Name, -n)), y=n, fill = (reorder(Common_Name, -n)))) +
+    geom_bar(stat="identity", width=0.85, size = 2)+
+    scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60", "grey66", "grey34"), name = "Species", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Longnose Dace", "Rosyface Shiner","Central Stoneroller", "Striped Shiner", "Fathead Minnow", "Bluntnose Minnow"))+
+    geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
+    theme(axis.text.x = element_blank()) +#, legend.position = "none"
+    labs(x = "",  y = "Number of individuals", title = "Newest Data Set", subtitle = "799 inds, 20631 SNPs"))
+
+
+pdf("AMP22_comparing datasets.pdf", width = 10, height = 16)
+parent_plot_pheno2 + parent_plot_pheno_august + parent_plot_pheno_newest +
+  plot_annotation(tag_levels = 'A') +
+  plot_layout(ncol = 1, guides = 'collect')
+dev.off()
+
+
+#---------------------------------------------------------------------------
 
 # need to group the hybrids together so that there's fewer groups
 # split up the names
@@ -364,7 +500,7 @@ for (i in 1:nrow(x_hybrids)){
 x_hybrids <- x_hybrids %>% mutate(Geno_ID_order = replace_na(Geno_ID_order, "Multi"))
 x_hybrids <- x_hybrids %>% filter(Geno_ID_order != "Multi")
 
-# drop extra columns and resort
+# drop extra columns and re-sort
 x_hybrids <- x_hybrids[-(1:3)]
 x_hybrids <- x_hybrids %>% count(Geno_ID_order)
 
@@ -396,7 +532,8 @@ for (i in 1:nrow(x_hybrids_heatmap)){
   x_hybrids_heatmap$Geno_ID_order[i] = ifelse(a < b, paste(a, b, sep =' x '), paste(b, a, sep =' x '))
 }
 
-x_hybrids_heatmap <- x_hybrids_heatmap[23]
+# remove year column (don't need), count occurrences of each hybrid cross, then drop full geno ID
+x_hybrids_heatmap <- x_hybrids_heatmap[-23]
 x_hybrids_heatmap <- x_hybrids_heatmap %>%
   count(Geno_ID_order) %>%
   separate(Geno_ID_order, c('Species_1', 'Species_2'), ' x ', remove=F)
@@ -404,19 +541,26 @@ x_hybrids_heatmap <- x_hybrids_heatmap[-1]
 
 palette <- brewer.pal(8, "Set2")
 
-(heatmap <- ggplot(data = x_hybrids_heatmap, aes(Species_2, Species_1, fill = n))+
-  geom_tile(color = "white")+
-  #theme_classic()+ 
+# created this stupid file in excel cuz i'm frustrated with ggplot
+all_options <- read.csv("heatmap_pairwise_comparisons.csv")
+heatmap_plus_blanks <- merge(x_hybrids_heatmap, all_options, by.x = c("Species_1", "Species_2"), by.y = c("Species_1", "Species_2"), all.y=T)
+
+
+(heatmap <- ggplot(data = heatmap_plus_blanks, aes(Species_2, Species_1, fill = n))+
+  geom_tile(color = "grey40")+
+  theme_bw()+ 
   scale_fill_gradient2(low = palette[8], high = palette[2], mid = palette[7], 
-                       midpoint = 22, limit = c(0,43), space = "Lab", 
-                       name="Number of\nhybrids found") +
+                       midpoint = 22, limit = c(0.5,43), space = "Lab", 
+                       name="Number of\nhybrids found", na.value = 'white') +
   theme(axis.text.x = element_text(angle = 20, vjust = 0.85, 
                                    size = 9, hjust = 0.55), 
         axis.title.x = element_blank(),
-        axis.title.y = element_blank())+
-  coord_fixed())
+        axis.title.y = element_blank()) +
+    coord_fixed() + 
+    geom_point(data = heatmap_plus_blanks, aes(size=0, shape = NA), fill = "white", colour = "grey40") +
+    guides(size=guide_legend("", override.aes=list(shape=22, size = 8))))
 
-# pdf("AMP22_species_crosses_heatmap.pdf", width = 10, height = 8)
+# pdf("AMP22_species_crosses_heatmap_new.pdf", width = 10, height = 8)
 # heatmap
 # dev.off()
 
@@ -437,13 +581,16 @@ x_sites <- merge(x, meta_namesandsites, by = "Mandeville_ID")
 x_sites$Hybrid_Type_Simple = NA
 
 for (i in 1:nrow(x_sites)){
-  if (x$Multi_Status[i] == 1){
-    x_sites$Hybrid_Type_Simple[i] <- "Multi-species hybrid"
+  if (x_sites$Multi_Status[i] == 1 & str_detect(x_sites[i,15], "x fishiness") == T){
+    x_sites$Hybrid_Type_Simple[i] <- "Probable Parental"
   }
-  else if(x$Multi_Status[i] == 0 & x$Hybrid_Status[i] == 1){
-    x_sites$Hybrid_Type_Simple[i] <- "2-species hybrid" 
+  else if(x_sites$Multi_Status[i] == 1 & str_detect(x_sites[i,15], "x fishiness") == F){
+    x_sites$Hybrid_Type_Simple[i] <- "3-species Hybrid" 
   }
-  else if(x$Hybrid_Status[i] == 0){
+  else if(x_sites$Multi_Status[i] == 0 & x_sites$Hybrid_Status[i] == 1){
+    x_sites$Hybrid_Type_Simple[i] <- "2-species Hybrid" 
+  }
+  else if(x_sites$Hybrid_Status[i] == 0){
     x_sites$Hybrid_Type_Simple[i] <- "Parental"
   }
 }
@@ -472,15 +619,24 @@ x_order = x_count[!duplicated(x_count$Waterbody_Code), ]$Waterbody_Code
 # tell it how we want the levels
 x_count$Waterbody_Code <- factor(x_count$Waterbody_Code, levels = x_order)
 
+nb.cols <- 12
+mycolours <- colorRampPalette(brewer.pal(8, "Paired"))(nb.cols)
+#"#A6CEE3" "#5097C5" "#4794A8" "#A4D58D" "#6CBC56" "#579E3F" "#D69B85" "#F05F60" "#E52923" "#F59258" "#FDA746" "#FF7F00"
+
+# change "probable parentals" to "uncertain hybrids"
+x_count[x_count=="Probable Parental"] <- "Uncertain Hybrid"
+
+
 # plot 
 (hyb_per_site <- ggplot(x_count, aes(fill=Hybrid_Type_Simple, y=n, x=Waterbody_Code)) + 
   geom_bar(position="fill", stat="identity")+ 
   ylab("Proportion of total individuals") +
   xlab("Waterbody") + 
-  scale_fill_brewer(palette="Spectral", name="Hybrid Type")+
-  theme(legend.position = c(0.9, 0.15)))
+    scale_fill_manual(values = c(mycolours[9], mycolours[11], mycolours[2], mycolours[5]), 
+                      name = "Hybrid Type") +
+  theme(legend.position = c(0.9, 0.3)))
 
-# pdf("AMP22_target_hybrids_per_site.pdf", width = 10)
+# pdf("AMP22_target_hybrids_per_site_new.pdf", width = 10)
 # hyb_per_site
 # dev.off()
 
@@ -515,7 +671,7 @@ misID_hybrid_odd <- misID_hybrid_odd %>% filter(!str_detect(misID_hybrid_odd$Gen
 # add the parentals back in
 misID_hybrid_odd <- misID_hybrid_odd[-19]
 misIDs_barcode <- rbind(misID_hybrid_odd, misID_parental)
-misIDs_barcode <- misIDs_barcode[-c(3:14)]
+misIDs_barcode <- misIDs_barcode[-c(3:14)] #remove extra columns
 #write.csv(misIDs_barcode, "AMP22_Leuciscid_OddMisIDs_k12.csv", row.names = F, quote = F)
 
 
@@ -541,7 +697,7 @@ table_plate <- as.data.frame(table(misID_metadata$Plate))
 # put multi-species hybrids in their own table                           
 multihybrids <- subset(x,  Multi_Status %in% 1)
 multihybrids <- multihybrids %>% mutate_if(is.numeric, round, digits=3)
-multihybrids_metadata <- merge(multihybrids, metadata, by.x = "ind", by.y = "Mandeville_ID", all.x = T, all.y = F)
+multihybrids_metadata <- merge(multihybrids, metadata, by.x = c("Mandeville_ID", "Common_Name"), by.y = c("Mandeville_ID", "Common_Name"), all.x = T, all.y = F)
 (tableGenoID <- table(multihybrids$Geno_ID)) #12/44 are in the "x fishiness" category...
 
 #4 three-way crosses w the big 3
@@ -554,8 +710,9 @@ multihybrids_metadata <- merge(multihybrids, metadata, by.x = "ind", by.y = "Man
 #export as CSV
 #write.csv(multihybrids_metadata, paste0("AMP22_Leuciscid_multispecies_ONLY_hybrids_k",k,"_Jun2023.csv"), row.names = F)
 
-
- 
+# what sites are the fishy multi species hybrids from?
+fishy <- multihybrids_metadata %>% filter(str_detect(multihybrids_metadata$Geno_ID, 'fishiness')) 
+#write.csv(fishy, paste0("AMP22_Leuciscid_fishy_ONLY_hybrids_k",k,"_Jun2023.csv"), row.names = F)
 
 # hybrids per plate
 table_plate_hybrid <- as.data.frame(table(hybrids_metadata$Plate))
