@@ -7,13 +7,13 @@ library(rhdf5)
 library(tidyverse)
 
 # import point estimates file
-g <- read.table("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/PCA_old/pntest_files/pntest_mean_gl_target_03may23_woP13.txt", header=F) 
+g <- read.table("pntest_mean_gl_guelph_bruce.txt", header=F) 
 
 # import .imiss file
-imiss <- read.table("out_03may23_0.6_tidy.imiss", header=T) 
+imiss <- read.table("missingness_guelph_bruce.imiss", header=T) 
 
 # import names list
-names <- read.table("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/names_files/names_target_03may23_woP13.txt", header=F) 
+names <- read.table("names_guelph_bruce.txt", header=F) 
 colnames(names) <- "FishID"
 
 
@@ -91,22 +91,44 @@ morecolors <- rep(colors,3)
 
 
 symbols <- rep(1:14,3)
-parentals2 <- c("#DF65B0", #BND
+# parentals2 <- c("#DF65B0", #BND
+#                 "#969696", #Pimephales
+#                 "#A6CEE3", #CC
+#                 "#FDBF6F", #CS
+#                 "#FB9A99", #RFS
+#                 "#B2DF8A", #RC
+#                 "#35978F", #HHC
+#                 "#8C510A", #CSR
+#                 "#969696", #Pimephales
+#                 "#E5DF60", #SS
+#                 "#CAB2D6", #LND
+#                 "#000000", #v11,v12
+#                 "#8E0152") #hybrid
+
+# for geo groups
+parentals2 <- c(
+                #"#969696", #Pimephales
                 "#A6CEE3", #CC
+                "#DF65B0", #BND
                 "#FDBF6F", #CS
-                "#35978F", #HHC
                 "#FB9A99", #RFS
                 "#B2DF8A", #RC
+                "#35978F", #HHC
                 "#8C510A", #CSR
+                #"#969696", #Pimephales
                 "#E5DF60", #SS
                 "#CAB2D6", #LND
                 "#000000", #v11,v12
-                "#969696", #v7
                 "#8E0152") #hybrid
 
 #----------------------------------------------------------------------------
 #plot PC1 and PC2 for species
-pdf("PCA_AMP22_target_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_PHENO_ID.pdf", width = 12, height = 18)
+
+# title for all inds
+#pdf("PCA_AMP22_Pimephales_target_11jul23_miss0.5_mac3_Q30_DP3_maf001_ind95_maf001_PHENO_ID.pdf", width = 12, height = 18)
+
+# title for geo groups
+pdf("PCA_AMP22_guelph_bruce_11jul23_miss0.5_mac3_Q30_DP3_maf001_ind95_maf001_PHENO_ID.pdf", width = 12, height = 18)
 
 par(mfrow=c(3,2))
 plot(pcgcov$x[,1], pcgcov$x[,2], type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""))
@@ -116,7 +138,7 @@ for(i in 1:(length(unique(fishinfo$Common_Name)))){
   points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),1], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 2], pch=symbols[i], col=parentals2[i])
 }
 
-legend("bottomleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
+legend("bottomright", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 
 #dev.off()
@@ -131,7 +153,7 @@ for(i in 1:(length(unique(fishinfo$Common_Name)))){
   points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),2], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 3], pch=symbols[i], col=parentals2[i])
 }
 
-legend("topleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
+legend("topright", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 
 #dev.off()
@@ -147,7 +169,7 @@ for(i in 1:(length(unique(fishinfo$Common_Name)))){
   points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),3], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 4], pch=symbols[i], col=parentals2[i])
 }
 
-legend("bottomleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
+legend("bottomright", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 #----------------------------------------------------------------------------
 #plot PC4 and PC5 for species
@@ -159,7 +181,7 @@ for(i in 1:(length(unique(fishinfo$Common_Name)))){
   points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),4], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 5], pch=symbols[i], col=parentals2[i])
 }
 
-legend("topleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
+legend("bottomleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 #----------------------------------------------------------------------------
 #plot PC5 and PC6 for species
@@ -171,7 +193,7 @@ for(i in 1:(length(unique(fishinfo$Common_Name)))){
   points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),5], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),6], pch=symbols[i], col=parentals2[i])
 }
 
-legend("topleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
+legend("topright", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 #----------------------------------------------------------------------------
 #plot PC6 and PC7 for species
@@ -183,72 +205,72 @@ for(i in 1:(length(unique(fishinfo$Common_Name)))){
   points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),6], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 7], pch=symbols[i], col=parentals2[i])
 }
 
-legend("bottomleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
+legend("bottomright", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 dev.off()
 
 #----------------------------------------------------------------------------
 #plot PC7 and PC8 for species
 
-plot(pcgcov$x[,7], pcgcov$x[,8], type="n", xlab=paste("PC7 (",(imp$importance[,7][[2]]*100), "% )", sep=""), ylab=paste("PC8 (",(imp$importance[,8][[2]]*100), "% )", sep=""))
+#plot(pcgcov$x[,7], pcgcov$x[,8], type="n", xlab=paste("PC7 (",(imp$importance[,7][[2]]*100), "% )", sep=""), ylab=paste("PC8 (",(imp$importance[,8][[2]]*100), "% )", sep=""))
 
 #loop iterates over locations and adds a different colour for each one
-for(i in 1:(length(unique(fishinfo$Common_Name)))){
-  points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),7], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),8], pch=symbols[i], col=parentals2[i])
-}
+#for(i in 1:(length(unique(fishinfo$Common_Name)))){
+#points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),7], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),8], pch=symbols[i], col=parentals2[i])
+#}
 
-legend("topright", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
+#legend("topright", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 #dev.off()
 
 
 #====================================================================
-#plot PC1 and PC2 for location
-pdf("PCA_AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_location.pdf", width = 5, height = 15)
-par(mfrow=c(3,1))
-plot(pcgcov$x[,1], pcgcov$x[,2], type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""))
-
-#loop iterates over locations and adds a different colour for each one
-for(i in 1:(length(unique(fishinfo$Waterbody)))){
-  points(pcgcov$x[which(fishinfo$Waterbody==unique(fishinfo$Waterbody)[i]),1], pcgcov$x[which(fishinfo$Waterbody==unique(fishinfo$Waterbody)[i]), 2], pch=symbols[i], col=morecolors[i])
-}
-
-legend("bottomleft", legend=unique(fishinfo$Waterbody), pch=symbols, col=morecolors, ncol=1, cex=0.5)
-
-
-#dev.off()
-
-#----------------------------------------------------------------------------
-#plot PC2 and PC3 for location
-#pdf("PCA2,3_AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_location.pdf")
-#par(mfrow=c(1,2))
-plot(pcgcov$x[,2], pcgcov$x[,3], type="n", xlab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""), ylab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""))
-
-#loop iterates over locations and adds a different colour for each one
-for(i in 1:(length(unique(fishinfo$Waterbody)))){
-  points(pcgcov$x[which(fishinfo$Waterbody==unique(fishinfo$Waterbody)[i]),2], pcgcov$x[which(fishinfo$Waterbody==unique(fishinfo$Waterbody)[i]), 3], pch=symbols[i], col=morecolors[i])
-}
-
-legend("topleft", legend=unique(fishinfo$Waterbody), pch=symbols, col=morecolors, ncol=1, cex=0.5)
-
-
-#dev.off()
-
-#----------------------------------------------------------------------------
-#plot PC3 and PC4 for location
-#pdf("PCA3,4_AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_location.pdf")
-#par(mfrow=c(1,2))
-plot(pcgcov$x[,3], pcgcov$x[,4], type="n", xlab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""), ylab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""))
-
-#loop iterates over locations and adds a different colour for each one
-for(i in 1:(length(unique(fishinfo$Waterbody)))){
-  points(pcgcov$x[which(fishinfo$Waterbody==unique(fishinfo$Waterbody)[i]),3], pcgcov$x[which(fishinfo$Waterbody==unique(fishinfo$Waterbody)[i]), 4], pch=symbols[i], col=morecolors[i])
-}
-
-legend("bottomleft", legend=unique(fishinfo$Waterbody), pch=symbols, col=morecolors, ncol=1, cex=0.5)
-
-
-dev.off()
+# #plot PC1 and PC2 for location
+# pdf("PCA_AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_location.pdf", width = 5, height = 15)
+# par(mfrow=c(3,1))
+# plot(pcgcov$x[,1], pcgcov$x[,2], type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""))
+# 
+# #loop iterates over locations and adds a different colour for each one
+# for(i in 1:(length(unique(fishinfo$Waterbody)))){
+#   points(pcgcov$x[which(fishinfo$Waterbody==unique(fishinfo$Waterbody)[i]),1], pcgcov$x[which(fishinfo$Waterbody==unique(fishinfo$Waterbody)[i]), 2], pch=symbols[i], col=morecolors[i])
+# }
+# 
+# legend("bottomleft", legend=unique(fishinfo$Waterbody), pch=symbols, col=morecolors, ncol=1, cex=0.5)
+# 
+# 
+# #dev.off()
+# 
+# #----------------------------------------------------------------------------
+# #plot PC2 and PC3 for location
+# #pdf("PCA2,3_AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_location.pdf")
+# #par(mfrow=c(1,2))
+# plot(pcgcov$x[,2], pcgcov$x[,3], type="n", xlab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""), ylab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""))
+# 
+# #loop iterates over locations and adds a different colour for each one
+# for(i in 1:(length(unique(fishinfo$Waterbody)))){
+#   points(pcgcov$x[which(fishinfo$Waterbody==unique(fishinfo$Waterbody)[i]),2], pcgcov$x[which(fishinfo$Waterbody==unique(fishinfo$Waterbody)[i]), 3], pch=symbols[i], col=morecolors[i])
+# }
+# 
+# legend("topleft", legend=unique(fishinfo$Waterbody), pch=symbols, col=morecolors, ncol=1, cex=0.5)
+# 
+# 
+# #dev.off()
+# 
+# #----------------------------------------------------------------------------
+# #plot PC3 and PC4 for location
+# #pdf("PCA3,4_AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_location.pdf")
+# #par(mfrow=c(1,2))
+# plot(pcgcov$x[,3], pcgcov$x[,4], type="n", xlab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""), ylab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""))
+# 
+# #loop iterates over locations and adds a different colour for each one
+# for(i in 1:(length(unique(fishinfo$Waterbody)))){
+#   points(pcgcov$x[which(fishinfo$Waterbody==unique(fishinfo$Waterbody)[i]),3], pcgcov$x[which(fishinfo$Waterbody==unique(fishinfo$Waterbody)[i]), 4], pch=symbols[i], col=morecolors[i])
+# }
+# 
+# legend("bottomleft", legend=unique(fishinfo$Waterbody), pch=symbols, col=morecolors, ncol=1, cex=0.5)
+# 
+# 
+# dev.off()
 
 #----------------------------------------------------------------------------
 
@@ -261,15 +283,11 @@ plot(pcgcov$x[,1], pcgcov$x[,2])
 
 # missingness vs PC1
 
-names(plate13inds) <- "INDV"
-imiss <- anti_join(imiss, plate13inds)
-
-
 # merge metadata with missingness file
 missing_fish <- merge(imiss, fishinfo, by.x="INDV", by.y="FishID", all.x=F, all.y=T)
 
 
-pdf("F_MISSxPC_AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_indivs.pdf", width = 8, height = 16)
+pdf("F_MISSxPC_AMP22_guelph_bruce_11jul23_miss0.5_mac3_Q30_DP3_maf001_ind95_maf001.pdf", width = 8, height = 16)
 par(mfrow=c(2,1))
 plot(pcgcov$x[,1], missing_fish$F_MISS, type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab="Proportion of missing data")
 
@@ -278,7 +296,7 @@ for(i in 1:(length(unique(missing_fish$Common_Name)))){
   points(pcgcov$x[which(missing_fish$Common_Name==unique(missing_fish$Common_Name)[i]),1], missing_fish$F_MISS[which(missing_fish$Common_Name==unique(missing_fish$Common_Name)[i])], pch=symbols[i], col=parentals2[i])
 }
 
-legend("topleft", legend=unique(missing_fish$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=0.75)
+legend("topright", legend=unique(missing_fish$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=0.75)
 
 
 #dev.off()
@@ -303,12 +321,6 @@ dev.off()
 
 ############################################################################################################################################################################################################################################################################################################################################################################################
 
-#stupid for loop not working
-# list.dfs <- list(names_BNDxCC,names_CSRxCC,names_CSxCC,names_HHCxCC,names_LNDxCC,names_RCxCC,names_RFSxCC,names_SSxCC)
-# 
-# for (a in 1:length(list.dfs)){
-#   fishinfo_(paste(a)) <- merge(a, details, by.x="inds", by.y="Mandeville_ID", all.x=T, all.y  =F)
-# }
 
 # species pairs
 
@@ -738,7 +750,7 @@ symbols_geno <- as.integer(c(8,1,9,2,4,3,5,6,7,10))
 pdf("PCA_AMP22_target_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_PHENO_AND_GENO_ID_1_2_TO_3_4.pdf", width = 12, height = 18)
 
 par(mfrow=c(3,2))
-plot(pcgcov$x[,1], pcgcov$x[,2], type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""))
+plot(pcgcov$x[,1], pcgcov$x[,2], type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""), cex.lab = 1.5)
 
 #loop iterates over locations and adds a different colour for each one
 for(i in 1:(length(unique(fishinfo$Common_Name)))){
@@ -752,7 +764,7 @@ mtext("A", side=3, cex=1.5, outer=T, line=-4, adj = 0.02)
 
 #----------------------------------------------------------------------------
 #plot PC1 and PC2 for species GENO
-plot(pcgcov$x[,1], pcgcov$x[,2], type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""))
+plot(pcgcov$x[,1], pcgcov$x[,2], type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""), cex.lab = 1.5)
 
 #loop iterates over locations and adds a different colour for each one
 for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
@@ -767,7 +779,7 @@ mtext("B", side=3, cex=1.5, outer=T, line=-4, adj = 0.52)
 #----------------------------------------------------------------------------
 #plot PC2 and PC3 for species PHENO
 
-plot(pcgcov$x[,2], pcgcov$x[,3], type="n", xlab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""), ylab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""))
+plot(pcgcov$x[,2], pcgcov$x[,3], type="n", xlab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""), ylab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""), cex.lab = 1.5)
 
 #loop iterates over locations and adds a different colour for each one
 for(i in 1:(length(unique(fishinfo$Common_Name)))){
@@ -782,7 +794,7 @@ mtext("C", side=3, cex=1.5, outer=T, line=-49, adj = 0.02)
 #----------------------------------------------------------------------------
 #plot PC2 and PC3 for species GENO
 
-plot(pcgcov$x[,2], pcgcov$x[,3], type="n", xlab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""), ylab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""))
+plot(pcgcov$x[,2], pcgcov$x[,3], type="n", xlab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""), ylab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""), cex.lab = 1.5)
 
 #loop iterates over locations and adds a different colour for each one
 for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
@@ -797,7 +809,7 @@ mtext("D", side=3, cex=1.5, outer=T, line=-49, adj = 0.52)
 #----------------------------------------------------------------------------
 #plot PC3 and PC4 for species PHENO
 
-plot(pcgcov$x[,3], pcgcov$x[,4], type="n", xlab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""), ylab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""))
+plot(pcgcov$x[,3], pcgcov$x[,4], type="n", xlab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""), ylab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""), cex.lab = 1.5)
 
 #loop iterates over locations and adds a different colour for each one
 for(i in 1:(length(unique(fishinfo$Common_Name)))){
@@ -811,7 +823,7 @@ mtext("E", side=3, cex=1.5, outer=T, line=-95, adj = 0.02)
 #----------------------------------------------------------------------------
 #plot PC3 and PC4 for species GENO
 
-plot(pcgcov$x[,3], pcgcov$x[,4], type="n", xlab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""), ylab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""))
+plot(pcgcov$x[,3], pcgcov$x[,4], type="n", xlab=paste("PC3 (",(imp$importance[,3][[2]]*100), "% )", sep=""), ylab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""), cex.lab = 1.5)
 
 #loop iterates over locations and adds a different colour for each one
 for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
@@ -830,7 +842,7 @@ dev.off()
 #----------------------------------------------------------------------------
 #plot PC4 and PC5 for species PHENO
 pdf("PCA_AMP22_target_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_PHENO_AND_GENO_ID_4_5_TO_6_7.pdf", width = 12, height = 18)
-par(mfrow=c(3,2))
+par(mfrow=c(3,2), cex.lab = 1.5)
 
 
 plot(pcgcov$x[,4], pcgcov$x[,5], type="n", xlab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""), ylab=paste("PC5 (",(imp$importance[,5][[2]]*100), "% )", sep=""))
@@ -846,7 +858,7 @@ mtext("G", side=3, cex=1.5, outer=T, line=-4, adj = 0.02)
 #----------------------------------------------------------------------------
 #plot PC4 and PC5 for species GENO
 
-plot(pcgcov$x[,4], pcgcov$x[,5], type="n", xlab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""), ylab=paste("PC5 (",(imp$importance[,5][[2]]*100), "% )", sep=""))
+plot(pcgcov$x[,4], pcgcov$x[,5], type="n", xlab=paste("PC4 (",(imp$importance[,4][[2]]*100), "% )", sep=""), ylab=paste("PC5 (",(imp$importance[,5][[2]]*100), "% )", sep=""), cex.lab = 1.5)
 
 #loop iterates over locations and adds a different colour for each one
 for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
@@ -859,7 +871,7 @@ mtext("H", side=3, cex=1.5, outer=T, line=-4, adj = 0.52)
 #----------------------------------------------------------------------------
 #plot PC5 and PC6 for species PHENO
 
-plot(pcgcov$x[,5], pcgcov$x[,6], type="n", xlab=paste("PC5 (",(imp$importance[,5][[2]]*100), "% )", sep=""), ylab=paste("PC6 (",(imp$importance[,6][[2]]*100), "% )", sep=""))
+plot(pcgcov$x[,5], pcgcov$x[,6], type="n", xlab=paste("PC5 (",(imp$importance[,5][[2]]*100), "% )", sep=""), ylab=paste("PC6 (",(imp$importance[,6][[2]]*100), "% )", sep=""), cex.lab = 1.5)
 
 #loop iterates over locations and adds a different colour for each one
 for(i in 1:(length(unique(fishinfo$Common_Name)))){
@@ -872,7 +884,7 @@ mtext("I", side=3, cex=1.5, outer=T, line=-49, adj = 0.02)
 #----------------------------------------------------------------------------
 #plot PC5 and PC6 for species GENO
 
-plot(pcgcov$x[,5], pcgcov$x[,6], type="n", xlab=paste("PC5 (",(imp$importance[,5][[2]]*100), "% )", sep=""), ylab=paste("PC6 (",(imp$importance[,6][[2]]*100), "% )", sep=""))
+plot(pcgcov$x[,5], pcgcov$x[,6], type="n", xlab=paste("PC5 (",(imp$importance[,5][[2]]*100), "% )", sep=""), ylab=paste("PC6 (",(imp$importance[,6][[2]]*100), "% )", sep=""), cex.lab = 1.5)
 
 #loop iterates over locations and adds a different colour for each one
 for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
@@ -885,7 +897,7 @@ mtext("J", side=3, cex=1.5, outer=T, line=-49, adj = 0.52)
 #----------------------------------------------------------------------------
 #plot PC6 and PC7 for species PHENO
 
-plot(pcgcov$x[,6], pcgcov$x[,7], type="n", xlab=paste("PC6 (",(imp$importance[,6][[2]]*100), "% )", sep=""), ylab=paste("PC7 (",(imp$importance[,7][[2]]*100), "% )", sep=""))
+plot(pcgcov$x[,6], pcgcov$x[,7], type="n", xlab=paste("PC6 (",(imp$importance[,6][[2]]*100), "% )", sep=""), ylab=paste("PC7 (",(imp$importance[,7][[2]]*100), "% )", sep=""), cex.lab = 1.5)
 
 #loop iterates over locations and adds a different colour for each one
 for(i in 1:(length(unique(fishinfo$Common_Name)))){
@@ -898,7 +910,7 @@ mtext("K", side=3, cex=1.5, outer=T, line=-95, adj = 0.02)
 #----------------------------------------------------------------------------
 #plot PC6 and PC7 for species GENO
 
-plot(pcgcov$x[,6], pcgcov$x[,7], type="n", xlab=paste("PC6 (",(imp$importance[,6][[2]]*100), "% )", sep=""), ylab=paste("PC7 (",(imp$importance[,7][[2]]*100), "% )", sep=""))
+plot(pcgcov$x[,6], pcgcov$x[,7], type="n", xlab=paste("PC6 (",(imp$importance[,6][[2]]*100), "% )", sep=""), ylab=paste("PC7 (",(imp$importance[,7][[2]]*100), "% )", sep=""), cex.lab = 1.5)
 
 #loop iterates over locations and adds a different colour for each one
 for(i in 1:(length(unique(fishinfo$Geno_ID_simple)))){
