@@ -6,7 +6,7 @@
         ## names_file.txt should contain a list of all indivs in the HDF5 files, without a header
         ## nametag is the chunk of text that will go in the name of the output files
 
-        # Rscript ../../q_barplot.R 2 AMP22_algonquin ../AMP22_algonquin_indivs.txt /project/rrg-emandevi/hybrid_ameuser/AMP22_pub/geographical_groupings/algonquin/entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep1_qk2inds.hdf5 AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep2_qk2inds.hdf5 AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep3_qk2inds.hdf5
+        # Rscript ../../../../q_barplot.R 4 AMP22_algonquin ../starting_values_entropy/names_algonquin.txt /project/rrg-emandevi/hybrid_ameuser/AMP22_pub/geographical_groupings/algonquin/entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k4_150k_rep1_qk4inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/AMP22_pub/geographical_groupings/algonquin/entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k4_150k_rep2_qk4inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/AMP22_pub/geographical_groupings/algonquin/entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k4_150k_rep3_qk4inds.hdf5
 
 # install packages
 # if (!require("BiocManager", quietly = TRUE))
@@ -49,25 +49,20 @@ hdf5path2
 hdf5path3
 
 # manually read in files
-k <- 2
-names_file <- "../starting_values_entropy/names_algonquin.txt"
-hdf5path1 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep1_qk2inds.hdf5"
-hdf5path2 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep2_qk2inds.hdf5"	
-hdf5path3 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep3_qk2inds.hdf5"
+# k <- 2
+# names_file <- "../starting_values_entropy/names_algonquin.txt"
+# hdf5path1 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep1_qk2inds.hdf5"
+# hdf5path2 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep2_qk2inds.hdf5"	
+# hdf5path3 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep3_qk2inds.hdf5"
 # metadata <- "Leuciscid_Metadata_May2023.csv"
 
 # extracts k colours from set3 and puts in object
-#colour <- brewer.pal(k, "Set3")
+colour <- brewer.pal(k, "Set3")
 
 # creating table with ind names
 names_list <- read.table(names_file, header=F, col.names = "ind")
 print("Here's the first few individuals...")
 head(names_list)
-
-# # reading in hdf5 files for given k value
-# data1.q <- h5read(hdf5path1, "q") 
-# data2.q <- h5read(hdf5path2, "q")
-# data3.q <- h5read(hdf5path3, "q")
 
 # reading in hdf5 files for given k value
 q1 <- h5read(hdf5path1, "q") 
@@ -75,7 +70,7 @@ q2 <- h5read(hdf5path2, "q")
 q3 <- h5read(hdf5path3, "q")
 
 # getting index for the final and middle indivs, for graphing caterpillars
-dims <- dim(data1.q)
+dims <- dim(q1)
 last_indiv <- dims[3] 
 middle_indiv <- ceiling((last_indiv/2)) #ceiling() rounds up to the nearest integer
 print("The index of the middle individual and final individual:")
@@ -86,76 +81,22 @@ print("Creating caterpillar plot...")
 # Checking caterpillar plots, 1 row per rep, 3 inds per plot: first, middle, last
 pdf(paste0("caterpillars_",nametag,"_k",k,".pdf"), width=11, height=11) #CHECK THAT THIS IS A VIABLE WCY TO CREATE DIFFERENT FILE NAMES
 par(mfrow=c(3,3))
-        plot(data1.q[,1,1], ylim=c(0,1))
-        plot(data1.q[,1,middle_indiv], ylim=c(0,1))
-        plot(data1.q[,1,last_indiv], ylim=c(0,1))
+        plot(q1[,1,1], ylim=c(0,1))
+        plot(q1[,1,middle_indiv], ylim=c(0,1))
+        plot(q1[,1,last_indiv], ylim=c(0,1))
 
-        plot(data2.q[,1,1], ylim=c(0,1))
-        plot(data2.q[,1,middle_indiv], ylim=c(0,1))
-        plot(data2.q[,1,last_indiv], ylim=c(0,1))
+        plot(q2[,1,1], ylim=c(0,1))
+        plot(q2[,1,middle_indiv], ylim=c(0,1))
+        plot(q2[,1,last_indiv], ylim=c(0,1))
 
-        plot(data3.q[,1,1], ylim=c(0,1))
-        plot(data3.q[,1,middle_indiv], ylim=c(0,1))
-        plot(data3.q[,1,last_indiv], ylim=c(0,1))
+        plot(q3[,1,1], ylim=c(0,1))
+        plot(q3[,1,middle_indiv], ylim=c(0,1))
+        plot(q3[,1,last_indiv], ylim=c(0,1))
 dev.off()
 
-# improved axis labelling? not working rn...
-# pdf(paste0("caterpillars_",nametag,"_k",k,".pdf"), width=11, height=11) #CHECK THAT THIS IS A VIABLE WAY TO CREATE DIFFERENT FILE NAMES
-# par(mfrow=c(3,3))
-#         plot(data1.q[,1,1], ylim=c(0,1), main="Individual 1")
-#         plot(data1.q[,1,middle_indiv], ylim=c(0,1), main="Individual "middle_indiv"")
-#         plot(data1.q[,1,last_indiv], ylim=c(0,1), main="Individual "last_indiv"")
-
-#         plot(data2.q[,1,1], ylim=c(0,1))
-#         plot(data2.q[,1,middle_indiv], ylim=c(0,1), ylab="Value of q")
-#         plot(data2.q[,1,last_indiv], ylim=c(0,1))
-
-#         plot(data3.q[,1,1], ylim=c(0,1))
-#         plot(data3.q[,1,middle_indiv], ylim=c(0,1), xlab="Iteration of q")
-#         plot(data3.q[,1,last_indiv], ylim=c(0,1))
-# dev.off()
 
 
-# takes the mean of all 1000 values for the estimate of q, to essentially create a point estimate from a distribution
-# q1 <- t(apply(data1.q, 2:3, mean)) 
-# q2 <- t(apply(data2.q, 2:3, mean))
-# q3 <- t(apply(data3.q, 2:3, mean))
-
-# # Looking at columns to check if chain switching occured, but thanks to the starting values, it shouldn't 
-# print("Check for chain switching")
-# head(q1)
-# head(q2)
-# head(q3)
-
-# #combining the three data frames into 1
-# #step 1:converting from matricies to data frames, then adding a row position ID
-# dfq1 <- as.data.frame(q1) %>% rowid_to_column("ROW")
-# dfq2 <- as.data.frame(q2) %>% rowid_to_column("ROW")
-# dfq3 <- as.data.frame(q3) %>% rowid_to_column("ROW")
-
-# #step 2:bind into one dataframe, but they're still numbered by row position in the original 3 dataframes
-# everyq <- bind_rows(dfq1, dfq2, dfq3)
-# #head(everyq)
-# print("Merged 3 data frames into 1. Dimensions:")
-# dim(everyq)
-
-# #step 3:grouping by their row ID, take the mean for each row
-# q <- everyq %>% 
-#   group_by(ROW) %>% 
-#   summarise_all(mean)
-
-# #head(q)
-# print("Summarised and took mean. Dimensions:")
-# dim(q)
-
-
-# #step 4: remove row number column and turn back into a matrix
-# q <- q[,-1] 
-# q <- as.matrix(q)
-# #head(q)
-# #class(q)
-# print("Removed indexing column. Dimensions:")
-
+# take mean of distributions 
 allq <- abind(q1,q2,q3, along=1) 
 q <- t(apply(allq, 2:3, mean))
 
@@ -219,7 +160,7 @@ write.table(mean_q_species, paste0(nametag,"_entropy_list_k",k,"_species_q.txt")
 # #split_q_metadata_round <- split(q_metadata_round, f=q_metadata_round$Waterbody_Code)
 
 # # using dataframes that are pre-demensionality reduction to get confidence intervals
-# allq <- abind(data1.q, data2.q, data3.q, along=1)
+# allq <- abind(q1, q2, q3, along=1)
 # #head(allq)
 
 #looking at CIs - number should be really small!
@@ -285,24 +226,25 @@ head(q.names)
 #colnames(q.names)[2:(k+1)] <- c("A", "B", "C") #FIND A WAY TO INSERT THE SPECIES NAMES
 #head(q.names) 
 
-K<-(k+1) 
-colour <- c("#FDBF6F","#8C510A","#35978F","#CAB2D6","#FFFF99","#B2DF8A","#969696","#FB9A99","#A6CEE3","#DF65B0","#000000","#000000")
-
+K <- (k+1) 
+#colour <- c("#FDBF6F","#8C510A","#35978F","#CAB2D6","#FFFF99","#B2DF8A","#969696","#FB9A99","#A6CEE3","#DF65B0","#000000","#000000")
+rows <- nrow(q.names)
 
 print("Creating barplot...")
 #plotting proportion of ancestry
-pdf(paste0("q_barplot_",nametag,"_k",k,".pdf"), width = 16, height = 12) 
-barplot(t(q.names[order(q.names$V1, q.names$V2),2:K]), 
+pdf(paste0("q_barplot_",nametag,"_k",k,".pdf"), width = 14, height = 12) 
+barplot(t(q.names[order(q.names$X1, q.names$X2),2:K]), 
         beside=F, 
         col=colour,
-        names.arg = rep("", nrow(q.names)), 
+        names.arg = q.names$ind[order(q.names$X1, q.names$X2)],
+        #names.arg = rep("", nrow(q.names)), 
         las=2, 
-        cex.names=0.25,
+        cex.names=0.5,
         border=NA, 
         main=paste("Bar plot of",nametag),
         ylab="proportion of ancestry",
         xlab ="Sample ID",
-        xlim = c(0,800),
+        xlim = c(0,rows),
         space = -0.3,
         width = 1) 
 dev.off()
