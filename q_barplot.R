@@ -2,11 +2,11 @@
 ## Created by Jillian Campbell and Liz Mandeville
 ## Modified by Amanda Meuser -- May 2023 
 
-## USAGE: Rscript q_barplot.R k_value nametag /path/to/metadata_file.txt path/to/hdf5/files.hdf5 
+## USAGE: Rscript q_barplot.R k_value nametag /path/to/names_file.txt path/to/hdf5/files.hdf5 
         ## names_file.txt should contain a list of all indivs in the HDF5 files, without a header
         ## nametag is the chunk of text that will go in the name of the output files
 
-        # Rscript ../../q_barplot.R 10 AMP22_target_11jul23 ../vcftools/names_target_11jul23_filtered.txt /project/rrg-emandevi/hybrid_ameuser/AMP22/entropy/AMP22_target_11jul23_miss0.6_mac3_Q30_DP3_ind95_maf001_k10_75k_rep1_qk10inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/AMP22/entropy/AMP22_target_11jul23_miss0.6_mac3_Q30_DP3_ind95_maf001_k10_75k_rep2_qk10inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/AMP22/entropy/AMP22_target_11jul23_miss0.6_mac3_Q30_DP3_ind95_maf001_k10_75k_rep3_qk10inds.hdf5
+        # Rscript ../../q_barplot.R 2 AMP22_algonquin ../AMP22_algonquin_indivs.txt /project/rrg-emandevi/hybrid_ameuser/AMP22_pub/geographical_groupings/algonquin/entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep1_qk2inds.hdf5 AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep2_qk2inds.hdf5 AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep3_qk2inds.hdf5
 
 # install packages
 # if (!require("BiocManager", quietly = TRUE))
@@ -40,21 +40,24 @@ k
 print("Nametag:")
 nametag
 
+print("Names file: ")
+names_file
+
 print("Paths to HDF5 files:")
 hdf5path1
 hdf5path2
 hdf5path3
 
 # manually read in files
-# k <- 12
-# names_file <- "../vcftools/names_target_11jul23_filtered.txt"
-# hdf5path1 <- "/project/rrg-emandevi/hybrid_ameuser/old_AMP22/entropy/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep1_qk12inds.hdf5"
-# hdf5path2 <- "/project/rrg-emandevi/hybrid_ameuser/old_AMP22/entropy/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep2_qk12inds.hdf5"	
-# hdf5path3 <- "/project/rrg-emandevi/hybrid_ameuser/old_AMP22/entropy/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep3_qk12inds.hdf5"
-# metadata <- "Leuciscid_Metadata_OFAT_May2023_filtered.csv"
+k <- 2
+names_file <- "../starting_values_entropy/names_algonquin.txt"
+hdf5path1 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep1_qk2inds.hdf5"
+hdf5path2 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep2_qk2inds.hdf5"	
+hdf5path3 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep3_qk2inds.hdf5"
+# metadata <- "Leuciscid_Metadata_May2023.csv"
 
 # extracts k colours from set3 and puts in object
-colour <- brewer.pal(k, "Set3")
+#colour <- brewer.pal(k, "Set3")
 
 # creating table with ind names
 names_list <- read.table(names_file, header=F, col.names = "ind")
@@ -159,27 +162,32 @@ q <- t(apply(allq, 2:3, mean))
 
 dim(q)
 
+
+# GET SIMPLIFIED ENTROPY OUTPUT FOR GENERATING GENOMIC ID'S
 # manually read in species info
-# metadata <- read.csv("Leuciscid_Metadata_OFAT_May2023_filtered.csv", header=T)
-# species <- metadata$Common_Name
+metadata <- read.csv("/project/rrg-emandevi/hybrid_ameuser/Leuciscid_Metadata_May2023.csv", header=T)
+species <- metadata[c("Mandeville_ID","Common_Name")] # before doing this, filter/merge the metadata by the names file, then contine to bind w the entropy data. saves having to create a filtered metadata file for each dataset
 
-# #manually bind species data 
-# q_species <- as.data.frame(cbind(species, q))
-# for (i in 2:ncol(q_species)){
-#         q_species[,i] <- as.numeric(q_species[,i])
-# }
+# manually bind species data to names
+q_names <- as.data.frame(cbind(names_list, q))
 
-# #create a table of mean q values for each column, for each species
-# (mean_q_species <- q_species %>% group_by(species) %>% summarise(across(everything(), (list = mean))))
+# merge w common names and save as text file
+q_species <- merge(species, q_names, by.x = "Mandeville_ID", by.y = "ind")
+write.table(q_species, paste0(nametag,"_entropy_list_k",k,"_indivs_q.txt"), sep = "\t", row.names = F, quote = F)
 
-# #save table as a text file
-# write.table(mean_q_species, paste0(nametag,"_entropy_list_k",k,"_species_q.txt"), sep = "\t", row.names = F, quote = F)
+# make sure the numbers are class numeric
+for (i in 3:ncol(q_species)){
+        q_species[,i] <- as.numeric(q_species[,i])
+}
 
-# #add names and save this as a text file
-# ID <- as.data.frame(metadata$Mandeville_ID)
-# colnames(ID) <- "Mandeville_ID"
-# q.sp.names <- cbind(ID, species, q)
-# write.table(q.sp.names, paste0(nametag,"_entropy_list_k",k,"_indivs_q.txt"), sep = "\t", row.names = F, quote = F)
+#create a table of mean q values for each column, for each species
+(mean_q_species <- q_species %>% group_by(Common_Name) %>% summarise(across(where(is.numeric), (list = mean))))
+
+#save table as a text file
+write.table(mean_q_species, paste0(nametag,"_entropy_list_k",k,"_species_q.txt"), sep = "\t", row.names = F, quote = F)
+
+
+
 
 #find row based on AMP ID
 #q_species[q_species$ind == 'AMP22_0800',]
@@ -236,7 +244,7 @@ max(q.ci.width)
 # dev.off()
 
 ##############################################
-## PLOTTING JUST THE MULTI-SPECIES HYBRIDS
+# # PLOTTING JUST THE MULTI-SPECIES HYBRIDS
 # metadata <- read.csv(metadata, header = T)
 
 # #pull out columns and bind to q values
@@ -244,20 +252,21 @@ max(q.ci.width)
 # q_metadata <- as.data.frame(q_metadata)
 
 # #rename the new columns and alter the C.Ward waterbody codes
-# names(q_metadata)[1:4] <- c("Mandeville_ID", "Common_Name", "Waterbody","Waterbody_Code")
+# names(q_metadata) <- c("Mandeville_ID", "Common_Name", "Waterbody","Waterbody_Code", "V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12")
 # q_metadata$Waterbody_Code[q_metadata$Waterbody == "Costello_Creek"] <- "COS"
 # q_metadata <- q_metadata[-3]
 
 # # make sure the q columns are numeric data, then round values of q to 3 decimal places 
 # q_metadata <- type.convert(q_metadata, as.is=T)
 # #sapply(q_metadata, class)
-# q_metadata_round <- q_metadata %>% mutate_if(is.numeric, round, digits=3)
+# # actually, i don't need to round the values if i'm ordering by largest ancestry proportion. this will keep the tops more even
+# #q_metadata_round <- q_metadata %>% mutate_if(is.numeric, round, digits=3)
 
 # #filter to get just the multi-species inds
 # multi_deets <- read.csv("AMP22_Leuciscid_multispecies_ONLY_hybrids_k12_Jun2023.csv", header = T)
 # multi <- as.data.frame(multi_deets[,1])
 # colnames(multi) <- "Mandeville_ID"
-# q_multi <- merge(q_metadata_round, multi, by = "Mandeville_ID")
+# q_multi <- merge(q_metadata, multi, by = "Mandeville_ID")
 
 # #order data frame by largest proportions to smallest
 # q_multi_order <- q_multi[with(q_multi, order(-pmax(q_multi$V1, q_multi$V2, q_multi$V3, q_multi$V4, q_multi$V5, q_multi$V6, q_multi$V7, q_multi$V8, q_multi$V9, q_multi$V10, q_multi$V11, q_multi$V12))),]
@@ -310,7 +319,7 @@ dev.off()
 #         col=colour,
 #         names.arg = rep("", nrow(q_multi_order)), 
 #         las=2, 
-#         cex.lab=1,
+#         cex.lab=1.5,
 #         border=NA, 
 #         ylab="Proportion of ancestry",
 #         xlab ="Individuals",
