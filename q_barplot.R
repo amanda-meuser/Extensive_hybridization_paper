@@ -6,7 +6,7 @@
         ## names_file.txt should contain a list of all indivs in the HDF5 files, without a header
         ## nametag is the chunk of text that will go in the name of the output files
 
-        # Rscript ../../../../q_barplot.R 4 AMP22_algonquin ../starting_values_entropy/names_algonquin.txt /project/rrg-emandevi/hybrid_ameuser/AMP22_pub/geographical_groupings/algonquin/entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k4_150k_rep1_qk4inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/AMP22_pub/geographical_groupings/algonquin/entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k4_150k_rep2_qk4inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/AMP22_pub/geographical_groupings/algonquin/entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k4_150k_rep3_qk4inds.hdf5
+        # Rscript ../../../../q_barplot.R 6 AMP22_humber_100k ../starting_values_entropy/names_humber.txt /project/rrg-emandevi/hybrid_ameuser/AMP22_pub/geographical_groupings/humber/entropy/AMP22_Pimephales_humber_11jul23_miss0.5_mac3_Q30_DP3_maf001_ind95_maf001_k6_100k_rep1_qk6inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/AMP22_pub/geographical_groupings/humber/entropy/AMP22_Pimephales_humber_11jul23_miss0.5_mac3_Q30_DP3_maf001_ind95_maf001_k6_100k_rep2_qk6inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/AMP22_pub/geographical_groupings/humber/entropy/AMP22_Pimephales_humber_11jul23_miss0.5_mac3_Q30_DP3_maf001_ind95_maf001_k6_100k_rep3_qk6inds.hdf5
 
 # install packages
 # if (!require("BiocManager", quietly = TRUE))
@@ -51,9 +51,9 @@ hdf5path3
 # manually read in files
 # k <- 2
 # names_file <- "../starting_values_entropy/names_algonquin.txt"
-# hdf5path1 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep1_qk2inds.hdf5"
-# hdf5path2 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep2_qk2inds.hdf5"	
-# hdf5path3 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k2_150k_rep3_qk2inds.hdf5"
+# hdf5path1 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k1_150k_rep1_qk1inds.hdf5"
+# hdf5path2 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k1_150k_rep2_qk1inds.hdf5"	
+# hdf5path3 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k1_150k_rep3_qk1inds.hdf5"
 # metadata <- "Leuciscid_Metadata_May2023.csv"
 
 # extracts k colours from set3 and puts in object
@@ -175,7 +175,7 @@ max(q.ci.width)
 # colnames(CIs_names) <- c("Mandeville_ID", "CI_width")
 # plate13 <- read.table("../Plate13_inds.txt", header = T)
 # CIs_names <- anti_join(as.data.frame(CIs_names), plate13)
-#write.table(CIs_names, "AMP22_target_k12_CIs.txt", quote = F, row.names = F)
+#write.table(CIs_names, "AMP22_target_k1_CIs.txt", quote = F, row.names = F)
 
 # pdf(paste("histogram_CIs_k",k,".pdf"))
 # hist(as.numeric(CIs_names$CI_width), 
@@ -204,7 +204,7 @@ max(q.ci.width)
 # #q_metadata_round <- q_metadata %>% mutate_if(is.numeric, round, digits=3)
 
 # #filter to get just the multi-species inds
-# multi_deets <- read.csv("AMP22_Leuciscid_multispecies_ONLY_hybrids_k12_Jun2023.csv", header = T)
+# multi_deets <- read.csv("AMP22_Leuciscid_multispecies_ONLY_hybrids_k1_Jun2023.csv", header = T)
 # multi <- as.data.frame(multi_deets[,1])
 # colnames(multi) <- "Mandeville_ID"
 # q_multi <- merge(q_metadata, multi, by = "Mandeville_ID")
@@ -249,6 +249,30 @@ barplot(t(q.names[order(q.names$X1, q.names$X2),2:K]),
         width = 1) 
 dev.off()
 
+# FOR MAKING NICER VERSIONS, ONCE YOU KNOW WHICH CLUSTER IS WHICH SPECIES
+# colour <- c("grey40","#DF65B0","#B2DF8A","#A6CEE3","grey85","#FDBF6F")
+
+# print("Creating barplot...")
+# #plotting proportion of ancestry
+# pdf(paste0("q_barplot_",nametag,"_k",k,".pdf"), width = 12, height = 10) 
+# barplot(t(q.names[order(q.names$X2, q.names$X3),2:K]), 
+#         beside=F, 
+#         col=colour,
+#         #names.arg = q.names$ind[order(q.names$X1, q.names$X2)],
+#         names.arg = rep("", nrow(q.names)), 
+#         las=2, 
+#         #cex.names=0.5,
+#         border=NA, 
+#         main=paste("Bar plot of",nametag),
+#         ylab="proportion of ancestry",
+#         legend.text = c("Unknown 1", "Western Blacknose Dace", "River Chub", "Creek Chub", "Unknown 2", "Common Shiner"),
+#         xlab ="Individual",
+#         xlim = c(0,rows),
+#         space = -0.3,
+#         width = 1) 
+# dev.off()
+
+
 
 # FOR PLOTTING MULTI SPECIES HYBRIDS
 # L <- k+3
@@ -277,7 +301,7 @@ dev.off()
 # waterbody_names <- c("AT", "BW", "CAC", "CLC", "COS", "EP1", "EP2", "EP3", "EP4", "ERR", "HC", "HT", "HUR", "IRC", "KC", "LAC", "LAP", "LEST", "MAC", "MEF", "PF", "PVTF", "SAR", "SCU", "SIC", "SWP", "UH", "WA", "WC")
 
 # # plot by location individually
-# pdf(paste0("q_barplot_AMP22_k9_WA.pdf"), width = 11, height = 8) 
+# pdf(paste0("q_barplot_AMP22_k1_WA.pdf"), width = 11, height = 8) 
 # barplot(t(split_q_metadata_round$WA[order(split_q_metadata_round$WA$V1),4:L]), 
 #         beside=F, 
 #         col=colour,
@@ -295,7 +319,7 @@ dev.off()
 
 
 # # lapply loop for creating all locations in one file (not individually titled, though)
-# pdf(paste0("q_barplot_AMP22_k9_all_sites.pdf"), width = 11, height = 8) 
+# pdf(paste0("q_barplot_AMP22_k1_all_sites.pdf"), width = 11, height = 8) 
 # lapply(split_q_metadata_round, function(x) {
 # barplot(t(x[order(x$V1, x$V2, x$V3, x$V4, x$V5, x$V6, x$V7, x$V8, x$V9),4:L]), 
 #         beside=F, 
