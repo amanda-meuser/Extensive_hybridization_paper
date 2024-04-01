@@ -1,0 +1,984 @@
+Sampling_date,Waterbody,AMP_ID,Common_Name,Species_Name,Length_cm,Sampling_Notes,DNA_concentration_ng/?l,Extracted_by,Extraction_date_YYMMDD,Extraction_notes,DNA_concentration_2nd_nanodrop,DNA_concentration_2nd_extraction_ng/?l ,Extracted_by,Extraction_date_DDMMYY,DNA_concentration_3rd_extraction_ng/ul ,Extracted_by,Extraction_date_DDMMYY,Notes,Final_extraction_concentration,Final_extraction_by
+19-May,Meuser_Farm,AMP22_0001,Phimephales,Phimephales,5.6,Misidentification-not ours,15.73,Amanda,2022-07-22,low + bad slope - redo,,,,,,,,,15.73,Amanda
+19-May,Meuser_Farm,AMP22_0002,Phimephales,Phimephales,4.7,Misidentification-not ours,14.55,Amanda,2022-07-22,low + bad slope - redo,,,,,,,,,14.55,Amanda
+19-May,Meuser_Farm,AMP22_0003,Phimephales,Phimephales,4.5,Misidentification-not ours--possible juvenile,6.01,Amanda,2022-07-22,low + bad slope - redo,,,,,,,,,6.01,Amanda
+19-May,Meuser_Farm,AMP22_0004,Creek_Chub,Semotilus atromaculatus,7.7,Caught in culvert,114.2,AmandaAmyTeaghan,2022-06-13,,,,,,,,,,114.2,AmandaAmyTeaghan
+19-May,Meuser_Farm,AMP22_0005,Western_Blacknose_Dace,Rhinichthys obtusus,7.7,Caught near run/riffle,21.72,AmandaAmyTeaghan,2022-06-13,,,,,,,,,,21.72,AmandaAmyTeaghan
+25-May,Simms_Creek,AMP22_0006,Western_Blacknose_Dace,Rhinichthys obtusus,7.8,Caught near run/riffle,,AmandaAmyTeaghan,2022-06-13,,15.79,,,,71.68,Amy,2022-10-27,,71.68,Amy
+26-May,Simms_Creek,AMP22_0007,Western_Blacknose_Dace,Rhinichthys obtusus,8.9,Caught near run/riffle,,AmandaAmyTeaghan,2022-06-13,,27.54,,,,125.7,Amy,2022-10-27,,125.7,Amy
+26-May,Simms_Creek,AMP22_0008,Western_Blacknose_Dace,Rhinichthys obtusus,7,Caught in flowing planted water (few rocks),,AmandaAmyTeaghan,2022-06-13,,20.22,,,,67.68,Amy,2022-10-27,,67.68,Amy
+26-May,Simms_Creek,AMP22_0009,Creek_Chub,Semotilus atromaculatus,14.7,Caught in flowing planted water (few rocks),,AmandaAmyTeaghan,2022-06-13,,19.45,,,,145.4,Amy,2022-10-27,,145.4,Amy
+26-May,Simms_Creek,AMP22_0010,Western_Blacknose_Dace,Rhinichthys obtusus,7.7,Male,,AmandaAmyTeaghan,2022-06-13,,15.75,53.36,,,,,,,53.36,AmandaAmyTeaghan
+26-May,Simms_Creek,AMP22_0011,Western_Blacknose_Dace,Rhinichthys obtusus,7.6,Male,,AmandaAmyTeaghan,2022-06-13,,17.92,64.31,,,,,,,64.31,AmandaAmyTeaghan
+26-May,Simms_Creek,AMP22_0012,Western_Blacknose_Dace,Rhinichthys obtusus,8.3,Male,,AmandaAmyTeaghan,2022-06-13,,33.92,72.27,,,,,,,72.27,AmandaAmyTeaghan
+27-May,Simms_Creek,AMP22_0013,Western_Blacknose_Dace,Rhinichthys obtusus,8.4,River flooded overnight water half a foot higher than before (all Algonquin sites)-Probable male (spawning colours),,AmandaAmyTeaghan,2022-06-13,,35.71,50.24,,,,,,,50.24,AmandaAmyTeaghan
+27-May,Simms_Creek,AMP22_0014,Western_Blacknose_Dace,Rhinichthys obtusus,7.6,,,AmandaAmyTeaghan,2022-06-13,,21.78,57.92,,,,,,,57.92,AmandaAmyTeaghan
+27-May,Simms_Creek,AMP22_0015,Western_Blacknose_Dace,Rhinichthys obtusus,6.9,,,AmandaAmyTeaghan,2022-06-13,,33.87,34.11,,,,,,,34.11,AmandaAmyTeaghan
+27-May,Simms_Creek,AMP22_0016,Western_Blacknose_Dace,Rhinichthys obtusus,7.8,Badly wounded and dead when caught--flesh was starting to turn white when found--possibly killed by 30 cm fallfish that was stuck in the trap with it,,AmandaAmyTeaghan,2022-06-13,,29.62,21.64,,,,,,,21.64,AmandaAmyTeaghan
+27-May,Simms_Creek,AMP22_0017,Western_Blacknose_Dace,Rhinichthys obtusus,8.2,,,AmandaAmyTeaghan,2022-06-13,,23.11,38.78,,,,,,,38.78,AmandaAmyTeaghan
+27-May,Simms_Creek,AMP22_0018,Northern_Redbelly_Dace,Chrosomus eos,NA,Died in trap and picked up for Ben-forgot to measure before storing in ethanol,,AmandaAmyTeaghan,2022-06-13,,15.73,10.84,,,,,,,10.84,AmandaAmyTeaghan
+27-May,Simms_Creek,AMP22_0019,Western_Blacknose_Dace,Rhinichthys obtusus,8.6,,,AmandaAmyTeaghan,2022-06-13,,28.9,27.98,,,,,,,27.98,AmandaAmyTeaghan
+27-May,Simms_Creek,AMP22_0020,Western_Blacknose_Dace,Rhinichthys obtusus,8.7,,,AmandaAmyTeaghan,2022-06-13,,35.7,72.21,,,,,,,72.21,AmandaAmyTeaghan
+27-May,Simms_Creek,AMP22_0021,Western_Blacknose_Dace,Rhinichthys obtusus,8.1,,,AmandaAmyTeaghan,2022-06-13,,53.31,52.63,,,,,,,52.63,AmandaAmyTeaghan
+27-May,Costello_Creek_Mid,AMP22_0022,Creek_Chub,Semotilus atromaculatus,10.7,,,AmandaAmyTeaghan,2022-06-13,,29.57,87.46,,,,,,,87.46,AmandaAmyTeaghan
+27-May,Costello_Creek_Mid,AMP22_0023,Creek_Chub,Semotilus atromaculatus,12.8,,,AmandaAmyTeaghan,2022-06-13,,39.86,123.1,,,,,,,123.1,AmandaAmyTeaghan
+27-May,Costello_Creek_Mid,AMP22_0024,Creek_Chub,Semotilus atromaculatus,9.9,,,AmandaAmyTeaghan,2022-06-13,,54.95,71.46,,,,,,,71.46,AmandaAmyTeaghan
+27-May,Costello_Creek_Mid,AMP22_0025,Creek_Chub,Semotilus atromaculatus,12.6,,,AmandaAmyTeaghan,2022-06-13,,33.99,132.7,,,,,,,132.7,AmandaAmyTeaghan
+27-May,Costello_Creek_Mid,AMP22_0026,Creek_Chub,Semotilus atromaculatus,10.2,,,AmandaAmyTeaghan,2022-06-13,,58.38,106.3,,,,,,,106.3,AmandaAmyTeaghan
+27-May,Costello_Creek_Mid,AMP22_0027,Creek_Chub,Semotilus atromaculatus,10.3,,,AmandaAmyTeaghan,2022-06-13,,68.45,93.58,,,,,,,93.58,AmandaAmyTeaghan
+27-May,Costello_Creek_Mid,AMP22_0028,Creek_Chub,Semotilus atromaculatus,12,,51.9,Teaghan,2022-07-07,bad slopes,,98.95,,,,,,,98.95,Teaghan
+27-May,Costello_Creek_Mid,AMP22_0029,Creek_Chub,Semotilus atromaculatus,10.6,,41.51,Teaghan,2022-07-07,bad slopes,,81.67,,,,,,,81.67,Teaghan
+27-May,Costello_Creek_Mid,AMP22_0030,Creek_Chub,Semotilus atromaculatus,10.5,,24.66,Teaghan,2022-07-07,bad slopes,,69.31,,,,,,,69.31,Teaghan
+27-May,Costello_Creek_Mid,AMP22_0031,Creek_Chub,Semotilus atromaculatus,9.8,,30.48,Teaghan,2022-07-07,bad slopes,,63.18,,,,,,,63.18,Teaghan
+27-May,Costello_Creek_Mid,AMP22_0032,Creek_Chub,Semotilus atromaculatus,12.7,,43.83,Teaghan,2022-07-07,bad slopes,,75.72,,,,,,,75.72,Teaghan
+27-May,Costello_Creek_Start,AMP22_0033,Creek_Chub,Semotilus atromaculatus,9.6,,52.94,Teaghan,2022-07-07,bad slopes,,49.41,,,,,,,49.41,Teaghan
+30-May,Simms_Creek,AMP22_0034,Creek_Chub,Semotilus atromaculatus,7.1,,11.85,Teaghan,2022-07-07,bad slopes,,36.64,Amanda,,,,,,36.64,Amanda
+30-May,Simms_Creek,AMP22_0035,Creek_Chub,Semotilus atromaculatus,6.6,,14.39,Teaghan,2022-07-07,bad slopes,,45.31,Amanda,,,,,,45.31,Amanda
+30-May,Simms_Creek,AMP22_0036,Creek_Chub,Semotilus atromaculatus,7.5,,33.41,Teaghan,2022-07-07,bad slopes,,35.54,Amanda,,,,,,35.54,Amanda
+30-May,Simms_Creek,AMP22_0037,Creek_Chub,Semotilus atromaculatus,6.4,,20.08,Teaghan,2022-07-07,bad slopes,,32.8,Amanda,,,,,,32.8,Amanda
+30-May,Simms_Creek,AMP22_0038,Creek_Chub,Semotilus atromaculatus,8.1,,33.94,Teaghan,2022-07-07,bad slopes,,18.25,Amanda,,,,,,18.25,Amanda
+30-May,Simms_Creek,AMP22_0039,Creek_Chub,Semotilus atromaculatus,7.4,,26.21,Teaghan,2022-07-07,bad slopes,,22.55,Amanda,,,,,,22.55,Amanda
+30-May,Simms_Creek,AMP22_0040,Creek_Chub,Semotilus atromaculatus,6.3,,23.82,Teaghan,2022-07-20,,,,,,,,,,23.82,Teaghan
+30-May,Simms_Creek,AMP22_0041,Western_Blacknose_Dace,Rhinichthys obtusus,7.3,,54.84,Teaghan,2022-07-20,,,,,,,,,,54.84,Teaghan
+30-May,Simms_Creek,AMP22_0042,Western_Blacknose_Dace,Rhinichthys obtusus,8.3,Probable female (gravid),23.84,Teaghan,2022-07-20,,,,,,,,,,23.84,Teaghan
+30-May,Simms_Creek,AMP22_0043,Western_Blacknose_Dace,Rhinichthys obtusus,8.2,Probable male (spawning colours),47.86,Teaghan,2022-07-20,,,,,,,,,,47.86,Teaghan
+30-May,Simms_Creek,AMP22_0044,Creek_Chub,Semotilus atromaculatus,6.5,,123.5,Teaghan,2022-07-20,,,,,,,,,,123.5,Teaghan
+30-May,Simms_Creek,AMP22_0045,Creek_Chub,Semotilus atromaculatus,9.7,,31.03,Teaghan,2022-07-20,,,,,,,,,,31.03,Teaghan
+30-May,Simms_Creek,AMP22_0046,Western_Blacknose_Dace,Rhinichthys obtusus,8.2,,38.51,Teaghan,2022-07-20,,,,,,,,,,38.51,Teaghan
+30-May,Simms_Creek,AMP22_0047,Creek_Chub,Semotilus atromaculatus,6.6,,25.34,Teaghan,2022-07-20,,,,,,,,,,25.34,Teaghan
+30-May,Simms_Creek,AMP22_0048,Creek_Chub,Semotilus atromaculatus,6.3,,20.11,Teaghan,2022-07-20,,,,,,,,,,20.11,Teaghan
+30-May,Simms_Creek,AMP22_0049,Western_Blacknose_Dace,Rhinichthys obtusus,8.2,Probable male (spawning colours),56.75,Teaghan,2022-07-20,,,,,,,,,,56.75,Teaghan
+30-May,Simms_Creek,AMP22_0050,Western_Blacknose_Dace,Rhinichthys obtusus,8.2,Probable male (spawning colours),59.16,Teaghan,2022-07-20,,,,,,,,,,59.16,Teaghan
+30-May,Simms_Creek,AMP22_0051,Western_Blacknose_Dace,Rhinichthys obtusus,8.6,Probable female (gravid),57.69,Teaghan,2022-07-20,,,,,,,,,,57.69,Teaghan
+30-May,Simms_Creek,AMP22_0052,Western_Blacknose_Dace,Rhinichthys obtusus,8.6,Probable female (gravid),43.7,Amanda,2022-07-22,,,,,,,,,,43.7,Amanda
+30-May,Simms_Creek,AMP22_0053,Creek_Chub,Semotilus atromaculatus,7.5,,23.85,Amanda,2022-07-22,,,,,,,,,,23.85,Amanda
+30-May,Simms_Creek,AMP22_0054,Western_Blacknose_Dace,Rhinichthys obtusus,7.4,Probable male (spawning colours),22.05,Amanda,2022-07-22,,,,,,,,,,22.05,Amanda
+30-May,Simms_Creek,AMP22_0055,Western_Blacknose_Dace,Rhinichthys obtusus,7.7,Probable male (spawning colours),38.45,Amanda,2022-07-22,,,,,,,,,,38.45,Amanda
+30-May,Simms_Creek,AMP22_0056,Western_Blacknose_Dace,Rhinichthys obtusus,7.8,Probable female (gravid),28.02,Amanda,2022-08-02,,,,,,,,,,28.02,Amanda
+30-May,Simms_Creek,AMP22_0057,Western_Blacknose_Dace,Rhinichthys obtusus,8.4,Probable female (gravid),23.48,Amanda,2022-08-02,,,,,,,,,,23.48,Amanda
+30-May,Simms_Creek,AMP22_0058,Creek_Chub,Semotilus atromaculatus,7.7,,58.73,Teaghan,2022-08-02,,,,,,,,,,58.73,Teaghan
+30-May,Simms_Creek,AMP22_0059,Creek_Chub,Semotilus atromaculatus,9.8,Probable female (gravid),63.16,Teaghan,2022-08-02,,,,,,,,,,63.16,Teaghan
+30-May,Simms_Creek,AMP22_0060,Creek_Chub,Semotilus atromaculatus,7.9,Probable female (gravid),96.58,Teaghan,2022-08-02,,,,,,,,,,96.58,Teaghan
+30-May,Simms_Creek,AMP22_0061,Creek_Chub,Semotilus atromaculatus,10.6,,81.69,Teaghan,2022-08-02,,,,,,,,,,81.69,Teaghan
+30-May,Simms_Creek,AMP22_0062,Western_Blacknose_Dace,Rhinichthys obtusus,6.7,Probable female (gravid),24.37,Teaghan,2022-08-02,,,,,,,,,,24.37,Teaghan
+30-May,Simms_Creek,AMP22_0063,Creek_Chub,Semotilus atromaculatus,7.1,,24.58,Teaghan,2022-08-02,,,,,,,,,,24.58,Teaghan
+30-May,Simms_Creek,AMP22_0064,Creek_Chub,Semotilus atromaculatus,6.6,,46.31,Teaghan,2022-08-02,,,,,,,,,,46.31,Teaghan
+30-May,Simms_Creek,AMP22_0065,Creek_Chub,Semotilus atromaculatus,7.9,,68.71,Teaghan,2022-08-02,,,,,,,,,,68.71,Teaghan
+30-May,Simms_Creek,AMP22_0066,Creek_Chub,Semotilus atromaculatus,13.8,On ice,127.3,Teaghan,2022-08-02,,,,,,,,,,127.3,Teaghan
+30-May,Simms_Creek,AMP22_0067,Creek_Chub,Semotilus atromaculatus,13.2,On ice,168.3,Teaghan,2022-08-02,,,,,,,,,,168.3,Teaghan
+30-May,Simms_Creek,AMP22_0068,Creek_Chub,Semotilus atromaculatus,15.7,On ice--Probable male (spawning colours),218.6,Teaghan,2022-08-02,,,,,,,,,,218.6,Teaghan
+31-May,Simms_Creek,AMP22_0069,Northern_Redbelly_Dace,Chrosomus eos,7.3,Died in trap with crayfish--For Ben,30.76,Teaghan,2022-08-02,,,,,,,,,,30.76,Teaghan
+31-May,Simms_Creek,AMP22_0070,Creek_Chub,Semotilus atromaculatus,12.2,,35.41,Teaghan,2022-08-02,,,,,,,,,,35.41,Teaghan
+31-May,Simms_Creek,AMP22_0071,Creek_Chub,Semotilus atromaculatus,9.8,,155.6,Teaghan,2022-08-02,,,,,,,,,,155.6,Teaghan
+31-May,Simms_Creek,AMP22_0072,Creek_Chub,Semotilus atromaculatus,11,,148.7,Teaghan,2022-08-02,,,,,,,,,,148.7,Teaghan
+31-May,Simms_Creek,AMP22_0073,Creek_Chub,Semotilus atromaculatus,11.1,,105,Teaghan,2022-08-02,,,,,,,,,,105,Teaghan
+31-May,Simms_Creek,AMP22_0074,Creek_Chub,Semotilus atromaculatus,11.5,,52.11,Teaghan,2022-08-02,,,,,,,,,,52.11,Teaghan
+31-May,Simms_Creek,AMP22_0075,Creek_Chub,Semotilus atromaculatus,11.7,,54.74,Teaghan,2022-08-02,,,,,,,,,,54.74,Teaghan
+31-May,Simms_Creek,AMP22_0076,Western_Blacknose_Dace,Rhinichthys obtusus,7.7,Probable male (spawning colours),83.92,Teaghan,2022-08-02,,,,,,,,,,83.92,Teaghan
+31-May,Simms_Creek,AMP22_0077,Western_Blacknose_Dace,Rhinichthys obtusus,8.2,Probable male (spawning colours),97.85,Teaghan,2022-08-02,,,,,,,,,,97.85,Teaghan
+31-May,Simms_Creek,AMP22_0078,Western_Blacknose_Dace,Rhinichthys obtusus,7.5,Probable male (spawning colours),110.7,Teaghan,2022-08-02,,,,,,,,,,110.7,Teaghan
+31-May,Simms_Creek,AMP22_0079,Creek_Chub,Semotilus atromaculatus,13.9,On ice--Probable male (spawning colours),75.78,Teaghan,2022-08-02,,,,,,,,,,75.78,Teaghan
+20-Jun,Saugeen_River13,AMP22_0080,Creek_Chub,Semotilus atromaculatus,9.8,Heavily parasitized small black kernels and white cyst-like growths--took right pectoral because the other was covered with white cyst,43.54,Teaghan,2022-08-04,,,,,,,,,,43.54,Teaghan
+20-Jun,Saugeen_River13,AMP22_0081,Common_Shiner,Luxilus cornutus,6.1,Black kernel parasite,45.04,Teaghan,2022-08-04,,,,,,,,,,45.04,Teaghan
+20-Jun,Saugeen_River13,AMP22_0082,Common_Shiner,Luxilus cornutus,5.6,Black kernel parasite,12.23,Teaghan,2022-08-04,ask Liz about slope,21.46,13.22,Amanda,2022-10-28,91.26,Amy,2022-12-07,,91.26,Amy
+20-Jun,Saugeen_River13,AMP22_0083,Common_Shiner,Luxilus cornutus,8.5,Black kernel parasite,40.18,Teaghan,2022-08-04,,94.6,,,,,,,,40.18,Teaghan
+20-Jun,Saugeen_River13,AMP22_0084,Creek_Chub,Semotilus atromaculatus,11.1,Black kernel parasite,125.8,Teaghan,2022-08-04,,24.19,,,,,,,,125.8,Teaghan
+20-Jun,Saugeen_River13,AMP22_0085,Creek_Chub,Semotilus atromaculatus,10.4,Black kernel parasite,199.5,Teaghan,2022-08-04,,20.14,,,,,,,,199.5,Teaghan
+20-Jun,Saugeen_River13,AMP22_0086,Hornyhead_Chub,Nocomis biguttatus,7.4,Black kernel parasite,36.69,Teaghan,2022-08-04,,44.55,,,,,,,,36.69,Teaghan
+20-Jun,Saugeen_River13,AMP22_0087,Common_Shiner,Luxilus cornutus,8.5,,38.67,Teaghan,2022-08-04,,29.22,,,,,,,,38.67,Teaghan
+20-Jun,Saugeen_River13,AMP22_0088,Creek_Chub,Semotilus atromaculatus,9.1,Heavily parasitized small black kernels ,,Teaghan,2022-08-04,,18.85,,,,,,,,18.85,Teaghan
+23-Jun,Marden_Creek,AMP22_0089,Western_Blacknose_Dace,Rhinichthys obtusus,5.7,,,Teaghan,2022-08-04,,20.67,,,,,,,,20.67,Teaghan
+23-Jun,Marden_Creek,AMP22_0090,Western_Blacknose_Dace,Rhinichthys obtusus,5.1,,,Teaghan,2022-08-04,,74.49,16.95,Amanda,2022-10-28,81.45,Amy,2022-12-07,,81.45,Amy
+23-Jun,Marden_Creek,AMP22_0091,Western_Blacknose_Dace,Rhinichthys obtusus,6,,,Teaghan,2022-08-04,,25.46,,,,,,,,25.46,Teaghan
+23-Jun,Marden_Creek,AMP22_0092,Western_Blacknose_Dace,Rhinichthys obtusus,5.4,,,Teaghan,2022-08-04,,25.47,27.16,Amanda,2022-10-28,,,,,27.16,Amanda
+23-Jun,Marden_Creek,AMP22_0093,Western_Blacknose_Dace,Rhinichthys obtusus,4.5,,,Teaghan,2022-08-04,,162.1,22.73,Amanda,2022-10-28,,,,,22.73,Amanda
+23-Jun,Marden_Creek,AMP22_0094,Western_Blacknose_Dace,Rhinichthys obtusus,5,,,Teaghan,2022-08-04,,78.16,,,,,,,,78.16,Teaghan
+23-Jun,Marden_Creek,AMP22_0095,Western_Blacknose_Dace,Rhinichthys obtusus,4.8,,,Teaghan,2022-08-04,,18.77,,,,,,,,18.77,Teaghan
+23-Jun,Marden_Creek,AMP22_0096,Western_Blacknose_Dace,Rhinichthys obtusus,7.4,,,Teaghan,2022-08-04,,74.49,,,,,,,,74.49,Teaghan
+23-Jun,Marden_Creek,AMP22_0097,Western_Blacknose_Dace,Rhinichthys obtusus,5.4,,,Teaghan,2022-08-04,,25.46,,,,,,,,25.46,Teaghan
+23-Jun,Marden_Creek,AMP22_0098,Western_Blacknose_Dace,Rhinichthys obtusus,5.2,,,Teaghan,2022-08-04,,25.47,17.11,Amanda,2022-10-28,64.71,Amy,2022-12-07,,64.71,Amy
+23-Jun,Marden_Creek,AMP22_0099,Western_Blacknose_Dace,Rhinichthys obtusus,5.1,,,Teaghan,2022-08-04,,162.1,33.73,Amanda,2022-10-28,,,,,33.73,Amanda
+23-Jun,Marden_Creek,AMP22_0100,Western_Blacknose_Dace,Rhinichthys obtusus,6.2,,,Teaghan,2022-08-04,,78.16,,,,,,,,78.16,Teaghan
+23-Jun,Marden_Creek,AMP22_0101,Western_Blacknose_Dace,Rhinichthys obtusus,6.3,,,Teaghan,2022-08-04,,26.54,,,,,,,,26.54,Teaghan
+23-Jun,Marden_Creek,AMP22_0102,Western_Blacknose_Dace,Rhinichthys obtusus,5.3,,,Teaghan,2022-08-04,,41.64,,,,,,,,41.64,Teaghan
+23-Jun,Marden_Creek,AMP22_0103,Western_Blacknose_Dace,Rhinichthys obtusus,4.6,,,Teaghan,2022-08-04,,26.37,,,,,,,,26.37,Teaghan
+23-Jun,Marden_Creek,AMP22_0104,Western_Blacknose_Dace,Rhinichthys obtusus,8.4,Probable male (spawning colours),119.5,Amanda,2022-08-05,,,,,,,,,,119.5,Amanda
+23-Jun,Marden_Creek,AMP22_0105,Western_Blacknose_Dace,Rhinichthys obtusus,7.2,,34.49,Amanda,2022-08-05,,,,,,,,,,34.49,Amanda
+23-Jun,Marden_Creek,AMP22_0106,Western_Blacknose_Dace,Rhinichthys obtusus,4.9,,31.74,Amanda,2022-08-05,,,,,,,,,,31.74,Amanda
+23-Jun,Marden_Creek,AMP22_0107,Western_Blacknose_Dace,Rhinichthys obtusus,4.5,,33.57,Amanda,2022-08-05,,,,,,,,,,33.57,Amanda
+23-Jun,Marden_Creek,AMP22_0108,Western_Blacknose_Dace,Rhinichthys obtusus,5.7,,30.93,Amanda,2022-08-05,,,,,,,,,,30.93,Amanda
+23-Jun,Marden_Creek,AMP22_0109,Western_Blacknose_Dace,Rhinichthys obtusus,5.2,,27.45,Amanda,2022-08-05,,,,,,,,,,27.45,Amanda
+23-Jun,Marden_Creek,AMP22_0110,Western_Blacknose_Dace,Rhinichthys obtusus,8,,72.61,Amanda,2022-08-05,,,,,,,,,,72.61,Amanda
+23-Jun,Marden_Creek,AMP22_0111,Western_Blacknose_Dace,Rhinichthys obtusus,5.8,,92.58,Amanda,2022-08-05,,,,,,,,,,92.58,Amanda
+23-Jun,Marden_Creek,AMP22_0112,Western_Blacknose_Dace,Rhinichthys obtusus,5.4,,34.5,Amanda,2022-08-05,,,,,,,,,,34.5,Amanda
+23-Jun,Marden_Creek,AMP22_0113,Western_Blacknose_Dace,Rhinichthys obtusus,4.6,,49.5,Amanda,2022-08-05,,,,,,,,,,49.5,Amanda
+23-Jun,Marden_Creek,AMP22_0114,Western_Blacknose_Dace,Rhinichthys obtusus,7.6,,80.4,Amanda,2022-08-05,,,,,,,,,,80.4,Amanda
+23-Jun,Marden_Creek,AMP22_0115,Western_Blacknose_Dace,Rhinichthys obtusus,7,,56.41,Amanda,2022-08-05,,,,,,,,,,56.41,Amanda
+23-Jun,Marden_Creek,AMP22_0116,Western_Blacknose_Dace,Rhinichthys obtusus,7.9,Back broken possibly during capture,52.79,Amanda,2022-08-05,,,,,,,,,,52.79,Amanda
+23-Jun,Marden_Creek,AMP22_0117,Western_Blacknose_Dace,Rhinichthys obtusus,6.2,,28.65,Amanda,2022-08-05,,,,,,,,,,28.65,Amanda
+23-Jun,Marden_Creek,AMP22_0118,Western_Blacknose_Dace,Rhinichthys obtusus,5.8,,13.59,Amanda,2022-08-05,,47.44,,,,,,,,47.44,Amanda
+23-Jun,Marden_Creek,AMP22_0119,Creek_Chub,Semotilus atromaculatus,4.6,,14.76,Amanda,2022-08-05,,20.38,12.75,Amanda,,44.86,Amy,2022-12-07,,44.86,Amy
+23-Jun,Marden_Creek,AMP22_0120,Creek_Chub,Semotilus atromaculatus,4.5,,7.67,Amanda,2022-08-05,,9.868,19.23,Amanda,,,,,,19.23,Amanda
+23-Jun,Marden_Creek,AMP22_0121,Creek_Chub,Semotilus atromaculatus,4.7,,11.53,Amanda,2022-08-05,,10.72,28.07,Amanda,,,,,,28.07,Amanda
+23-Jun,Marden_Creek,AMP22_0122,Creek_Chub,Semotilus atromaculatus,6.5,,36.73,Amanda,2022-08-05,,,,,,,,,,36.73,Amanda
+23-Jun,Marden_Creek,AMP22_0123,Creek_Chub,Semotilus atromaculatus,5.3,,15.84,Amanda,2022-08-05,,21.21,28.86,Amanda,,,,,,21.21,Amanda
+23-Jun,Marden_Creek,AMP22_0124,Creek_Chub,Semotilus atromaculatus,5.3,,17.39,Amanda,2022-08-05,,30.16,14.82,Amanda,,80.22,Amy,2022-12-07,,80.22,Amy
+23-Jun,Marden_Creek,AMP22_0125,Creek_Chub,Semotilus atromaculatus,5.7,,21.32,Amanda,2022-08-05,,,,,,,,,,21.32,Amanda
+23-Jun,Marden_Creek,AMP22_0126,Creek_Chub,Semotilus atromaculatus,5.7,,12.89,Amanda,2022-08-05,,17.39,22.33,Amanda,,,,,,22.33,Amanda
+23-Jun,Marden_Creek,AMP22_0127,Creek_Chub,Semotilus atromaculatus,6.6,,26.41,Amanda,2022-08-05,,,,,,,,,,26.41,Amanda
+23-Jun,Marden_Creek,AMP22_0128,Creek_Chub,Semotilus atromaculatus,5.5,,,Teaghan,2022-08-08,,25.39,,,,,,,,25.39,Teaghan
+23-Jun,Marden_Creek,AMP22_0129,Creek_Chub,Semotilus atromaculatus,5.7,,,Teaghan,2022-08-08,,13.8,14.61,Amanda,,91.15,Amy,2022-12-07,,91.15,Amy
+23-Jun,Marden_Creek,AMP22_0130,Creek_Chub,Semotilus atromaculatus,4.9,,,Teaghan,2022-08-08,,10.37,18.26,Amanda,,,,,,18.26,Amanda
+23-Jun,Marden_Creek,AMP22_0131,Creek_Chub,Semotilus atromaculatus,6.2,,,Teaghan,2022-08-08,,24.7,,,,,,,,24.7,Teaghan
+23-Jun,Marden_Creek,AMP22_0132,Creek_Chub,Semotilus atromaculatus,5,,,Teaghan,2022-08-08,,16.8,17,Amanda,,112.2,Amy,2022-12-07,,112.2,Amy
+23-Jun,Marden_Creek,AMP22_0133,Creek_Chub,Semotilus atromaculatus,5.2,,,Teaghan,2022-08-08,,30.63,,,,,,,,30.63,Teaghan
+23-Jun,Marden_Creek,AMP22_0134,Creek_Chub,Semotilus atromaculatus,5.6,,,Teaghan,2022-08-08,,14.85,10.96,Amanda,,112.4,Amy,2022-12-07,,112.4,Amy
+23-Jun,Marden_Creek,AMP22_0135,Creek_Chub,Semotilus atromaculatus,6.2,,,Teaghan,2022-08-08,,9.606,14.01,Amanda,,173.1,Amy,2022-12-07,,173.1,Amy
+23-Jun,Marden_Creek,AMP22_0136,Creek_Chub,Semotilus atromaculatus,6.5,,,Teaghan,2022-08-08,,20.77,19.89,Amanda,,138.8,Amy,2022-12-07,,138.8,Amy
+23-Jun,Marden_Creek,AMP22_0137,Creek_Chub,Semotilus atromaculatus,5.8,,,Teaghan,2022-08-08,,36.98,,,,,,,,36.98,Teaghan
+23-Jun,Marden_Creek,AMP22_0138,Creek_Chub,Semotilus atromaculatus,6.1,,,Teaghan,2022-08-08,,13.19,10.89,Amanda,,122.6,Amy,2022-12-07,,122.6,Amy
+23-Jun,Marden_Creek,AMP22_0139,Creek_Chub,Semotilus atromaculatus,6,,,Teaghan,2022-08-08,,7.243,15.67,Amanda,,139.4,Amy,2022-12-07,,139.4,Amy
+23-Jun,Marden_Creek,AMP22_0140,Creek_Chub,Semotilus atromaculatus,5.7,,,Teaghan,2022-08-08,,29.02,,,,,,,,29.02,Teaghan
+23-Jun,Marden_Creek,AMP22_0141,Creek_Chub,Semotilus atromaculatus,6.3,,,Teaghan,2022-08-08,,10.37,17.49,Amanda,,,,,,17.49,Amanda
+23-Jun,Marden_Creek,AMP22_0142,Creek_Chub,Semotilus atromaculatus,7.8,,,Teaghan,2022-08-08,,51.51,,,,,,,,51.51,Teaghan
+23-Jun,Marden_Creek,AMP22_0143,Creek_Chub,Semotilus atromaculatus,5.9,,,Teaghan,2022-08-08,,22.85,,,,,,,,22.85,Teaghan
+23-Jun,Marden_Creek,AMP22_0144,Creek_Chub,Semotilus atromaculatus,6.2,,,Teaghan,2022-08-08,,24.34,19.37,Amanda,,,,,,19.37,Amanda
+23-Jun,Marden_Creek,AMP22_0145,Creek_Chub,Semotilus atromaculatus,5.8,,,Teaghan,2022-08-08,,35.68,,,,,,,,35.68,Teaghan
+23-Jun,Marden_Creek,AMP22_0146,Creek_Chub,Semotilus atromaculatus,6.6,,,Teaghan,2022-08-08,,19.57,23.49,Amanda,,,,,,23.49,Amanda
+23-Jun,Marden_Creek,AMP22_0147,Creek_Chub,Semotilus atromaculatus,6.1,,,Teaghan,2022-08-08,,19.66,10.5,Amanda,2022-11-08,110.5,Amy,2022-12-07,,110.5,Amy
+23-Jun,Marden_Creek,AMP22_0148,Creek_Chub,Semotilus atromaculatus,5.5,,,Teaghan,2022-08-08,,16.47,10.54,Amanda,2022-11-08,123.3,Amy,2022-12-07,,123.3,Amy
+23-Jun,Marden_Creek,AMP22_0149,Common_Shiner,Luxilus cornutus,6.9,,,Teaghan,2022-08-08,,26.7,39.36,Amanda,2022-11-08,,,,,39.36,Amanda
+23-Jun,Marden_Creek,AMP22_0150,Common_Shiner,Luxilus cornutus,5.1,,,Teaghan,2022-08-08,,12.8,17.85,Amanda,2022-11-08,74.93,Amy,2022-12-07,,74.93,Amy
+23-Jun,Marden_Creek,AMP22_0151,Common_Shiner,Luxilus cornutus,4.7,,,Teaghan,2022-08-08,,10.85,14.22,Amanda,2022-11-08,91.6,Amy,2022-12-07,,91.6,Amy
+23-Jun,Marden_Creek,AMP22_0152,Common_Shiner,Luxilus cornutus,5.5,,6.29,Amy,2022-09-09,,,38.9,Amy,2022-11-03,,,,,38.9,Amy
+23-Jun,Marden_Creek,AMP22_0153,Common_Shiner,Luxilus cornutus,5,,9.67,Amy,2022-09-09,,,14.85,Amy,2022-11-03,101.7,Amy,2022-12-01,,101.7,Amy
+23-Jun,Marden_Creek,AMP22_0154,Common_Shiner,Luxilus cornutus,4.9,,12.61,Amy,2022-09-09,,,28.22,Amy,2022-11-03,170.1,Amy,2022-12-01,,170.1,Amy
+29-Jun,Eramosa_River,AMP22_0155,Rosyface_Shiner,Notropis rubellus,7,,71.83,Amy,2022-09-09,,,,,,,,,,71.83,Amy
+29-Jun,Eramosa_River,AMP22_0156,Rosyface_Shiner,Notropis rubellus,8.4,,19.96,Amy,2022-09-09,,,,,,,,,,19.96,Amy
+29-Jun,Eramosa_River,AMP22_0157,Rosyface_Shiner,Notropis rubellus,6,,31.66,Amy,2022-09-09,contaminated ,,38.9,Amy,2022-11-03,103.5,Amy,2022-12-01,,103.5,Amy
+29-Jun,Eramosa_River,AMP22_0158,Rosyface_Shiner,Notropis rubellus,6.1,,6.43,Amy,2022-09-09,,,14.85,Amy,2022-11-03,111.4,Amy,2022-12-01,,111.4,Amy
+29-Jun,Eramosa_River,AMP22_0159,Rosyface_Shiner,Notropis rubellus,8.1,,11.15,Amy,2022-09-09,,,28.22,Amy,2022-11-03,59.34,Amy,2022-12-01,,59.34,Amy
+29-Jun,Eramosa_River,AMP22_0160,Rosyface_Shiner,Notropis rubellus,6.3,,13.8,Amy,2022-09-09,,,,,,98.98,Amy,2022-12-01,,98.98,Amy
+29-Jun,Eramosa_River,AMP22_0161,Rosyface_Shiner,Notropis rubellus,6.9,,18.98,Amy,2022-09-09,,,,,,,,,,18.98,Amy
+29-Jun,Eramosa_River,AMP22_0162,Rosyface_Shiner,Notropis rubellus,6.2,,77.52,Amanda,2022-09-15,,,,,,,,,,77.52,Amanda
+29-Jun,Eramosa_River,AMP22_0163,Rosyface_Shiner,Notropis rubellus,8.6,,29.82,Amanda,2022-09-15,,,,,,,,,,29.82,Amanda
+29-Jun,Eramosa_River,AMP22_0164,Rosyface_Shiner,Notropis rubellus,6.7,,63.34,Amanda,2022-09-15,,,,,,,,,,63.34,Amanda
+29-Jun,Eramosa_River,AMP22_0165,Rosyface_Shiner,Notropis rubellus,7.9,,83.95,Amanda,2022-09-15,,,,,,,,,,83.95,Amanda
+29-Jun,Eramosa_River,AMP22_0166,Rosyface_Shiner,Notropis rubellus,6.7,,42.65,Amanda,2022-09-15,,,,,,,,,,42.65,Amanda
+29-Jun,Eramosa_River,AMP22_0167,Rosyface_Shiner,Notropis rubellus,6.5,Female (eggs),22.17,Amanda,2022-09-15,,,,,,,,,,22.17,Amanda
+29-Jun,Eramosa_River,AMP22_0168,Rosyface_Shiner,Notropis rubellus,7,,25.55,Amanda,2022-09-15,,,,,,,,,,25.55,Amanda
+29-Jun,Eramosa_River,AMP22_0169,Rosyface_Shiner,Notropis rubellus,6.7,,24.17,Amanda,2022-09-15,,,,,,,,,,24.17,Amanda
+29-Jun,Eramosa_River,AMP22_0170,Rosyface_Shiner,Notropis rubellus,7,,28.77,Amanda,2022-09-15,,,,,,,,,,28.77,Amanda
+29-Jun,Eramosa_River,AMP22_0171,Rosyface_Shiner,Notropis rubellus,8.5,,29.61,Amanda,2022-09-15,,,,,,,,,,29.61,Amanda
+29-Jun,Eramosa_River,AMP22_0172,Rosyface_Shiner,Notropis rubellus,7,,101.4,Amanda,2022-09-15,,,,,,,,,,101.4,Amanda
+29-Jun,Eramosa_River,AMP22_0173,Rosyface_Shiner,Notropis rubellus,8.7,,78.2,Amanda,2022-09-15,,,,,,,,,,78.2,Amanda
+29-Jun,Eramosa_River,AMP22_0174,Rosyface_Shiner,Notropis rubellus,6.7,,96.43,Amanda,2022-09-15,,,,,,,,,,96.43,Amanda
+29-Jun,Eramosa_River,AMP22_0175,Rosyface_Shiner,Notropis rubellus,8.6,,60.03,Amanda,2022-09-15,,,,,,,,,,60.03,Amanda
+29-Jun,Eramosa_River,AMP22_0176,Rosyface_Shiner,Notropis rubellus,8.3,,103.7,Amanda,2022-09-15,,,,,,,,,,103.7,Amanda
+29-Jun,Eramosa_River,AMP22_0177,Rosyface_Shiner,Notropis rubellus,8.3,,52.69,Amanda,2022-09-15,,,,,,,,,,52.69,Amanda
+29-Jun,Eramosa_River,AMP22_0178,Rosyface_Shiner,Notropis rubellus,6.9,,17.21,Amanda,2022-09-15,"leaving, in Plate 1",,,,,,,,,17.21,Amanda
+29-Jun,Eramosa_River,AMP22_0179,Rosyface_Shiner,Notropis rubellus,7.3,,94.26,Amanda,2022-09-15,,,,,,,,,,94.26,Amanda
+29-Jun,Eramosa_River,AMP22_0180,Rosyface_Shiner,Notropis rubellus,6.7,,40.9,Amanda,2022-09-15,,,,,,,,,,40.9,Amanda
+29-Jun,Eramosa_River,AMP22_0181,Rosyface_Shiner,Notropis rubellus,6.7,,148.2,Amanda,2022-09-15,,,,,,,,,,148.2,Amanda
+29-Jun,Eramosa_River,AMP22_0182,Rosyface_Shiner,Notropis rubellus,8.3,,102.4,Amanda,2022-09-15,,,,,,,,,,102.4,Amanda
+29-Jun,Eramosa_River,AMP22_0183,Rosyface_Shiner,Notropis rubellus,6.4,,63.07,Amanda,2022-09-15,,,,,,,,,,63.07,Amanda
+29-Jun,Eramosa_River,AMP22_0184,Rosyface_Shiner,Notropis rubellus,6.8,,29.77,Amanda,2022-09-15,,,,,,,,,,29.77,Amanda
+29-Jun,Eramosa_River,AMP22_0185,River_Chub,Nocomis micropogon,7.7,,78.88,Amanda,2022-09-15,,,,,,,,,,78.88,Amanda
+29-Jun,Eramosa_River,AMP22_0186,River_Chub,Nocomis micropogon,7.5,,74.09,Amanda,2022-09-15,,,,,,,,,,74.09,Amanda
+29-Jun,Eramosa_River,AMP22_0187,River_Chub,Nocomis micropogon,10.6,Probable male (spawning colours),130.3,Amanda,2022-09-15,,,,,,,,,,130.3,Amanda
+29-Jun,Eramosa_River,AMP22_0188,River_Chub,Nocomis micropogon,8.6,,62.31,Amanda,2022-09-15,,,,,,,,,,62.31,Amanda
+29-Jun,Eramosa_River,AMP22_0189,River_Chub,Nocomis micropogon,9.1,,100.2,Amanda,2022-09-15,,,,,,,,,,100.2,Amanda
+29-Jun,Eramosa_River,AMP22_0190,River_Chub,Nocomis micropogon,6.7,,50.69,Amanda,2022-09-15,,,,,,,,,,50.69,Amanda
+29-Jun,Eramosa_River,AMP22_0191,River_Chub,Nocomis micropogon,8.4,,62.04,Amanda,2022-09-15,,,,,,,,,,62.04,Amanda
+29-Jun,Eramosa_River,AMP22_0192,River_Chub,Nocomis micropogon,7.4,,52.28,Amanda,2022-09-15,,,,,,,,,,52.28,Amanda
+29-Jun,Eramosa_River,AMP22_0193,River_Chub,Nocomis micropogon,10.8,,67.73,Amanda,2022-09-15,,,,,,,,,,67.73,Amanda
+29-Jun,Eramosa_River,AMP22_0194,River_Chub,Nocomis micropogon,11.8,,82.32,Amanda,2022-09-15,,,,,,,,,,82.32,Amanda
+29-Jun,Eramosa_River,AMP22_0195,River_Chub,Nocomis micropogon,13.4,In bag,62.61,Amanda,2022-09-15,,,,,,,,,,62.61,Amanda
+29-Jun,Eramosa_River,AMP22_0196,Creek_Chub,Semotilus atromaculatus,8.8,,69.95,Amanda,2022-09-15,,,,,,,,,,69.95,Amanda
+29-Jun,Eramosa_River,AMP22_0197,Creek_Chub,Semotilus atromaculatus,9.7,,73.22,Amanda,2022-09-15,,,,,,,,,,73.22,Amanda
+29-Jun,Eramosa_River,AMP22_0198,Common_Shiner,Luxilus cornutus,6.8,Potenial juvenile ,19.18,Amanda,2022-09-15,,,,,,,,,,19.18,Amanda
+29-Jun,Eramosa_River,AMP22_0199,Common_Shiner,Luxilus cornutus,9.2,,43.11,Amanda,2022-09-15,,,,,,,,,,43.11,Amanda
+29-Jun,Eramosa_River,AMP22_0200,Common_Shiner,Luxilus cornutus,9.9,,81.14,Amanda,2022-09-15,,,,,,,,,,81.14,Amanda
+29-Jun,Eramosa_River,AMP22_0201,Common_Shiner,Luxilus cornutus,6.9,,21.42,Amanda,2022-09-15,,,,,,,,,,21.42,Amanda
+29-Jun,Eramosa_River,AMP22_0202,Common_Shiner,Luxilus cornutus,9.7,,74.6,Amanda,2022-09-15,,,,,,,,,,74.6,Amanda
+29-Jun,Eramosa_River,AMP22_0203,Common_Shiner,Luxilus cornutus,8.9,,88.45,Amanda,2022-09-15,,,,,,,,,,88.45,Amanda
+29-Jun,Eramosa_River,AMP22_0204,Common_Shiner,Luxilus cornutus,8.9,,54.12,Amanda,2022-09-15,,,,,,,,,,54.12,Amanda
+29-Jun,Eramosa_River,AMP22_0205,Common_Shiner,Luxilus cornutus,9,,87.4,Amanda,2022-09-15,,,,,,,,,,87.4,Amanda
+29-Jun,Eramosa_River,AMP22_0206,Common_Shiner,Luxilus cornutus,9.5,,67.38,Amanda,2022-09-15,,,,,,,,,,67.38,Amanda
+29-Jun,Eramosa_River,AMP22_0207,Common_Shiner,Luxilus cornutus,10.2,,23.26,Amanda,2022-09-15,,,,,,,,,,23.26,Amanda
+29-Jun,Eramosa_River,AMP22_0208,Common_Shiner,Luxilus cornutus,8.2,,29.15,Amanda,2022-09-15,,,,,,,,,,29.15,Amanda
+29-Jun,Eramosa_River,AMP22_0209,Common_Shiner,Luxilus cornutus,14.5,Chunkaay (in bag),118.5,Amanda,2022-09-15,,,,,,,,,,118.5,Amanda
+29-Jun,Eramosa_River,AMP22_0210,Common_Shiner,Luxilus cornutus,10.7,,67.22,Amanda,2022-09-15,,,,,,,,,,67.22,Amanda
+29-Jun,Eramosa_River,AMP22_0211,Common_Shiner,Luxilus cornutus,7.8,,59.99,Amanda,2022-09-15,,,,,,,,,,59.99,Amanda
+29-Jun,Eramosa_River,AMP22_0212,Common_Shiner,Luxilus cornutus,8.2,,29.87,Amanda,2022-09-15,,,,,,,,,,29.87,Amanda
+29-Jun,Eramosa_River,AMP22_0213,Common_Shiner,Luxilus cornutus,9.6,,47.33,Amanda,2022-09-15,,,,,,,,,,47.33,Amanda
+29-Jun,Eramosa_River,AMP22_0214,Common_Shiner,Luxilus cornutus,9.4,,50.21,Amanda,2022-09-15,,,,,,,,,,50.21,Amanda
+29-Jun,Eramosa_River,AMP22_0215,Common_Shiner,Luxilus cornutus,9.9,,51.28,Amanda,2022-09-15,,,,,,,,,,51.28,Amanda
+29-Jun,Eramosa_River,AMP22_0216,Common_Shiner,Luxilus cornutus,9.7,,55.71,Amanda,2022-09-15,,,,,,,,,,55.71,Amanda
+29-Jun,Eramosa_River,AMP22_0217,Common_Shiner,Luxilus cornutus,9.5,,58.74,Amanda,2022-09-15,,,,,,,,,,58.74,Amanda
+29-Jun,Eramosa_River,AMP22_0218,Common_Shiner,Luxilus cornutus,9.6,,64.84,Amanda,2022-09-15,,,,,,,,,,64.84,Amanda
+29-Jun,Eramosa_River,AMP22_0219,Common_Shiner,Luxilus cornutus,9.4,,57.93,Amanda,2022-09-15,,,,,,,,,,57.93,Amanda
+29-Jun,Eramosa_River,AMP22_0220,Common_Shiner,Luxilus cornutus,9.9,,45.76,Amanda,2022-09-15,,,,,,,,,,45.76,Amanda
+29-Jun,Eramosa_River,AMP22_0221,Common_Shiner,Luxilus cornutus,9.5,,43.75,Amanda,2022-09-15,,,,,,,,,,43.75,Amanda
+29-Jun,Eramosa_River,AMP22_0222,Common_Shiner,Luxilus cornutus,10,,72.4,Amanda,2022-09-15,,,,,,,,,,72.4,Amanda
+29-Jun,Eramosa_River,AMP22_0223,Common_Shiner,Luxilus cornutus,9.3,,47.38,Amanda,2022-09-15,,,,,,,,,,47.38,Amanda
+29-Jun,Eramosa_River,AMP22_0224,Common_Shiner,Luxilus cornutus,9.2,,53.35,Amanda,2022-09-15,,,,,,,,,,53.35,Amanda
+30-Jun,Eramosa_River,AMP22_0225,Striped_Shiner,Luxilus chrysocephalus,7.4,Misidentified initally as common shiner,38.02,Amanda,2022-09-15,,,,,,,,,,38.02,Amanda
+30-Jun,Eramosa_River,AMP22_0226,Common_Shiner,Luxilus cornutus,7.2,,44.89,Amanda,2022-09-15,,,,,,,,,,44.89,Amanda
+30-Jun,Eramosa_River,AMP22_0227,Common_Shiner,Luxilus cornutus,9.8,,44.53,Amanda,2022-09-15,,,,,,,,,,44.53,Amanda
+30-Jun,Eramosa_River,AMP22_0228,River_Chub,Nocomis micropogon,6.6,,34.88,Amanda,2022-09-15,,,,,,,,,,34.88,Amanda
+30-Jun,Eramosa_River,AMP22_0229,Creek_Chub,Semotilus atromaculatus,8.3,,65.78,Amanda,2022-09-15,,,,,,,,,,65.78,Amanda
+30-Jun,Eramosa_River,AMP22_0230,Creek_Chub,Semotilus atromaculatus,8.6,,97.66,Amanda,2022-09-15,,,,,,,,,,97.66,Amanda
+30-Jun,Eramosa_River,AMP22_0231,River_Chub,Nocomis micropogon,11.9,,209,Amanda,2022-09-15,,,,,,,,,,209,Amanda
+30-Jun,Eramosa_River,AMP22_0232,River_Chub,Nocomis micropogon,7.2,,47.73,Amanda,2022-09-15,,,,,,,,,,47.73,Amanda
+30-Jun,Eramosa_River,AMP22_0233,River_Chub,Nocomis micropogon,7.1,,39.3,Amanda,2022-09-15,,,,,,,,,,39.3,Amanda
+30-Jun,Eramosa_River,AMP22_0234,River_Chub,Nocomis micropogon,9.2,,113.8,Amanda,2022-09-16,,,,,,,,,,113.8,Amanda
+30-Jun,Eramosa_River,AMP22_0235,River_Chub,Nocomis micropogon,9.7,,347.9,Amanda,2022-09-16,,,,,,,,,,347.9,Amanda
+30-Jun,Eramosa_River,AMP22_0236,River_Chub,Nocomis micropogon,8.2,,185.7,Amanda,2022-09-16,,,,,,,,,,185.7,Amanda
+30-Jun,Eramosa_River,AMP22_0237,River_Chub,Nocomis micropogon,11.6,,213,Amanda,2022-09-16,,,,,,,,,,213,Amanda
+30-Jun,Eramosa_River,AMP22_0238,River_Chub,Nocomis micropogon,9.3,,209.2,Amanda,2022-09-16,,,,,,,,,,209.2,Amanda
+30-Jun,Eramosa_River,AMP22_0239,River_Chub,Nocomis micropogon,8.4,,147,Amanda,2022-09-16,,,,,,,,,,147,Amanda
+30-Jun,Eramosa_River,AMP22_0240,River_Chub,Nocomis micropogon,10.7,,924.2,Amanda,2022-09-16,"not a mistake (the high concentration), curve looks good",,,,,,,,,924.2,Amanda
+08-Jul,Eramosa_River,AMP22_0241,Creek_Chub,Semotilus atromaculatus,8.5,,83.41,Amanda,2022-09-16,,,,,,,,,,83.41,Amanda
+08-Jul,Eramosa_River,AMP22_0242,River_Chub,Nocomis micropogon,9.3,,206.6,Amanda,2022-09-16,,,,,,,,,,206.6,Amanda
+12-Jul,Carroll_Creek,AMP22_0243,Common_Shiner,Luxilus cornutus,5.8,,45.63,Amanda,2022-09-16,,,,,,,,,,45.63,Amanda
+12-Jul,Carroll_Creek,AMP22_0244,Common_Shiner,Luxilus cornutus,5.5,,100.3,Amanda,2022-09-16,,,,,,,,,,100.3,Amanda
+12-Jul,Carroll_Creek,AMP22_0245,Common_Shiner,Luxilus cornutus,5.7,,100.2,Amanda,2022-09-16,,,,,,,,,,100.2,Amanda
+12-Jul,Carroll_Creek,AMP22_0246,Common_Shiner,Luxilus cornutus,4.7,,220.8,Amanda,2022-09-16,,,,,,,,,,220.8,Amanda
+12-Jul,Carroll_Creek,AMP22_0247,Common_Shiner,Luxilus cornutus,6.2,,166.9,Amanda,2022-09-16,,,,,,,,,,166.9,Amanda
+12-Jul,Carroll_Creek,AMP22_0248,Common_Shiner,Luxilus cornutus,6.3,,110,Amanda,2022-09-16,,,,,,,,,,110,Amanda
+12-Jul,Carroll_Creek,AMP22_0249,Common_Shiner,Luxilus cornutus,5.8,,100.4,Amanda,2022-09-16,,,,,,,,,,100.4,Amanda
+12-Jul,Carroll_Creek,AMP22_0250,Common_Shiner,Luxilus cornutus,5.7,,23.41,Amanda,2022-09-16,,,,,,,,,,23.41,Amanda
+12-Jul,Carroll_Creek,AMP22_0251,Common_Shiner,Luxilus cornutus,5.3,,112.8,Amanda,2022-09-16,,,,,,,,,,112.8,Amanda
+12-Jul,Carroll_Creek,AMP22_0252,Common_Shiner,Luxilus cornutus,5.5,,74.41,Amanda,2022-09-16,,,,,,,,,,74.41,Amanda
+12-Jul,Carroll_Creek,AMP22_0253,Common_Shiner,Luxilus cornutus,6.2,,100,Amanda,2022-09-16,,,,,,,,,,100,Amanda
+12-Jul,Carroll_Creek,AMP22_0254,Common_Shiner,Luxilus cornutus,5.1,,84.95,Amanda,2022-09-16,,,,,,,,,,84.95,Amanda
+12-Jul,Carroll_Creek,AMP22_0255,Common_Shiner,Luxilus cornutus,5.6,,125.4,Amanda,2022-09-16,,,,,,,,,,125.4,Amanda
+12-Jul,Carroll_Creek,AMP22_0256,Common_Shiner,Luxilus cornutus,6.1,,64.17,Amanda,2022-09-16,,,,,,,,,,64.17,Amanda
+12-Jul,Carroll_Creek,AMP22_0257,Common_Shiner,Luxilus cornutus,5.6,,154.1,Amanda,2022-09-16,,,,,,,,,,154.1,Amanda
+12-Jul,Carroll_Creek,AMP22_0258,Common_Shiner,Luxilus cornutus,6.3,,29.37,Amy,2022-09-19,,20.54,,,,,,,,20.54,Amy
+12-Jul,Carroll_Creek,AMP22_0259,Common_Shiner,Luxilus cornutus,6,,16.82,Amy,2022-09-19,,11.48,17.29,Amy,2022-11-03,216,Amy,2022-12-01,,216,Amy
+12-Jul,Carroll_Creek,AMP22_0260,Common_Shiner,Luxilus cornutus,6.5,,44.19,Amy,2022-09-19,,25.89,21.56,Amy,2022-11-03,,,,,21.56,Amy
+12-Jul,Carroll_Creek,AMP22_0261,Common_Shiner,Luxilus cornutus,7.4,,17.83,Amy,2022-09-19,,15.07,22.57,Amy,2022-11-03,60.21,Amy,2022-12-01,,60.21,Amy
+12-Jul,Carroll_Creek,AMP22_0262,Common_Shiner,Luxilus cornutus,6,,15.54,Amy,2022-09-19,,10.51,25.54,Amy,2022-11-03,94.41,Amy,2022-12-01,,94.41,Amy
+12-Jul,Carroll_Creek,AMP22_0263,Common_Shiner,Luxilus cornutus,5.8,,12.59,Amy,2022-09-19,,11.09,13.65,Amy,2022-11-03,127.6,Amy,2022-12-01,,127.6,Amy
+12-Jul,Carroll_Creek,AMP22_0264,Common_Shiner,Luxilus cornutus,5.8,,10.1,Amy,2022-09-19,,8.727,19.12,Amy,2022-11-03,,,,,19.12,Amy
+12-Jul,Carroll_Creek,AMP22_0265,Common_Shiner,Luxilus cornutus,5.4,,14.36,Amy,2022-09-19,,12.94,9.734,Amy,2022-11-03,118.9,Amy,2022-12-01,,118.9,Amy
+12-Jul,Carroll_Creek,AMP22_0266,Common_Shiner,Luxilus cornutus,7.3,,7.97,Amy,2022-09-19,,8.105,12.26,Amy,2022-11-03,111.7,Amy,2022-12-01,,111.7,Amy
+12-Jul,Carroll_Creek,AMP22_0267,Common_Shiner,Luxilus cornutus,6.4,,18.12,Amy,2022-09-19,,20.22,,,,,,,,20.22,Amy
+12-Jul,Carroll_Creek,AMP22_0268,Common_Shiner,Luxilus cornutus,6.5,,14.55,Amy,2022-09-19,,14.78,17,Amy,2022-11-03,,,,,17,Amy
+12-Jul,Carroll_Creek,AMP22_0269,Common_Shiner,Luxilus cornutus,6.9,,18.46,Amy,2022-09-19,,17.28,,,,,,,,17.28,Amy
+12-Jul,Carroll_Creek,AMP22_0270,Common_Shiner,Luxilus cornutus,5,,6.41,Amy,2022-09-19,,6.234,35.92,Amy,2022-11-03,,,,,35.92,Amy
+12-Jul,Carroll_Creek,AMP22_0271,Common_Shiner,Luxilus cornutus,6.9,,35.34,Amy,2022-09-19,,30.33,,,,,,,,30.33,Amy
+12-Jul,Carroll_Creek,AMP22_0272,Common_Shiner,Luxilus cornutus,9.2,,39.86,Amy,2022-09-19,,37.94,,,,,,,,37.94,Amy
+12-Jul,Carroll_Creek,AMP22_0273,Hornyhead_Chub,Nocomis biguttatus,4.3,,28.08,Amy,2022-09-19,,20.72,,,,,,,,20.72,Amy
+12-Jul,Carroll_Creek,AMP22_0274,Creek_Chub,Semotilus atromaculatus,7,,22.43,Amy,2022-09-19,,23.78,,,,,,,,23.78,Amy
+12-Jul,Carroll_Creek,AMP22_0275,Creek_Chub,Semotilus atromaculatus,6.7,,24.68,Amy,2022-09-19,,25.97,,,,,,,,25.97,Amy
+12-Jul,Carroll_Creek,AMP22_0276,Creek_Chub,Semotilus atromaculatus,7.5,,25.23,Amy,2022-09-19,,25.05,,,,,,,,25.05,Amy
+12-Jul,Carroll_Creek,AMP22_0277,Hornyhead_Chub,Nocomis biguttatus,4.2,,12.74,Amy,2022-09-19,,13.49,,,,,,,,13.49,Amy
+12-Jul,Carroll_Creek,AMP22_0278,Hornyhead_Chub,Nocomis biguttatus,4.7,,7.62,Amy,2022-09-19,,8.668,,,,,,,,8.668,Amy
+12-Jul,Carroll_Creek,AMP22_0279,Hornyhead_Chub,Nocomis biguttatus,4.4,,11.31,Amy,2022-09-19,,14.5,,,,,,,,14.5,Amy
+12-Jul,Carroll_Creek,AMP22_0280,Hornyhead_Chub,Nocomis biguttatus,5,,15.51,Amy,2022-09-19,,20.47,,,,,,,,20.47,Amy
+12-Jul,Carroll_Creek,AMP22_0281,Hornyhead_Chub,Nocomis biguttatus,4.9,,12.32,Amy,2022-09-19,,13.72,,,,,,,,13.72,Amy
+12-Jul,Carroll_Creek,AMP22_0282,Hornyhead_Chub,Nocomis biguttatus,4.7,,4,Amy,2022-09-19,,10.22,,,,,,,,10.22,Amy
+12-Jul,Carroll_Creek,AMP22_0283,Hornyhead_Chub,Nocomis biguttatus,4.7,,6.8,Amy,2022-09-19,,10.58,34.92,Amy,2022-11-03,,,,,34.92,Amy
+12-Jul,Carroll_Creek,AMP22_0284,Hornyhead_Chub,Nocomis biguttatus,4.3,,20.06,Amy,2022-09-19,,14.79,67.82,Amy,2022-11-03,,,,,67.82,Amy
+12-Jul,Carroll_Creek,AMP22_0285,Hornyhead_Chub,Nocomis biguttatus,3.8,,9.8,Amy,2022-09-19,,15.34,26.88,Amy,2022-11-03,,,,,26.88,Amy
+12-Jul,Carroll_Creek,AMP22_0286,Hornyhead_Chub,Nocomis biguttatus,4.6,,21.7,Amy,2022-09-19,,25.08,72.24,Amy,2022-11-03,,,,,72.24,Amy
+12-Jul,Carroll_Creek,AMP22_0287,Hornyhead_Chub,Nocomis biguttatus,8.2,,26.45,Amy,2022-09-19,,30.52,,,,,,,,30.52,Amy
+12-Jul,Carroll_Creek,AMP22_0288,Western_Blacknose_Dace,Rhinichthys obtusus,2.8,Juvenile,18.8,Amy,2022-09-19,,19.84,,,,,,,,19.84,Amy
+12-Jul,Carroll_Creek,AMP22_0289,Western_Blacknose_Dace,Rhinichthys obtusus,2.7,Juvenile,27.77,Amy,2022-09-19,,35.61,,,,,,,,35.61,Amy
+12-Jul,Carroll_Creek,AMP22_0290,Western_Blacknose_Dace,Rhinichthys obtusus,2.6,Juvenile,10.66,Amy,2022-09-19,,15.99,44.98,Amy,2022-11-03,,,,,44.98,Amy
+12-Jul,Carroll_Creek,AMP22_0291,Western_Blacknose_Dace,Rhinichthys obtusus,4.7,,58.79,Amy,2022-09-19,contaminated,15.4,34.88,Amy,2022-11-03,,,,,34.88,Amy
+12-Jul,Carroll_Creek,AMP22_0292,Western_Blacknose_Dace,Rhinichthys obtusus,2.8,Juvenile,23.17,Amy,2022-09-19,,23.76,71.3,Amy,2022-11-03,,,,,71.3,Amy
+12-Jul,Carroll_Creek,AMP22_0293,Central_Stoneroller,Campostoma anomalum,8.9,,62.83,Amy,2022-09-19,,79.67,,,,,,,,79.67,Amy
+12-Jul,Carroll_Creek,AMP22_0294,Central_Stoneroller,Campostoma anomalum,3.7,Juvenile,17.56,Amy,2022-09-19,,22.68,,,,,,,,22.68,Amy
+12-Jul,Carroll_Creek,AMP22_0295,Central_Stoneroller,Campostoma anomalum,3.6,Juvenile,31.09,Amy,2022-09-19,,29.36,,,,,,,,29.36,Amy
+12-Jul,Carroll_Creek,AMP22_0296,Western_Blacknose_Dace,Rhinichthys obtusus,7.5,Probable male (spawning colours),75.36,Amy,2022-09-19,,79.22,,,,,,,,79.22,Amy
+12-Jul,Carroll_Creek,AMP22_0297,Central_Stoneroller,Campostoma anomalum,9,,36.02,Amy,2022-09-19,,37.32,,,,,,,,37.32,Amy
+12-Jul,Carroll_Creek,AMP22_0298,Western_Blacknose_Dace,Rhinichthys obtusus,6.7,,26.78,Amy,2022-09-19,,28.11,100.5,Amy,2022-11-03,,,,,100.5,Amy
+12-Jul,Carroll_Creek,AMP22_0299,Central_Stoneroller,Campostoma anomalum,3.3,,15.41,Amy,2022-09-19,,18.24,45.69,Amy,2022-11-03,,,,,45.69,Amy
+12-Jul,Carroll_Creek,AMP22_0300,Central_Stoneroller,Campostoma anomalum,5.7,,42.4,Amy,2022-09-19,,35.38,,,,,,,,35.38,Amy
+12-Jul,Carroll_Creek,AMP22_0301,Western_Blacknose_Dace,Rhinichthys obtusus,4.9,,48.66,Amy,2022-09-19,,50.82,,,,,,,,50.82,Amy
+12-Jul,Carroll_Creek,AMP22_0302,Western_Blacknose_Dace,Rhinichthys obtusus,5.8,,23.81,Amy,2022-09-19,,24.21,,,,,,,,24.21,Amy
+12-Jul,Carroll_Creek,AMP22_0303,Central_Stoneroller,Campostoma anomalum,9.1,,36.97,Amy,2022-09-19,,43.55,,,,,,,,43.55,Amy
+12-Jul,Carroll_Creek,AMP22_0304,Western_Blacknose_Dace,Rhinichthys obtusus,7.9,Probable male (spawning colours),70.11,Amy,2022-09-19,,85.3,,,,,,,,85.3,Amy
+12-Jul,Carroll_Creek,AMP22_0305,Western_Blacknose_Dace,Rhinichthys obtusus,2.8,Juvenile,24.18,Amy,2022-09-19,,27.37,,,,,,,,27.37,Amy
+12-Jul,Carroll_Creek,AMP22_0306,Western_Blacknose_Dace,Rhinichthys obtusus,3,Juvenile,27.28,Amy,2022-09-19,,19.23,78.88,Amy,2022-11-03,,,,,78.88,Amy
+12-Jul,Carroll_Creek,AMP22_0307,Central_Stoneroller,Campostoma anomalum,6.8,,87.32,Amy,2022-09-19,,100.4,,,,,,,,100.4,Amy
+12-Jul,Carroll_Creek,AMP22_0308,Western_Blacknose_Dace,Rhinichthys obtusus,5.7,,24.16,Amy,2022-09-19,,29.51,,,,,,,,29.51,Amy
+12-Jul,Carroll_Creek,AMP22_0309,Western_Blacknose_Dace,Rhinichthys obtusus,5.8,,60.46,Amy,2022-09-19,,58.59,,,,,,,,58.59,Amy
+12-Jul,Carroll_Creek,AMP22_0310,Central_Stoneroller,Campostoma anomalum,7.6,,53.22,Amy,2022-09-19,,66.63,,,,,,,,66.63,Amy
+12-Jul,Carroll_Creek,AMP22_0311,Western_Blacknose_Dace,Rhinichthys obtusus,6.8,,65.11,Amy,2022-09-19,,62.33,,,,,,,,62.33,Amy
+12-Jul,Carroll_Creek,AMP22_0312,Central_Stoneroller,Campostoma anomalum,3.6,Juvenile,26.3,Amy,2022-09-19,,34.28,,,,,,,,34.28,Amy
+12-Jul,Carroll_Creek,AMP22_0313,Central_Stoneroller,Campostoma anomalum,8.4,,34.78,Amy,2022-09-19,,39.74,,,,,,,,39.74,Amy
+12-Jul,Carroll_Creek,AMP22_0314,Central_Stoneroller,Campostoma anomalum,6.3,,57.81,Amy,2022-09-19,,59.3,,,,,,,,59.3,Amy
+12-Jul,Carroll_Creek,AMP22_0315,Western_Blacknose_Dace,Rhinichthys obtusus,7.7,,40.94,Amy,2022-09-19,,47.81,,,,,,,,47.81,Amy
+12-Jul,Carroll_Creek,AMP22_0316,Western_Blacknose_Dace,Rhinichthys obtusus,7.6,,53.67,Amy,2022-09-19,,58.73,,,,,,,,58.73,Amy
+12-Jul,Carroll_Creek,AMP22_0317,Western_Blacknose_Dace,Rhinichthys obtusus,8.3,,58.45,Amy,2022-09-19,,68.76,,,,,,,,68.76,Amy
+13-Jul,Swan_Creek,AMP22_0318,Common_Shiner,Luxilus cornutus,5,,5.54,Amy,2022-09-19,,5.137,6.946,Amy,2022-11-03,69.98,Amy,2022-12-01,,69.98,Amy
+13-Jul,Swan_Creek,AMP22_0319,Common_Shiner,Luxilus cornutus,6.6,,15.26,Amy,2022-09-19,,11.42,14.09,Amy,2022-11-03,59.77,Amy,2022-12-01,,59.77,Amy
+13-Jul,Swan_Creek,AMP22_0320,Common_Shiner,Luxilus cornutus,4.3,,3.04,Amy,2022-09-19,,4.337,11.43,Amy,2022-11-03,67.77,Amy,2022-12-01,,67.77,Amy
+13-Jul,Swan_Creek,AMP22_0321,Common_Shiner,Luxilus cornutus,4.7,,4.04,Amy,2022-09-19,,3.899,14.51,Amy,2022-11-03,85.15,Amy,2022-12-01,,85.15,Amy
+13-Jul,Swan_Creek,AMP22_0322,Common_Shiner,Luxilus cornutus,4.2,,4.07,Amy,2022-09-19,line through value in notebook,6.354,21.16,Amy,2022-11-03,,,,,21.16,Amy
+13-Jul,Swan_Creek,AMP22_0323,Common_Shiner,Luxilus cornutus,4.9,,7.13,Amy,2022-09-19,line through value in notebook,13.3,12.5,Amy,2022-11-03,80.77,Amy,2022-12-01,,80.77,Amy
+13-Jul,Swan_Creek,AMP22_0324,Common_Shiner,Luxilus cornutus,7.3,,11.72,Amy,2022-09-19,line through value in notebook,11.72,19.31,Amy,2022-11-03,,,,,19.31,Amy
+13-Jul,Swan_Creek,AMP22_0325,Common_Shiner,Luxilus cornutus,5.2,,8.89,Amy,2022-09-19,line through value in notebook,9.588,11.18,Amy,2022-11-03,113.6,Amy,2022-12-01,,113.6,Amy
+13-Jul,Swan_Creek,AMP22_0326,Common_Shiner,Luxilus cornutus,6,,8.04,Amy,2022-09-19,line through value in notebook,7.726,16.09,Amy,2022-11-03,79.05,Amy,2022-12-07,,79.05,Amy
+13-Jul,Swan_Creek,AMP22_0327,Common_Shiner,Luxilus cornutus,4.7,,41.6,Amy,2022-09-19,line through value in notebook,4.49,19.02,Amy,2022-11-03,,,,,19.02,Amy
+13-Jul,Swan_Creek,AMP22_0328,Common_Shiner,Luxilus cornutus,4.6,,2,Amy,2022-09-19,line through value in notebook,4.813,10.49,Amy,2022-11-03,67.56,Amy,2022-12-01,,67.56,Amy
+13-Jul,Swan_Creek,AMP22_0329,Common_Shiner,Luxilus cornutus,4.4,,6.7,Amy,2022-09-19,line through value in notebook,7.589,14.2,Amy,2022-11-03,99.18,Amy,2022-12-01,,99.18,Amy
+13-Jul,Swan_Creek,AMP22_0330,Common_Shiner,Luxilus cornutus,4.5,,5,Amanda,2022-09-20,messed up AW1 - redo,,20.5,Amanda,2022-11-08,87.12,Amy,2022-12-07,,87.12,Amy
+13-Jul,Swan_Creek,AMP22_0331,Common_Shiner,Luxilus cornutus,5.5,,8,Amanda,2022-09-20,messed up AW1 - redo,,6.43,Amanda,2022-11-08,104.2,Amy,2022-12-07,,104.2,Amy
+13-Jul,Swan_Creek,AMP22_0332,Common_Shiner,Luxilus cornutus,5.6,,15.59,Amanda,2022-09-20,messed up AW1 - redo,,9.16,Amanda,2022-11-08,46.06,Amy,2022-12-07,,46.06,Amy
+13-Jul,Swan_Creek,AMP22_0333,Common_Shiner,Luxilus cornutus,5,,220.8,Amanda,2022-09-20,messed up AW1 - redo,,9.29,Amanda,2022-11-08,69.1,Amy,2022-12-07,,69.1,Amy
+13-Jul,Swan_Creek,AMP22_0334,Common_Shiner,Luxilus cornutus,4.6,,8.07,Amanda,2022-09-20,messed up AW1 - redo,,17.6,Amanda,2022-11-08,152.6,Amy,2022-12-07,,152.6,Amy
+13-Jul,Swan_Creek,AMP22_0335,Common_Shiner,Luxilus cornutus,5.1,,26.54,Amanda,2022-09-20,messed up AW1 - redo,,7.34,Amanda,2022-11-08,23.26,Amy,2022-12-07,,23.26,Amy
+13-Jul,Swan_Creek,AMP22_0336,Common_Shiner,Luxilus cornutus,5.9,,36.09,Amanda,2022-09-20,messed up AW1 - redo,,9.46,Amanda,2022-11-08,75.06,Amy,2022-12-07,,75.06,Amy
+13-Jul,Swan_Creek,AMP22_0337,Common_Shiner,Luxilus cornutus,7,,8.4,Amanda,2022-09-20,messed up AW1 - redo,,9.3,Amanda,2022-11-08,146.4,Amy,2022-12-12,,146.4,Amy
+13-Jul,Swan_Creek,AMP22_0338,Common_Shiner,Luxilus cornutus,6.6,,10.44,Amanda,2022-09-20,messed up AW1 - redo,,13.28,Amanda,2022-11-08,146.4,Amy,2022-12-12,,146.4,Amy
+13-Jul,Swan_Creek,AMP22_0339,Common_Shiner,Luxilus cornutus,5.4,,5.39,Amanda,2022-09-20,messed up AW1 - redo,,5.52,Amanda,2022-11-08,145.2,Amy,2022-12-12,,145.2,Amy
+13-Jul,Swan_Creek,AMP22_0340,Common_Shiner,Luxilus cornutus,5.4,,44.88,Amanda,2022-09-20,messed up AW1 - redo,,3.24,Amanda,2022-11-08,115.5,Amy,2022-12-12,,115.5,Amy
+13-Jul,Swan_Creek,AMP22_0341,Common_Shiner,Luxilus cornutus,5.4,,9.36,Amanda,2022-09-20,messed up AW1 - redo,,9.11,Amanda,2022-11-08,125.5,Amy,2022-12-12,,125.5,Amy
+13-Jul,Swan_Creek,AMP22_0342,Common_Shiner,Luxilus cornutus,4.6,,14.06,Amanda,2022-09-20,messed up AW1 - redo,,4.37,Amanda,2022-11-08,107.2,Amy,2022-12-12,,107.2,Amy
+13-Jul,Swan_Creek,AMP22_0343,Common_Shiner,Luxilus cornutus,5.3,,9.71,Amanda,2022-09-20,messed up AW1 - redo,,11.09,Amanda,2022-11-08,229.3,Amy,2022-12-12,,229.3,Amy
+13-Jul,Swan_Creek,AMP22_0344,Common_Shiner,Luxilus cornutus,4.2,,128.7,Amanda,2022-09-20,messed up AW1 - redo,,21.13,Amanda,2022-11-08,,,,,21.13,Amanda
+13-Jul,Swan_Creek,AMP22_0345,Common_Shiner,Luxilus cornutus,5.4,,7.65,Amanda,2022-09-20,messed up AW1 - redo,,8.32,Amanda,2022-11-08,182.4,Amy,2022-12-12,,182.4,Amy
+13-Jul,Swan_Creek,AMP22_0346,Common_Shiner,Luxilus cornutus,5.9,,11.24,Amanda,2022-09-20,messed up AW1 - redo,,7.44,Amanda,2022-11-08,164.3,Amy,2022-12-12,,164.3,Amy
+13-Jul,Swan_Creek,AMP22_0347,Common_Shiner,Luxilus cornutus,8,,9.01,Amanda,2022-09-20,messed up AW1 - redo,,11.5,Amanda,2022-11-08,139.4,Amy,2022-12-12,,139.4,Amy
+13-Jul,Swan_Creek,AMP22_0348,Hornyhead_Chub,Nocomis biguttatus,5.4,,37.03,Amanda,2022-09-20,messed up AW1 - redo,,16.76,Amanda,2022-11-08,130.7,Amy,2022-12-12,,130.7,Amy
+13-Jul,Swan_Creek,AMP22_0349,Unknown,Unknown,5.4,Weird phenotype-bluntnose and subterminal mouth-id unsure-died in bucket,17.26,Amanda,2022-09-20,messed up AW1 - redo,,8.19,Amanda,2022-11-08,154.3,Amy,2022-12-12,,154.3,Amy
+13-Jul,Swan_Creek,AMP22_0350,Hornyhead_Chub,Nocomis biguttatus,6.9,,26.8,Amanda,2022-09-20,messed up AW1 - redo,,11.43,Amanda,2022-11-08,123.1,Amy,2022-12-12,,123.1,Amy
+13-Jul,Swan_Creek,AMP22_0351,Hornyhead_Chub,Nocomis biguttatus,5.3,,110.4,Amanda,2022-09-20,messed up AW1 - redo,,9,Amanda,2022-11-08,70.58,Amy,2022-12-12,,70.58,Amy
+13-Jul,Swan_Creek,AMP22_0352,Hornyhead_Chub,Nocomis biguttatus,5.9,,111.1,Amanda,2022-09-20,messed up AW1 - redo,,13.86,Amanda,2022-11-08,103.9,Amy,2022-12-12,,103.9,Amy
+13-Jul,Swan_Creek,AMP22_0353,Hornyhead_Chub,Nocomis biguttatus,4.6,,13.65,Amanda,2022-09-20,messed up AW1 - redo,,10.56,Amanda,2022-11-08,193.6,Amy,2022-12-12,,193.6,Amy
+13-Jul,Swan_Creek,AMP22_0354,Hornyhead_Chub,Nocomis biguttatus,5.6,,92.26,Amanda,2022-09-20,,29.34,,,,,,,,92.26,Amanda
+13-Jul,Swan_Creek,AMP22_0355,Hornyhead_Chub,Nocomis biguttatus,6.8,,24.55,Amanda,2022-09-20,,27.11,,,,,,,,24.55,Amanda
+13-Jul,Swan_Creek,AMP22_0356,Hornyhead_Chub,Nocomis biguttatus,5.8,,13.41,Amanda,2022-09-20,,3.75,28.7,Amanda,2022-11-08,,,,,28.7,Amanda
+13-Jul,Swan_Creek,AMP22_0357,Creek_Chub,Semotilus atromaculatus,6.6,,20.08,Amanda,2022-09-20,,16.22,34.15,Amanda,2022-11-08,,,,,34.15,Amanda
+13-Jul,Swan_Creek,AMP22_0358,Hornyhead_Chub,Nocomis biguttatus,5.8,,21.43,Amanda,2022-09-20,,15.88,14.99,Amanda,2022-11-08,,,,,14.99,Amanda
+13-Jul,Swan_Creek,AMP22_0359,Hornyhead_Chub,Nocomis biguttatus,6.1,,13.49,Amanda,2022-09-20,,15.34,25.61,Amanda,2022-11-08,,,,,25.61,Amanda
+13-Jul,Swan_Creek,AMP22_0360,Hornyhead_Chub,Nocomis biguttatus,4.7,,105.7,Amanda,2022-09-20,,12.44,27.67,Amanda,2022-11-08,,,,,27.67,Amanda
+13-Jul,Swan_Creek,AMP22_0361,Creek_Chub,Semotilus atromaculatus,6.2,,28.08,Amanda,2022-09-20,,27.2,,,,,,,,28.08,Amanda
+13-Jul,Swan_Creek,AMP22_0362,Hornyhead_Chub,Nocomis biguttatus,6.7,,20.42,Amanda,2022-09-20,,22.36,34.38,Amanda,2022-11-08,,,,,34.38,Amanda
+13-Jul,Swan_Creek,AMP22_0363,Creek_Chub,Semotilus atromaculatus,7.9,,34.27,Amanda,2022-09-20,,36.02,52.39,Amanda,2022-11-08,,,,,52.39,Amanda
+13-Jul,Swan_Creek,AMP22_0364,Hornyhead_Chub,Nocomis biguttatus,5.8,,22.35,Amanda,2022-09-20,,18.2,29.37,Amanda,2022-11-08,,,,,29.37,Amanda
+13-Jul,Swan_Creek,AMP22_0365,Creek_Chub,Semotilus atromaculatus,8.6,,37.23,Amanda,2022-09-20,,47.24,,,,,,,,37.23,Amanda
+13-Jul,Swan_Creek,AMP22_0366,Hornyhead_Chub,Nocomis biguttatus,8.2,Female (eggs),48.92,Amanda,2022-09-20,,40.46,,,,,,,,48.92,Amanda
+13-Jul,Swan_Creek,AMP22_0367,Hornyhead_Chub,Nocomis biguttatus,8,,18.33,Amanda,2022-09-20,,14.36,25.69,Amanda,2022-11-08,,,,,25.69,Amanda
+13-Jul,Swan_Creek,AMP22_0368,Hornyhead_Chub,Nocomis biguttatus,5.6,,28.31,Amanda,2022-09-20,,18.25,42.38,Amanda,2022-11-08,,,,,42.38,Amanda
+13-Jul,Swan_Creek,AMP22_0369,Hornyhead_Chub,Nocomis biguttatus,6.3,,18.31,Amanda,2022-09-20,,16.71,41.05,Amanda,2022-11-08,,,,,41.05,Amanda
+13-Jul,Swan_Creek,AMP22_0370,Common_Shiner,Luxilus cornutus,7.1,Died in bucket,31.57,Amanda,2022-09-20,,28.28,,,,,,,,31.57,Amanda
+13-Jul,Swan_Creek,AMP22_0371,Common_Shiner,Luxilus cornutus,4.7,Died in bucket,96.54,Amanda,2022-09-20,,7.695,13.08,Amanda,2022-11-08,178.1,Amy,2022-12-12,,178.1,Amy
+13-Jul,Swan_Creek,AMP22_0372,Common_Shiner,Luxilus cornutus,5.4,Died in bucket,32.12,Amanda,2022-09-20,,-4.833,17.03,Amanda,2022-11-08,179.1,Amy,2022-12-12,,179.1,Amy
+13-Jul,Swan_Creek,AMP22_0373,Striped_Shiner,Luxilus chrysocephalus,8.9,Downstream swan creek site,5.94,Amanda,2022-09-20,,2.132,24.08,Amanda,2022-11-08,,,,,24.08,Amanda
+13-Jul,Swan_Creek,AMP22_0374,Striped_Shiner,Luxilus chrysocephalus,8.3,,98.08,Amanda,2022-09-20,,5.164,13.86,Amanda,2022-11-08,153.9,Amy,2022-12-12,,153.9,Amy
+13-Jul,Swan_Creek,AMP22_0375,Striped_Shiner,Luxilus chrysocephalus,8.4,,13.36,Amanda,2022-09-20,,6.501,16.83,Amanda,2022-11-08,120.3,Amy,2022-12-12,,120.3,Amy
+13-Jul,Swan_Creek,AMP22_0376,Striped_Shiner,Luxilus chrysocephalus,8.6,,26.28,Amanda,2022-09-20,,20.68,,,,,,,,26.28,Amanda
+13-Jul,Swan_Creek,AMP22_0377,Striped_Shiner,Luxilus chrysocephalus,8.7,,27.03,Amanda,2022-09-20,,16.57,15.88,Amanda,2022-11-08,144.7,Amy,2022-12-12,,144.7,Amy
+13-Jul,Swan_Creek,AMP22_0378,Striped_Shiner,Luxilus chrysocephalus,8.5,,31.32,Amanda,2022-09-21,,,,,,,,,,31.32,Amanda
+13-Jul,Swan_Creek,AMP22_0379,Striped_Shiner,Luxilus chrysocephalus,8.4,,35.13,Amanda,2022-09-21,,,,,,,,,,35.13,Amanda
+13-Jul,Swan_Creek,AMP22_0380,Striped_Shiner,Luxilus chrysocephalus,8.1,,46.01,Amanda,2022-09-21,,,,,,,,,,46.01,Amanda
+13-Jul,Swan_Creek,AMP22_0381,Striped_Shiner,Luxilus chrysocephalus,8.6,,42.3,Amanda,2022-09-21,,,,,,,,,,42.3,Amanda
+13-Jul,Swan_Creek,AMP22_0382,Striped_Shiner,Luxilus chrysocephalus,7.7,,73.32,Amanda,2022-09-21,,,,,,,,,,73.32,Amanda
+13-Jul,Swan_Creek,AMP22_0383,Creek_Chub,Semotilus atromaculatus,11.2,,56.25,Amanda,2022-09-21,,,,,,,,,,56.25,Amanda
+13-Jul,Swan_Creek,AMP22_0384,Creek_Chub,Semotilus atromaculatus,9.3,,344.7,Amanda,2022-09-21,,,,,,,,,,344.7,Amanda
+13-Jul,Swan_Creek,AMP22_0385,Creek_Chub,Semotilus atromaculatus,9.1,,146.6,Amanda,2022-09-21,,,,,,,,,,146.6,Amanda
+13-Jul,Swan_Creek,AMP22_0386,Creek_Chub,Semotilus atromaculatus,10,,60.95,Amanda,2022-09-21,,,,,,,,,,60.95,Amanda
+13-Jul,Swan_Creek,AMP22_0387,Creek_Chub,Semotilus atromaculatus,9,,120.9,Amanda,2022-09-21,,,,,,,,,,120.9,Amanda
+13-Jul,Swan_Creek,AMP22_0388,Creek_Chub,Semotilus atromaculatus,11.7,,177,Amanda,2022-09-21,,,,,,,,,,177,Amanda
+13-Jul,Swan_Creek,AMP22_0389,Creek_Chub,Semotilus atromaculatus,9.8,,161.7,Amanda,2022-09-21,,,,,,,,,,161.7,Amanda
+13-Jul,Swan_Creek,AMP22_0390,Creek_Chub,Semotilus atromaculatus,9.1,,131,Amanda,2022-09-21,,,,,,,,,,131,Amanda
+13-Jul,Swan_Creek,AMP22_0391,Creek_Chub,Semotilus atromaculatus,10.2,,55.53,Amanda,2022-09-21,,,,,,,,,,55.53,Amanda
+13-Jul,Swan_Creek,AMP22_0392,Creek_Chub,Semotilus atromaculatus,10.2,,348.7,Amanda,2022-09-21,,,,,,,,,,348.7,Amanda
+13-Jul,Swan_Creek,AMP22_0393,Creek_Chub,Semotilus atromaculatus,11.3,,183.1,Amanda,2022-09-21,,,,,,,,,,183.1,Amanda
+13-Jul,Swan_Creek,AMP22_0394,Creek_Chub,Semotilus atromaculatus,9.1,,292.4,Amanda,2022-09-21,,,,,,,,,,292.4,Amanda
+13-Jul,Swan_Creek,AMP22_0395,Creek_Chub,Semotilus atromaculatus,10.3,,204.2,Amanda,2022-09-21,,,,,,,,,,204.2,Amanda
+13-Jul,Swan_Creek,AMP22_0396,Creek_Chub,Semotilus atromaculatus,11.2,,117.4,Amanda,2022-09-21,,,,,,,,,,117.4,Amanda
+13-Jul,Swan_Creek,AMP22_0397,Creek_Chub,Semotilus atromaculatus,6.9,,150,Amanda,2022-09-21,,,,,,,,,,150,Amanda
+13-Jul,Swan_Creek,AMP22_0398,Creek_Chub,Semotilus atromaculatus,12.2,,179.5,Amanda,2022-09-21,,,,,,,,,,179.5,Amanda
+13-Jul,Swan_Creek,AMP22_0399,Creek_Chub,Semotilus atromaculatus,8.5,,144.6,Amanda,2022-09-21,,,,,,,,,,144.6,Amanda
+13-Jul,Swan_Creek,AMP22_0400,Creek_Chub,Semotilus atromaculatus,9.5,,114.2,Amanda,2022-09-21,,,,,,,,,,114.2,Amanda
+13-Jul,Swan_Creek,AMP22_0401,Creek_Chub,Semotilus atromaculatus,10,,145.1,Amanda,2022-09-21,,,,,,,,,,145.1,Amanda
+13-Jul,Swan_Creek,AMP22_0402,Creek_Chub,Semotilus atromaculatus,10.6,,49.54,Amanda,2022-09-21,,,,,,,,,,49.54,Amanda
+13-Jul,Swan_Creek,AMP22_0403,Creek_Chub,Semotilus atromaculatus,9.2,,54.35,Amanda,2022-09-21,,,,,,,,,,54.35,Amanda
+13-Jul,Swan_Creek,AMP22_0404,Creek_Chub,Semotilus atromaculatus,9.1,,243.9,Amanda,2022-09-21,,,,,,,,,,243.9,Amanda
+13-Jul,Swan_Creek,AMP22_0405,Creek_Chub,Semotilus atromaculatus,13.2,In bag,235.5,Amanda,2022-09-21,,,,,,,,,,235.5,Amanda
+13-Jul,Swan_Creek,AMP22_0406,Creek_Chub,Semotilus atromaculatus,10,,109,Amanda,2022-09-21,,,,,,,,,,109,Amanda
+13-Jul,Swan_Creek,AMP22_0407,Creek_Chub,Semotilus atromaculatus,15.2,In bag ,197.3,Amanda,2022-09-21,,,,,,,,,,197.3,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0408,Longnose_Dace,Rhinichthys cataractae,3.6,Juvenile,80.68,Amanda,2022-09-21,,,,,,,,,,80.68,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0409,Western_Blacknose_Dace,Rhinichthys obtusus,3.4,Juvenile,34.87,Amanda,2022-09-21,,,,,,,,,,34.87,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0410,Longnose_Dace,Rhinichthys cataractae,4.1,Juvenile,51,Amanda,2022-09-21,,,,,,,,,,51,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0411,Longnose_Dace,Rhinichthys cataractae,3.3,Juvenile,98.39,Amanda,2022-09-21,,,,,,,,,,98.39,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0412,Creek_Chub,Semotilus atromaculatus,3.7,Juvenile,90.89,Amanda,2022-09-21,,,,,,,,,,90.89,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0413,Creek_Chub,Semotilus atromaculatus,3.2,Juvenile,152.9,Amanda,2022-09-21,,,,,,,,,,152.9,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0414,Western_Blacknose_Dace,Rhinichthys obtusus,3.1,Juvenile,41.55,Amanda,2022-09-21,,,,,,,,,,41.55,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0415,Longnose_Dace,Rhinichthys cataractae,3.6,Juvenile,87.33,Amanda,2022-09-21,,,,,,,,,,87.33,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0416,Western_Blacknose_Dace,Rhinichthys obtusus,3.6,Juvenile,47.37,Amanda,2022-09-21,,,,,,,,,,47.37,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0417,Longnose_Dace,Rhinichthys cataractae,3.7,Juvenile,226.7,Amanda,2022-09-21,,,,,,,,,,226.7,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0418,Creek_Chub,Semotilus atromaculatus,3.4,Juvenile,70.83,Amanda,2022-09-21,,,,,,,,,,70.83,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0419,Western_Blacknose_Dace,Rhinichthys obtusus,2.8,Juvenile,130.6,Amanda,2022-09-21,,,,,,,,,,130.6,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0420,Creek_Chub,Semotilus atromaculatus,3.7,Juvenile,174.4,Amanda,2022-09-21,,,,,,,,,,174.4,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0421,Western_Blacknose_Dace,Rhinichthys obtusus,2.8,Juvenile,39.92,Amanda,2022-09-21,,,,,,,,,,39.92,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0422,Creek_Chub,Semotilus atromaculatus,3.6,Juvenile,160.4,Amanda,2022-09-21,,,,,,,,,,160.4,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0423,Creek_Chub,Semotilus atromaculatus,3.7,Juvenile,142.6,Amanda,2022-09-21,,,,,,,,,,142.6,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0424,Western_Blacknose_Dace,Rhinichthys obtusus,2.7,Juvenile,103.7,Amanda,2022-09-21,,,,,,,,,,103.7,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0425,Western_Blacknose_Dace,Rhinichthys obtusus,2.9,Juvenile,111.6,Amanda,2022-09-21,,,,,,,,,,111.6,Amanda
+14-Jul,Laurel_Creek_Park,AMP22_0426,Creek_Chub,Semotilus atromaculatus,4,Juvenile,52.74,Amy,2022-09-23,,,,,,,,,,52.74,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0427,Creek_Chub,Semotilus atromaculatus,2.9,Juvenile,26.83,Amy,2022-09-23,,,,,,,,,,26.83,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0428,Creek_Chub,Semotilus atromaculatus,3.4,Juvenile,41.91,Amy,2022-09-23,,,,,,,,,,41.91,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0429,Western_Blacknose_Dace,Rhinichthys obtusus,3,Juvenile,15.56,Amy,2022-09-23,,,90.02,Amy,2022-11-03,,,,,90.02,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0430,Western_Blacknose_Dace,Rhinichthys obtusus,2.6,Juvenile,25.83,Amy,2022-09-23,,,,,,,,,,25.83,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0431,Longnose_Dace,Rhinichthys cataractae,4.2,Juvenile,36.73,Amy,2022-09-23,,,,,,,,,,36.73,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0432,Longnose_Dace,Rhinichthys cataractae,3.6,Juvenile,41.44,Amy,2022-09-23,,,,,,,,,,41.44,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0433,Longnose_Dace,Rhinichthys cataractae,4.3,Juvenile,72.5,Amy,2022-09-23,,,,,,,,,,72.5,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0434,Longnose_Dace,Rhinichthys cataractae,3.9,Juvenile,34.22,Amy,2022-09-23,,,,,,,,,,34.22,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0435,Longnose_Dace,Rhinichthys cataractae,4,Juvenile,28.45,Amy,2022-09-23,,,,,,,,,,28.45,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0436,Creek_Chub,Semotilus atromaculatus,4.5,Juvenile,20.24,Amy,2022-09-23,,,,,,,,,,20.24,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0437,Creek_Chub,Semotilus atromaculatus,3.4,Juvenile,16.13,Amy,2022-09-23,,,90.24,Amy,2022-11-03,,,,,90.24,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0438,Western_Blacknose_Dace,Rhinichthys obtusus,3.3,Juvenile,26.94,Amy,2022-09-23,,,,,,,,,,26.94,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0439,Longnose_Dace,Rhinichthys cataractae,4.1,Juvenile,14.89,Amy,2022-09-23,,,101.1,Amy,2022-11-03,,,,,101.1,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0440,Creek_Chub,Semotilus atromaculatus,3.4,Juvenile,25.46,Amy,2022-09-23,,,,,,,,,,25.46,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0441,Creek_Chub,Semotilus atromaculatus,3.9,Juvenile,42.48,Amy,2022-09-23,,,,,,,,,,42.48,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0442,Creek_Chub,Semotilus atromaculatus,3.5,Juvenile,41.51,Amy,2022-09-23,,,,,,,,,,41.51,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0443,Creek_Chub,Semotilus atromaculatus,3.5,Juvenile,36.98,Amy,2022-09-23,,,105.8,Amy,2022-11-03,,,,,105.8,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0444,Longnose_Dace,Rhinichthys cataractae,7.7,,77.97,Amy,2022-09-23,,,,,,,,,,77.97,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0445,Longnose_Dace,Rhinichthys cataractae,7.8,,56.73,Amy,2022-09-23,,,,,,,,,,56.73,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0446,Creek_Chub,Semotilus atromaculatus,11.2,,79.16,Amy,2022-09-23,,,,,,,,,,79.16,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0447,Creek_Chub,Semotilus atromaculatus,10.4,,64.88,Amy,2022-09-23,,,,,,,,,,64.88,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0448,Creek_Chub,Semotilus atromaculatus,9.7,,63,Amy,2022-09-23,,,,,,,,,,63,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0449,Western_Blacknose_Dace,Rhinichthys obtusus,6.8,,20.99,Amy,2022-09-23,,,,,,,,,,20.99,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0450,Creek_Chub,Semotilus atromaculatus,9.7,,42.13,Amy,2022-09-23,,,74.7,Amy,2022-11-03,,,,,74.7,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0451,Common_Shiner,Luxilus cornutus,3.9,Juvenile,31.36,Amy,2022-09-23,,,,,,,,,,31.36,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0452,Common_Shiner,Luxilus cornutus,3.9,Juvenile,20.83,Amy,2022-09-23,,,43.62,Amy,2022-11-03,,,,,43.62,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0453,Common_Shiner,Luxilus cornutus,3.5,Juvenile,13.75,Amy,2022-09-23,,,25.11,Amy,2022-11-03,,,,,25.11,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0454,Common_Shiner,Luxilus cornutus,3.4,Juvenile,6.59,Amy,2022-09-23,,,42.28,Amy,2022-11-03,,,,,42.28,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0455,Common_Shiner,Luxilus cornutus,3.3,Juvenile,36.65,Amy,2022-09-23,,,,,,,,,,36.65,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0456,Common_Shiner,Luxilus cornutus,3.6,Juvenile,15.24,Amy,2022-09-23,,,96.65,Amy,2022-12-01,,,,,96.65,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0457,Common_Shiner,Luxilus cornutus,3.4,Juvenile,18.29,Amy,2022-09-23,,,131,Amy,2022-12-01,,,,,131,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0458,Common_Shiner,Luxilus cornutus,3.6,Juvenile,29.53,Amy,2022-09-23,,,,,,,,,,29.53,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0459,Common_Shiner,Luxilus cornutus,3,Juvenile,9.801,Amy,2022-09-23,,,41.2,Amy,2022-12-01,89.36,Amy,2022-12-12,,89.36,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0460,Common_Shiner,Luxilus cornutus,3.4,Juvenile,10.18,Amy,2022-09-23,,,132.8,Amy,2022-12-01,,,,,132.8,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0461,Common_Shiner,Luxilus cornutus,3.6,Juvenile,28.11,Amy,2022-09-23,,,,,,,,,,28.11,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0462,Common_Shiner,Luxilus cornutus,4.4,Juvenile,16.41,Amy,2022-09-23,,,94.6,Amy,2022-12-01,,,,,94.6,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0463,Common_Shiner,Luxilus cornutus,3.1,Juvenile,16.02,Amy,2022-09-23,,,96.17,Amy,2022-12-01,,,,,96.17,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0464,Phimephales,Phimephales,4.2,Juvenile - died in bucket,10.88,Amy,2022-09-23,,,146.8,Amy,2022-12-01,,,,,146.8,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0465,Common_Shiner,Luxilus cornutus,3.2,Juvenile,29.46,Amy,2022-09-23,,,,,,,,,,29.46,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0466,Common_Shiner,Luxilus cornutus,3.4,Juvenile,12.56,Amy,2022-09-23,,,,,,105.5,Amy,2022-12-01,,105.5,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0467,Common_Shiner,Luxilus cornutus,3.1,Juvenile,16.75,Amy,2022-09-23,,,,,,128.2,Amy,2022-12-01,,128.2,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0468,Common_Shiner,Luxilus cornutus,3.7,Juvenile,23.93,Amy,2022-09-23,,,,,,,,,,23.93,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0469,Common_Shiner,Luxilus cornutus,3,Juvenile,9.605,Amy,2022-09-23,,,,,,69.26,Amy,2022-12-01,,69.26,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0470,Common_Shiner,Luxilus cornutus,3.1,Juvenile,23.13,Amy,2022-09-23,,,,,,,,,,23.13,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0471,Common_Shiner,Luxilus cornutus,3.5,Juvenile,28.71,Amy,2022-09-23,,,,,,,,,,28.71,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0472,Common_Shiner,Luxilus cornutus,3.1,Juvenile,9.737,Amy,2022-09-23,,,,,,119.4,Amy,2022-12-01,,119.4,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0473,Common_Shiner,Luxilus cornutus,3.4,Juvenile,25.91,Amy,2022-09-23,,,,,,,,,,25.91,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0474,Common_Shiner,Luxilus cornutus,3.1,Juvenile,8.189,Amy,2022-09-23,,,,,,74.75,Amy,2022-12-01,,74.75,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0475,Common_Shiner,Luxilus cornutus,3.3,Juvenile,8.134,Amy,2022-09-23,,,,,,78.32,Amy,2022-12-01,,78.32,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0476,Common_Shiner,Luxilus cornutus,3.1,Juvenile,8.49,Amy,2022-09-23,,,,,,77.82,Amy,2022-12-01,,77.82,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0477,Common_Shiner,Luxilus cornutus,3,Juvenile,9.472,Amy,2022-09-23,,,,,,80.76,Amy,2022-12-01,,80.76,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0478,Common_Shiner,Luxilus cornutus,3.6,Juvenile,20.7,Amy,2022-09-23,,,,,,,,,,20.7,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0479,Common_Shiner,Luxilus cornutus,3.9,Juvenile,19.32,Amy,2022-09-23,,,,,,,,,,19.32,Amy
+14-Jul,Laurel_Creek_Park,AMP22_0480,Common_Shiner,Luxilus cornutus,4.1,Juvenile,13.25,Amy,2022-09-23,,,,,,70.87,Amy,2022-12-01,,70.87,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0481,Common_Shiner,Luxilus cornutus,4.2,,13.55,Amy,2022-09-23,,,,,,138.3,Amy,2022-12-01,,138.3,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0482,Creek_Chub,Semotilus atromaculatus,3.8,,34.37,Amy,2022-09-23,,,,,,,,,,34.37,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0483,Creek_Chub,Semotilus atromaculatus,3.5,,26.56,Amy,2022-09-23,,,,,,,,,,26.56,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0484,Creek_Chub,Semotilus atromaculatus,3.2,,9.1,Amy,2022-09-23,,,,,,119.8,Amy,2022-12-01,,119.8,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0485,Creek_Chub,Semotilus atromaculatus,3.2,,9.497,Amy,2022-09-23,,,,,,150.3,Amy,2022-12-01,,150.3,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0486,Creek_Chub,Semotilus atromaculatus,4.2,,29.99,Amy,2022-09-23,,,,,,,,,,29.99,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0487,Creek_Chub,Semotilus atromaculatus,4.5,,43.97,Amy,2022-09-23,,,,,,,,,,43.97,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0488,Creek_Chub,Semotilus atromaculatus,4.7,,28.66,Amy,2022-09-23,,,,,,,,,,28.66,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0489,Creek_Chub,Semotilus atromaculatus,4.5,,28.61,Amy,2022-09-23,,,,,,,,,,28.61,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0490,Creek_Chub,Semotilus atromaculatus,3.4,,24.92,Amy,2022-09-23,,,,,,,,,,24.92,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0491,Creek_Chub,Semotilus atromaculatus,3.1,,19.33,Amy,2022-09-23,,,,,,,,,,19.33,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0492,Creek_Chub,Semotilus atromaculatus,3.5,,21.84,Amy,2022-09-23,,,,,,,,,,21.84,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0493,Western_Blacknose_Dace,Rhinichthys obtusus,3,,33.24,Amy,2022-09-23,,,,,,,,,,33.24,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0494,Western_Blacknose_Dace,Rhinichthys obtusus,5.7,,25.58,Amy,2022-09-23,,,,,,,,,,25.58,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0495,Longnose_Dace,Rhinichthys cataractae,3.8,,30.45,Amy,2022-09-23,,,,,,,,,,30.45,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0496,Longnose_Dace,Rhinichthys cataractae,4.2,,14.58,Amy,2022-09-23,,,,,,110.3,Amy,2022-12-01,,110.3,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0497,Longnose_Dace,Rhinichthys cataractae,3.7,,14.45,Amy,2022-09-23,,,,,,108.7,Amy,2022-12-01,,108.7,Amy
+18-Jul,Laurel_Creek_Park,AMP22_0498,Longnose_Dace,Rhinichthys cataractae,9.7,Red streaks on fins heavily parasitized,172.5,Amanda,2022-09-26,,65,,,,,,,,65,Amanda
+18-Jul,Laurel_Creek_Park,AMP22_0499,Western_Blacknose_Dace,Rhinichthys obtusus,6.4,,144.1,Amanda,2022-09-26,,27.51,,,,,,,,27.51,Amanda
+18-Jul,Laurel_Creek_Park,AMP22_0500,Longnose_Dace,Rhinichthys cataractae,6.8,,102.6,Amanda,2022-09-26,,21.4,,,,,,,,21.4,Amanda
+18-Jul,Laurel_Creek_Park,AMP22_0501,Western_Blacknose_Dace,Rhinichthys obtusus,6.7,,124.8,Amanda,2022-09-26,,61.49,,,,,,,,61.49,Amanda
+18-Jul,Laurel_Creek_Park,AMP22_0502,Western_Blacknose_Dace,Rhinichthys obtusus,7.2,,81.14,Amanda,2022-09-26,,15,71.37,Amanda,2022-11-08,,,,,71.37,Amanda
+18-Jul,Laurel_Creek_Park,AMP22_0503,Longnose_Dace,Rhinichthys cataractae,4.1,,81.1,Amanda,2022-09-26,,16.47,20.69,Amanda,2022-11-08,,,,,20.69,Amanda
+18-Jul,Laurel_Creek_Park,AMP22_0504,Western_Blacknose_Dace,Rhinichthys obtusus,6.1,,152.2,Amanda,2022-09-26,,34.97,,,,,,,,34.97,Amanda
+18-Jul,Laurel_Creek_Park,AMP22_0505,Western_Blacknose_Dace,Rhinichthys obtusus,7.7,,97.83,Amanda,2022-09-26,,46.8,,,,,,,,46.8,Amanda
+18-Jul,Laurel_Creek_Park,AMP22_0506,Longnose_Dace,Rhinichthys cataractae,11.9,,120.5,Amanda,2022-09-26,,29.45,,,,,,,,29.45,Amanda
+18-Jul,Laurel_Creek_Park,AMP22_0507,Western_Blacknose_Dace,Rhinichthys obtusus,2.7,,73.85,Amanda,2022-09-26,,21.84,,,,,,,,21.84,Amanda
+21-Jul,Clair_Creek ,AMP22_0508,Western_Blacknose_Dace,Rhinichthys obtusus,7.8,,126.9,Amanda,2022-09-26,,19.06,,,,,,,,19.06,Amanda
+21-Jul,Clair_Creek ,AMP22_0509,Western_Blacknose_Dace,Rhinichthys obtusus,3.2,,95.76,Amanda,2022-09-26,,16.45,84.3,Amanda,,,,,,84.3,Amanda
+21-Jul,Clair_Creek ,AMP22_0510,Western_Blacknose_Dace,Rhinichthys obtusus,7.3,,53.88,Amanda,2022-09-26,,19.18,,,,,,,,19.18,Amanda
+21-Jul,Clair_Creek ,AMP22_0511,Western_Blacknose_Dace,Rhinichthys obtusus,3.1,,136.7,Amanda,2022-09-26,,11.81,73.49,Amanda,,,,,,73.49,Amanda
+21-Jul,Clair_Creek ,AMP22_0512,Western_Blacknose_Dace,Rhinichthys obtusus,2.9,,16.99,Amanda,2022-09-26,,12.08,89.33,Amanda,,,,,,89.33,Amanda
+21-Jul,Clair_Creek ,AMP22_0513,Western_Blacknose_Dace,Rhinichthys obtusus,3.8,,115,Amanda,2022-09-26,,18.67,,,,,,,,18.67,Amanda
+21-Jul,Clair_Creek ,AMP22_0514,Longnose_Dace,Rhinichthys cataractae,4.6,,93.94,Amanda,2022-09-26,,29.8,,,,,,,,29.8,Amanda
+21-Jul,Clair_Creek ,AMP22_0515,Western_Blacknose_Dace,,8.6,,62.44,Amanda,2022-09-26,,32.44,,,,,,,,32.44,Amanda
+21-Jul,Clair_Creek ,AMP22_0516,Western_Blacknose_Dace,Rhinichthys obtusus,3.5,,124.4,Amanda,2022-09-26,,21.58,,,,,,,,21.58,Amanda
+21-Jul,Clair_Creek ,AMP22_0517,Western_Blacknose_Dace,Rhinichthys obtusus,3.9,,130.7,Amanda,2022-09-26,,9.078,71.43,Amanda,,,,,,71.43,Amanda
+21-Jul,Clair_Creek ,AMP22_0518,Western_Blacknose_Dace,Rhinichthys obtusus,3,,101,Amanda,2022-09-26,,11.73,94.57,Amanda,,,,,,94.57,Amanda
+21-Jul,Clair_Creek ,AMP22_0519,Western_Blacknose_Dace,Rhinichthys obtusus,3.2,,83.59,Amanda,2022-09-26,,19.2,,,,,,,,19.2,Amanda
+21-Jul,Clair_Creek ,AMP22_0520,Western_Blacknose_Dace,Rhinichthys obtusus,3.9,,51.52,Amanda,2022-09-26,,23.03,,,,,,,,23.03,Amanda
+21-Jul,Clair_Creek ,AMP22_0521,Western_Blacknose_Dace,Rhinichthys obtusus,NA,,56.83,Amanda,2022-09-26,,32.61,,,,,,,,32.61,Amanda
+21-Jul,Clair_Creek ,AMP22_0522,Western_Blacknose_Dace,Rhinichthys obtusus,3.1,,137.4,Amanda,2022-09-26,,9.692,70.69,Amanda,,,,,,70.69,Amanda
+21-Jul,Clair_Creek ,AMP22_0523,Western_Blacknose_Dace,Rhinichthys obtusus,3.2,,25.37,Amanda,2022-09-26,,15.56,91.69,Amanda,,,,,,91.69,Amanda
+21-Jul,Clair_Creek ,AMP22_0524,Western_Blacknose_Dace,Rhinichthys obtusus,2.8,,65.46,Amanda,2022-09-26,,14.31,99.54,Amanda,,,,,,99.54,Amanda
+21-Jul,Clair_Creek ,AMP22_0525,Western_Blacknose_Dace,Rhinichthys obtusus,3.5,,42.85,Amanda,2022-09-26,,11.2,62.58,Amanda,,,,,,62.58,Amanda
+21-Jul,Clair_Creek ,AMP22_0526,Western_Blacknose_Dace,Rhinichthys obtusus,3.3,,33.96,Amanda,2022-09-26,,7.728,85.42,Amanda,,,,,,85.42,Amanda
+21-Jul,Clair_Creek ,AMP22_0527,Western_Blacknose_Dace,Rhinichthys obtusus,3.3,,108.8,Amanda,2022-09-26,,12.3,90.96,Amanda,,,,,,90.96,Amanda
+21-Jul,Clair_Creek ,AMP22_0528,Western_Blacknose_Dace,Rhinichthys obtusus,3,,74.43,Amanda,2022-09-26,,13.53,73.97,Amanda,,,,,,73.97,Amanda
+21-Jul,Clair_Creek ,AMP22_0529,Western_Blacknose_Dace,Rhinichthys obtusus,3.5,,10.12,Amanda,2022-09-26,,12.46,,,,,,,,12.46,Amanda
+21-Jul,Clair_Creek ,AMP22_0530,Western_Blacknose_Dace,Rhinichthys obtusus,3.3,,42.71,Amanda,2022-09-26,,11.08,,,,,,,,11.08,Amanda
+21-Jul,Clair_Creek ,AMP22_0531,Western_Blacknose_Dace,Rhinichthys obtusus,3.1,,94.35,Amanda,2022-09-26,,14.86,92.02,Amanda,,,,,,92.02,Amanda
+21-Jul,Clair_Creek ,AMP22_0532,Western_Blacknose_Dace,Rhinichthys obtusus,4,,17.92,Amanda,2022-09-26,,12.58,142.2,Amanda,,,,,,142.2,Amanda
+21-Jul,Clair_Creek ,AMP22_0533,Western_Blacknose_Dace,Rhinichthys obtusus,3.2,,73.88,Amanda,2022-09-26,,16.69,82.11,Amanda,,,,,,82.11,Amanda
+21-Jul,Clair_Creek ,AMP22_0534,Western_Blacknose_Dace,Rhinichthys obtusus,3.3,,19.98,Amanda,2022-09-26,,11.21,66.25,Amanda,,,,,,66.25,Amanda
+21-Jul,Clair_Creek ,AMP22_0535,Western_Blacknose_Dace,Rhinichthys obtusus,3.7,,94.26,Amanda,2022-09-26,,11.23,136.3,Amanda,,,,,,136.3,Amanda
+21-Jul,Clair_Creek ,AMP22_0536,Western_Blacknose_Dace,Rhinichthys obtusus,3,,8.64,Amanda,2022-09-26,,8.865,92.28,Amanda,,,,,,92.28,Amanda
+21-Jul,Clair_Creek ,AMP22_0537,Western_Blacknose_Dace,Rhinichthys obtusus,3,,65.37,Amanda,2022-09-26,,9.271,100.7,Amanda,,,,,,100.7,Amanda
+21-Jul,Clair_Creek ,AMP22_0538,Western_Blacknose_Dace,Rhinichthys obtusus,3.1,,55.84,Amanda,2022-09-26,,9.476,52.71,Amanda,,,,,,52.71,Amanda
+21-Jul,Clair_Creek ,AMP22_0539,Creek_Chub,Semotilus atromaculatus,3.4,,59.4,Amanda,2022-09-26,,15.09,101.5,Amanda,,,,,,101.5,Amanda
+21-Jul,Clair_Creek ,AMP22_0540,Creek_Chub,Semotilus atromaculatus,3.4,,43.63,Amanda,2022-09-26,,11.96,107.6,Amanda,,,,,,107.6,Amanda
+21-Jul,Clair_Creek ,AMP22_0541,Creek_Chub,Semotilus atromaculatus,3.2,,48.31,Amanda,2022-09-26,,14.14,82.1,Amanda,,,,,,82.1,Amanda
+21-Jul,Clair_Creek ,AMP22_0542,Creek_Chub,Semotilus atromaculatus,3.5,,156.5,Amanda,2022-09-26,,17.54,135.7,Amanda,,,,,,135.7,Amanda
+21-Jul,Clair_Creek ,AMP22_0543,Creek_Chub,Semotilus atromaculatus,4,,49.56,Amanda,2022-09-26,,25.26,206.6,Amanda,,,,,,206.6,Amanda
+21-Jul,Clair_Creek ,AMP22_0544,Creek_Chub,Semotilus atromaculatus,3.2,,81.53,Amanda,2022-09-26,,7.841,79.5,Amanda,,,,,,79.5,Amanda
+21-Jul,Clair_Creek ,AMP22_0545,Creek_Chub,Semotilus atromaculatus,4.1,,47.79,Amanda,2022-09-26,,16.98,194.3,Amanda,,,,,,194.3,Amanda
+21-Jul,Clair_Creek ,AMP22_0546,Creek_Chub,Semotilus atromaculatus,3,,75.81,Amanda,2022-09-27,,26.26,,,,,,,,26.26,Amanda
+21-Jul,Clair_Creek ,AMP22_0547,Creek_Chub,Semotilus atromaculatus,3.3,,300,Amanda,2022-09-27,,25.38,,,,,,,,25.38,Amanda
+21-Jul,Clair_Creek ,AMP22_0548,Creek_Chub,Semotilus atromaculatus,4.3,,259,Amanda,2022-09-27,,47.04,,,,,,,,47.04,Amanda
+21-Jul,Clair_Creek ,AMP22_0549,Creek_Chub,Semotilus atromaculatus,8.5,,199.5,Amanda,2022-09-27,,29.19,,,,,,,,29.19,Amanda
+21-Jul,Clair_Creek ,AMP22_0550,Creek_Chub,Semotilus atromaculatus,3.7,,129,Amanda,2022-09-27,,35.4,,,,,,,,35.4,Amanda
+21-Jul,Clair_Creek ,AMP22_0551,Creek_Chub,Semotilus atromaculatus,3.1,,69.96,Amanda,2022-09-27,,20.1,,,,,,,,20.1,Amanda
+21-Jul,Clair_Creek ,AMP22_0552,Creek_Chub,Semotilus atromaculatus,4,,161.3,Amanda,2022-09-27,,58.8,,,,,,,,58.8,Amanda
+21-Jul,Clair_Creek ,AMP22_0553,Creek_Chub,Semotilus atromaculatus,3.4,,194.3,Amanda,2022-09-27,,28.65,,,,,,,,28.65,Amanda
+21-Jul,Clair_Creek ,AMP22_0554,Creek_Chub,Semotilus atromaculatus,3.6,,192.4,Amanda,2022-09-27,,32.09,,,,,,,,32.09,Amanda
+21-Jul,Clair_Creek ,AMP22_0555,Creek_Chub,Semotilus atromaculatus,3.2,,224.8,Amanda,2022-09-27,,26.81,,,,,,,,26.81,Amanda
+21-Jul,Clair_Creek ,AMP22_0556,Creek_Chub,Semotilus atromaculatus,3.2,,117.3,Amanda,2022-09-27,,31.73,,,,,,,,31.73,Amanda
+21-Jul,Clair_Creek ,AMP22_0557,Creek_Chub,Semotilus atromaculatus,3.2,,210.2,Amanda,2022-09-27,,18.91,90.17,Amanda,,,,,,90.17,Amanda
+21-Jul,Clair_Creek ,AMP22_0558,Creek_Chub,Semotilus atromaculatus,3.4,,103.4,Amanda,2022-09-27,,34.64,,,,,,,,34.64,Amanda
+21-Jul,Clair_Creek ,AMP22_0559,Creek_Chub,Semotilus atromaculatus,10.1,,229.3,Amanda,2022-09-27,,25.24,,,,,,,,25.24,Amanda
+21-Jul,Clair_Creek ,AMP22_0560,Creek_Chub,Semotilus atromaculatus,4,,109.3,Amanda,2022-09-27,,33.97,,,,,,,,33.97,Amanda
+21-Jul,Clair_Creek ,AMP22_0561,Creek_Chub,Semotilus atromaculatus,3.2,,75.07,Amanda,2022-09-27,,23.05,,,,,,,,23.05,Amanda
+21-Jul,Clair_Creek ,AMP22_0562,Creek_Chub,Semotilus atromaculatus,3.8,,210.6,Amanda,2022-09-27,,38.06,,,,,,,,38.06,Amanda
+21-Jul,Clair_Creek ,AMP22_0563,Creek_Chub,Semotilus atromaculatus,3.7,,259.5,Amanda,2022-09-27,,38.57,,,,,,,,38.57,Amanda
+21-Jul,Clair_Creek ,AMP22_0564,Creek_Chub,Semotilus atromaculatus,4.1,,46.31,Amanda,2022-09-27,,44.28,,,,,,,,44.28,Amanda
+21-Jul,Clair_Creek ,AMP22_0565,Creek_Chub,Semotilus atromaculatus,3.7,,85.5,Amanda,2022-09-27,,26.27,,,,,,,,26.27,Amanda
+21-Jul,Clair_Creek ,AMP22_0566,Creek_Chub,Semotilus atromaculatus,3.5,Approximate measurement,306.6,Amanda,2022-09-27,,25.34,,,,,,,,25.34,Amanda
+21-Jul,Clair_Creek ,AMP22_0567,Creek_Chub,Semotilus atromaculatus,3.6,,192.4,Amanda,2022-09-27,,34.22,,,,,,,,34.22,Amanda
+21-Jul,Clair_Creek ,AMP22_0568,Creek_Chub,Semotilus atromaculatus,3.6,,181.4,Amanda,2022-09-27,,40.4,,,,,,,,40.4,Amanda
+26-Jul,Humber_River,AMP22_0569,Common_Shiner,Luxilus cornutus,6.2,,183.1,Amanda,2022-09-27,,19.28,,,,,,,,19.28,Amanda
+26-Jul,Humber_River,AMP22_0570,Common_Shiner,Luxilus cornutus,6.7,,33.46,Amanda,2022-09-27,,31.31,,,,,,,,31.31,Amanda
+26-Jul,Humber_River,AMP22_0571,Common_Shiner,Luxilus cornutus,6.4,,155.5,Amanda,2022-09-27,,21.82,,,,,,,,21.82,Amanda
+26-Jul,Humber_River,AMP22_0572,Common_Shiner,Luxilus cornutus,6.3,,145.5,Amanda,2022-09-27,,17.92,52.76,Amanda,,,,,,52.76,Amanda
+26-Jul,Humber_River,AMP22_0573,Common_Shiner,Luxilus cornutus,5.6,,70.7,Amanda,2022-09-27,,19.85,,,,,,,,19.85,Amanda
+26-Jul,Humber_River,AMP22_0574,Common_Shiner,Luxilus cornutus,5.5,,17.36,Amanda,2022-09-27,,14.27,34.34,Amanda,,,,,,34.34,Amanda
+26-Jul,Humber_River,AMP22_0575,Common_Shiner,Luxilus cornutus,6.3,,96.23,Amanda,2022-09-27,,13.57,72.8,Amanda,,,,,,72.8,Amanda
+26-Jul,Humber_River,AMP22_0576,Common_Shiner,Luxilus cornutus,6.6,,33.01,Amanda,2022-09-27,,17.41,65.06,Amanda,,,,,,65.06,Amanda
+26-Jul,Humber_River,AMP22_0577,Common_Shiner,Luxilus cornutus,5.5,,94.79,Amanda,2022-09-27,,12.87,23.23,Amanda,,,,,,23.23,Amanda
+26-Jul,Humber_River,AMP22_0578,Common_Shiner,Luxilus cornutus,7.9,,104.5,Amanda,2022-09-27,,11.1,84.49,Amanda,,,,,,84.49,Amanda
+26-Jul,Humber_River,AMP22_0579,Common_Shiner,Luxilus cornutus,6.5,,157,Amanda,2022-09-27,,12.43,34.9,Amanda,,,,,,34.9,Amanda
+26-Jul,Humber_River,AMP22_0580,Common_Shiner,Luxilus cornutus,6.2,,101.2,Amanda,2022-09-27,,27.85,,,,,,,,27.85,Amanda
+26-Jul,Humber_River,AMP22_0581,Common_Shiner,Luxilus cornutus,5.3,,94.62,Amanda,2022-09-27,,8.956,37.47,Amanda,,,,,,37.47,Amanda
+26-Jul,Humber_River,AMP22_0582,Common_Shiner,Luxilus cornutus,6.6,,109.4,Amanda,2022-09-27,,19.55,,,,,,,,19.55,Amanda
+26-Jul,Humber_River,AMP22_0583,Common_Shiner,Luxilus cornutus,5.6,,84.15,Amanda,2022-09-27,,14.63,74.5,Amanda,,,,,,74.5,Amanda
+26-Jul,Humber_River,AMP22_0584,Common_Shiner,Luxilus cornutus,6.8,,47.35,Amanda,2022-09-27,,13.99,57.8,Amanda,,,,,,57.8,Amanda
+26-Jul,Humber_River,AMP22_0585,Common_Shiner,Luxilus cornutus,6.6,,62.66,Amanda,2022-09-27,,20.32,,,,,,,,20.32,Amanda
+26-Jul,Humber_River,AMP22_0586,Common_Shiner,Luxilus cornutus,6.5,,105.1,Amanda,2022-09-27,,19.2,67.92,Amanda,,,,,,67.92,Amanda
+26-Jul,Humber_River,AMP22_0587,Common_Shiner,Luxilus cornutus,5.9,,173.2,Amanda,2022-09-27,,54.76,,,,,,,,54.76,Amanda
+26-Jul,Humber_River,AMP22_0588,Common_Shiner,Luxilus cornutus,9.2,,76.69,Amanda,2022-09-27,,15.95,101.3,Amanda,,,,,,101.3,Amanda
+26-Jul,Humber_River,AMP22_0589,Common_Shiner,Luxilus cornutus,7.7,,121.1,Amanda,2022-09-27,,37.05,,,,,,,,37.05,Amanda
+26-Jul,Humber_River,AMP22_0590,Common_Shiner,Luxilus cornutus,6.9,,106.4,Amanda,2022-09-27,,13.44,52.5,Amanda,,,,,,52.5,Amanda
+26-Jul,Humber_River,AMP22_0591,Common_Shiner,Luxilus cornutus,12,,135.4,Amanda,2022-09-27,,36.31,,,,,,,,36.31,Amanda
+26-Jul,Humber_River,AMP22_0592,Common_Shiner,Luxilus cornutus,7,,162.2,Amanda,2022-09-27,,50.06,,,,,,,,50.06,Amanda
+26-Jul,Humber_River,AMP22_0593,Creek_Chub,Semotilus atromaculatus,7.5,,62.58,Amanda,2022-09-27,,64.6,,,,,,,,64.6,Amanda
+26-Jul,Humber_River,AMP22_0594,Common_Shiner,Luxilus cornutus,9,,122.7,Amy,2022-09-28,,33.59,,,,,,,,33.59,Amy
+26-Jul,Humber_River,AMP22_0595,Creek_Chub,Semotilus atromaculatus,7.8,,179.6,Amy,2022-09-28,,27.39,,,,,,,,27.39,Amy
+26-Jul,Humber_River,AMP22_0596,Common_Shiner,Luxilus cornutus,10.2,,271.8,Amy,2022-09-28,,48.25,,,,,,,,48.25,Amy
+26-Jul,Humber_River,AMP22_0597,Creek_Chub,Semotilus atromaculatus,8.1,,119.6,Amy,2022-09-28,,29.29,,,,,,,,29.29,Amy
+26-Jul,Humber_River,AMP22_0598,Creek_Chub,Semotilus atromaculatus,6.3,,119.2,Amy,2022-09-28,,23.16,,,,,,,,23.16,Amy
+26-Jul,Humber_River,AMP22_0599,Creek_Chub,Semotilus atromaculatus,6.7,,227,Amy,2022-09-28,,42.42,,,,,,,,42.42,Amy
+26-Jul,Humber_River,AMP22_0600,Common_Shiner,Luxilus cornutus,9.3,,65.6,Amy,2022-09-28,,51.84,,,,,,,,51.84,Amy
+26-Jul,Humber_River,AMP22_0601,Creek_Chub,Semotilus atromaculatus,9,,74.3,Amy,2022-09-28,,34.06,,,,,,,,34.06,Amy
+26-Jul,Humber_River,AMP22_0602,Creek_Chub,Semotilus atromaculatus,8.1,,48.83,Amy,2022-09-28,,27.3,,,,,,,,27.3,Amy
+26-Jul,Humber_River,AMP22_0603,Creek_Chub,Semotilus atromaculatus,6.8,,69.13,Amy,2022-09-28,,16.36,155.2,Amy,2022-12-01,,,,,155.2,Amy
+26-Jul,Humber_River,AMP22_0604,Creek_Chub,Semotilus atromaculatus,6.5,,80.87,Amy,2022-09-28,,33.98,,,,,,,,33.98,Amy
+26-Jul,Humber_River,AMP22_0605,Creek_Chub,Semotilus atromaculatus,9.5,,81.53,Amy,2022-09-28,,35.93,,,,,,,,35.93,Amy
+26-Jul,Humber_River,AMP22_0606,Creek_Chub,Semotilus atromaculatus,9.1,,63.04,Amy,2022-09-28,,34.77,,,,,,,,34.77,Amy
+26-Jul,Humber_River,AMP22_0607,Creek_Chub,Semotilus atromaculatus,9,,20.59,Amy,2022-09-28,,10.96,156.8,Amy,2022-12-01,,,,,156.8,Amy
+26-Jul,Humber_River,AMP22_0608,Creek_Chub,Semotilus atromaculatus,10.9,,87.66,Amy,2022-09-28,,47.76,,,,,,,,47.76,Amy
+26-Jul,Humber_River,AMP22_0609,Creek_Chub,Semotilus atromaculatus,8.3,,88.04,Amy,2022-09-28,,67.34,,,,,,,,67.34,Amy
+26-Jul,Humber_River,AMP22_0610,Creek_Chub,Semotilus atromaculatus,9.4,,48.29,Amy,2022-09-28,,48.36,,,,,,,,48.36,Amy
+26-Jul,Humber_River,AMP22_0611,Common_Shiner,Luxilus cornutus,12.2,In bag,27.21,Amy,2022-09-28,,25.8,,,,,,,,25.8,Amy
+26-Jul,Humber_River,AMP22_0612,Creek_Chub,Semotilus atromaculatus,10.7,,23.84,Amy,2022-09-28,,21.59,151.9,Amy,2022-12-01,,,,,151.9,Amy
+26-Jul,Humber_River,AMP22_0613,Common_Shiner,Luxilus cornutus,6.2,,11.51,Amy,2022-09-28,,11.77,117.5,Amy,2022-12-01,,,,,117.5,Amy
+26-Jul,Humber_River,AMP22_0614,Common_Shiner,Luxilus cornutus,6.2,,13.58,Amy,2022-09-28,,8.145,95.19,Amy,2022-12-01,87.89,Amy,2022-12-12,,87.89,Amy
+26-Jul,Humber_River,AMP22_0615,Creek_Chub,Semotilus atromaculatus,7.9,,18.79,Amy,2022-09-28,,15.1,123.9,Amy,2022-12-01,,,,,123.9,Amy
+26-Jul,Humber_River,AMP22_0616,Creek_Chub,Semotilus atromaculatus,2.9,,14.62,Amy,2022-09-28,,18.41,,,,138.6,Amy,2022-12-12,,138.6,Amy
+26-Jul,Humber_River,AMP22_0617,Creek_Chub,Semotilus atromaculatus,9.1,,18.28,Amy,2022-09-28,,21.18,,,,,,,,21.18,Amy
+26-Jul,Humber_River,AMP22_0618,Creek_Chub,Semotilus atromaculatus,8.4,,36.21,Amy,2022-09-29,,36.17,,,,,,,,36.17,Amy
+26-Jul,Humber_River,AMP22_0619,Creek_Chub,Semotilus atromaculatus,9.6,,23.88,Amy,2022-09-29,,26.13,,,,,,,,26.13,Amy
+26-Jul,Humber_River,AMP22_0620,Creek_Chub,Semotilus atromaculatus,6.6,,30.41,Amy,2022-09-29,,35.94,,,,,,,,35.94,Amy
+26-Jul,Humber_River,AMP22_0621,Creek_Chub,Semotilus atromaculatus,8.2,,60,Amy,2022-09-29,,63.3,,,,,,,,63.3,Amy
+26-Jul,Humber_River,AMP22_0622,Creek_Chub,Semotilus atromaculatus,9.6,,72,Amy,2022-09-29,,75.36,,,,,,,,75.36,Amy
+26-Jul,Humber_River,AMP22_0623,Creek_Chub,Semotilus atromaculatus,6.6,,61.08,Amy,2022-09-29,,60.19,,,,,,,,60.19,Amy
+26-Jul,Humber_River,AMP22_0624,Creek_Chub,Semotilus atromaculatus,10.7,,94.39,Amy,2022-09-29,,96.51,,,,,,,,96.51,Amy
+26-Jul,Humber_River,AMP22_0625,Creek_Chub,Semotilus atromaculatus,6.6,,28.25,Amy,2022-09-29,,29.4,,,,,,,,29.4,Amy
+26-Jul,Humber_River,AMP22_0626,Creek_Chub,Semotilus atromaculatus,6.8,,26.13,Amy,2022-09-29,,30.52,,,,,,,,30.52,Amy
+26-Jul,Humber_River,AMP22_0627,Creek_Chub,Semotilus atromaculatus,8.2,,84.14,Amy,2022-09-29,,87.16,,,,,,,,87.16,Amy
+26-Jul,Humber_River,AMP22_0628,Creek_Chub,Semotilus atromaculatus,8.2,,41.68,Amy,2022-09-29,,46.25,,,,,,,,46.25,Amy
+26-Jul,Humber_River,AMP22_0629,Rosyface_Shiner,Notropis rubellus,8.3,,8.02,Amy,2022-09-29,,7.796,,,,148.5,Amy,2022-12-12,,148.5,Amy
+26-Jul,Humber_River,AMP22_0630,Rosyface_Shiner,Notropis rubellus,7.8,,28.22,Amy,2022-09-29,,29.93,,,,,,,,29.93,Amy
+26-Jul,Humber_River,AMP22_0631,Western_Blacknose_Dace,Rhinichthys obtusus,5.4,,56.98,Amy,2022-09-29,,58.64,,,,,,,,58.64,Amy
+26-Jul,Humber_River,AMP22_0632,Western_Blacknose_Dace,Rhinichthys obtusus,5.7,,25.07,Amy,2022-09-29,,26.58,,,,,,,,26.58,Amy
+26-Jul,Humber_River,AMP22_0633,Western_Blacknose_Dace,Rhinichthys obtusus,5.8,,20.33,Amy,2022-09-29,,21.63,,,,,,,,21.63,Amy
+26-Jul,Humber_River,AMP22_0634,Western_Blacknose_Dace,Rhinichthys obtusus,5.5,,56.78,Amy,2022-09-29,,59.12,,,,,,,,59.12,Amy
+26-Jul,Humber_River,AMP22_0635,Western_Blacknose_Dace,Rhinichthys obtusus,6.3,,37.57,Amy,2022-09-29,,39.75,,,,,,,,39.75,Amy
+26-Jul,Humber_River,AMP22_0636,Western_Blacknose_Dace,Rhinichthys obtusus,8.2,,100.2,Amy,2022-09-29,,106.2,,,,,,,,106.2,Amy
+26-Jul,Humber_River,AMP22_0637,Western_Blacknose_Dace,Rhinichthys obtusus,4.8,,42.6,Amy,2022-09-29,,44.35,,,,,,,,44.35,Amy
+26-Jul,Humber_River,AMP22_0638,Western_Blacknose_Dace,Rhinichthys obtusus,5.1,,49.24,Amy,2022-09-29,,51.46,,,,,,,,51.46,Amy
+26-Jul,Humber_River,AMP22_0639,Western_Blacknose_Dace,Rhinichthys obtusus,7.4,,52.11,Amy,2022-09-29,,49.07,,,,,,,,49.07,Amy
+26-Jul,Humber_River,AMP22_0640,Longnose_Dace,Rhinichthys cataractae,6.6,,58.93,Amy,2022-09-29,,59.42,,,,,,,,59.42,Amy
+26-Jul,Humber_River,AMP22_0641,Western_Blacknose_Dace,Rhinichthys obtusus,7.9,,52.06,Amy,2022-09-29,,53.7,,,,,,,,53.7,Amy
+26-Jul,Humber_River,AMP22_0642,Western_Blacknose_Dace,Rhinichthys obtusus,7.5,,42.5,Amy,2022-09-29,,46.34,,,,,,,,46.34,Amy
+26-Jul,Humber_River,AMP22_0643,Western_Blacknose_Dace,Rhinichthys obtusus,7.8,,61.92,Amy,2022-09-29,,63.78,,,,,,,,63.78,Amy
+26-Jul,Humber_River,AMP22_0644,Western_Blacknose_Dace,Rhinichthys obtusus,5.5,,46.99,Amy,2022-09-29,,53.58,,,,,,,,53.58,Amy
+26-Jul,Humber_River,AMP22_0645,Western_Blacknose_Dace,Rhinichthys obtusus,7.4,,46.82,Amy,2022-09-29,,48.78,,,,,,,,48.78,Amy
+26-Jul,Humber_River,AMP22_0646,Western_Blacknose_Dace,Rhinichthys obtusus,8.2,,44.94,Amy,2022-09-29,,50.34,,,,,,,,50.34,Amy
+26-Jul,Humber_River,AMP22_0647,Western_Blacknose_Dace,Rhinichthys obtusus,8.4,,72.38,Amy,2022-09-29,,81.46,,,,,,,,81.46,Amy
+26-Jul,Humber_River,AMP22_0648,Western_Blacknose_Dace,Rhinichthys obtusus,7.8,,61.32,Amy,2022-09-29,,63.17,,,,,,,,63.17,Amy
+26-Jul,Humber_River,AMP22_0649,Western_Blacknose_Dace,Rhinichthys obtusus,6,,24.84,Amy,2022-09-29,,28.23,,,,79.19,Amy,2022-12-12,,79.19,Amy
+26-Jul,Humber_River,AMP22_0650,Western_Blacknose_Dace,Rhinichthys obtusus,8.1,,100.9,Amy,2022-09-29,,108.5,,,,,,,,108.5,Amy
+26-Jul,Humber_River,AMP22_0651,Western_Blacknose_Dace,Rhinichthys obtusus,7.4,,77.05,Amy,2022-09-29,,35.3,,,,,,,,35.3,Amy
+26-Jul,Humber_River,AMP22_0652,Western_Blacknose_Dace,Rhinichthys obtusus,8.4,,44.19,Amy,2022-09-29,,49.22,,,,,,,,49.22,Amy
+26-Jul,Humber_River,AMP22_0653,Western_Blacknose_Dace,Rhinichthys obtusus,8.2,,54.49,Amy,2022-09-29,,57.95,,,,,,,,57.95,Amy
+26-Jul,Humber_River,AMP22_0654,Western_Blacknose_Dace,Rhinichthys obtusus,8.1,,56.78,Amy,2022-09-29,,56.23,,,,,,,,56.23,Amy
+26-Jul,Humber_River,AMP22_0655,Western_Blacknose_Dace,Rhinichthys obtusus,7.3,,56.99,Amy,2022-09-29,,57.39,,,,,,,,57.39,Amy
+26-Jul,Humber_River,AMP22_0656,Western_Blacknose_Dace,Rhinichthys obtusus,5.5,,26.48,Amy,2022-09-29,,25.08,,,,,,,,25.08,Amy
+26-Jul,Humber_River,AMP22_0657,Western_Blacknose_Dace,Rhinichthys obtusus,8.4,,62.67,Amy,2022-09-29,,65.55,,,,,,,,65.55,Amy
+26-Jul,Humber_River,AMP22_0658,Western_Blacknose_Dace,Rhinichthys obtusus,7.9,,101.1,Amy,2022-09-29,,103.5,,,,,,,,103.5,Amy
+26-Jul,Humber_River,AMP22_0659,River_Chub,Nocomis micropogon,7.5,,37.89,Amy,2022-09-29,,39.39,,,,,,,,39.39,Amy
+26-Jul,Humber_River,AMP22_0660,River_Chub,Nocomis micropogon,7.7,,37.89,Amy,2022-09-29,,39.91,,,,,,,,39.91,Amy
+26-Jul,Humber_River,AMP22_0661,River_Chub,Nocomis micropogon,8.6,,80.93,Amy,2022-09-29,,83.8,,,,,,,,83.8,Amy
+26-Jul,Humber_River,AMP22_0662,River_Chub,Nocomis micropogon,8.1,,34.47,Amy,2022-09-29,,37.92,,,,,,,,37.92,Amy
+26-Jul,Humber_River,AMP22_0663,River_Chub,Nocomis micropogon,7.6,,28.19,Amy,2022-09-29,,30.3,,,,,,,,30.3,Amy
+26-Jul,Humber_River,AMP22_0664,River_Chub,Nocomis micropogon,7.5,,47.19,Amy,2022-09-29,,49.01,,,,,,,,49.01,Amy
+26-Jul,Humber_River,AMP22_0665,River_Chub,Nocomis micropogon,7.6,Check photo,77.69,Amy,2022-09-29,,81.64,,,,,,,,81.64,Amy
+26-Jul,Humber_River,AMP22_0666,River_Chub,Nocomis micropogon,8.7,,155.3,Amanda,2022-09-29,,86.15,,,,,,,,86.15,Amanda
+27-Jul,Carroll_Creek,AMP22_0667,Western_Blacknose_Dace,Rhinichthys obtusus,7.5,Probable male (spawning colours),164.4,Amanda,2022-09-29,,65.44,,,,,,,,65.44,Amanda
+27-Jul,Carroll_Creek,AMP22_0668,Western_Blacknose_Dace,Rhinichthys obtusus,7.4,,57.22,Amanda,2022-09-29,,46.64,,,,,,,,46.64,Amanda
+27-Jul,Carroll_Creek,AMP22_0669,Western_Blacknose_Dace,Rhinichthys obtusus,5.8,,144.3,Amanda,2022-09-29,,47.28,,,,,,,,47.28,Amanda
+27-Jul,Carroll_Creek,AMP22_0670,Western_Blacknose_Dace,Rhinichthys obtusus,7.9,,69.66,Amanda,2022-09-29,,70.07,,,,,,,,70.07,Amanda
+27-Jul,Carroll_Creek,AMP22_0671,Western_Blacknose_Dace,Rhinichthys obtusus,7,Probable male (spawning colours),56.16,Amanda,2022-09-29,,44.66,,,,,,,,44.66,Amanda
+27-Jul,Carroll_Creek,AMP22_0672,Western_Blacknose_Dace,Rhinichthys obtusus,6.2,,123.6,Amanda,2022-09-29,,48.43,,,,,,,,48.43,Amanda
+27-Jul,Carroll_Creek,AMP22_0673,Western_Blacknose_Dace,Rhinichthys obtusus,7.8,Probable male (spawning colours),67.63,Amanda,2022-09-29,,53.48,,,,,,,,53.48,Amanda
+27-Jul,Carroll_Creek,AMP22_0674,Western_Blacknose_Dace,Rhinichthys obtusus,8.9,,165.8,Amanda,2022-09-29,,51.28,,,,,,,,51.28,Amanda
+27-Jul,Carroll_Creek,AMP22_0675,Western_Blacknose_Dace,Rhinichthys obtusus,5.9,,50.16,Amanda,2022-09-29,,46.03,,,,,,,,46.03,Amanda
+27-Jul,Carroll_Creek,AMP22_0676,Western_Blacknose_Dace,Rhinichthys obtusus,7.7,,128,Amanda,2022-09-29,,64.23,,,,,,,,64.23,Amanda
+27-Jul,Carroll_Creek,AMP22_0677,Western_Blacknose_Dace,Rhinichthys obtusus,7.7,,158.6,Amanda,2022-09-29,,51.75,,,,,,,,51.75,Amanda
+27-Jul,Carroll_Creek,AMP22_0678,Western_Blacknose_Dace,Rhinichthys obtusus,6.7,,160.6,Amanda,2022-09-29,,90.16,,,,,,,,90.16,Amanda
+27-Jul,Carroll_Creek,AMP22_0679,Hornyhead_Chub,Nocomis biguttatus,8.6,,127.7,Amanda,2022-09-29,,48.11,,,,,,,,48.11,Amanda
+27-Jul,Carroll_Creek,AMP22_0680,Creek_Chub,Semotilus atromaculatus,9.8,,157.9,Amanda,2022-09-29,,49.2,,,,,,,,49.2,Amanda
+27-Jul,Carroll_Creek,AMP22_0681,Creek_Chub,Semotilus atromaculatus,6.7,,84.96,Amanda,2022-09-29,,38.33,,,,,,,,38.33,Amanda
+27-Jul,Carroll_Creek,AMP22_0682,Creek_Chub,Semotilus atromaculatus,8,,204.3,Amanda,2022-09-29,,43.63,,,,,,,,43.63,Amanda
+27-Jul,Carroll_Creek,AMP22_0683,Creek_Chub,Semotilus atromaculatus,8.2,In bag (missing tubes),55.1,Amanda,2022-09-29,,53.82,,,,,,,,53.82,Amanda
+27-Jul,Carroll_Creek,AMP22_0684,Creek_Chub,Semotilus atromaculatus,7.9,In bag (missing tubes),52.96,Amanda,2022-09-29,,31.17,,,,,,,,31.17,Amanda
+27-Jul,Carroll_Creek,AMP22_0685,Creek_Chub,Semotilus atromaculatus,6.9,In bag (missing tubes),107.9,Amanda,2022-09-29,,40.98,,,,,,,,40.98,Amanda
+27-Jul,Carroll_Creek,AMP22_0686,Creek_Chub,Semotilus atromaculatus,3.5,In bag (missing tubes),116.3,Amanda,2022-09-29,,38.99,,,,,,,,38.99,Amanda
+27-Jul,Carroll_Creek,AMP22_0687,Creek_Chub,Semotilus atromaculatus,3.2,In bag (missing tubes),61.85,Amanda,2022-09-29,,33.11,,,,,,,,33.11,Amanda
+27-Jul,Carroll_Creek,AMP22_0688,Creek_Chub,Semotilus atromaculatus,8,,99.3,Amanda,2022-09-29,,37.59,,,,,,,,37.59,Amanda
+27-Jul,Carroll_Creek,AMP22_0689,Creek_Chub,Semotilus atromaculatus,6.6,,111,Amanda,2022-09-29,,26.25,,,,,,,,26.25,Amanda
+27-Jul,Carroll_Creek,AMP22_0690,Creek_Chub,Semotilus atromaculatus,7.7,,193.1,Amanda,2022-09-29,,108.2,,,,,,,,108.2,Amanda
+27-Jul,Carroll_Creek,AMP22_0691,Creek_Chub,Semotilus atromaculatus,7.8,,184.4,Amanda,2022-09-29,,36.1,,,,,,,,36.1,Amanda
+27-Jul,Carroll_Creek,AMP22_0692,Central_Stoneroller,Campostoma anomalum,6.3,Died in creek found when pulling traps,166.4,Amanda,2022-09-29,,51.85,,,,,,,,51.85,Amanda
+27-Jul,Carroll_Creek,AMP22_0693,Common_Shiner,Luxilus cornutus,4.7,Died in creek found when pulling traps,120,Amanda,2022-09-29,,14.81,14.67,Amanda,,74.35,Amy,2022-12-12,,74.35,Amy
+27-Jul,Carroll_Creek,AMP22_0694,Common_Shiner,Luxilus cornutus,5.5,Died in creek found when pulling traps,114.8,Amanda,2022-09-29,,12.73,33.94,Amanda,,,,,,33.94,Amanda
+27-Jul,Carroll_Creek,AMP22_0695,Common_Shiner,Luxilus cornutus,5.4,Died in creek found when pulling traps,46.58,Amanda,2022-09-29,,5.64,77.36,Amanda,,,,,,77.36,Amanda
+27-Jul,Carroll_Creek,AMP22_0696,Western_Blacknose_Dace,Rhinichthys obtusus,6.2,Died in creek found when pulling traps,91.44,Amanda,2022-09-29,,81.9,,,,,,,,81.9,Amanda
+27-Jul,Carroll_Creek,AMP22_0697,Central_Stoneroller,Campostoma anomalum,9.5,Died in creek found when pulling traps,186.9,Amanda,2022-09-29,,119.2,,,,,,,,119.2,Amanda
+27-Jul,Carroll_Creek,AMP22_0698,Common_Shiner,Luxilus cornutus,7.4,Died in creek found when pulling traps,26.83,Amanda,2022-09-29,,10.52,74.66,Amanda,,,,,,74.66,Amanda
+28-Jul,Irvine_Creek,AMP22_0699,Common_Shiner,Luxilus cornutus,7,,100.7,Amanda,2022-09-29,,58.46,,,,,,,,58.46,Amanda
+28-Jul,Irvine_Creek,AMP22_0700,Common_Shiner,Luxilus cornutus,6.5,,33.66,Amanda,2022-09-29,,28.4,,,,,,,,28.4,Amanda
+28-Jul,Irvine_Creek,AMP22_0701,Common_Shiner,Luxilus cornutus,8.1,,61.27,Amanda,2022-09-29,,40.59,51.17,Amanda,,,,,,51.17,Amanda
+28-Jul,Irvine_Creek,AMP22_0702,Common_Shiner,Luxilus cornutus,6.6,,22.37,Amanda,2022-09-29,,17.23,55.41,Amanda,,,,,,55.41,Amanda
+28-Jul,Irvine_Creek,AMP22_0703,Common_Shiner,Luxilus cornutus,6.8,,20.8,Amanda,2022-09-29,,12.18,,,,,,,,12.18,Amanda
+28-Jul,Irvine_Creek,AMP22_0704,Common_Shiner,Luxilus cornutus,8.6,,57.89,Amanda,2022-09-29,,23.28,81.63,Amanda,,,,,,81.63,Amanda
+28-Jul,Irvine_Creek,AMP22_0705,Common_Shiner,Luxilus cornutus,7.1,,40.31,Amanda,2022-09-29,,5.74,,,,,,,,5.74,Amanda
+28-Jul,Irvine_Creek,AMP22_0706,Common_Shiner,Luxilus cornutus,6.9,,135.2,Amanda,2022-09-29,,40.64,,,,,,,,40.64,Amanda
+28-Jul,Irvine_Creek,AMP22_0707,Common_Shiner,Luxilus cornutus,7.8,,151.9,Amanda,2022-09-29,,29.77,,,,,,,,29.77,Amanda
+28-Jul,Irvine_Creek,AMP22_0708,Common_Shiner,Luxilus cornutus,6.3,,91.12,Amanda,2022-09-29,,19.85,,,,,,,,19.85,Amanda
+28-Jul,Irvine_Creek,AMP22_0709,Common_Shiner,Luxilus cornutus,7.6,,92.54,Amanda,2022-09-29,,31.85,,,,,,,,31.85,Amanda
+28-Jul,Irvine_Creek,AMP22_0710,Common_Shiner,Luxilus cornutus,7.5,,24.94,Amanda,2022-09-29,,18.01,,,,,,,,18.01,Amanda
+28-Jul,Irvine_Creek,AMP22_0711,Common_Shiner,Luxilus cornutus,8.4,,43.04,Amanda,2022-09-29,,40.83,,,,,,,,40.83,Amanda
+28-Jul,Irvine_Creek,AMP22_0712,Common_Shiner,Luxilus cornutus,8.4,,114.1,Amanda,2022-09-29,,52.2,,,,,,,,52.2,Amanda
+28-Jul,Irvine_Creek,AMP22_0713,Common_Shiner,Luxilus cornutus,8.1,,68.79,Amanda,2022-09-29,,40.32,,,,,,,,40.32,Amanda
+28-Jul,Irvine_Creek,AMP22_0714,Common_Shiner,Luxilus cornutus,7,,49.27,Amy,2022-09-30,,58.85,,,,,,,,58.85,Amy
+28-Jul,Irvine_Creek,AMP22_0715,Common_Shiner,Luxilus cornutus,6.7,,31.76,Amy,2022-09-30,,34.61,,,,,,,,34.61,Amy
+28-Jul,Irvine_Creek,AMP22_0716,Common_Shiner,Luxilus cornutus,6.9,,19.23,Amy,2022-09-30,,21.9,,,,,,,,21.9,Amy
+28-Jul,Irvine_Creek,AMP22_0717,Common_Shiner,Luxilus cornutus,7.3,,34.56,Amy,2022-09-30,,34.4,,,,,,,,34.4,Amy
+28-Jul,Irvine_Creek,AMP22_0718,Common_Shiner,Luxilus cornutus,9.6,,42.45,Amy,2022-09-30,,42.17,,,,,,,,42.17,Amy
+28-Jul,Irvine_Creek,AMP22_0719,Common_Shiner,Luxilus cornutus,8.5,,49.86,Amy,2022-09-30,,56.81,,,,,,,,56.81,Amy
+28-Jul,Irvine_Creek,AMP22_0720,Common_Shiner,Luxilus cornutus,6.8,,42.74,Amy,2022-09-30,,46.58,,,,,,,,46.58,Amy
+28-Jul,Irvine_Creek,AMP22_0721,Common_Shiner,Luxilus cornutus,9.5,,48.82,Amy,2022-09-30,,53.13,,,,,,,,53.13,Amy
+28-Jul,Irvine_Creek,AMP22_0722,Common_Shiner,Luxilus cornutus,8.9,,40.3,Amy,2022-09-30,,42.14,,,,,,,,42.14,Amy
+28-Jul,Irvine_Creek,AMP22_0723,Common_Shiner,Luxilus cornutus,7.6,,36.5,Amy,2022-09-30,,39.38,,,,,,,,39.38,Amy
+28-Jul,Irvine_Creek,AMP22_0724,Common_Shiner,Luxilus cornutus,7.1,,29.39,Amy,2022-09-30,,32.19,,,,,,,,32.19,Amy
+28-Jul,Irvine_Creek,AMP22_0725,Common_Shiner,Luxilus cornutus,10.4,,51.95,Amy,2022-09-30,,55.15,,,,,,,,55.15,Amy
+28-Jul,Irvine_Creek,AMP22_0726,Common_Shiner,Luxilus cornutus,9,,39.52,Amy,2022-09-30,,40.24,,,,,,,,40.24,Amy
+28-Jul,Irvine_Creek,AMP22_0727,Common_Shiner,Luxilus cornutus,9.5,,47.94,Amy,2022-09-30,,49.69,,,,,,,,49.69,Amy
+28-Jul,Irvine_Creek,AMP22_0728,Common_Shiner,Luxilus cornutus,6.2,,11.28,Amy,2022-09-30,,13.08,,,,52.82,Amy,2022-12-12,,52.82,Amy
+28-Jul,Irvine_Creek,AMP22_0729,Common_Shiner,Luxilus cornutus,10.3,Possible hybrid,62.65,Amy,2022-09-30,,62.61,,,,,,,,62.61,Amy
+28-Jul,Irvine_Creek,AMP22_0730,Common_Shiner,Luxilus cornutus,6.6,Found dead in trap,15.92,Amy,2022-09-30,,15.73,,,,43.63,Amy,2022-12-12,,43.63,Amy
+28-Jul,Irvine_Creek,AMP22_0731,Common_Shiner,Luxilus cornutus,4.7,Found dead in trap,10.96,Amy,2022-09-30,,14.35,,,,33.07,Amy,2022-12-12,,33.07,Amy
+28-Jul,Irvine_Creek,AMP22_0732,Western_Blacknose_Dace,Rhinichthys obtusus,6.8,,103.2,Amy,2022-09-30,,104.3,,,,,,,,104.3,Amy
+28-Jul,Irvine_Creek,AMP22_0733,Western_Blacknose_Dace,Rhinichthys obtusus,6.8,,59.72,Amy,2022-09-30,,62.33,,,,,,,,62.33,Amy
+28-Jul,Irvine_Creek,AMP22_0734,Hornyhead_Chub,Nocomis biguttatus,5.1,,38.36,Amy,2022-09-30,,37.94,,,,,,,,37.94,Amy
+28-Jul,Irvine_Creek,AMP22_0735,Hornyhead_Chub,Nocomis biguttatus,5.3,,48.27,Amy,2022-09-30,,51.59,,,,,,,,51.59,Amy
+28-Jul,Irvine_Creek,AMP22_0736,River_Chub,Nocomis micropogon,7.7,,91.45,Amy,2022-09-30,,52.83,,,,,,,,52.83,Amy
+28-Jul,Irvine_Creek,AMP22_0737,Hornyhead_Chub,Nocomis biguttatus,8.2,,53.24,Amy,2022-09-30,,56.22,,,,,,,,56.22,Amy
+28-Jul,Irvine_Creek,AMP22_0738,Hornyhead_Chub,Nocomis biguttatus,8.5,,,Amy,2022-09-30,,59.39,,,,,,,,59.39,Amy
+28-Jul,Irvine_Creek,AMP22_0739,Hornyhead_Chub,Nocomis biguttatus,6.2,,,Amy,2022-09-30,,67.09,,,,,,,,67.09,Amy
+28-Jul,Irvine_Creek,AMP22_0740,Hornyhead_Chub,Nocomis biguttatus,4.7,,,Amy,2022-09-30,,40.38,,,,,,,,40.38,Amy
+28-Jul,Irvine_Creek,AMP22_0741,Hornyhead_Chub,Nocomis biguttatus,4.2,,,Amy,2022-09-30,,37.89,,,,,,,,37.89,Amy
+28-Jul,Irvine_Creek,AMP22_0742,Western_Blacknose_Dace,Rhinichthys obtusus,6.3,,,Amy,2022-09-30,,50.91,,,,,,,,50.91,Amy
+28-Jul,Irvine_Creek,AMP22_0743,Hornyhead_Chub,Nocomis biguttatus,7.1,,,Amy,2022-09-30,,20.53,,,,,,,,20.53,Amy
+28-Jul,Irvine_Creek,AMP22_0744,Western_Blacknose_Dace,Rhinichthys obtusus,7.6,,,Amy,2022-09-30,,42.4,,,,,,,,42.4,Amy
+28-Jul,Irvine_Creek,AMP22_0745,Hornyhead_Chub,Nocomis biguttatus,7,,,Amy,2022-09-30,,32.1,,,,,,,,32.1,Amy
+28-Jul,Irvine_Creek,AMP22_0746,Hornyhead_Chub,Nocomis biguttatus,5.8,,,Amy,2022-09-30,,33.15,,,,102,Amy,2022-12-12,,102,Amy
+28-Jul,Irvine_Creek,AMP22_0747,Hornyhead_Chub,Nocomis biguttatus,6.2,,,Amy,2022-09-30,,36.61,,,,,,,,36.61,Amy
+28-Jul,Irvine_Creek,AMP22_0748,Western_Blacknose_Dace,Rhinichthys obtusus,7.3,Probable male (spawning colours),,Amy,2022-09-30,,35.26,,,,,,,,35.26,Amy
+28-Jul,Irvine_Creek,AMP22_0749,Hornyhead_Chub,Nocomis biguttatus,6.2,,,Amy,2022-09-30,,26.19,,,,,,,,26.19,Amy
+28-Jul,Irvine_Creek,AMP22_0750,Hornyhead_Chub,Nocomis biguttatus,9.2,,,Amy,2022-09-30,,72.04,,,,,,,,72.04,Amy
+28-Jul,Irvine_Creek,AMP22_0751,Western_Blacknose_Dace,Rhinichthys obtusus,6.3,,,Amy,2022-09-30,,56.3,,,,,,,,56.3,Amy
+28-Jul,Irvine_Creek,AMP22_0752,Hornyhead_Chub,Nocomis biguttatus,7.7,,,Amy,2022-09-30,,36.13,,,,,,,,36.13,Amy
+28-Jul,Irvine_Creek,AMP22_0753,River_Chub,Nocomis micropogon,8.4,,,Amy,2022-09-30,,62.91,,,,,,,,62.91,Amy
+28-Jul,Irvine_Creek,AMP22_0754,Hornyhead_Chub,Nocomis biguttatus,6.5,,,Amy,2022-09-30,,60.8,,,,,,,,60.8,Amy
+28-Jul,Irvine_Creek,AMP22_0755,Creek_Chub,Semotilus atromaculatus,11.8,Big!,,Amy,2022-09-30,,58.35,,,,,,,,58.35,Amy
+28-Jul,Irvine_Creek,AMP22_0756,Western_Blacknose_Dace,Rhinichthys obtusus,5.9,,,Amy,2022-09-30,,43.6,,,,62.02,Amy,2022-12-12,,62.02,Amy
+28-Jul,Irvine_Creek,AMP22_0757,Western_Blacknose_Dace,Rhinichthys obtusus,7.6,,,Amy,2022-09-30,,44.05,,,,,,,,44.05,Amy
+28-Jul,Irvine_Creek,AMP22_0758,River_Chub,Nocomis micropogon,7.8,,,Amy,2022-09-30,,41.65,,,,,,,,41.65,Amy
+28-Jul,Irvine_Creek,AMP22_0759,River_Chub,Nocomis micropogon,8.4,,,Amy,2022-09-30,,45.31,,,,,,,,45.31,Amy
+28-Jul,Irvine_Creek,AMP22_0760,River_Chub,Nocomis micropogon,12.3,In bag,,Amy,2022-09-30,,44.49,,,,,,,,44.49,Amy
+28-Jul,Irvine_Creek,AMP22_0761,Hornyhead_Chub,Nocomis biguttatus,7.4,,,Amy,2022-09-30,,32.26,,,,,,,,32.26,Amy
+28-Jul,Irvine_Creek,AMP22_0762,River_Chub,Nocomis micropogon,11.8,,45.58,Amanda,2022-10-03,,60.95,,,,,,,,60.95,Amanda
+28-Jul,Irvine_Creek,AMP22_0763,Hornyhead_Chub,Nocomis biguttatus,8.8,,121.5,Amanda,2022-10-03,,19.52,,,,,,,,19.52,Amanda
+28-Jul,Irvine_Creek,AMP22_0764,River_Chub,Nocomis micropogon,7.8,,149.2,Amanda,2022-10-03,,23.19,,,,,,,,23.19,Amanda
+28-Jul,Irvine_Creek,AMP22_0765,Longnose_Dace,Rhinichthys cataractae,8.7,,138.5,Amanda,2022-10-03,,41.89,,,,,,,,41.89,Amanda
+28-Jul,Irvine_Creek,AMP22_0766,River_Chub,Nocomis micropogon,10,,130.6,Amanda,2022-10-03,,26.29,,,,,,,,26.29,Amanda
+28-Jul,Irvine_Creek,AMP22_0767,River_Chub,Nocomis micropogon,7.8,,104.3,Amanda,2022-10-03,,27.82,,,,,,,,27.82,Amanda
+28-Jul,Irvine_Creek,AMP22_0768,Longnose_Dace,Rhinichthys cataractae,9,,102.9,Amanda,2022-10-03,,19.72,,,,,,,,19.72,Amanda
+28-Jul,Irvine_Creek,AMP22_0769,River_Chub,Nocomis micropogon,13.4,In bag,121,Amanda,2022-10-03,,44.36,,,,,,,,44.36,Amanda
+28-Jul,Irvine_Creek,AMP22_0770,River_Chub,Nocomis micropogon,7,,158,Amanda,2022-10-03,,15.76,,,,,,,,15.76,Amanda
+28-Jul,Irvine_Creek,AMP22_0771,River_Chub,Nocomis micropogon,7.4,,225.1,Amanda,2022-10-03,,20.49,,,,,,,,20.49,Amanda
+28-Jul,Irvine_Creek,AMP22_0772,River_Chub,Nocomis micropogon,13.5,In bag,58.25,Amanda,2022-10-03,,34.4,,,,,,,,34.4,Amanda
+28-Jul,Irvine_Creek,AMP22_0773,River_Chub,Nocomis micropogon,9.4,,121.4,Amanda,2022-10-03,,39.07,,,,,,,,39.07,Amanda
+28-Jul,Irvine_Creek,AMP22_0774,River_Chub,Nocomis micropogon,9.6,,206,Amanda,2022-10-03,,23.41,,,,,,,,23.41,Amanda
+28-Jul,Irvine_Creek,AMP22_0775,River_Chub,Nocomis micropogon,10.4,,88.85,Amanda,2022-10-03,,38.01,,,,,,,,38.01,Amanda
+28-Jul,Irvine_Creek,AMP22_0776,River_Chub,Nocomis micropogon,9.2,,86.98,Amanda,2022-10-03,,53.37,,,,,,,,53.37,Amanda
+28-Jul,Irvine_Creek,AMP22_0777,River_Chub,Nocomis micropogon,7.1,,132.7,Amanda,2022-10-03,,28.83,,,,,,,,28.83,Amanda
+28-Jul,Irvine_Creek,AMP22_0778,Hornyhead_Chub,Nocomis biguttatus,6.7,,232,Amanda,2022-10-03,,39.81,,,,,,,,39.81,Amanda
+28-Jul,Irvine_Creek,AMP22_0779,River_Chub,Nocomis micropogon,11.1,,118.1,Amanda,2022-10-03,,46.35,,,,,,,,46.35,Amanda
+28-Jul,Irvine_Creek,AMP22_0780,Hornyhead_Chub,Nocomis biguttatus,6.1,,109.6,Amanda,2022-10-03,,28.01,,,,,,,,28.01,Amanda
+28-Jul,Irvine_Creek,AMP22_0781,Hornyhead_Chub,Nocomis biguttatus,7.1,,55.82,Amanda,2022-10-03,,24.97,,,,,,,,24.97,Amanda
+28-Jul,Irvine_Creek,AMP22_0782,Hornyhead_Chub,Nocomis biguttatus,6.4,,84.84,Amanda,2022-10-03,,11.98,,,,,,,,11.98,Amanda
+28-Jul,Irvine_Creek,AMP22_0783,River_Chub,Nocomis micropogon,12.9,In bag,103.5,Amanda,2022-10-03,,34.24,,,,,,,,34.24,Amanda
+28-Jul,Irvine_Creek,AMP22_0784,River_Chub,Nocomis micropogon,9.1,,61.49,Amanda,2022-10-03,,30.33,,,,,,,,30.33,Amanda
+28-Jul,Irvine_Creek,AMP22_0785,River_Chub,Nocomis micropogon,9.5,,126.1,Amanda,2022-10-03,,27.32,,,,,,,,27.32,Amanda
+28-Jul,Irvine_Creek,AMP22_0786,River_Chub,Nocomis micropogon,12.4,In bag - white nodules by caudal fin,,,,,,51.03,Amy,2022-12-06,,,,,51.03,Amy
+28-Jul,Irvine_Creek,AMP22_0787,River_Chub,Nocomis micropogon,13.6,In bag,,,,,,125.8,Amy,2022-12-06,,,,,125.8,Amy
+28-Jul,Irvine_Creek,AMP22_0788,Hornyhead_Chub,Nocomis biguttatus,5.4,,,,,,,46.22,Amy,2022-12-06,,,,,46.22,Amy
+28-Jul,Irvine_Creek,AMP22_0789,Creek_Chub,Semotilus atromaculatus,8.3,,,,,,,42.52,Amy,2022-12-06,,,,,42.52,Amy
+28-Jul,Irvine_Creek,AMP22_0790,River_Chub,Nocomis micropogon,11.7,,,,,,,112.2,Amy,2022-12-06,,,,,112.2,Amy
+28-Jul,Irvine_Creek,AMP22_0791,River_Chub,Nocomis micropogon,12.6,In bag - heavily parasitized black kernel ,,,,,,131.6,Amy,2022-12-06,,,,,131.6,Amy
+28-Jul,Irvine_Creek,AMP22_0792,Hornyhead_Chub,Nocomis biguttatus,5.8,,,,,,,93.74,Amy,2022-12-06,,,,,93.74,Amy
+28-Jul,Irvine_Creek,AMP22_0793,River_Chub,Nocomis micropogon,9.9,,,,,,,98.13,Amy,2022-12-06,,,,,98.13,Amy
+28-Jul,Irvine_Creek,AMP22_0794,River_Chub,Nocomis micropogon,10.7,,,,,,,103,Amy,2022-12-06,,,,,103,Amy
+28-Jul,Irvine_Creek,AMP22_0795,Longnose_Dace,Rhinichthys cataractae,8.8,,,,,,,101.3,Amy,2022-12-06,,,,,101.3,Amy
+28-Jul,Irvine_Creek,AMP22_0796,River_Chub,Nocomis micropogon,8.9,,,,,,,116.8,Amy,2022-12-06,,,,,116.8,Amy
+28-Jul,Irvine_Creek,AMP22_0797,Western_Blacknose_Dace,Rhinichthys obtusus,6.2,,,,,,,57.31,Amy,2022-12-06,,,,,57.31,Amy
+28-Jul,Irvine_Creek,AMP22_0798,Striped_Shiner,Luxilus chrysocephalus,8.3,,,,,,,10.27,Amy,2022-12-06,98.37,Amy,2022-12-12,,98.37,Amy
+28-Jul,Irvine_Creek,AMP22_0799,Striped_Shiner,Luxilus chrysocephalus,7.9,,,,,,,28.99,Amy,2022-12-06,,,,,28.99,Amy
+04-Aug,Swan_Creek,AMP22_0800,Creek_Chub,Semotilus atromaculatus,10.6,REFERENCE GENOME CREEK CHUB FLASH FROZEN,,,,,,85.84,Amy,2022-12-06,,,,,85.84,Amy
+04-Aug,Swan_Creek,AMP22_0801,Hornyhead_Chub,Nocomis biguttatus,8.3,Mystery label found in 810 (none in 801) so changed label to 801,,,,,,43.33,Amy,2022-12-06,,,,,43.33,Amy
+10-Aug,Meuser_Farm,AMP22_0802,Creek_Chub,Semotilus atromaculatus,12.4,,,,,,,123.1,Amy,2022-12-06,,,,,123.1,Amy
+10-Aug,Meuser_Farm,AMP22_0803,Creek_Chub,Semotilus atromaculatus,13.7,,,,,,,100.6,Amy,2022-12-06,,,,,100.6,Amy
+10-Aug,Meuser_Farm,AMP22_0804,Creek_Chub,Semotilus atromaculatus,8.8,,,,,,,37.25,Amy,2022-12-06,,,,,37.25,Amy
+10-Aug,Meuser_Farm,AMP22_0805,Western_Blacknose_Dace,Rhinichthys obtusus,6.9,,,,,,,35.68,Amy,2022-12-06,,,,,35.68,Amy
+06-Sep,Meuser_Farm,AMP22_0806,Western_Blacknose_Dace,Rhinichthys obtusus,5.1,Possible hybrid,,,,,,51.72,Amy,2022-12-06,,,,,51.72,Amy
+06-Sep,Meuser_Farm,AMP22_0807,Creek_Chub,Semotilus atromaculatus,9.1,,,,,,,40.73,Amy,2022-12-06,,,,,40.73,Amy
+06-Sep,Meuser_Farm,AMP22_0808,Creek_Chub,Semotilus atromaculatus,15.3,,,,,,,92.16,Amy,2022-12-06,,,,,92.16,Amy
+06-Sep,Saugeen_River13,AMP22_0809,Common_Shiner,Luxilus cornutus,5.3,,,,,,,22.05,Amy,2022-12-06,,,,,22.05,Amy
+06-Sep,Saugeen_River13,AMP22_0810,Common_Shiner,Luxilus cornutus,4.6,,14.62,Amanda,2022-10-20,,,72.79,Amy,2022-12-12,,,,,72.79,Amy
+06-Sep,Saugeen_River13,AMP22_0811,Common_Shiner,Luxilus cornutus,5,,11.25,Amanda,2022-10-20,,,90.11,Amy,2022-12-12,,,,,90.11,Amy
+06-Sep,Saugeen_River13,AMP22_0812,Common_Shiner,Luxilus cornutus,4.8,,83.32,Amanda,2022-10-20,,,,,,,,,,83.32,Amanda
+06-Sep,Saugeen_River13,AMP22_0813,Common_Shiner,Luxilus cornutus,5,,19.57,Amanda,2022-10-20,,,,,,,,,,19.57,Amanda
+06-Sep,Saugeen_River13,AMP22_0814,Common_Shiner,Luxilus cornutus,5.6,,10.78,Amanda,2022-10-20,,,64.58,Amy,2022-12-12,,,,,64.58,Amy
+06-Sep,Saugeen_River13,AMP22_0815,Common_Shiner,Luxilus cornutus,5.8,,9.45,Amanda,2022-10-20,,,67.2,Amy,2022-12-12,,,,,67.2,Amy
+06-Sep,Saugeen_River13,AMP22_0816,Common_Shiner,Luxilus cornutus,4.1,,12.94,Amanda,2022-10-20,,,,,,87.05,Amy,2023-02-02,,87.05,Amy
+06-Sep,Saugeen_River13,AMP22_0817,Common_Shiner,Luxilus cornutus,5.1,,11.08,Amanda,2022-10-20,,,95.96,Amy,2022-12-12,,,,,95.96,Amy
+06-Sep,Saugeen_River13,AMP22_0818,Common_Shiner,Luxilus cornutus,4.6,,19.57,Amanda,2022-10-20,,,,,,,,,,19.57,Amanda
+06-Sep,Saugeen_River13,AMP22_0819,Common_Shiner,Luxilus cornutus,4.4,,14.83,Amanda,2022-10-20,,,72.89,Amy,2022-12-12,,,,,72.89,Amy
+06-Sep,Saugeen_River13,AMP22_0820,Common_Shiner,Luxilus cornutus,4.5,,15.75,Amanda,2022-10-20,,,,,,81.06,Amy,2023-02-02,,81.06,Amy
+06-Sep,Saugeen_River13,AMP22_0821,Common_Shiner,Luxilus cornutus,4.7,,14.44,Amanda,2022-10-20,,,,,,99.95,Amy,2023-02-02,,99.95,Amy
+06-Sep,Saugeen_River13,AMP22_0822,Common_Shiner,Luxilus cornutus,3.9,,15.01,Amanda,2022-10-20,,,,,,117,Amy,2023-02-02,,117,Amy
+06-Sep,Saugeen_River13,AMP22_0823,Common_Shiner,Luxilus cornutus,5.6,,10.48,Amanda,2022-10-20,,,,,,70.52,Amy,2023-02-02,,70.52,Amy
+06-Sep,Saugeen_River13,AMP22_0824,Common_Shiner,Luxilus cornutus,5.8,,14.52,Amanda,2022-10-20,,,,,,139.8,Amy,2023-02-02,,139.8,Amy
+06-Sep,Saugeen_River13,AMP22_0825,Common_Shiner,Luxilus cornutus,6.3,,14.02,Amanda,2022-10-20,,,,,,105.2,Amy,2023-02-02,,105.2,Amy
+06-Sep,Saugeen_River13,AMP22_0826,Common_Shiner,Luxilus cornutus,4.1,,19.52,Amanda,2022-10-20,,,,,,,,,,19.52,Amanda
+06-Sep,Saugeen_River13,AMP22_0827,Common_Shiner,Luxilus cornutus,8.4,,10.25,Amanda,2022-10-20,,,,,,105.1,Amy,2023-02-02,,105.1,Amy
+06-Sep,Saugeen_River13,AMP22_0828,Common_Shiner,Luxilus cornutus,5,,13.52,Amanda,2022-10-20,,,,,,58.9,Amy,2023-02-02,,58.9,Amy
+06-Sep,Saugeen_River13,AMP22_0829,Common_Shiner,Luxilus cornutus,9,,29.81,Amanda,2022-10-20,,,,,,,,,,29.81,Amanda
+06-Sep,Saugeen_River13,AMP22_0830,Common_Shiner,Luxilus cornutus,8.7,,15.49,Amanda,2022-10-20,,,,,,93.74,Amy,2023-02-02,,93.74,Amy
+06-Sep,Saugeen_River13,AMP22_0831,Common_Shiner,Luxilus cornutus,4,,20.24,Amanda,2022-10-20,,,,,,,,,,20.24,Amanda
+06-Sep,Saugeen_River13,AMP22_0832,Common_Shiner,Luxilus cornutus,8.6,,17.06,Amanda,2022-10-20,,,,,,81.84,Amy,2023-02-02,,81.84,Amy
+06-Sep,Saugeen_River13,AMP22_0833,Common_Shiner,Luxilus cornutus,4.4,,21.04,Amanda,2022-10-20,,,,,,,,,,21.04,Amanda
+06-Sep,Saugeen_River13,AMP22_0834,Common_Shiner,Luxilus cornutus,9.5,Huge nodules ,15.43,Amanda,2022-10-20,,,,,,83.81,Amy,2023-02-02,,83.81,Amy
+06-Sep,Saugeen_River13,AMP22_0835,Creek_Chub,Semotilus atromaculatus,7.6,,44.88,Amanda,2022-10-20,,,,,,,,,,44.88,Amanda
+06-Sep,Saugeen_River13,AMP22_0836,Striped_Shiner,Luxilus chrysocephalus,6.5,,14.59,Amanda,2022-10-20,,,,,,49.52,Amy,2023-02-02,,49.52,Amy
+06-Sep,Saugeen_River13,AMP22_0837,Creek_Chub,Semotilus atromaculatus,6.4,,31.6,Amanda,2022-10-20,,,,,,,,,,31.6,Amanda
+06-Sep,Saugeen_River13,AMP22_0838,Creek_Chub,Semotilus atromaculatus,5.6,,24.35,Amanda,2022-10-20,,,,,,,,,,24.35,Amanda
+06-Sep,Saugeen_River13,AMP22_0839,Creek_Chub,Semotilus atromaculatus,5.9,,24.19,Amanda,2022-10-20,,,,,,,,,,24.19,Amanda
+06-Sep,Saugeen_River13,AMP22_0840,Striped_Shiner,Luxilus chrysocephalus,5.6,,19.07,Amanda,2022-10-20,,,,,,,,,,19.07,Amanda
+06-Sep,Saugeen_River13,AMP22_0841,River_Chub,Nocomis micropogon,6.6,,46.61,Amanda,2022-10-20,awesome quality,,,,,,,,,46.61,Amanda
+06-Sep,Saugeen_River13,AMP22_0842,Striped_Shiner,Luxilus chrysocephalus,9.1,Huge nodules ,16.41,Amanda,2022-10-20,,,,,,54.23,Amy,2023-02-02,,54.23,Amy
+06-Sep,Saugeen_River13,AMP22_0843,Creek_Chub,Semotilus atromaculatus,7.3,,29.19,Amanda,2022-10-20,,,,,,,,,,29.19,Amanda
+06-Sep,Saugeen_River13,AMP22_0844,River_Chub,Nocomis micropogon,6.4,,27.15,Amanda,2022-10-20,,,,,,,,,,27.15,Amanda
+06-Sep,Saugeen_River13,AMP22_0845,Creek_Chub,Semotilus atromaculatus,7.4,,27,Amanda,2022-10-20,,,,,,,,,,27,Amanda
+06-Sep,Saugeen_River13,AMP22_0846,Creek_Chub,Semotilus atromaculatus,6.2,,38.43,Amanda,2022-10-20,awesome quality,,,,,,,,,38.43,Amanda
+06-Sep,Saugeen_River13,AMP22_0847,River_Chub,Nocomis micropogon,7.1,,49.95,Amanda,2022-10-20,awesome quality,,,,,,,,,49.95,Amanda
+06-Sep,Saugeen_River13,AMP22_0848,Creek_Chub,Semotilus atromaculatus,6.8,black kernels ,27.38,Amanda,2022-10-20,,,,,,,,,,27.38,Amanda
+06-Sep,Saugeen_River13,AMP22_0849,Creek_Chub,Semotilus atromaculatus,6,black kernels ,40.44,Amanda,2022-10-20,awesome quality,,,,,,,,,40.44,Amanda
+06-Sep,Saugeen_River13,AMP22_0850,Creek_Chub,Semotilus atromaculatus,6.4,black kernels ,21.94,Amanda,2022-10-20,,,,,,,,,,21.94,Amanda
+06-Sep,Saugeen_River13,AMP22_0851,Central_Stoneroller,Campostoma anomalum,6.9,,43.1,Amanda,2022-10-20,,,,,,,,,,43.1,Amanda
+06-Sep,Saugeen_River13,AMP22_0852,Creek_Chub,Semotilus atromaculatus,8.1,,46.79,Amanda,2022-10-20,awesome quality,,,,,,,,,46.79,Amanda
+06-Sep,Saugeen_River13,AMP22_0853,River_Chub,Nocomis micropogon,6.7,,52.71,Amanda,2022-10-20,awesome quality,,,,,,,,,52.71,Amanda
+06-Sep,Saugeen_River13,AMP22_0854,Creek_Chub,Semotilus atromaculatus,6.9,,34.75,Amanda,2022-10-20,awesome quality,,,,,,,,,34.75,Amanda
+06-Sep,Saugeen_River13,AMP22_0855,River_Chub,Nocomis micropogon,7,,62.05,Amanda,2022-10-20,awesome quality,,,,,,,,,62.05,Amanda
+06-Sep,Saugeen_River13,AMP22_0856,Creek_Chub,Semotilus atromaculatus,7.1,,32.33,Amanda,2022-10-20,awesome quality,,,,,,,,,32.33,Amanda
+06-Sep,Saugeen_River13,AMP22_0857,Hornyhead_Chub,Nocomis biguttatus,6.2,,29.54,Amanda,2022-10-20,,,,,,,,,,29.54,Amanda
+06-Sep,Saugeen_River13,AMP22_0858,Creek_Chub,Semotilus atromaculatus,6.8,,31.47,Amy,2022-10-21,,,,,,,,,,31.47,Amy
+06-Sep,Saugeen_River13,AMP22_0859,Hornyhead_Chub,Nocomis biguttatus,5.1,black kernels ,24.79,Amy,2022-10-21,,,,,,,,,,24.79,Amy
+06-Sep,Saugeen_River13,AMP22_0860,Creek_Chub,Semotilus atromaculatus,7.4,black kernels ,34.07,Amy,2022-10-21,,,,,,,,,,34.07,Amy
+06-Sep,Saugeen_River13,AMP22_0861,Longnose_Dace,Rhinichthys cataractae,6.3,black kernels ,44.41,Amy,2022-10-21,,,,,,,,,,44.41,Amy
+06-Sep,Saugeen_River13,AMP22_0862,Creek_Chub,Semotilus atromaculatus,6.6,black kernels ,40.55,Amy,2022-10-21,,,,,,,,,,40.55,Amy
+06-Sep,Saugeen_River13,AMP22_0863,River_Chub,Nocomis micropogon,6.8,black kernels ,37.02,Amy,2022-10-21,,,,,,,,,,37.02,Amy
+06-Sep,Saugeen_River13,AMP22_0864,Central_Stoneroller,Campostoma anomalum,6.1,black kernels ,18.24,Amy,2022-10-21,,,,,,,,,,18.24,Amy
+06-Sep,Saugeen_River13,AMP22_0865,Creek_Chub,Semotilus atromaculatus,10.4,black kernels ,30.2,Amy,2022-10-21,,,,,,,,,,30.2,Amy
+06-Sep,Saugeen_River13,AMP22_0866,Striped_Shiner,Luxilus chrysocephalus,4.3,,11.79,Amy,2022-10-21,,,,,,51.11,Amy,2022-12-12,,51.11,Amy
+06-Sep,Saugeen_River13,AMP22_0867,Hornyhead_Chub,Nocomis biguttatus,7.8,black kernels ,22.66,Amy,2022-10-21,,,,,,,,,,22.66,Amy
+06-Sep,Saugeen_River13,AMP22_0868,Creek_Chub,Semotilus atromaculatus,8.5,black kernels ,41.57,Amy,2022-10-21,,,,,,,,,,41.57,Amy
+06-Sep,Meuser_Farm,AMP22_0869,Creek_Chub,Semotilus atromaculatus,6.6,,26.64,Amy,2022-10-21,,,,,,,,,,26.64,Amy
+06-Sep,Meuser_Farm,AMP22_0870,Western_Blacknose_Dace,Rhinichthys obtusus,6,,28.81,Amy,2022-10-21,,,,,,,,,,28.81,Amy
+06-Sep,Meuser_Farm,AMP22_0871,Western_Blacknose_Dace,Rhinichthys obtusus,7.8,Pustles/nodules,39.06,Amy,2022-10-21,,,,,,,,,,39.06,Amy
+06-Sep,Meuser_Farm,AMP22_0872,Creek_Chub,Semotilus atromaculatus,11.7,Probable male (tubercle scars),20.01,Amy,2022-10-21,,,,,,151.9,Amy,2022-12-12,,151.9,Amy
+06-Sep,Meuser_Farm,AMP22_0873,Creek_Chub,Semotilus atromaculatus,11.3,Pustles/nodules,62.59,Amy,2022-10-21,,,,,,,,,,62.59,Amy
+06-Sep,Meuser_Farm,AMP22_0874,Creek_Chub,Semotilus atromaculatus,11.7,Probable male (tubercle scars),,Amy,2022-10-21,Got mixed up,,,,,118.9,Amy,2022-12-12,,118.9,Amy
+06-Sep,Meuser_Farm,AMP22_0875,Creek_Chub,Semotilus atromaculatus,12,Probable male (tubercle scars) - black kernels,,Amy,2022-10-21,Got mixed up,,,,,175.8,Amy,2022-12-12,,175.8,Amy
+16-Sep,Eramosa_River,AMP22_0876,River_Chub,Nocomis micropogon,9.6,black kernels ,74.55,Amy,2022-10-21,,,,,,,,,,74.55,Amy
+16-Sep,Eramosa_River,AMP22_0877,Creek_Chub,Semotilus atromaculatus,10.6,black kernels ,37.06,Amy,2022-10-21,,,,,,,,,,37.06,Amy
+16-Sep,Eramosa_River,AMP22_0878,River_Chub,Nocomis micropogon,7.5,black kernels ,46.83,Amy,2022-10-21,,,,,,,,,,46.83,Amy
+16-Sep,Eramosa_River,AMP22_0879,River_Chub,Nocomis micropogon,8.4,black kernels ,45.23,Amy,2022-10-21,,,,,,,,,,45.23,Amy
+16-Sep,Eramosa_River,AMP22_0880,River_Chub,Nocomis micropogon,9.6,black kernels ,19.83,Amy,2022-10-21,,,,,,,,,,19.83,Amy
+16-Sep,Eramosa_River,AMP22_0881,Creek_Chub,Semotilus atromaculatus,13.4,black kernels ,12.16,Amy,2022-10-21,,,,,,160.9,Amy,2022-12-12,,160.9,Amy
+16-Sep,Eramosa_River,AMP22_0882,Creek_Chub,Semotilus atromaculatus,10.5,black kernels ,60.03,Amy,2022-10-21,,,,,,,,,,60.03,Amy
+16-Sep,Eramosa_River,AMP22_0883,Creek_Chub,Semotilus atromaculatus,13,black kernels ,37.2,Amy,2022-10-21,,,,,,,,,,37.2,Amy
+16-Sep,Eramosa_River,AMP22_0884,Creek_Chub,Semotilus atromaculatus,10.4,black kernels ,47.62,Amy,2022-10-21,,,,,,,,,,47.62,Amy
+16-Sep,Eramosa_River,AMP22_0885,River_Chub,Nocomis micropogon,10.5,black kernels ,53.93,Amy,2022-10-21,,,,,,,,,,53.93,Amy
+16-Sep,Eramosa_River,AMP22_0886,River_Chub,Nocomis micropogon,9.5,black kernels ,36.74,Amy,2022-10-21,,,,,,,,,,36.74,Amy
+16-Sep,Eramosa_River,AMP22_0887,River_Chub,Nocomis micropogon,8.3,black kernels ,29.75,Amy,2022-10-21,,,,,,138.3,Amy,2022-12-12,,138.3,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0888,Creek_Chub,Semotilus atromaculatus,6.7,,44.39,Amy,2022-10-21,,,,,,,,,,44.39,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0889,Creek_Chub,Semotilus atromaculatus,9.5,black kernels ,22.06,Amy,2022-10-21,,,,,,,,,,22.06,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0890,Creek_Chub,Semotilus atromaculatus,7.1,black kernels ,40.21,Amy,2022-10-21,,,,,,,,,,40.21,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0891,Creek_Chub,Semotilus atromaculatus,11.8,,68.21,Amy,2022-10-21,,,,,,,,,,68.21,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0892,Creek_Chub,Semotilus atromaculatus,6.8,,33.47,Amy,2022-10-21,,,,,,79.63,Amy,2022-12-12,,79.63,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0893,Creek_Chub,Semotilus atromaculatus,11.2,,61.58,Amy,2022-10-21,,,,,,,,,,61.58,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0894,Creek_Chub,Semotilus atromaculatus,6.9,,35.15,Amy,2022-10-21,,,,,,,,,,35.15,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0895,Creek_Chub,Semotilus atromaculatus,10.7,,29.29,Amy,2022-10-21,,,,,,,,,,29.29,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0896,Creek_Chub,Semotilus atromaculatus,7.2,,54.58,Amy,2022-10-21,,,,,,,,,,54.58,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0897,Creek_Chub,Semotilus atromaculatus,11.5,,39.6,Amy,2022-10-21,,,,,,,,,,39.6,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0898,Creek_Chub,Semotilus atromaculatus,6.7,,31.13,Amy,2022-10-21,,,,,,,,,,31.13,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0899,Creek_Chub,Semotilus atromaculatus,11.5,black kernels ,45.43,Amy,2022-10-21,,,,,,,,,,45.43,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0900,Creek_Chub,Semotilus atromaculatus,6.9,,36.71,Amy,2022-10-21,,,,,,,,,,36.71,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0901,Creek_Chub,Semotilus atromaculatus,10.1,,89.48,Amy,2022-10-27,,,,,,,,,,89.48,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0902,Creek_Chub,Semotilus atromaculatus,7.3,,81.76,Amy,2022-10-27,,,,,,,,,,81.76,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0903,Creek_Chub,Semotilus atromaculatus,10,,57.39,Amy,2022-10-27,,,,,,,,,,57.39,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0904,Creek_Chub,Semotilus atromaculatus,7.8,,48.23,Amy,2022-10-27,,,,,,,,,,48.23,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0905,Creek_Chub,Semotilus atromaculatus,12.1,black kernels ,64.13,Amy,2022-10-27,,,,,,,,,,64.13,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0906,Creek_Chub,Semotilus atromaculatus,6.8,black kernels ,48.51,Amy,2022-10-27,,,,,,,,,,48.51,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0907,Creek_Chub,Semotilus atromaculatus,13.7,black kernels ,70.28,Amy,2022-10-27,,,,,,,,,,70.28,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0908,Creek_Chub,Semotilus atromaculatus,6.3,,67.52,Amy,2022-10-27,,,,,,,,,,67.52,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0909,Creek_Chub,Semotilus atromaculatus,15.5,black kernels ,69.56,Amy,2022-10-27,,,,,,,,,,69.56,Amy
+22-Sep,Laurel_Creek_Conservation,AMP22_0910,Creek_Chub,Semotilus atromaculatus,8.4,black kernels ,42.12,Amy,2022-10-27,,,,,,,,,,42.12,Amy
+,,AMP22_0911,,,,,,,,,,,,,,,,,,
+,,AMP22_0912,,,,,,,,,,,,,,,,,,
+,,AMP22_0913,,,,,22.33,Amy,2022-10-27,,,,,,,,,,22.33,Amy
+,,AMP22_0914,,,,,16.28,Amy,2022-10-27,,,,,,,,,,16.28,Amy
+,,AMP22_0916,,,,,19.32,Amy,2022-10-27,,,,,,,,,,19.32,Amy
+,,AMP22_0917,,,,,16.87,Amy,2022-10-27,,,,,,,,,,16.87,Amy
+,,AMP22_0918,,,,,88.68,Amy,2022-10-27,,,,,,,,,,88.68,Amy
+,,AMP22_0919,,,,,77.13,Amy,2022-10-27,,,,,,,,,,77.13,Amy
+,,AMP22_0920,,,,,70.26,Amy,2022-10-27,,,,,,,,,,70.26,Amy
+,,AMP22_0921,,,,,54.93,Amy,2022-10-27,,,,,,,,,,54.93,Amy
+,,AMP19_0001,,,,,162.9,Amy,2023-02-02,,,,,,,,,,162.9,Amy
+,,AMP19_0002,,,,,251.7,Amy,2023-02-02,,,,,,,,,,251.7,Amy
+,,AMP19_0003,,,,,189.2,Amy,2023-02-02,,,,,,,,,,189.2,Amy
+,,AMP19_0004,,,,,172.1,Amy,2023-02-02,,,,,,,,,,172.1,Amy
+,,AMP19_0005,,,,,119.5,Amy,2023-02-02,,,,,,,,,,119.5,Amy
+,,AMP19_0006,,,,,192.5,Amy,2023-02-02,,,,,,,,,,192.5,Amy
+,,AMP19_0007,,,,,245,Amy,2023-02-02,,,,,,,,,,245,Amy
+,,AMP19_0008,,,,,311.9,Amy,2023-02-02,,,,,,,,,,311.9,Amy
+,,AMP19_0009,,,,,346.3,Amy,2023-02-02,,,,,,,,,,346.3,Amy
+,,AMP19_0010,,,,,82.61,Amy,2023-02-02,,,,,,,,,,82.61,Amy
+,,AMP19_0011,,,,,46.84,Amy,2023-02-09,,,,,,,,,,46.84,Amy
+,,AMP19_0012,,,,,93.44,Amy,2023-02-09,,,,,,,,,,93.44,Amy
+,,AMP19_0013,,,,,79.67,Amy,2023-02-09,,,,,,,,,,79.67,Amy
+,,AMP19_0014,,,,,41.66,Amy,2023-02-09,,,,,,,,,,41.66,Amy
+,,AMP19_0015,,,,,47.83,Amy,2023-02-09,,,,,,,,,,47.83,Amy
+,,AMP19_0016,,,,,91.94,Amy,2023-02-09,,,,,,,,,,91.94,Amy
+,,AMP19_0017,,,,,109.7,Amy,2023-02-09,,,,,,,,,,109.7,Amy
+,,AMP19_0018,,,,,8.58,Amy,2023-02-09,,,,,,,,,,8.58,Amy
+,,AMP19_0019,,,,,125.7,Amy,2023-02-09,,,,,,,,,,125.7,Amy
+,,AMP19_0020,,,,,21.05,Amy,2023-02-09,,,,,,,,,,21.05,Amy
+,,AMP19_0021,,,,,44.19,Amy,2023-02-09,,,,,,,,,,44.19,Amy
+,,AMP19_0022,,,,,93.43,Amy,2023-02-09,,,,,,,,,,93.43,Amy
+,,AMP19_0023,,,,,59.05,Amy,2023-02-09,,,,,,,,,,59.05,Amy
+,,AMP19_0024,,,,,162.3,Amy,2023-02-09,,,,,,,,,,162.3,Amy
+,,EGM19_0740,,,,,63.57,Amy,2023-02-09,,,,,,,,,,63.57,Amy
+,,EGM19_0024,,,,,317.4,Amy,2023-02-09,,,,,,,,,,317.4,Amy
+,,EGM19_0041,,,,,323.3,Amy,2023-02-09,,,,,,,,,,323.3,Amy
+,,EGM19_0048,,,,,297.1,Amy,2023-02-09,,,,,,,,,,297.1,Amy
+,,EGM19_0070,,,,,219.9,Amy,2023-02-09,,,,,,,,,,219.9,Amy
+,,EGM19_0143,,,,,166.9,Amy,2023-02-09,,,,,,,,,,166.9,Amy
+,,EGM19_0157,,,,,183.3,Amy,2023-02-09,,,,,,,,,,183.3,Amy
+,,EGM19_0190,,,,,180.8,Amy,2023-02-09,,,,,,,,,,180.8,Amy
+,,EGM19_0193,,,,,170.5,Amy,2023-02-09,,,,,,,,,,170.5,Amy
+,,EGM19_0202,,,,,141.7,Amy,2023-02-09,,,,,,,,,,141.7,Amy
+,,EGM19_0207,,,,,311.9,Amy,2023-02-09,,,,,,,,,,311.9,Amy
+,,EGM19_0224,,,,,282.9,Amy,2023-02-09,,,,,,,,,,282.9,Amy
+,,EGM19_0229,,,,,338.7,Amy,2023-02-09,,,,,,,,,,338.7,Amy
+,,EGM19_0254,,,,,333,Amy,2023-02-09,,,,,,,,,,333,Amy
+,,EGM19_0270,,,,,156.7,Amy,2023-02-09,,,,,,,,,,156.7,Amy
+,,EGM19_0298,,,,,263.6,Amy,2023-02-09,,,,,,,,,,263.6,Amy
+,,EGM19_0304,,,,,422,Amy,2023-02-09,,,,,,,,,,422,Amy
+,,EGM19_0340,,,,,335.9,Amy,2023-02-09,,,,,,,,,,335.9,Amy
+,,EGM19_0373,,,,,360.8,Amy,2023-02-09,,,,,,,,,,360.8,Amy
+,,EGM19_0410,,,,,247.4,Amy,2023-02-09,,,,,,,,,,247.4,Amy
+,,EGM19_0437,,,,,366.6,Amy,2023-02-09,,,,,,,,,,366.6,Amy
+,,EGM19_0456,,,,,311.2,Amy,2023-02-09,,,,,,,,,,311.2,Amy
+,,EGM19_0457,,,,,186.9,Amy,2023-02-09,,,,,,,,,,186.9,Amy
+,,EGM19_0460,,,,,389.4,Amy,2023-02-09,,,,,,,,,,389.4,Amy
+,,EGM19_0670,,,,,92.02,Amy,2023-02-09,,,,,,,,,,92.02,Amy
+,,EGM19_0809,,,,,239.3,Amy,2023-02-09,,,,,,,,,,239.3,Amy
+,,EGM19_0842,,,,,183.6,Amy,2023-02-09,,,,,,,,,,183.6,Amy
+,,EGM19_0945,,,,,143.9,Amy,2023-02-09,,,,,,,,,,143.9,Amy
+,,EGM19_028,,,,,232.5,Amy,2023-02-09,,,,,,,,,,232.5,Amy
+,,EGM19_0098,,,,,165.7,Amy,2023-02-09,,,,,,,,,,165.7,Amy
+,,EGM19_0203,,,,,267.3,Amy,2023-02-09,,,,,,,,,,267.3,Amy
+,,EGM19_0244,,,,,258.6,Amy,2023-02-09,,,,,,,,,,258.6,Amy
+,,EGM19_0294,,,,,162.1,Amy,2023-02-09,,,,,,,,,,162.1,Amy
+,,EGM19_0432,,,,,99.04,Amy,2023-02-09,,,,,,,,,,99.04,Amy
+,,EGM19_0288-1,,,,,131.9,Amy,2023-02-09,,,,,,,,,,131.9,Amy
+,,EGM19_0288-2,,,,,127.9,Amy,2023-02-09,,,,,,,,,,127.9,Amy
+,,EGM19_0917-1,,,,,65.87,Amy,2023-02-09,,,,,,,,,,65.87,Amy
+,,EGM19_0917-2,,,,,193.7,Amy,2023-02-09,,,,,,,,,,193.7,Amy
+,,EGM19_0917,,,,,194.7,Amy,2023-02-10,,,,,,,,,,194.7,Amy
