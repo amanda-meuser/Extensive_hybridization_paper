@@ -3,7 +3,7 @@
 ## Modified by Amanda Meuser -- March 2023 
 
 ## USAGE: Rscript Q_triangleplot.R nametag /path/to/metadata/file /path/to/names/file /path/to/names_file.txt path/to/hdf5/files.hdf5
-    ## Rscript ../../../../Q_triangleplot.R AMP22_CSxCC_genoID_75k_phenoColour ../../Leuciscid_Metadata_May2023.csv ../names_CSxCC_genoID.txt /project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/CSxCC/entropy/AMP22_CSxCC_genoID_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_50k_rep1_qk2inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/CSxCC/entropy/AMP22_CSxCC_genoID_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_50k_rep2_qk2inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/CSxCC/entropy/AMP22_CSxCC_genoID_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_50k_rep3_qk2inds.hdf5
+    ## Rscript ../../../../Q_triangleplot.R AMP22_CSxCC_woP13 ../../old_AMP22_genoID_k12_Jun2023.csv ../names_CSxCC_genoID.txt /project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/CSxCC/entropy/AMP22_CSxCC_genoID_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_50k_rep1_qk2inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/CSxCC/entropy/AMP22_CSxCC_genoID_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_50k_rep2_qk2inds.hdf5 /project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/CSxCC/entropy/AMP22_CSxCC_genoID_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_50k_rep3_qk2inds.hdf5
   
   # for pheno colour, use: Leuciscid_Metadata_May2023.csv
   # for geno colour, use: old_AMP22_genoID_k12_Jun2023.csv (has Geno_ID column)
@@ -69,16 +69,16 @@ Q2 <- h5read(hdf5path2, "Q")
 Q3 <- h5read(hdf5path3, "Q")
 
 # read in files manually 
-q1 <- h5read("/project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/BNDxCC/entropy_woP13/AMP22_BNDxCC_genoID_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_75k_rep1_qk2inds.hdf5", "q")
-q2 <- h5read("/project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/BNDxCC/entropy_woP13/AMP22_BNDxCC_genoID_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_75k_rep2_qk2inds.hdf5", "q")
-q3 <- h5read("/project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/BNDxCC/entropy_woP13/AMP22_BNDxCC_genoID_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_75k_rep3_qk2inds.hdf5", "q")
+# q1 <- h5read("/project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/BNDxCC/entropy_woP13/AMP22_BNDxCC_genoID_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_75k_rep1_qk2inds.hdf5", "q")
+# q2 <- h5read("/project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/BNDxCC/entropy_woP13/AMP22_BNDxCC_genoID_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_75k_rep2_qk2inds.hdf5", "q")
+# q3 <- h5read("/project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/BNDxCC/entropy_woP13/AMP22_BNDxCC_genoID_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_75k_rep3_qk2inds.hdf5", "q")
 
-Q1 <- h5read("/project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/BNDxCC/entropy_woP13/AMP22_BNDxCC_genoID_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_75k_rep1_qk2inds.hdf5", "Q")
-Q2 <- h5read("/project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/BNDxCC/entropy_woP13/AMP22_BNDxCC_genoID_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_75k_rep2_qk2inds.hdf5", "Q")
-Q3 <- h5read("/project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/BNDxCC/entropy_woP13/AMP22_BNDxCC_genoID_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_75k_rep3_qk2inds.hdf5", "Q")
-nametag = "AMP22_BNDxCC_woP13"
-metadata <- read.csv("../../old_AMP22_genoID_k12_Jun2023.csv", header = T)
-names <- read.table("../starting_values_genoID/names_BNDxCC_woP13.txt", header = F)
+# Q1 <- h5read("/project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/BNDxCC/entropy_woP13/AMP22_BNDxCC_genoID_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_75k_rep1_qk2inds.hdf5", "Q")
+# Q2 <- h5read("/project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/BNDxCC/entropy_woP13/AMP22_BNDxCC_genoID_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_75k_rep2_qk2inds.hdf5", "Q")
+# Q3 <- h5read("/project/rrg-emandevi/hybrid_ameuser/old_AMP22/species_pairs/BNDxCC/entropy_woP13/AMP22_BNDxCC_genoID_woP13_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k2_75k_rep3_qk2inds.hdf5", "Q")
+# nametag = "AMP22_BNDxCC_woP13"
+# metadata <- read.csv("../../old_AMP22_genoID_k12_Jun2023.csv", header = T)
+# names <- read.table("../starting_values_genoID/names_BNDxCC_woP13.txt", header = F)
 
 
 # Looking at columns to check if chain switching occured, but thanks to the starting values, it shouldn't 
@@ -274,7 +274,7 @@ print("Creating triangle plot...")
 # plotting Q and q on triangle
 # we need column 2 from all.Q as it's the 12/21 ancestry, but i could plot either columns 1 or 2, it'll just show a different species' proportion of ancestry along the X-axis, but they add up to 1 so it doesn't make a difference for interpreting the graph, but could maybe always plot CC or something
 pdf(paste0("Q_triangleplot_",nametag,"_k2.pdf"))
-    plot(q[,2],Q[,2], xlim=c(0,1), ylim=c(0,1), axes = F, xlab="q (proportion ancestry)", ylab="Q (interspecific ancestry)", type="n", main=" ") 
+    plot(q[,2],Q[,2], xlim=c(0,1), ylim=c(0,1), axes = F, xlab="Admixture Proportion (q)", ylab="Inter-source Ancestry (Q)", type="n", main=" ") 
     axis(1, at = seq(0, 1, by = 0.25))
     axis(2, at = seq(0, 1, by = 0.25))
     box()
