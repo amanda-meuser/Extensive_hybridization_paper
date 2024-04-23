@@ -22,7 +22,7 @@
 
 
 
-for k in $(seq 5 $1) ##start at 5, sequentially go up by 1 till it gets to value of $1
+for k in $(seq 1 $1) ##start at 5, sequentially go up by 1 till it gets to value of $1
 do
     for rep in $(seq 1 $2)
     do 
