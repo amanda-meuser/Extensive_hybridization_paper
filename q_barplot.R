@@ -49,12 +49,12 @@ hdf5path2
 hdf5path3
 
 # manually read in files
-# k <- 2
-# names_file <- "../starting_values_entropy/names_algonquin.txt"
-# hdf5path1 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k1_150k_rep1_qk1inds.hdf5"
-# hdf5path2 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k1_150k_rep2_qk1inds.hdf5"	
-# hdf5path3 <- "../entropy/AMP22_algonquin_11jul23_miss0.4_mac3_Q30_DP3_maf001_ind95_maf001_k1_150k_rep3_qk1inds.hdf5"
-# metadata <- "Leuciscid_Metadata_May2023.csv"
+k <- 4
+names_file <- "../starting_values_entropy/names_algonquin.txt"
+hdf5path1 <- "../entropy/AMP22_Pimephales_target_11jul23_miss0.5_mac3_Q30_DP3_maf001_ind95_maf001_k4_100k_rep1_qk4inds.hdf5"
+hdf5path2 <- "../entropy/AMP22_Pimephales_target_11jul23_miss0.5_mac3_Q30_DP3_maf001_ind95_maf001_k4_100k_rep2_qk4inds.hdf5"	
+hdf5path3 <- "../entropy/AMP22_Pimephales_target_11jul23_miss0.5_mac3_Q30_DP3_maf001_ind95_maf001_k4_100k_rep3_qk4inds.hdf5"
+metadata <- "Leuciscid_Metadata_May2023.csv"
 
 # extracts k colours from set3 and puts in object
 colour <- brewer.pal(k, "Set3")
@@ -79,7 +79,8 @@ last_indiv
 
 print("Creating caterpillar plot...")
 # Checking caterpillar plots, 1 row per rep, 3 inds per plot: first, middle, last
-pdf(paste0("caterpillars_",nametag,"_k",k,".pdf"), width=11, height=11) #CHECK THAT THIS IS A VIABLE WCY TO CREATE DIFFERENT FILE NAMES
+# I removed the ylim=c(0,1) to get a closer look at the wiggling, but just add it after each line (9times)
+pdf(paste0("caterpillars_default_scale_",nametag,"_k",k,".pdf"), width=11, height=11) #CHECK THAT THIS IS A VIABLE WCY TO CREATE DIFFERENT FILE NAMES
 par(mfrow=c(3,3))
         plot(q1[,1,1], ylim=c(0,1))
         plot(q1[,1,middle_indiv], ylim=c(0,1))
@@ -94,6 +95,48 @@ par(mfrow=c(3,3))
         plot(q3[,1,last_indiv], ylim=c(0,1))
 dev.off()
 
+# checking for chain switching manually with K=4
+# library(scales)
+# q1a <- t(apply(q1, 2:3, mean))
+# q2a <- t(apply(q2, 2:3, mean))
+# q3a <- t(apply(q3, 2:3, mean))
+# head(round(q1a, 3))
+# head(round(q2a, 3))
+# head(round(q3a, 3))
+# pdf(paste0("checking_chain_switching_k",k,".pdf"),height=11, width=11)
+# par(mfrow=c(2,2))
+#         v1rep1 <- q1a[,1][order(q1a[,1])]
+#         v1rep2 <- q2a[,1][order(q2a[,1])]
+#         v1rep3 <- q3a[,1][order(q3a[,1])]
+#         plot(v1rep1, xlab="Individuals, ordered by q value", ylab="q-value", main="V1", col="royalblue2")
+#         points(v1rep2, col=alpha("deeppink", 0.6))
+#         points(v1rep3, col=alpha("palegreen1", 0.6))
+#         legend(x="topleft", legend=c("Rep 1", "Rep 2", "Rep 3"), col=c("royalblue2", alpha("deeppink", 0.6), alpha("palegreen1", 0.6)), pch=1)
+
+#         v2rep1 <- q1a[,2][order(q1a[,2])]
+#         v2rep2 <- q2a[,2][order(q2a[,2])]
+#         v2rep3 <- q3a[,2][order(q3a[,2])]
+#         plot(v2rep1, xlab="Individuals, ordered by q value", ylab="q-value", main="V2", col="royalblue2")
+#         points(v2rep2, col=alpha("deeppink", 0.6))
+#         points(v2rep3, col=alpha("palegreen1", 0.6))
+#         legend(x="topleft", legend=c("Rep 1", "Rep 2", "Rep 3"), col=c("royalblue2", alpha("deeppink", 0.6), alpha("palegreen1", 0.6)), pch=1)
+        
+#         v3rep1 <- q1a[,3][order(q1a[,3])]
+#         v3rep2 <- q2a[,3][order(q2a[,3])]
+#         v3rep3 <- q3a[,3][order(q3a[,3])]
+#         plot(v3rep1, xlab="Individuals, ordered by q value", ylab="q-value", main="V3", col="royalblue2")
+#         points(v3rep2, col=alpha("deeppink", 0.6))
+#         points(v3rep3, col=alpha("palegreen1", 0.6))
+#         legend(x="topleft", legend=c("Rep 1", "Rep 2", "Rep 3"), col=c("royalblue2", alpha("deeppink", 0.6), alpha("palegreen1", 0.6)), pch=1)
+        
+#         v4rep1 <- q1a[,4][order(q1a[,4])]
+#         v4rep2 <- q2a[,4][order(q2a[,4])]
+#         v4rep3 <- q3a[,4][order(q3a[,4])]
+#         plot(v4rep1, xlab="Individuals, ordered by q value", ylab="q-value", main="V4", col="royalblue2")
+#         points(v4rep2, col=alpha("deeppink", 0.6))
+#         points(v4rep3, col=alpha("palegreen1", 0.6))
+#         legend(x="topleft", legend=c("Rep 1", "Rep 2", "Rep 3"), col=c("royalblue2", alpha("deeppink", 0.6), alpha("palegreen1", 0.6)), pch=1)
+# dev.off()
 
 
 # take mean of distributions 
