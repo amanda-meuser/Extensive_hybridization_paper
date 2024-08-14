@@ -307,13 +307,44 @@ df_long <- df_relevant_filled %>% make_long(GenoAndPhenoEvidence, ActiveHybSwarm
 
 
 ## actual plot
-(sankey <- ggplot(df_long, aes(x = x, next_x = next_x, node = node, next_node = next_node, fill = factor(node), label = node)) +
+p <- ggplot(df_long, aes(x = x, next_x = next_x, node = node, next_node = next_node, fill = factor(node), label = node)) +
   geom_alluvial(flow.alpha = .6) +
-  geom_alluvial_label(aes( x = as.numeric(x) + .05, label = after_stat(paste0(node, "\nn = ", freq))), size = 3, color = "black") +
+  #geom_alluvial_label(aes( x = as.numeric(x) + .05, label = after_stat(paste0(node, "\nn = ", freq))), size = 3, color = "black") +
+    geom_alluvial_label(size = 3, color = "black") +
   scale_fill_brewer(palette = "Set2") +
   labs(x = NULL, y = "Number of Publications") +
   theme(legend.position = "none", axis.text.y= element_text(size = 10), axis.text.x= element_text(size = 9, color = "black"), axis.title.y =  element_text(size = 10))+
-    scale_x_discrete(labels = c("Evidence \nType", "Active Hybrid \nSwarm?", "F1s \nPresent?", "F2 or Later \nGenerations Present?", "Backcrosses \nPresent?"))) 
+    scale_x_discrete(labels = c("Evidence \nType", "Active Hybrid \nSwarm?", "F1s \nPresent?", "F2 or Later \nGenerations Present?", "Backcrosses \nPresent?"))
+
+# get flow size for each flow
+flow_labels <- df_long %>% group_by(x, node, next_x, next_node) %>% tally() %>% drop_na()
+# get corresponding positions of flows from the sankey plot
+flow_info <- layer_data(p) %>% select(xmax, flow_start_ymax, flow_start_ymin) %>% distinct() # get flow related key positions related from the plot
+flow_info <- flow_info[with(flow_info, order(xmax, flow_start_ymax)), ] # order the positions to match the order of flow_labels
+rownames(flow_info) <- NULL # drop the row indexes
+flow_info <- cbind(as.data.frame(flow_info), as.data.frame(flow_labels)) # bind the flow positions and the corresponding labels
+# add labels to the flows
+for (i in 1:nrow(flow_info)){
+  if (flow_info[i,5] == "Neither"){ # custom adjust hjust  
+    p <- p + annotate("text", x = flow_info$xmax[i],
+                      y = (flow_info$flow_start_ymin[i] + flow_info$flow_start_ymax[i])/2,
+                      label = sprintf("%d", flow_info$n[i]), hjust = -3, size = 3)
+    next
+  }
+  else if (flow_info[i,5] == "Only Phenotypic" & flow_info[i,8] == 6 ){ # custom adjust vjust  
+    p <- p + annotate("text", x = flow_info$xmax[i],
+                      y = (flow_info$flow_start_ymin[i] + flow_info$flow_start_ymax[i])/2,
+                      label = sprintf("%d", flow_info$n[i]), hjust = -1, vjust = -0.5, size = 3)
+    next
+  }
+  p <- p + annotate("text", x = flow_info$xmax[i],
+                    y = (flow_info$flow_start_ymin[i] + flow_info$flow_start_ymax[i])/2,
+                    label = sprintf("%d", flow_info$n[i]), hjust = -1, size = 3)
+}
+
+p
+
+
 
 pdf("sankey_plot.pdf")  
 sankey
