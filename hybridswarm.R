@@ -361,12 +361,15 @@ df_relevant_filled$GenoAndPhenoEvidence <- replace(df_relevant_filled$GenoAndPhe
 df_relevant_filled$GenoAndPhenoEvidence <- replace(df_relevant_filled$GenoAndPhenoEvidence,df_relevant_filled$GenoAndPhenoEvidence=="Phenotypic","Only Phenotypic")
 df_long <- df_relevant_filled %>% make_long(GenoAndPhenoEvidence, F1Present, F2orLaterPresent, BackcrossPresent)
 
+cols <- brewer.pal(8, "Set2")
+cols <- cols[-3]
+
 ## actual plot
 p2 <- ggplot(df_long, aes(x = x, next_x = next_x, node = node, next_node = next_node, fill = factor(node), label = node)) +
   geom_alluvial(flow.alpha = .6) +
   #geom_alluvial_label(aes( x = as.numeric(x) + .05, label = after_stat(paste0(node, "\nn = ", freq))), size = 3, color = "black") +
   geom_alluvial_label(size = 3, color = "black") +
-  scale_fill_brewer(palette = "Set2") +
+  scale_fill_manual(values = cols) +
   labs(x = NULL, y = "Number of Publications") +
   theme(legend.position = "none", axis.text.y= element_text(size = 10), axis.text.x= element_text(size = 9, color = "black"), axis.title.y =  element_text(size = 10))+
   scale_x_discrete(labels = c("Evidence \nType", "F1s \nPresent?", "F2 or Later \nGenerations Present?", "Backcrosses \nPresent?"))
