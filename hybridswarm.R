@@ -7,6 +7,10 @@ library(wordcloud2)
 library(RColorBrewer)
 library(scales)
 library(patchwork)
+# install.packages("devtools")
+# devtools::install_github("davidsjoberg/ggsankey")
+library(ggsankey)
+
 
 ## Load Data -----
 
@@ -280,26 +284,40 @@ dev.off()
 
 
 ## ----- Hybrid outcomes flow chart -----
-# install.packages("devtools")
-# devtools::install_github("davidsjoberg/ggsankey")
-library(ggsankey)
 
 # example 
-df <- mtcars
-df <- mtcars %>%
-  make_long(cyl, vs, am, gear, carb)
-
-ggplot(df, aes(x = x, 
-               next_x = next_x, 
-               node = node, 
-               next_node = next_node,
-               fill = factor(node))) +
-  geom_sankey() +
-  scale_fill_discrete(drop=FALSE)
+# df <- mtcars
+# df <- mtcars %>%
+#   make_long(cyl, vs, am, gear, carb)
+# 
+# ggplot(df, aes(x = x, 
+#                next_x = next_x, 
+#                node = node, 
+#                next_node = next_node,
+#                fill = factor(node))) +
+#   geom_sankey() +
+#   scale_fill_discrete(drop=FALSE)
 
 # now with our data
 df_relevant_filled <- df_relevant %>% replace_na(list(F1Present = "N", F2orLaterPresent = "N", BackcrossPresent = "N"))
-df_long <- df_relevant_filled %>% make_long(ActiveHybSwarm, GenoAndPhenoEvidence, F1Present, F2orLaterPresent, BackcrossPresent)
+# changing genetic and phenotypic to only genetic and only phenotypic to make it explicit
+df_relevant_filled$GenoAndPhenoEvidence <- replace(df_relevant_filled$GenoAndPhenoEvidence,df_relevant_filled$GenoAndPhenoEvidence=="Genetic","Only Genetic")
+df_relevant_filled$GenoAndPhenoEvidence <- replace(df_relevant_filled$GenoAndPhenoEvidence,df_relevant_filled$GenoAndPhenoEvidence=="Phenotypic","Only Phenotypic")
+df_long <- df_relevant_filled %>% make_long(GenoAndPhenoEvidence, ActiveHybSwarm, F1Present, F2orLaterPresent, BackcrossPresent)
+
+
+## actual plot
+(sankey <- ggplot(df_long, aes(x = x, next_x = next_x, node = node, next_node = next_node, fill = factor(node), label = node)) +
+  geom_alluvial(flow.alpha = .6) +
+  geom_alluvial_label(aes( x = as.numeric(x) + .05, label = after_stat(paste0(node, "\nn = ", freq))), size = 3, color = "black") +
+  scale_fill_brewer(palette = "Set2") +
+  labs(x = NULL, y = "Number of Publications") +
+  theme(legend.position = "none", axis.text.y= element_text(size = 10), axis.text.x= element_text(size = 9, color = "black"), axis.title.y =  element_text(size = 10))+
+    scale_x_discrete(labels = c("Evidence \nType", "Active Hybrid \nSwarm?", "F1s \nPresent?", "F2 or Later \nGenerations Present?", "Backcrosses \nPresent?"))) 
+
+pdf("sankey_plot.pdf")  
+sankey
+dev.off()
 
 ## Testing out example plots
 # ggplot(df_long, aes(x = x, 
@@ -320,18 +338,4 @@ df_long <- df_relevant_filled %>% make_long(ActiveHybSwarm, GenoAndPhenoEvidence
 #   theme(legend.position = "none",
 #         plot.title = element_text(hjust = .5)) +
 #   ggtitle("Hybrid swarm outcomes")
-
-
-## actual plot
-(sankey <- ggplot(df_long, aes(x = x, next_x = next_x, node = node, next_node = next_node, fill = factor(node), label = node)) +
-  geom_alluvial(flow.alpha = .6) +
-  geom_alluvial_text(size = 3, color = "white") +
-  scale_fill_brewer(palette = "Dark2", drop = FALSE) +
-  theme_alluvial(base_size = 18) +
-  labs(x = NULL, y = "Number of Publications") +
-  theme(legend.position = "none", axis.text.y= element_text(size = 10), axis.text.x= element_text(size = 8, angle = 30), axis.title.y =  element_text(size = 10))) 
-
-pdf("sankey_plot.pdf")  
-sankey
-dev.off()
 
