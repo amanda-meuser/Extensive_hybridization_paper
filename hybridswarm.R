@@ -299,12 +299,40 @@ dev.off()
 #   scale_fill_discrete(drop=FALSE)
 
 # all 67 relevant papers
-df_relevant_filled <- df_relevant %>% replace_na(list(F1Present = "N", F2orLaterPresent = "N", BackcrossPresent = "N"))
 
-# changing genetic and phenotypic to only genetic and only phenotypic to make it explicit
-df_relevant_filled$GenoAndPhenoEvidence <- replace(df_relevant_filled$GenoAndPhenoEvidence,df_relevant_filled$GenoAndPhenoEvidence=="Genetic","Only Genetic")
-df_relevant_filled$GenoAndPhenoEvidence <- replace(df_relevant_filled$GenoAndPhenoEvidence,df_relevant_filled$GenoAndPhenoEvidence=="Phenotypic","Only Phenotypic")
-df_long <- df_relevant_filled %>% make_long(GenoAndPhenoEvidence, ActiveHybSwarm, F1Present, F2orLaterPresent, BackcrossPresent)
+
+# # changing genetic and phenotypic to only genetic and only phenotypic to make it explicit
+# df_relevant_filled$GenoAndPhenoEvidence <- replace(df_relevant_filled$GenoAndPhenoEvidence,df_relevant_filled$GenoAndPhenoEvidence=="Genetic","Only Genetic")
+# df_relevant_filled$GenoAndPhenoEvidence <- replace(df_relevant_filled$GenoAndPhenoEvidence,df_relevant_filled$GenoAndPhenoEvidence=="Phenotypic","Only Phenotypic")
+# df_long <- df_relevant_filled %>% make_long(GenoAndPhenoEvidence, ActiveHybSwarm, F1Present, F2orLaterPresent, BackcrossPresent)
+
+# look at SNPs, microsats, and other types of genetic analysis
+df_relevant_filled <- df_relevant %>% mutate_at(c(21:30), ~replace_na(.,"N"))
+df_relevant_filled$GeneticEvType = NA
+
+for (i in 1:nrow(df_relevant_filled)){
+  if (str_detect(df_relevant_filled[i,8],'Genetic') == TRUE | str_detect(df_relevant_filled[i,8],'Both') == TRUE) {
+    
+    if(str_detect(df_relevant_filled[i,21],'Y') == TRUE){
+      df_relevant_filled$GeneticEvType[i] <- "MicroSats" #used microsats
+    }
+    else if (str_detect(df_relevant_filled[i,22],'Y') == TRUE){
+      df_relevant_filled$GeneticEvType[i] <- "SNPs" #uses SNPs
+    }
+    else {
+      df_relevant_filled$GeneticEvType[i] <- "OtherGenetic" #used neither
+    }
+  }
+  else if (str_detect(df_relevant_filled[i,8],'Phenotypic') == TRUE){
+    df_relevant_filled$GeneticEvType[i] <- "OnlyPhenotypic" #uses phenotypic
+  }
+  else {
+    df_relevant_filled$GeneticEvType[i] <- "Simulations" #used neither geno nor pheno, only one case & they used simulations
+  }
+}
+
+
+df_long <- df_relevant_filled %>% make_long(GeneticEvType, ActiveHybSwarm, F1Present, F2orLaterPresent, BackcrossPresent)
 
 
 ## actual plot
@@ -333,10 +361,28 @@ for (i in 1:nrow(flow_info)){
                       label = sprintf("%d", flow_info$n[i]), hjust = -3, size = 3)
     next
   }
-  else if (flow_info[i,5] == "Only Phenotypic" & flow_info[i,8] == 6 ){ # custom adjust vjust  
+  else if (flow_info[i,5] == "Simulations" & flow_info[i,8] == 1 ){ # custom adjust vjust  
+    p <- p + annotate("text", x = flow_info$xmax[i],
+                      y = (flow_info$flow_start_ymin[i] + flow_info$flow_start_ymax[i])/2,
+                      label = sprintf("%d", flow_info$n[i]), hjust = -5, vjust = 0.25, size = 3)
+    next
+  }
+  else if (flow_info[i,5] == "OtherGenetic" & flow_info[i,8] == 8 ){ # custom adjust vjust  
     p <- p + annotate("text", x = flow_info$xmax[i],
                       y = (flow_info$flow_start_ymin[i] + flow_info$flow_start_ymax[i])/2,
                       label = sprintf("%d", flow_info$n[i]), hjust = -1, vjust = -0.5, size = 3)
+    next
+  }
+  else if (flow_info[i,5] == "OnlyPhenotypic" & flow_info[i,8] == 6 ){ # custom adjust vjust  
+    p <- p + annotate("text", x = flow_info$xmax[i],
+                      y = (flow_info$flow_start_ymin[i] + flow_info$flow_start_ymax[i])/2,
+                      label = sprintf("%d", flow_info$n[i]), hjust = -1, vjust = -0.5, size = 3)
+    next
+  }
+  else if (flow_info[i,5] == "MicroSats" & flow_info[i,8] == 20 ){ # custom adjust vjust  
+    p <- p + annotate("text", x = flow_info$xmax[i],
+                      y = (flow_info$flow_start_ymin[i] + flow_info$flow_start_ymax[i])/2,
+                      label = sprintf("%d", flow_info$n[i]), hjust = -1, vjust = -1, size = 3)
     next
   }
   p <- p + annotate("text", x = flow_info$xmax[i],
@@ -354,15 +400,13 @@ p
 
 #------------------------------------------
 #OR!!! only 49 active hybrid swarm papers
-df_relevant_filled <- df_hybridswarm %>% replace_na(list(F1Present = "N", F2orLaterPresent = "N", BackcrossPresent = "N"))
 
-# changing genetic and phenotypic to only genetic and only phenotypic to make it explicit
-df_relevant_filled$GenoAndPhenoEvidence <- replace(df_relevant_filled$GenoAndPhenoEvidence,df_relevant_filled$GenoAndPhenoEvidence=="Genetic","Only Genetic")
-df_relevant_filled$GenoAndPhenoEvidence <- replace(df_relevant_filled$GenoAndPhenoEvidence,df_relevant_filled$GenoAndPhenoEvidence=="Phenotypic","Only Phenotypic")
-df_long <- df_relevant_filled %>% make_long(GenoAndPhenoEvidence, F1Present, F2orLaterPresent, BackcrossPresent)
+df_hybridswarm_filled <- df_relevant_filled %>% filter(ActiveHybSwarm != "N")
+
+df_long <- df_hybridswarm_filled %>% make_long(GeneticEvType, F1Present, F2orLaterPresent, BackcrossPresent)
 
 cols <- brewer.pal(8, "Set2")
-cols <- cols[-3]
+cols <- cols[-5]
 
 ## actual plot
 p2 <- ggplot(df_long, aes(x = x, next_x = next_x, node = node, next_node = next_node, fill = factor(node), label = node)) +
@@ -382,12 +426,25 @@ flow_info <- layer_data(p2) %>% select(xmax, flow_start_ymax, flow_start_ymin) %
 flow_info <- flow_info[with(flow_info, order(xmax, flow_start_ymax)), ] # order the positions to match the order of flow_labels
 rownames(flow_info) <- NULL # drop the row indexes
 flow_info <- cbind(as.data.frame(flow_info), as.data.frame(flow_labels)) # bind the flow positions and the corresponding labels
+
 # add labels to the flows
 for (i in 1:nrow(flow_info)){
-  if (flow_info[i,5] == "Only Phenotypic" & flow_info[i,8] == 5 ){ # custom adjust vjust  
+  if (flow_info[i,5] == "Simulations" & flow_info[i,8] == 1 ){ # custom adjust vjust  
     p2 <- p2 + annotate("text", x = flow_info$xmax[i],
                       y = (flow_info$flow_start_ymin[i] + flow_info$flow_start_ymax[i])/2,
-                      label = sprintf("%d", flow_info$n[i]), hjust = -1, vjust = -0.75, size = 3)
+                      label = sprintf("%d", flow_info$n[i]), hjust = -5, vjust = 0.25, size = 3)
+    next
+  }
+  else if (flow_info[i,5] == "OtherGenetic" & flow_info[i,8] == 8 ){ # custom adjust vjust  
+    p2 <- p2 + annotate("text", x = flow_info$xmax[i],
+                        y = (flow_info$flow_start_ymin[i] + flow_info$flow_start_ymax[i])/2,
+                        label = sprintf("%d", flow_info$n[i]), hjust = -6, vjust = 0, size = 3)
+    next
+  }
+  else if (flow_info[i,5] == "OnlyPhenotypic" & flow_info[i,8] == 5 ){ # custom adjust vjust  
+    p2 <- p2 + annotate("text", x = flow_info$xmax[i],
+                        y = (flow_info$flow_start_ymin[i] + flow_info$flow_start_ymax[i])/2,
+                        label = sprintf("%d", flow_info$n[i]), hjust = -2, vjust = -0.75, size = 3)
     next
   }
   p2 <- p2 + annotate("text", x = flow_info$xmax[i],
@@ -404,7 +461,7 @@ p2
 # dev.off()
 
 # save both
-pdf("sankey_plot_both.pdf", height = 10)  
+pdf("sankey_plot_both_new.pdf", height = 10)  
   p + p2 + 
   plot_layout(ncol = 1)+ 
   plot_annotation(tag_levels = 'A')
@@ -430,4 +487,21 @@ dev.off()
 #   theme(legend.position = "none",
 #         plot.title = element_text(hjust = .5)) +
 #   ggtitle("Hybrid swarm outcomes")
+
+
+#---- papers read per person, by relevancy ------
+
+df_raw <- read_csv("hybridswarm - RawData.csv")
+
+count <- df_raw %>% count(Reader, Relevant, sort = TRUE)
+
+# just papers by reader 
+plot <- ggplot(data=count, aes(x=Reader, y=n)) +
+  geom_bar(stat="identity")
+plot
+
+# papers by reader, with relevancy
+plot2 <- ggplot(data=count, aes(x=Reader, fill = Relevant, y=n)) +
+  geom_bar(stat="identity")
+plot2
 
