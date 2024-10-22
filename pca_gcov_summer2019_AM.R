@@ -2,23 +2,28 @@
 ## Rscript for plotting PCAs from point estimates
 # Written originally by Liz Mandeville 2019, Modified by Amanda Meuser 2023
 
+# if (!require("BiocManager", quietly = TRUE))
+#   install.packages("BiocManager")
+# 
+# BiocManager::install("rhdf5")
+
 # load packages
 library(rhdf5)
 library(tidyverse)
 
 # import point estimates file
-g <- read.table("pntest_mean_gl_guelph_bruce.txt", header=F) 
+g <- read.table("pntest_mean_gl_MAF_005.txt", header=F) 
 
 # import .imiss file
-imiss <- read.table("missingness_guelph_bruce.imiss", header=T) 
+#imiss <- read.table("missingness_guelph_bruce.imiss", header=T) 
 
 # import names list
-names <- read.table("names_guelph_bruce.txt", header=F) 
+names <- read.table("inds_refilter27jun24.txt", header=F) 
 colnames(names) <- "FishID"
 
 
 # import metadata
-details <- read.csv("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/Leuciscid_Metadata_May2023.csv", header=T) 
+details <- read.csv("Leuciscid_Metadata_May2023.csv", header=T) 
 
 # Modifying Charlotte Ward's fish to all say Costello Creek as location
 details$Waterbody[details$Waterbody_Code == "OP2"] <- "Costello_Creek"
@@ -74,23 +79,22 @@ imp <- summary(pcgcov)
 #pc.summary <- data.frame(names, fishinfo$Species, round(pcgcov$x[,1:5], digits=5)) #rounding digits on pcgcov object
 #write.csv(pc.summary, file="pc_1to5_2aug17_1286ind_12666loci.csv", row.names=F, col.names=F, quote=F)
 
-colors <-c(
-"#74336E", #purple
-"#5EAB3E", #green
-"#D05433", #red
-"#6F9AB7",
-"#46542F",
-"#C256D1",
-"#BC897E",
-"#B3943C",
-"#6974C9",
-"#D04576",
-"#6B3128",
-"#6BA684")
-morecolors <- rep(colors,3)
+# colors <-c(
+# "#74336E", #purple
+# "#5EAB3E", #green
+# "#D05433", #red
+# "#6F9AB7",
+# "#46542F",
+# "#C256D1",
+# "#BC897E",
+# "#B3943C",
+# "#6974C9",
+# "#D04576",
+# "#6B3128",
+# "#6BA684")
+# morecolors <- rep(colors,3)
 
 
-symbols <- rep(1:14,3)
 # parentals2 <- c("#DF65B0", #BND
 #                 "#969696", #Pimephales
 #                 "#A6CEE3", #CC
@@ -105,20 +109,21 @@ symbols <- rep(1:14,3)
 #                 "#000000", #v11,v12
 #                 "#8E0152") #hybrid
 
-# for geo groups
+
+symbols <- rep(1:14,3)
 parentals2 <- c(
-                #"#969696", #Pimephales
-                "#A6CEE3", #CC
                 "#DF65B0", #BND
+                "#969696", #FHM
+                "#A6CEE3", #CC
                 "#FDBF6F", #CS
                 "#FB9A99", #RFS
                 "#B2DF8A", #RC
                 "#35978F", #HHC
                 "#8C510A", #CSR
-                #"#969696", #Pimephales
+                "#000000", #BM
                 "#E5DF60", #SS
                 "#CAB2D6", #LND
-                "#000000", #v11,v12
+                #"#000000", #v11,v12
                 "#8E0152") #hybrid
 
 #----------------------------------------------------------------------------
@@ -127,8 +132,8 @@ parentals2 <- c(
 # title for all inds
 #pdf("PCA_AMP22_Pimephales_target_11jul23_miss0.5_mac3_Q30_DP3_maf001_ind95_maf001_PHENO_ID.pdf", width = 12, height = 18)
 
-# title for geo groups
-pdf("PCA_AMP22_guelph_bruce_11jul23_miss0.5_mac3_Q30_DP3_maf001_ind95_maf001_PHENO_ID.pdf", width = 12, height = 18)
+
+pdf("PCA_AMP22_Pimephales_target_27jun24_miss0.6_mac3_Q30_DP3_ind95_maf_005_PHENO_ID.pdf", width = 12, height = 18)
 
 par(mfrow=c(3,2))
 plot(pcgcov$x[,1], pcgcov$x[,2], type="n", xlab=paste("PC1 (",(imp$importance[,1][[2]]*100), "% )", sep=""), ylab=paste("PC2 (",(imp$importance[,2][[2]]*100), "% )", sep=""))
@@ -153,7 +158,7 @@ for(i in 1:(length(unique(fishinfo$Common_Name)))){
   points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),2], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 3], pch=symbols[i], col=parentals2[i])
 }
 
-legend("topright", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
+legend("bottomleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 
 #dev.off()
@@ -169,7 +174,7 @@ for(i in 1:(length(unique(fishinfo$Common_Name)))){
   points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),3], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 4], pch=symbols[i], col=parentals2[i])
 }
 
-legend("bottomright", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
+legend("topleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 #----------------------------------------------------------------------------
 #plot PC4 and PC5 for species
@@ -181,7 +186,7 @@ for(i in 1:(length(unique(fishinfo$Common_Name)))){
   points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),4], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 5], pch=symbols[i], col=parentals2[i])
 }
 
-legend("bottomleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
+legend("topleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 #----------------------------------------------------------------------------
 #plot PC5 and PC6 for species
@@ -205,7 +210,7 @@ for(i in 1:(length(unique(fishinfo$Common_Name)))){
   points(pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]),6], pcgcov$x[which(fishinfo$Common_Name==unique(fishinfo$Common_Name)[i]), 7], pch=symbols[i], col=parentals2[i])
 }
 
-legend("bottomright", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
+legend("topleft", legend=unique(fishinfo$Common_Name), pch=symbols, col=parentals2, ncol=1, cex=1)
 
 dev.off()
 
