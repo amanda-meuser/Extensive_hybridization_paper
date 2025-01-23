@@ -19,6 +19,25 @@ phy_AMP22
 plot(phy_AMP22, use.edge.length = T, tip.color = mycol)
 
 #output as PDF
-pdf("Leuciscid_phylo_tree_pimeph.pdf")
-plot(phy_AMP22, use.edge.length = T)
-dev.off()
+# pdf("Leuciscid_phylo_tree_pimeph.pdf")
+# plot(phy_AMP22, use.edge.length = T)
+# dev.off()
+
+
+# extra stuff using ape
+library(ape)
+
+ltt.plot(phy_AMP22)
+mltt.plot(phy_AMP22)
+ltt.coplot(phy_AMP22)
+ltt.plot.coords(phy_AMP22)
+
+# absolute distance b/w species 
+dist.mat = cophenetic.phylo(phy_AMP22)
+dist.mat
+#write.csv(dist.mat, file = "phylo_distance_absolute.csv")
+
+# relative distance
+dist.mat.rel <- dist.mat / max(dist.mat)
+dist.mat.rel
+#write.csv(dist.mat.rel, file = "phylo_distance_relative.csv")
