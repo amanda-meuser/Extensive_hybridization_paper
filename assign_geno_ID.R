@@ -1083,49 +1083,6 @@ fishies <- filter(fishies, Multi_Status == "0") #drops data set from 731 to 691
 (table_fishies <- as.data.frame(table(fishies$Geno_ID)))
 
 
-
-
-
-# allCCxCS = sum(fishies$Geno_ID == 'Common_Shiner x Creek_Chub' | fishies$Geno_ID == 'Creek_Chub x Common_Shiner' | fishies$Geno_ID == 'Creek_Chub'| fishies$Geno_ID == 'Common_Shiner')
-# hybCCxCS = sum(fishies$Geno_ID == 'Common_Shiner x Creek_Chub' | fishies$Geno_ID == 'Creek_Chub x Common_Shiner')
-# propCCxCShyb = hybCCxCS / allCCxCS
-# 
-# "
-# Central_Stoneroller CSR
-# Common_Shiner CS
-# Creek_Chub CC
-# Hornyhead_Chub HC
-# Longnose_Dace LND
-# Pimephales_sp PS
-# River_Chub RC
-# Rosyface_Shiner  RFS
-# Striped_Shiner SS
-# Western_Blacknose_Dace BND
-# "
-# "CSR, CS, CC, HC, LND, PS, RC, RFS, SS, BND"
-# 
-# numbers <- as.data.frame(c("CCxCSR", "CCxCS", "CCxHC", "CCxLND", "CCxPS", "CCxRC", "CCxRFS", "CCxSS", "CCxBND", "CSRxCS", "CSRxHC", "CSRxLND", "CSRxPS", "CSRxRC", "CSRxRFS", "CSRxSS", "CSRxBND", "CSxHC", "CSxLND", "CSxPS", "CSxRC", "CSxRFS", "CSxSS", "CSxBND", "HCxLND", "HCxPS", "HCxRC", "HCxRFS", "HCxSS", "HCxBND", "LNDxPS", "LNDxRC", "LNDxRFS", "LNDxSS", "LNDxBND", "PSxRC", "PSxRFS", "PSxSS", "PSxBND", "RCxRFS", "RCxSS", "RCxBND", "RFSxSS", "RFSxBND", "SSxBND"))
-# names(numbers) <- "Hyb_Crosses"
-# numbers$total_inds = NA
-# numbers$total_hybs = NA
-# 
-# 
-# for (i in 1:nrow(fishies)){
-#   if(str_detect(fishies$Species_1[i],'^P1|^P2') == TRUE){
-#     xQ_sites$Hybrid_Type_Simple[i] <- "Parental" 
-#   }
-#   else if (str_detect(xQ_sites$Hybrid_Type[i],'BC1') == TRUE){
-#     xQ_sites$Hybrid_Type_Simple[i] <- "BC1"
-#   }
-#   else if (str_detect(xQ_sites$Hybrid_Type[i],'BC2') == TRUE){
-#     xQ_sites$Hybrid_Type_Simple[i] <- "BC2"
-#   }
-#   else {
-#     xQ_sites$Hybrid_Type_Simple[i] <- xQ_sites$Hybrid_Type[i]
-#   }
-# }
-
-
 fishies$Abbreviation = NA
 
 # create dictionary to match parentals to abbreviation
@@ -1209,8 +1166,22 @@ for (i in rownames(dist_abs)){
 # move to front of df
 dist_abs <- dist_abs %>% relocate(Abbreviation)
 
+names(dist_abs)[2:13] <- c("Scientific_name", "CC", "PS", "PS", "RFS", "CS", "SS", "RC", "HHC", "CSR", "LND", "BND")
 
+# remove second PS column and row
+dist_abs <- dist_abs[,-5]
+dist_abs <- dist_abs[-3,]
 
+# add a column in numbers for phylo distance
+numbers$Phylo_dist = NA
+
+for (i in rownames(numbers)){
+  # get coordinates (neither is working rn but I think i should do the first line the same as the second but with rownames())
+  match1 <- dist_abs$Abbreviation[which(str_detect(numbers$Species_1[i], dist_abs$Abbreviation))] # row
+  match2 <- grep("numbers$Species_2[i]", colnames(dist_abs)) # column
+  # sub in value [row,column]
+  numbers$Phylo_dist[i] <- dist_abs[match1,match2]
+}
 
 
 
