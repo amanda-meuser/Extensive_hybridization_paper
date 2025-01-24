@@ -80,25 +80,27 @@ library(patchwork)
 # REAL DATA
 #=======================================================
 
+#setwd("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/entropy_pub/genoID_trials_11jul23")
+
 x <- read.delim("AMP22_target_entropy_k12_indivs_q.txt", sep = "\t", header = T)
 k = 12
 
 # load metadata
 metadata <- read.csv("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/Leuciscid_Metadata_May2023.csv")
 
-# get list of and drop 84 inds from plate 13 inds
+# # get list of and drop 84 inds from plate 13 inds
 plate13inds <- filter(metadata, Plate == "AMP22_LP13")
 plate13inds <- plate13inds[,4]
 plate13inds <- as.data.frame(plate13inds)
 names(plate13inds) <- "Mandeville_ID"
 x <- anti_join(x, plate13inds) #removed 69 inds (not all plate 13 inds made it thru filtering)
-nrowx <- nrow(x)
 
-#save plate 13 inds list
-#write.table(plate13inds, "Plate13_inds.txt", quote = F, row.names = F)
-# add paths and save again
-plate13inds$Mandeville_ID = paste0('/project/rrg-emandevi/hybrid_ameuser/AMP22/bwa/', plate13inds$Mandeville_ID, '.sorted.bam')
-#write.table(plate13inds, "Plate13_inds_paths.txt", quote = F, row.names = F)
+
+# #save plate 13 inds list
+# #write.table(plate13inds, "Plate13_inds.txt", quote = F, row.names = F)
+# # add paths and save again
+# plate13inds$Mandeville_ID = paste0('/project/rrg-emandevi/hybrid_ameuser/AMP22/bwa/', plate13inds$Mandeville_ID, '.sorted.bam')
+# #write.table(plate13inds, "Plate13_inds_paths.txt", quote = F, row.names = F)
 
 #double check plate 13 inds are gone
 #RLplates <- metadata[c(4,8)]
@@ -111,6 +113,11 @@ plate13inds$Mandeville_ID = paste0('/project/rrg-emandevi/hybrid_ameuser/AMP22/b
 #k=12
 names(x)[3:14] <-c("Common_Shiner", "Central_Stoneroller", "Hornyhead_Chub", "Longnose_Dace", "Striped_Shiner", "River_Chub", "Pimephales_sp", "Rosyface_Shiner", "Creek_Chub", "Western_Blacknose_Dace", "V11", "V12")
 
+# temporary names bc I haven't chosen best value of K yet
+# it's K+2 for the second index value
+#names(x)[3:17] <-c("Fish1", "Fish2", "Fish3", "Fish4", "Fish5", "Fish6", "Fish7", "Fish8", "Fish9", "Fish10", "Fish11", "Fish12", "Fish13", "Fish14", "Fish15")
+
+
 # create new columns
 # Geno_ID (will contain Common_Name or "hybrid")
 # Pheno_correct (binary, 0=correct, 1=incorrect)
@@ -122,26 +129,29 @@ x$Multi_Status = NA
 
 
 # inserts name of what is in the hybrids (3:11 for k=9, 3:14 for k=12)
-# for (i in 1:nrow(x)){ #assuming the col indexes, might be better to use names
-#   for (j in 3:14){
-#     if (x[i,j] > 0.9) {
-#       x$Geno_ID[i] <- colnames(x)[j]
-#       break
-#     }
-#     else if (x[i,j] > 0.1 * 2){
-#       holder <- colnames(x[i, 3:14])[order(x[i, 3:14], decreasing=TRUE)[1:2]]
-#       x$Geno_ID[i] <- paste(holder[1],"x",holder[2])
-#     }
-#     else { # pulls the columns names for 3:14 (the fish species), sorts them by cell value, then takes the largest 1:2 (largest 2) 
-#       x$Geno_ID[i] <- "Multi"
-#     }
-#   }
-# }
+for (i in 1:nrow(x)){ #assuming the col indexes, might be better to use names
+  for (j in 3:14){
+    if (x[i,j] > 0.9) {
+      x$Geno_ID[i] <- colnames(x)[j]
+      break
+    }
+    else if (x[i,j] > 0.1 * 2){
+      holder <- colnames(x[i, 3:14])[order(x[i, 3:14], decreasing=TRUE)[1:2]]
+      x$Geno_ID[i] <- paste(holder[1],"x",holder[2])
+    }
+    else { # pulls the columns names for 3:14 (the fish species), sorts them by cell value, then takes the largest 1:2 (largest 2)
+      x$Geno_ID[i] <- "Multi"
+    }
+  }
+}
+
+# get index of last column of entropy values
+b <- ncol(x)-4
 
 # more options !! - classifies as multi-species hybrid
 for (i in 1:nrow(x)){ #assuming the col indexes, might be better to use names
   colmatches = 0
-  for (j in 3:14){
+  for (j in 3:b){ 
     if (x[i,j] >= 0.9) {
       x$Geno_ID[i] <- colnames(x)[j]
       colmatches = 5000 # huge number that's way more than max columns
@@ -153,17 +163,17 @@ for (i in 1:nrow(x)){ #assuming the col indexes, might be better to use names
   }
   if (colmatches == 2) {
     #2 species match found
-    holder <- colnames(x[i, 3:14])[order(x[i, 3:14], decreasing=TRUE)[1:2]]
+    holder <- colnames(x[i, 3:b])[order(x[i, 3:b], decreasing=TRUE)[1:2]]
     x$Geno_ID[i] <- paste(holder, collapse=' x ')
   }
   else if (colmatches > 2 & colmatches < 20) { # def 20 columns is max
     #multi-species match found
-    holder2 <- colnames(x[i, 3:14])[order(x[i, 3:14], decreasing=TRUE)[1:colmatches]]
+    holder2 <- colnames(x[i, 3:b])[order(x[i, 3:b], decreasing=TRUE)[1:colmatches]]
     x$Geno_ID[i] <- paste(holder2, collapse=' x ')
   }
   else if (colmatches <= 1){
     # there's only one or no species that contribute 0.1-0.9 ancestry
-    holder3 <- colnames(x[i, 3:14])[order(x[i, 3:14], decreasing=TRUE)[1]]
+    holder3 <- colnames(x[i, 3:b])[order(x[i, 3:b], decreasing=TRUE)[1]]
     x$Geno_ID[i] <- paste(holder3, "x fishiness")
   }
 }
@@ -171,12 +181,14 @@ for (i in 1:nrow(x)){ #assuming the col indexes, might be better to use names
 #something that didn't work...
 #noquote(paste0(replicate(colmatches, ',"x",holder2[v]')))
 
+c <- b+1
+
 # assign 0 or 1 for whether whether the ind is a hybrid (x[i,12] for k=9, x[i,15] for k=12)
 for (i in 1:nrow(x)){
-  if(str_detect(x[i,15],'x') == TRUE){
+  if(str_detect(x[i,c],'x') == TRUE){
     x$Hybrid_Status[i] <- 1 #hybrid
   }
-  else if (str_detect(x[i,15],'x fishiness') == TRUE){
+  else if (str_detect(x[i,c],'x fishiness') == TRUE){
     x$Hybrid_Status[i] <- 1 #hybrid
   }
   else {
@@ -186,10 +198,10 @@ for (i in 1:nrow(x)){
 
 # assign 0 or 1 for whether ind is a multi-species hybrid (x[i,12] for k=9, x[i,15] for k=12)
 for (i in 1:nrow(x)){
-  if(str_detect(x[i,15],'x\\s+\\w+\\s+x') == TRUE){
+  if(str_detect(x[i,c],'x\\s+\\w+\\s+x') == TRUE){
     x$Multi_Status[i] <- 1 #multi
   }
-  else if (str_detect(x[i,15],'x fishiness') == TRUE){
+  else if (str_detect(x[i,c],'x fishiness') == TRUE){
     x$Multi_Status[i] <- 1 #hybrid
   }
   else {
@@ -197,9 +209,9 @@ for (i in 1:nrow(x)){
   }
 }
 
-# assign 0 or 1 for whether phenotypic ID was correct (x[i,12] for k=9, x[i,15] for k=12)
+# assign 0 or 1 for whether phenotypic ID was correct (x[i,12] for k=9, x[i,c] for k=12)
 for (i in 1:nrow(x)){
-  if(identical(x[i,2],x[i,15]) == FALSE){
+  if(identical(x[i,2],x[i,c]) == FALSE){
     x$Pheno_Correct[i] <- 1 #mis-ID
   }
   else {
@@ -230,7 +242,8 @@ names(dftable) <- c("No.Yes", "Freq", "Question")
                 ylab("Number of individuals")+
                 scale_fill_manual(values = c("#E69F00", "#56B4E9"), 
                                   name = "Legend", 
-                                  labels = c("No", "Yes")) )
+                                  labels = c("No", "Yes"))+
+                geom_text(aes(label = Freq), size = 3, hjust = 0.5, vjust = 3, position = "stack") )
 
 
 # Create a data table from the geno IDs and hybrid statuses that makes more sense
@@ -247,7 +260,7 @@ names(dfallstats) <- "State"
 dfallstats[1,1] <- (dftable_hybrid[2,2] - dftable_multi[2,2])
 dfallstats[2,1] <- dftable_multi[2,2]
 dfallstats[3,1] <- dftable_pheno[1,2]
-dfallstats[4,1] <- (nrowx - (dfallstats[1,1] + dfallstats[2,1] + dfallstats[3,1]))
+dfallstats[4,1] <- (nrow(x) - (dfallstats[1,1] + dfallstats[2,1] + dfallstats[3,1]))
 dfallstats[,2] <- "x"
 dfallstats[,3] <- c("1", "2", "3", "4")
 
@@ -260,7 +273,7 @@ palette <- brewer.pal(5, "Spectral")
     theme(axis.title.x=element_blank(),
           axis.text.x=element_blank(),
           axis.ticks.x=element_blank()) +
-    geom_text(aes(label = State), size = 3, hjust = 0.5, vjust = 3, position = "stack") +
+    geom_text(aes(label = State), size = 3, position = position_stack(vjust = 0.5)) +
     scale_fill_manual(values = c(palette[2], palette[3], palette[4], palette[5]), 
                       name = "Legend", 
                       labels = c("2-species hybrid", "Multi-species hybrid", "Correct Pheno ID (Parental)", "Incorrect Pheno ID (Parental)")) )
@@ -279,10 +292,10 @@ palette <- brewer.pal(5, "Spectral")
 # 1 = the phenotype is none of the species in the cross
 x$Hybrid_Match = NA
 for (i in 1:nrow(x)){
-  if (str_detect(x[i,15], x[i,2]) == TRUE){
+  if (str_detect(x[i,c], x[i,2]) == TRUE){
     x$Hybrid_Match[i] <- 0
   }
-  else if (str_detect(x[i,15], x[i,2]) == FALSE){
+  else if (str_detect(x[i,c], x[i,2]) == FALSE){
     x$Hybrid_Match[i] <- 1
   }
 }
@@ -387,29 +400,65 @@ barplot(x_parentals$n)
 # species by genomic ID
 (parent_plot_geno <- ggplot(data=x_parentals, aes(x=(reorder(Geno_ID, -n)), y=n, fill = (reorder(Geno_ID, -n)))) +
   geom_bar(stat="identity", width=0.85, size = 2)+
-  scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#969696"), name = "Species by Phenotypic \nIdentity", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Rosyface Shiner", "Longnose Dace", "Central Stoneroller", "Pimephales sp."))+
+  scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#969696"), name = "Species by Genomic \nIdentity", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Rosyface Shiner", "Longnose Dace", "Central Stoneroller", "Pimephales sp."))+
   geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
   theme(axis.text.x = element_blank(), legend.position = c(0.85, 0.75)) +
   xlab(" ") + 
   ylab("Number of individuals")) 
+
 
 # species by phenotypic ID
 x_pheno <- x_copy %>% count(Common_Name)
 
 (parent_plot_pheno <- ggplot(data=x_pheno, aes(x=(reorder(Common_Name, -n)), y=n, fill = (reorder(Common_Name, -n)))) +
   geom_bar(stat="identity", width=0.85, size = 2)+
-  scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60"), name = "Species", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Rosyface Shiner", "Longnose Dace", "Central Stoneroller", "Striped Shiner"))+
+  scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60","#969696","#969696"), name = "Species", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Rosyface Shiner", "Longnose Dace", "Central Stoneroller", "Striped Shiner"))+
   geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
   theme(axis.text.x = element_blank(), legend.position = "none") +
   xlab(" ") + 
   ylab("Number of individuals")) 
 
-(parent_plot_pheno2 <- ggplot(data=x_pheno, aes(x=(reorder(Common_Name, -n)), y=n, fill = (reorder(Common_Name, -n)))) +
-    geom_bar(stat="identity", width=0.85, size = 2)+
-    scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60"), name = "Species", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Rosyface Shiner", "Longnose Dace", "Central Stoneroller", "Striped Shiner"))+
-    geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
-    theme(axis.text.x = element_blank(), legend.position = "none")+
-    labs(x = "",  y = "Number of individuals", title = "Thesis Data Set", subtitle = "731 inds, 12228 SNPs"))
+#---------------------------------------------------------------------------
+# create plot w circle plot per genoID "species" and look at the proportion of inds pheno ID'd that are grouped into each genoID species
+#---------------------------------------------------------------------------
+
+# copy the counts from the parentals df
+x_all_count <- x_parentals
+# add new row for the hybrids
+x_all_count[nrow(x_all_count)+1,] <- "Hybrids"
+# count # of hybrids and add it to the df
+x_all_count[nrow(x_all_count),2] <- nrow(x_hybrids)
+
+#create a subset w just the AMP, pheno, and geno IDs
+x_subset <- x_copy[,c(1,2,k+3)]
+
+# assign whether the ind is a hybrid 
+for (i in 1:nrow(x_subset)){
+  if(str_detect(x_subset[i,3],'x') == TRUE){
+    x_subset$Geno_ID[i] <- "Hybrid"
+  }
+}
+
+(mystery_ID <- ggplot(x_subset, aes(x = "", y = "", fill = Common_Name))+
+    geom_bar(stat = "identity", position = "stack", width = 1)+
+    #geom_text(aes(label = Geno_ID), position = position_stack(vjust = 0.5)) + 
+    #coord_polar(theta = "y", start = 0)+
+    facet_grid(~ reorder(Geno_ID, Geno_ID, function(x)-length(x)))+
+    scale_fill_manual(values = c("#969696","#8C510A","#FDBF6F","#A6CEE3","#969696","#35978F","#CAB2D6","#B2DF8A","#FB9A99","#E5DF60","#DF65B0")) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank()) + 
+    theme(legend.position='bottom') + 
+    guides(fill=guide_legend(nrow=4, byrow=TRUE))+
+    labs(fill = "Phenotypic ID")+
+    theme(axis.text.x=element_blank()) )
+
+
+# (parent_plot_pheno2 <- ggplot(data=x_pheno, aes(x=(reorder(Common_Name, -n)), y=n, fill = (reorder(Common_Name, -n)))) +
+#     geom_bar(stat="identity", width=0.85, size = 2)+
+#     scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60"), name = "Species", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Rosyface Shiner", "Longnose Dace", "Central Stoneroller", "Striped Shiner"))+
+#     geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
+#     theme(axis.text.x = element_blank(), legend.position = "none")+
+#     labs(x = "",  y = "Number of individuals", title = "Thesis Data Set", subtitle = "731 inds, 12228 SNPs"))
 
 # split pheno ID by year
 x_copy$Year = NA
@@ -581,10 +630,10 @@ x_sites <- merge(x, meta_namesandsites, by = "Mandeville_ID")
 x_sites$Hybrid_Type_Simple = NA
 
 for (i in 1:nrow(x_sites)){
-  if (x_sites$Multi_Status[i] == 1 & str_detect(x_sites[i,15], "x fishiness") == T){
+  if (x_sites$Multi_Status[i] == 1 & str_detect(x_sites[i,c], "x fishiness") == T){
     x_sites$Hybrid_Type_Simple[i] <- "Probable Parental"
   }
-  else if(x_sites$Multi_Status[i] == 1 & str_detect(x_sites[i,15], "x fishiness") == F){
+  else if(x_sites$Multi_Status[i] == 1 & str_detect(x_sites[i,c], "x fishiness") == F){
     x_sites$Hybrid_Type_Simple[i] <- "3-species Hybrid" 
   }
   else if(x_sites$Multi_Status[i] == 0 & x_sites$Hybrid_Status[i] == 1){
@@ -653,10 +702,10 @@ misID_hybrid <- misIDs %>% filter(Hybrid_Status == 1)
 misID_hybrid$Odd = NA
 
 for (i in 1:nrow(misID_hybrid)){
-  if (str_detect(misID_hybrid[i,15], misID_hybrid[i,2]) == TRUE){
+  if (str_detect(misID_hybrid[i,c], misID_hybrid[i,2]) == TRUE){
     misID_hybrid$Odd[i] <- 0
   }
-  else if (str_detect(misID_hybrid[i,15], misID_hybrid[i,2]) == FALSE){
+  else if (str_detect(misID_hybrid[i,c], misID_hybrid[i,2]) == FALSE){
     misID_hybrid$Odd[i] <- 1
   }
 }
@@ -671,7 +720,7 @@ misID_hybrid_odd <- misID_hybrid_odd %>% filter(!str_detect(misID_hybrid_odd$Gen
 # add the parentals back in
 misID_hybrid_odd <- misID_hybrid_odd[-19]
 misIDs_barcode <- rbind(misID_hybrid_odd, misID_parental)
-misIDs_barcode <- misIDs_barcode[-c(3:14)] #remove extra columns
+misIDs_barcode <- misIDs_barcode[-c(3:b)] #remove extra columns
 #write.csv(misIDs_barcode, "AMP22_Leuciscid_OddMisIDs_k12.csv", row.names = F, quote = F)
 
 
@@ -1007,4 +1056,161 @@ alltypes + noparentals +
   plot_annotation(tag_levels = 'A')+
   plot_layout(ncol = 1)
 dev.off()
+
+
+
+
+
+#============================================================
+#============================================================
+
+# Comparing phylogenetic distance and hybridization outcomes
+
+#============================================================
+#============================================================
+
+library(hash)
+
+dist_abs <- read.csv("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/phylo_distance_absolute.csv")
+dist_rel <- read.csv("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/phylo_distance_relative.csv")
+
+# isolate columns that I need but get rid of multi sp hybs bc idk how to deal w them in this scenario
+fishies <- x[, c(1,15,17:18)]
+fishies <- filter(fishies, Multi_Status == "0") #drops data set from 731 to 691
+
+# copying some of this from the breeding behaviours script
+# check what combos are present to make it easier to write the loop
+(table_fishies <- as.data.frame(table(fishies$Geno_ID)))
+
+
+
+
+
+# allCCxCS = sum(fishies$Geno_ID == 'Common_Shiner x Creek_Chub' | fishies$Geno_ID == 'Creek_Chub x Common_Shiner' | fishies$Geno_ID == 'Creek_Chub'| fishies$Geno_ID == 'Common_Shiner')
+# hybCCxCS = sum(fishies$Geno_ID == 'Common_Shiner x Creek_Chub' | fishies$Geno_ID == 'Creek_Chub x Common_Shiner')
+# propCCxCShyb = hybCCxCS / allCCxCS
+# 
+# "
+# Central_Stoneroller CSR
+# Common_Shiner CS
+# Creek_Chub CC
+# Hornyhead_Chub HC
+# Longnose_Dace LND
+# Pimephales_sp PS
+# River_Chub RC
+# Rosyface_Shiner  RFS
+# Striped_Shiner SS
+# Western_Blacknose_Dace BND
+# "
+# "CSR, CS, CC, HC, LND, PS, RC, RFS, SS, BND"
+# 
+# numbers <- as.data.frame(c("CCxCSR", "CCxCS", "CCxHC", "CCxLND", "CCxPS", "CCxRC", "CCxRFS", "CCxSS", "CCxBND", "CSRxCS", "CSRxHC", "CSRxLND", "CSRxPS", "CSRxRC", "CSRxRFS", "CSRxSS", "CSRxBND", "CSxHC", "CSxLND", "CSxPS", "CSxRC", "CSxRFS", "CSxSS", "CSxBND", "HCxLND", "HCxPS", "HCxRC", "HCxRFS", "HCxSS", "HCxBND", "LNDxPS", "LNDxRC", "LNDxRFS", "LNDxSS", "LNDxBND", "PSxRC", "PSxRFS", "PSxSS", "PSxBND", "RCxRFS", "RCxSS", "RCxBND", "RFSxSS", "RFSxBND", "SSxBND"))
+# names(numbers) <- "Hyb_Crosses"
+# numbers$total_inds = NA
+# numbers$total_hybs = NA
+# 
+# 
+# for (i in 1:nrow(fishies)){
+#   if(str_detect(fishies$Species_1[i],'^P1|^P2') == TRUE){
+#     xQ_sites$Hybrid_Type_Simple[i] <- "Parental" 
+#   }
+#   else if (str_detect(xQ_sites$Hybrid_Type[i],'BC1') == TRUE){
+#     xQ_sites$Hybrid_Type_Simple[i] <- "BC1"
+#   }
+#   else if (str_detect(xQ_sites$Hybrid_Type[i],'BC2') == TRUE){
+#     xQ_sites$Hybrid_Type_Simple[i] <- "BC2"
+#   }
+#   else {
+#     xQ_sites$Hybrid_Type_Simple[i] <- xQ_sites$Hybrid_Type[i]
+#   }
+# }
+
+
+fishies$Abbreviation = NA
+
+# create dictionary to match parentals to abbreviation
+dict <- hash()
+dict[["Creek_Chub"]] <- "CC"
+dict[["Common_Shiner"]] <- "CS"
+dict[["Western_Blacknose_Dace"]] <- "BND"
+dict[["Longnose_Dace"]] <- "LND"
+dict[["Central_Stoneroller"]] <- "CSR"
+dict[["Striped_Shiner"]] <- "SS"
+dict[["Hornyhead_Chub"]] <- "HHC"
+dict[["River_Chub"]] <- "RC"
+dict[["Rosyface_Shiner"]] <- "RFS"
+dict[["Pimephales_sp"]] <- "PS"
+
+# assign the abbreviations
+for(i in rownames(fishies)) {
+  if (is.na(fishies[i, 'Species_2'])) {
+    fishies[i, 'Abbreviation'] = dict[[fishies[i, 'Species_1']]]
+  } else {
+    a = dict[[fishies[i, 'Species_1']]]
+    b = dict[[fishies[i, 'Species_2']]]
+    fishies[i, 'Abbreviation'] = ifelse(a < b, paste(a, b, sep=' x '),
+                                              paste(b, a, sep=' x ')) # always writes the names the same way
+  }
+}
+
+# create a table to look at all unique combos and parentals
+(table_fishies_abbr <- as.data.frame(table(fishies$Abbreviation))) # dropped from 52 to 38 entries
+
+# parental only table
+parentals <- filter(table_fishies_abbr, str_detect(table_fishies_abbr$Var1,'x') == FALSE) # 9 options out of possible 10 (no pure SS)
+parentals$Var1 <- as.character(parentals$Var1)
+
+# make table for math
+numbers <- filter(table_fishies_abbr, str_detect(table_fishies_abbr$Var1,'x') == TRUE) # 29 combos out of possible 45
+names(numbers) <- c("Abbreviation", "Freq_hybs_only")
+
+# separate parental species into two columns
+numbers = numbers %>%
+  separate(Abbreviation, c('Species_1', 'Species_2'), ' x ', remove=F)
+
+numbers$Freq_w_parentals = NA
+numbers$Prop_hybs = NA
+
+# for loop that does math
+for (i in 1:nrow(numbers)) {
+  # find matching indices for both parental species
+  match1 <- parentals$Freq[which(str_detect(numbers$Species_1[i], parentals$Var1))]
+  match2 <- parentals$Freq[which(str_detect(numbers$Species_2[i], parentals$Var1))]
+  # sum the matching frequencies and update the column
+  numbers$Freq_w_parentals[i] <- numbers$Freq_hybs_only[i] + sum(match1, na.rm = TRUE) + sum(match2, na.rm = TRUE)
+  # get proportion of hybrids
+  numbers$Prop_hybs[i] <- numbers$Freq_hybs_only[i] / numbers$Freq_w_parentals[i]
+}
+
+
+# somehow connect the above proportion of hybrids with the phylogenetic distance matrix
+
+# create dictionary to match scientific names to abbreviation
+dict2 <- hash()
+dict2[["Semotilus_atromaculatus"]] <- "CC"
+dict2[["Luxilus_cornutus"]] <- "CS"
+dict2[["Rhinichthys_atratulus"]] <- "BND"
+dict2[["Rhinichthys_cataractae"]] <- "LND"
+dict2[["Campostoma_anomalum"]] <- "CSR"
+dict2[["Luxilus_chrysocephalus"]] <- "SS"
+dict2[["Nocomis_biguttatus"]] <- "HHC"
+dict2[["Nocomis_micropogon"]] <- "RC"
+dict2[["Notropis_rubellus"]] <- "RFS"
+dict2[["Pimephales_notatus"]] <- "PS" # this is bluntnose, but they're the equidistant from all other species
+dict2[["Pimephales_promelas"]] <- "PS" # this is fathead, but they're the equidistant from all other species
+
+#change names to abbreviations to match numbers df
+dist_abs$Abbreviation = NA
+
+for (i in rownames(dist_abs)){
+  dist_abs[i, 'Abbreviation'] = dict2[[dist_abs[i, 'X']]]
+}
+
+# move to front of df
+dist_abs <- dist_abs %>% relocate(Abbreviation)
+
+
+
+
+
 
