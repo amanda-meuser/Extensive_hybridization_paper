@@ -1083,6 +1083,22 @@ fishies <- filter(fishies, Multi_Status == "0") #drops data set from 731 to 691
 (table_fishies <- as.data.frame(table(fishies$Geno_ID)))
 
 
+# need to group the hybrids together so that there's fewer groups
+# split up the names
+fishies <- fishies %>%
+  separate(Geno_ID, c('Species_1', 'Species_2'), ' x ', remove=F)
+# alphabetize the names
+fishies$Geno_ID_order = NA
+for (i in 1:nrow(fishies)){
+  a <- fishies$Species_1[i]
+  b <- fishies$Species_2[i]
+  fishies$Geno_ID_order[i] = ifelse(a < b, paste(a, b, sep =' x '), paste(b, a, sep =' x ')) # always writes the names the same way
+  fishies$Geno_ID_order[i] = ifelse(is.na(fishies$Geno_ID_order[i]), paste(a),next) # pastes in just a if no b
+}
+# check again
+(table_fishies <- as.data.frame(table(fishies$Geno_ID_order)))
+
+
 fishies$Abbreviation = NA
 
 # create dictionary to match parentals to abbreviation
@@ -1140,6 +1156,12 @@ for (i in 1:nrow(numbers)) {
 }
 
 
+
+
+
+
+
+
 # somehow connect the above proportion of hybrids with the phylogenetic distance matrix
 
 # create dictionary to match scientific names to abbreviation
@@ -1174,14 +1196,35 @@ dist_abs <- dist_abs[-3,]
 
 # add a column in numbers for phylo distance
 numbers$Phylo_dist = NA
+# set row names as col 1 values then remove col 1
+rownames(dist_abs) <- dist_abs[,1]
+dist_abs <- dist_abs[,-1]
 
-for (i in rownames(numbers)){
-  # get coordinates (neither is working rn but I think i should do the first line the same as the second but with rownames())
-  match1 <- dist_abs$Abbreviation[which(str_detect(numbers$Species_1[i], dist_abs$Abbreviation))] # row
-  match2 <- grep("numbers$Species_2[i]", colnames(dist_abs)) # column
+for (i in 1:nrow(numbers)){
+  # get coordinates
+  match1 <- grep(numbers$Species_1[i], rownames(dist_abs)) # row
+  match2 <- grep(numbers$Species_2[i], colnames(dist_abs)) # column
   # sub in value [row,column]
   numbers$Phylo_dist[i] <- dist_abs[match1,match2]
-}
+} # it works, idk what the warning messages are about
+
+
+
+# FINALLY!! PLOTTING!!
+
+plot(numbers$Phylo_dist, numbers$Prop_hybs)
+
+# idk why it thinks Phylo_dist is a list
+numbers$Phylo_dist <- as.numeric(numbers$Phylo_dist)
+
+ggplot(numbers, aes(x = Phylo_dist, y = Prop_hybs))+
+  geom_point() + 
+  geom_text(label=numbers$Abbreviation) +
+  xlab("Phylogenetic distance (millions of years)") + ylab("Proportion of hybrids")
+
+
+
+
 
 
 
