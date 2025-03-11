@@ -1019,9 +1019,10 @@ dev.off()
 #============================================================
 
 library(hash)
+library(psych)
 
-dist_abs <- read.csv("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/phylo_distance_absolute.csv")
-dist_rel <- read.csv("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/phylo_distance_relative.csv")
+dist_abs <- read.csv("phylo_distance_absolute.csv")
+dist_rel <- read.csv("phylo_distance_relative.csv")
 
 # isolate columns that I need but get rid of multi sp hybs bc idk how to deal w them in this scenario
 fishies <- x[, c(1,15,17:18)]
@@ -1170,4 +1171,7 @@ ggplot(numbers, aes(x = Phylo_dist, y = Prop_hybs))+
   geom_point() + 
   geom_text(label=numbers$Abbreviation) +
   xlab("Phylogenetic distance (millions of years)") + ylab("Proportion of hybrids")
+
+
+print(corr.test(numbers$Phylo_dist, y=numbers$Prop_hybs, use = "pairwise",method="pearson"),short=FALSE)
 
