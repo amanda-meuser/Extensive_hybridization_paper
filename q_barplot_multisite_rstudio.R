@@ -26,10 +26,11 @@ library(dplyr)
 
 # manually read in files
 k <- 12
-hdf5path1 <- "AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep1_qk12inds.hdf5"
-hdf5path2 <- "AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep2_qk12inds.hdf5"	
-hdf5path3 <- "AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep3_qk12inds.hdf5"
-metadata <- "../Leuciscid_Metadata_OFAT_May2023_filtered_old.csv"
+hdf5path1 <- "./AMP22_thesis_24feb25/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep1_qk12inds.hdf5"
+hdf5path2 <- "./AMP22_thesis_24feb25/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep2_qk12inds.hdf5"	
+hdf5path3 <- "./AMP22_thesis_24feb25/AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001_k12_150k_rep3_qk12inds.hdf5"
+#metadata <- "../Leuciscid_Metadata_OFAT_May2023_filtered_old.csv"
+metadata_file <- "Leuciscid_Metadata_May2023.csv"
 
 # extracts k colours from set3 and puts in object
 #colour <- brewer.pal(k, "Set3")
@@ -104,10 +105,14 @@ dim(q)
 
 #PLOTTING BY LOCATION   
 print("Read in metadata...")
-metadata <- read.csv(metadata, header = T)
+metadata_raw <- read.csv(metadata_file, header = T)
+
+#filter for inds in entropy files
+inds <- read.delim("./AMP22_thesis_24feb25/inds_AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001.recode.txt", header = F)
+metadata <- merge(metadata_raw, inds, by.x = "Mandeville_ID", by.y = "V1")
 
 #pull out columns and bind to q values
-metadata_cols <- metadata[c(1,2,4,6,8,21)]
+metadata_cols <- metadata[c(1,2,3,4,6,8)] # Waterbody, Date, Waterbody_Code, Mandeville_ID, Common_Name, Plate
 q_metadata <- cbind(metadata_cols, q)
 
 #alter the C.Ward waterbody codes
@@ -119,9 +124,9 @@ q_metadata$Waterbody_Code[q_metadata$Waterbody == "Costello_Creek"] <- "COS"
 #drop indivs from barcode plate 13
 q_metadata <- q_metadata[q_metadata$Plate != "AMP22_LP13",]
 #check inds per year
-inds_per_year <- q_metadata %>% count(Lab)
+#inds_per_year <- q_metadata %>% count(Lab)
 #remove columns unecessary for downstream plotting
-q_metadata <- q_metadata[-c(2,5:6)]
+#q_metadata <- q_metadata[-c(2,5:6)]
 
 # make sure the q columns are numeric data, then round values of q to 3 decimal places 
 q_metadata <- type.convert(q_metadata, as.is=T)
@@ -146,7 +151,7 @@ mean(q.ci.width)
 
 
 
-K<-k+3
+K<-k+6
 colour <- c("#FDBF6F","#8C510A","#35978F","#CAB2D6","#FFFF99","#B2DF8A","#969696","#FB9A99","#A6CEE3","#DF65B0","#000000","#000000")
 
 
@@ -166,46 +171,46 @@ colnames(min_inds) <- "Waterbody_Code"
 # V7_ind_sites <- unique(V7_ind_sites)
 # min_inds <- V7_ind_sites
 
-pdf(paste0("q_barplot_AMP22_",k,"_V7_sites.pdf"), width = 12, height = 20) 
-par(mfrow=c(7,4), mar=c(4,3,2,1))
-
-for (i in 1:nrow(min_inds)){
-
-  site_inds <- q_metadata_round[q_metadata_round$Waterbody_Code == min_inds$Waterbody_Code[i],]
-
-  barplot(t(site_inds[order(round(site_inds$V9, digits = 1), round(site_inds$V10, digits = 1), round(site_inds$V1, digits = 1), round(site_inds$V3, digits = 1), round(site_inds$V6, digits = 1)),4:K]), 
-        beside=F, 
-        col=colour,
-        #names.arg =site_inds$ID_species[order(site_inds$Waterbody_Code, site_inds$V9, site_inds$V2, site_inds$V3, site_inds$V4)], 
-        names.arg = rep("", nrow(site_inds)),
-        las=2, 
-        cex.axis = 2,
-        #cex.names=0.25,
-        border=NA, 
-        #ylab="proportion of ancestry",
-        #xlab ="Sample ID",
-        #legend.text = c("CS", "CSR", "HHC", "LND", "SS", "RC", "V7", "RFS", "CC", "BND", "V11", "V12"),
-        xlim = c(0,1),
-        space = -0.2,
-        width = 3,
-        horiz = T,
-        axes = F)
-
-  axis(1, at=c(0,0.5,1), labels=c(0,0.5,1), cex.axis = 1.5)
-
-  mtext(paste("Site ",min_inds$Waterbody_Code[i], ", n=", inds_per_site$x[inds_per_site$Group.1 == min_inds$Waterbody_Code[i]], sep=""), side=3, cex=1.5)
-}
-
-plot(1:10,1:10, type="n", axes=F, xlab="", ylab="")
-plot(1:10,1:10, type="n", axes=F, xlab="", ylab="")
-plot(1:10,1:10, type="n", axes=F, xlab="", ylab="", frame.plot=FALSE)
-box(bty="n")
-legend("center", legend = c("Common Shiner", "Central Stoneroller", "Hornyhead Chub", "Longnose Dace", "Striped Shiner", "River Chub", expression(italic("Pimephales sp.")), "Roseyface Shiner", "Creek Chub", "Western Blacknose Dace", "V11", "V12"), col = colour, pch=15, pt.cex=3.75, cex=1.2, ncol = 1, bty = "n")
-
-mtext("Proportion of Ancestry", side=1, cex=2, outer=T, line=-2)
-mtext("Individuals", side=2, cex=2, outer=T, line=-2)
-
-dev.off()
+# pdf(paste0("q_barplot_AMP22_",k,"_V7_sites.pdf"), width = 12, height = 20) 
+# par(mfrow=c(6,5), mar=c(4,3,2,1))
+# 
+# for (i in 1:nrow(min_inds)){
+# 
+#   site_inds <- q_metadata_round[q_metadata_round$Waterbody_Code == min_inds$Waterbody_Code[i],]
+# 
+#   barplot(t(site_inds[order(round(site_inds$V9, digits = 1), round(site_inds$V10, digits = 1), round(site_inds$V1, digits = 1), round(site_inds$V3, digits = 1), round(site_inds$V6, digits = 1)),7:K]), 
+#         beside=F, 
+#         col=colour,
+#         #names.arg =site_inds$ID_species[order(site_inds$Waterbody_Code, site_inds$V9, site_inds$V2, site_inds$V3, site_inds$V4)], 
+#         names.arg = rep("", nrow(site_inds)),
+#         las=2, 
+#         cex.axis = 2,
+#         #cex.names=0.25,
+#         border=NA, 
+#         #ylab="proportion of ancestry",
+#         #xlab ="Sample ID",
+#         #legend.text = c("CS", "CSR", "HHC", "LND", "SS", "RC", "V7", "RFS", "CC", "BND", "V11", "V12"),
+#         xlim = c(0,1),
+#         space = -0.2,
+#         width = 3,
+#         horiz = T,
+#         axes = F)
+# 
+#   axis(1, at=c(0,0.5,1), labels=c(0,0.5,1), cex.axis = 1.5)
+# 
+#   mtext(paste("Site ",min_inds$Waterbody_Code[i], ", n=", inds_per_site$x[inds_per_site$Group.1 == min_inds$Waterbody_Code[i]], sep=""), side=3, cex=1.5)
+# }
+# 
+# plot(1:10,1:10, type="n", axes=F, xlab="", ylab="")
+# plot(1:10,1:10, type="n", axes=F, xlab="", ylab="")
+# plot(1:10,1:10, type="n", axes=F, xlab="", ylab="", frame.plot=FALSE)
+# box(bty="n")
+# legend("center", legend = c("Common Shiner", "Central Stoneroller", "Hornyhead Chub", "Longnose Dace", "Striped Shiner", "River Chub", expression(italic("Pimephales sp.")), "Roseyface Shiner", "Creek Chub", "Western Blacknose Dace", "V11", "V12"), col = colour, pch=15, pt.cex=3.75, cex=1.2, ncol = 1, bty = "n")
+# 
+# mtext("Proportion of Ancestry", side=1, cex=2, outer=T, line=-2)
+# mtext("Individuals", side=2, cex=2, outer=T, line=-2)
+# 
+# dev.off()
 
 
 #k=12
@@ -219,9 +224,48 @@ dev.off()
 # colour <- c("#8E0152", "#6A3D9A", "#FFFF33", "#E31A1C", "#543005", "#FF7F00", "#33A02C", "#000000", "#1F78B4")
 
 
-# only the Algonquin sites
+# REARRANGING FOR 5X5 W LEGEND ON THE SIDE, TO INCREASE LEGEND SIZE
+pdf(paste0("q_barplot_AMP22_",k,"_sites_5x5.pdf"), width = 20, height = 16) 
+par(mfrow=c(5,5), mar=c(3,1,1,1), oma=c(4,4,4,30))
 
-algonquin_sites <- filter(q_metadata_round, Waterbody_Code == "COS" | Waterbody_Code == "SIC")
+for (i in 1:nrow(min_inds)){
+  
+  site_inds <- q_metadata_round[q_metadata_round$Waterbody_Code == min_inds$Waterbody_Code[i],]
+  
+  barplot(t(site_inds[order(round(site_inds$V9, digits = 1), round(site_inds$V10, digits = 1), round(site_inds$V1, digits = 1), round(site_inds$V3, digits = 1), round(site_inds$V6, digits = 1)),7:K]), 
+          beside=F, 
+          col=colour,
+          #names.arg =site_inds$ID_species[order(site_inds$Waterbody_Code, site_inds$V9, site_inds$V2, site_inds$V3, site_inds$V4)], 
+          names.arg = rep("", nrow(site_inds)),
+          las=2, 
+          cex.axis = 2,
+          #cex.names=0.25,
+          border=NA, 
+          #ylab="proportion of ancestry",
+          #xlab ="Sample ID",
+          #legend.text = c("CS", "CSR", "HHC", "LND", "SS", "RC", "V7", "RFS", "CC", "BND", "V11", "V12"),
+          xlim = c(0,1),
+          space = -0.2,
+          width = 3,
+          horiz = T,
+          axes = F)
+  
+  axis(1, at=c(0,0.5,1), labels=c(0,0.5,1), cex.axis = 1.5)
+  
+  mtext(paste("Site ",min_inds$Waterbody_Code[i], ", n=", inds_per_site$x[inds_per_site$Group.1 == min_inds$Waterbody_Code[i]], sep=""), side=3, cex=1.5)
+}
 
+#plot(1:10,1:10, type="n", axes=F, xlab="", ylab="")
+#plot(1:10,1:10, type="n", axes=F, xlab="", ylab="")
+#plot(1:10,1:10, type="n", axes=F, xlab="", ylab="", frame.plot=FALSE)
+#box(bty="n")
+par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
+plot(0, 0, type = 'l', bty = 'n', xaxt = 'n', yaxt = 'n')
+legend("right", legend = c("Common Shiner", "Central Stoneroller", "Hornyhead Chub", "Longnose Dace", "Striped Shiner", "River Chub", expression(italic("Pimephales sp.")), "Roseyface Shiner", "Creek Chub", "Western Blacknose Dace"), col = colour, pch=15, pt.cex=8, cex=2.5, ncol = 1, bty = "n", xpd = T)
+
+mtext("Proportion of Ancestry", side=1, cex=2, outer=T, line=-2, at = 0.43)
+mtext("Individuals", side=2, cex=2, outer=T, line=-3)
+
+dev.off()
 
         
