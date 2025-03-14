@@ -85,7 +85,7 @@ x <- read.delim("./AMP22_thesis_24feb25/AMP22_thesis_24feb25_entropy_list_k12_in
 k = 12
 
 # load metadata
-metadata <- read.csv("Leuciscid_Metadata_May2023.csv")
+metadata <- read.csv("Leuciscid_Metadata_May2023.csv", sep = ";")
 
 # get list of and drop 84 inds from plate 13 inds
 # plate13inds <- filter(metadata, Plate == "AMP22_LP13")
@@ -246,6 +246,7 @@ names(dfallstats) <- "State"
 dfallstats[1,1] <- (dftable_hybrid[2,2] - dftable_multi[2,2])
 dfallstats[2,1] <- dftable_multi[2,2]
 dfallstats[3,1] <- dftable_pheno[1,2]
+nrowx <- nrow(x)
 dfallstats[4,1] <- (nrowx - (dfallstats[1,1] + dfallstats[2,1] + dfallstats[3,1]))
 dfallstats[,2] <- "x"
 dfallstats[,3] <- c("1", "2", "3", "4")
@@ -448,37 +449,37 @@ x_pheno_year <- x_copy %>% group_by(Year) %>% count(Common_Name)
 # compare # of inds by pheno ID across data sets
 #---------------------------------------------------------------------------
 
-inds_august <- read.delim("../comparing_datasets/indivs_august.txt", header = F)
-inds_newest <- read.delim("../comparing_datasets/indivs_newest.txt", header = F)
+# inds_august <- read.delim("../comparing_datasets/indivs_august.txt", header = F)
+# inds_newest <- read.delim("../comparing_datasets/indivs_newest.txt", header = F)
+# 
+# # merge w whole data set to get metadata
+# meta_august <- merge(metadata, inds_august, by.x = "Mandeville_ID", by.y = "V1")
+# meta_newest <- merge(metadata, inds_newest, by.x = "Mandeville_ID", by.y = "V1")
+# 
+# # count inds per species
+# count_august <- meta_august %>% count(Common_Name)
+# count_newest <- meta_newest %>% count(Common_Name)
+# 
+# (parent_plot_pheno_august <- ggplot(data=count_august, aes(x=(reorder(Common_Name, -n)), y=n, fill = (reorder(Common_Name, -n)))) +
+#     geom_bar(stat="identity", width=0.85, size = 2)+
+#     scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60", "grey66", "grey34"), name = "Species", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Longnose Dace", "Rosyface Shiner","Central Stoneroller", "Striped Shiner", "Fathead Minnow", "Bluntnose Minnow"))+
+#     geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
+#     theme(axis.text.x = element_blank()) +#, legend.position = "none"
+#     labs(x = "",  y = "Number of individuals", title = "August Data Set", subtitle = "802 inds, 8349 SNPs"))
+# 
+# (parent_plot_pheno_newest <- ggplot(data=count_newest, aes(x=(reorder(Common_Name, -n)), y=n, fill = (reorder(Common_Name, -n)))) +
+#     geom_bar(stat="identity", width=0.85, size = 2)+
+#     scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60", "grey66", "grey34"), name = "Species", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Longnose Dace", "Rosyface Shiner","Central Stoneroller", "Striped Shiner", "Fathead Minnow", "Bluntnose Minnow"))+
+#     geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
+#     theme(axis.text.x = element_blank()) +#, legend.position = "none"
+#     labs(x = "",  y = "Number of individuals", title = "Newest Data Set", subtitle = "799 inds, 20631 SNPs"))
 
-# merge w whole data set to get metadata
-meta_august <- merge(metadata, inds_august, by.x = "Mandeville_ID", by.y = "V1")
-meta_newest <- merge(metadata, inds_newest, by.x = "Mandeville_ID", by.y = "V1")
 
-# count inds per species
-count_august <- meta_august %>% count(Common_Name)
-count_newest <- meta_newest %>% count(Common_Name)
-
-(parent_plot_pheno_august <- ggplot(data=count_august, aes(x=(reorder(Common_Name, -n)), y=n, fill = (reorder(Common_Name, -n)))) +
-    geom_bar(stat="identity", width=0.85, size = 2)+
-    scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60", "grey66", "grey34"), name = "Species", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Longnose Dace", "Rosyface Shiner","Central Stoneroller", "Striped Shiner", "Fathead Minnow", "Bluntnose Minnow"))+
-    geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
-    theme(axis.text.x = element_blank()) +#, legend.position = "none"
-    labs(x = "",  y = "Number of individuals", title = "August Data Set", subtitle = "802 inds, 8349 SNPs"))
-
-(parent_plot_pheno_newest <- ggplot(data=count_newest, aes(x=(reorder(Common_Name, -n)), y=n, fill = (reorder(Common_Name, -n)))) +
-    geom_bar(stat="identity", width=0.85, size = 2)+
-    scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#E5DF60", "grey66", "grey34"), name = "Species", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Longnose Dace", "Rosyface Shiner","Central Stoneroller", "Striped Shiner", "Fathead Minnow", "Bluntnose Minnow"))+
-    geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
-    theme(axis.text.x = element_blank()) +#, legend.position = "none"
-    labs(x = "",  y = "Number of individuals", title = "Newest Data Set", subtitle = "799 inds, 20631 SNPs"))
-
-
-pdf("AMP22_comparing datasets.pdf", width = 10, height = 16)
-parent_plot_pheno2 + parent_plot_pheno_august + parent_plot_pheno_newest +
-  plot_annotation(tag_levels = 'A') +
-  plot_layout(ncol = 1, guides = 'collect')
-dev.off()
+# pdf("AMP22_comparing datasets.pdf", width = 10, height = 16)
+# parent_plot_pheno2 + parent_plot_pheno_august + parent_plot_pheno_newest +
+#   plot_annotation(tag_levels = 'A') +
+#   plot_layout(ncol = 1, guides = 'collect')
+# dev.off()
 
 
 #---------------------------------------------------------------------------
@@ -503,7 +504,7 @@ x_hybrids <- x_hybrids %>% filter(Geno_ID_order != "Multi")
 x_hybrids <- x_hybrids[-(1:3)]
 x_hybrids <- x_hybrids %>% count(Geno_ID_order)
 
-nb.cols <- 29
+nb.cols <- 30
 mycolours <- colorRampPalette(brewer.pal(11, "Spectral"))(nb.cols)
 
 # species by genomic ID PUT LEGEND ON THE PLOT
@@ -634,7 +635,7 @@ x_count[x_count=="Probable Parental"] <- "Uncertain Hybrid"
   xlab("Waterbody") + 
     scale_fill_manual(values = c(mycolours[9], mycolours[11], mycolours[2], mycolours[5]), 
                       name = "Hybrid Type") +
-  theme(legend.position = c(0.9, 0.3)))
+  theme(legend.position = c(0.1, 0.3)))
 
 # pdf("AMP22_target_hybrids_per_site_new.pdf", width = 10)
 # hyb_per_site
