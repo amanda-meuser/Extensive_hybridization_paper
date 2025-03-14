@@ -385,10 +385,10 @@ barplot(x_parentals$n)
 
 # species by genomic ID
 (parent_plot_geno <- ggplot(data=x_parentals, aes(x=(reorder(Geno_ID, -n)), y=n, fill = (reorder(Geno_ID, -n)))) +
-  geom_bar(stat="identity", width=0.85, size = 2)+
+  geom_bar(stat="identity", width=0.85, linewidth = 2)+
   scale_fill_manual(values = c("#A6CEE3","#FDBF6F","#DF65B0","#B2DF8A","#35978F","#FB9A99","#CAB2D6","#8C510A","#969696"), name = "Species by Phenotypic \nIdentity", labels=c("Creek Chub","Common Shiner","Western Blacknose Dace", "River Chub", "Hornyhead Chub", "Rosyface Shiner", "Longnose Dace", "Central Stoneroller", "Pimephales sp."))+
-  geom_text(aes(label=n), vjust=-0.3, color="black", size=4)+
-  theme(axis.text.x = element_blank(), legend.position = c(0.85, 0.75)) +
+  geom_text(aes(label=n), vjust=-0.3, color="black", linewidth=4)+
+  theme(axis.text.x = element_blank(), legend.position.inside = c(0.85, 0.75)) +
   xlab(" ") + 
   ylab("Number of individuals")) 
 
@@ -555,13 +555,14 @@ heatmap_plus_blanks <- merge(x_hybrids_heatmap, all_options, by.x = c("Species_1
                                    size = 9, hjust = 0.55), 
         axis.title.x = element_blank(),
         axis.title.y = element_blank()) +
-    coord_fixed() + 
-    geom_point(data = heatmap_plus_blanks, aes(size=0, shape = NA), fill = "white", colour = "grey40") +
-    guides(size=guide_legend("", override.aes=list(shape=22, size = 8))))
+    coord_fixed() )
+  #+ geom_point(data = heatmap_plus_blanks, aes(size=0, shape = NA), fill = "white", colour = "grey40") +
+  # guides(size=guide_legend("", override.aes=list(shape=22, size = 8)))) # these two lines make the white box for 0 appear but it wasn't working right last time I tried it
 
-# pdf("AMP22_species_crosses_heatmap_new.pdf", width = 10, height = 8)
+# pdf("AMP22_species_crosses_heatmap_nowhitebox.pdf", width = 10, height = 8)
 # heatmap
 # dev.off()
+
 
 #---------------------------------------------------------------------------
 # break this down by site !!
