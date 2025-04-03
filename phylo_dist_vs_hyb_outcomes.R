@@ -157,7 +157,7 @@ numbers$Phylo_dist <- as.numeric(numbers$Phylo_dist)
     geom_text(label=numbers$Abbreviation) +
     xlab("Phylogenetic distance (millions of years)") + ylab("Proportion of hybrids"))
 
-# pdf("Prop_hybs_vs_phylo_dist.pdf", height = 6, width = 14)
+# pdf("Prop_hybs_vs_phylo_dist.pdf", height = 8, width = 12)
 # phydistplot
 # dev.off()
 
