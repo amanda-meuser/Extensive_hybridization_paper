@@ -8,49 +8,50 @@ library(RColorBrewer)
 library(patchwork)
 
 
-setwd("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/entropy_pub/all")
+setwd("/Users/ameuser/Library/CloudStorage/GoogleDrive-ameuser03@gmail.com/My Drive/PhD_Files/Masters_stuff/Thesis_pub/AMP22_thesis_24feb25")
 
-speciesk2 <- read.delim("./AMP22_pub_all_entropy_list_k2_species_q.txt", sep = "\t", header = T)
+speciesk2 <- read.delim("AMP22_thesis_24feb25_entropy_list_k2_species_q.txt", sep = "\t", header = T)
 colnames(speciesk2) <- c("Common_Name", "V01", "V02")
-speciesk3 <- read.delim("./AMP22_pub_all_entropy_list_k3_species_q.txt", sep = "\t", header = T)
+speciesk3 <- read.delim("AMP22_thesis_24feb25_entropy_list_k3_species_q.txt", sep = "\t", header = T)
 colnames(speciesk3) <- c("Common_Name", "V01", "V02", "V03")
-speciesk4 <- read.delim("./AMP22_pub_all_entropy_list_k4_species_q.txt", sep = "\t", header = T)
+speciesk4 <- read.delim("AMP22_thesis_24feb25_entropy_list_k4_species_q.txt", sep = "\t", header = T)
 colnames(speciesk4) <- c("Common_Name", "V01", "V02", "V03", "V04")
-speciesk5 <- read.delim("./AMP22_pub_all_entropy_list_k5_species_q.txt", sep = "\t", header = T)
+speciesk5 <- read.delim("AMP22_thesis_24feb25_entropy_list_k5_species_q.txt", sep = "\t", header = T)
 colnames(speciesk5) <- c("Common_Name", "V01", "V02", "V03", "V04","V05")
-speciesk6 <- read.delim("./AMP22_pub_all_entropy_list_k6_species_q.txt", sep = "\t", header = T)
+speciesk6 <- read.delim("AMP22_thesis_24feb25_entropy_list_k6_species_q.txt", sep = "\t", header = T)
 colnames(speciesk6) <- c("Common_Name", "V01", "V02", "V03", "V04","V05","V06")
-speciesk7 <- read.delim("./AMP22_pub_all_entropy_list_k7_species_q.txt", sep = "\t", header = T)
+speciesk7 <- read.delim("AMP22_thesis_24feb25_entropy_list_k7_species_q.txt", sep = "\t", header = T)
 colnames(speciesk7) <- c("Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07")
-speciesk8 <- read.delim("./AMP22_pub_all_entropy_list_k8_species_q.txt", sep = "\t", header = T)
+speciesk8 <- read.delim("AMP22_thesis_24feb25_entropy_list_k8_species_q.txt", sep = "\t", header = T)
 colnames(speciesk8) <- c("Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08")
-speciesk9 <- read.delim("./AMP22_pub_all_entropy_list_k9_species_q.txt", sep = "\t", header = T)
+speciesk9 <- read.delim("AMP22_thesis_24feb25_entropy_list_k9_species_q.txt", sep = "\t", header = T)
 colnames(speciesk9) <- c("Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09")
-speciesk10 <- read.delim("./AMP22_pub_all_entropy_list_k10_species_q.txt", sep = "\t", header = T)
+speciesk10 <- read.delim("AMP22_thesis_24feb25_entropy_list_k10_species_q.txt", sep = "\t", header = T)
 colnames(speciesk10) <- c("Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09","V10")
-speciesk11 <- read.delim("./AMP22_pub_all_entropy_list_k11_species_q.txt", sep = "\t", header = T)
+speciesk11 <- read.delim("AMP22_thesis_24feb25_entropy_list_k11_species_q.txt", sep = "\t", header = T)
 colnames(speciesk11) <- c("Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09","V10","V11")
-speciesk12 <- read.delim("./AMP22_pub_all_entropy_list_k12_species_q.txt", sep = "\t", header = T)
+speciesk12 <- read.delim("AMP22_thesis_24feb25_entropy_list_k12_species_q.txt", sep = "\t", header = T)
 colnames(speciesk12) <- c("Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09","V10","V11","V12")
 
-speciesk13 <- read.delim("./AMP22_pub_all_entropy_list_k13_species_q.txt", sep = "\t", header = T)
+speciesk13 <- read.delim("AMP22_thesis_24feb25_entropy_list_k13_species_q.txt", sep = "\t", header = T)
 colnames(speciesk13) <- c("Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09","V10","V11","V12","V13")
 
-speciesk14 <- read.delim("./AMP22_pub_all_entropy_list_k14_species_q.txt", sep = "\t", header = T)
+speciesk14 <- read.delim("AMP22_thesis_24feb25_entropy_list_k14_species_q.txt", sep = "\t", header = T)
 colnames(speciesk14) <- c("Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09","V10","V11","V12","V13","V14")
 
-speciesk15 <- read.delim("./AMP22_pub_all_entropy_list_k15_species_q.txt", sep = "\t", header = T)
+speciesk15 <- read.delim("AMP22_thesis_24feb25_entropy_list_k15_species_q.txt", sep = "\t", header = T)
 colnames(speciesk15) <- c("Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09","V10","V11","V12","V13","V14","V15")
 
 
-# in order for k=12
+
+# # in order for algonquin, london w CS, CC, and BND
+# colour <- c("#FDBF6F","#A6CEE3","#DF65B0")
+# # in order for algonquin, w CS, CC, RC, and BND
+# colour <- c("#FDBF6F","#A6CEE3","#B2DF8A","#DF65B0")
+# # in order for all 11 species 
+# colour <- c("grey90","#8C510A","#FDBF6F","#A6CEE3","grey30","#35978F","#CAB2D6","#B2DF8A","#FB9A99","#E5DF60","#DF65B0")
+# in order for 9 species 
 colour <- c("#8C510A","#FDBF6F","#A6CEE3","#35978F","#CAB2D6","#B2DF8A","#FB9A99","#E5DF60","#DF65B0")
-# in order for algonquin, london w CS, CC, and BND
-colour <- c("#FDBF6F","#A6CEE3","#DF65B0")
-# in order for algonquin, w CS, CC, RC, and BND
-colour <- c("#FDBF6F","#A6CEE3","#B2DF8A","#DF65B0")
-# in order for all 11 species
-colour <- c("grey90","#8C510A","#FDBF6F","#A6CEE3","grey30","#35978F","#CAB2D6","#B2DF8A","#FB9A99","#E5DF60","#DF65B0")
 
 # data frame of all the data frames for looping through maybe, but not using this rn...
 #dfs <- t(as.data.frame(list("speciesk2", "speciesk3", "speciesk4", "speciesk5", "speciesk6", "speciesk7", "speciesk8", "speciesk9", "speciesk10", "speciesk11", "speciesk12")))
@@ -191,7 +192,7 @@ speciesk15_gathered <- speciesk15 %>% gather("column", "q_value", 2:16)
 
 
 # save all as a pdf
-pdf("AMP22_pub_all_mean_q_per_species_ordered.pdf", width = 12, height = 18)
+pdf("AMP22_thesis_24feb25_mean_q_per_species_ordered.pdf", width = 12, height = 18)
 plotk2 + plotk3 + plotk4 +
 plotk5 + plotk6 + plotk7 +
 plotk8 + plotk9 + plotk10 +
@@ -207,33 +208,33 @@ dev.off()
 # read in indivs files and generate median values, rather than means
 #----------------------------------------------------------------------------
 
-indivsk2 <- read.delim("./AMP22_pub_all_entropy_list_k2_indivs_q.txt", sep = "\t", header = T)
+indivsk2 <- read.delim("AMP22_thesis_24feb25_entropy_list_k2_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk2) <- c("Mandeville_ID", "Common_Name", "V01", "V02")
-indivsk3 <- read.delim("./AMP22_pub_all_entropy_list_k3_indivs_q.txt", sep = "\t", header = T)
+indivsk3 <- read.delim("AMP22_thesis_24feb25_entropy_list_k3_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk3) <- c("Mandeville_ID", "Common_Name", "V01", "V02", "V03")
-indivsk4 <- read.delim("./AMP22_pub_all_entropy_list_k4_indivs_q.txt", sep = "\t", header = T)
+indivsk4 <- read.delim("AMP22_thesis_24feb25_entropy_list_k4_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk4) <- c("Mandeville_ID", "Common_Name", "V01", "V02", "V03", "V04")
-indivsk5 <- read.delim("./AMP22_pub_all_entropy_list_k5_indivs_q.txt", sep = "\t", header = T)
+indivsk5 <- read.delim("AMP22_thesis_24feb25_entropy_list_k5_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk5) <- c("Mandeville_ID", "Common_Name", "V01", "V02", "V03", "V04","V05")
-indivsk6 <- read.delim("./AMP22_pub_all_entropy_list_k6_indivs_q.txt", sep = "\t", header = T)
+indivsk6 <- read.delim("AMP22_thesis_24feb25_entropy_list_k6_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk6) <- c("Mandeville_ID", "Common_Name", "V01", "V02", "V03", "V04","V05","V06")
-indivsk7 <- read.delim("./AMP22_pub_all_entropy_list_k7_indivs_q.txt", sep = "\t", header = T)
+indivsk7 <- read.delim("AMP22_thesis_24feb25_entropy_list_k7_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk7) <- c("Mandeville_ID", "Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07")
-indivsk8 <- read.delim("./AMP22_pub_all_entropy_list_k8_indivs_q.txt", sep = "\t", header = T)
+indivsk8 <- read.delim("AMP22_thesis_24feb25_entropy_list_k8_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk8) <- c("Mandeville_ID", "Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08")
-indivsk9 <- read.delim("./AMP22_pub_all_entropy_list_k9_indivs_q.txt", sep = "\t", header = T)
+indivsk9 <- read.delim("AMP22_thesis_24feb25_entropy_list_k9_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk9) <- c("Mandeville_ID", "Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09")
-indivsk10 <- read.delim("./AMP22_pub_all_entropy_list_k10_indivs_q.txt", sep = "\t", header = T)
+indivsk10 <- read.delim("AMP22_thesis_24feb25_entropy_list_k10_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk10) <- c("Mandeville_ID", "Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09","V10")
-indivsk11 <- read.delim("./AMP22_pub_all_entropy_list_k11_indivs_q.txt", sep = "\t", header = T)
+indivsk11 <- read.delim("AMP22_thesis_24feb25_entropy_list_k11_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk11) <- c("Mandeville_ID", "Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09","V10","V11")
-indivsk12 <- read.delim("./AMP22_pub_all_entropy_list_k12_indivs_q.txt", sep = "\t", header = T)
+indivsk12 <- read.delim("AMP22_thesis_24feb25_entropy_list_k12_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk12) <- c("Mandeville_ID", "Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09","V10","V11","V12")
-indivsk13 <- read.delim("./AMP22_pub_all_entropy_list_k13_indivs_q.txt", sep = "\t", header = T)
+indivsk13 <- read.delim("AMP22_thesis_24feb25_entropy_list_k13_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk13) <- c("Mandeville_ID", "Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09","V10","V11","V12","V13")
-indivsk14 <- read.delim("./AMP22_pub_all_entropy_list_k14_indivs_q.txt", sep = "\t", header = T)
+indivsk14 <- read.delim("AMP22_thesis_24feb25_entropy_list_k14_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk14) <- c("Mandeville_ID", "Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09","V10","V11","V12","V13","V14")
-indivsk15 <- read.delim("./AMP22_pub_all_entropy_list_k15_indivs_q.txt", sep = "\t", header = T)
+indivsk15 <- read.delim("AMP22_thesis_24feb25_entropy_list_k15_indivs_q.txt", sep = "\t", header = T)
 colnames(indivsk15) <- c("Mandeville_ID", "Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09","V10","V11","V12","V13","V14","V15")
 
 #create a table of MEDIAN q values for each column, for each species
@@ -387,7 +388,7 @@ median_k15_gathered <- median_k15 %>% gather("column", "q_value", 2:16)
 
 
 # save all as a pdf
-pdf("AMP22_pub_all_median_q_per_species_ordered.pdf", width = 12, height = 18)
+pdf("AMP22_refilter22oct24_median_q_per_species_ordered.pdf", width = 12, height = 18)
 plotk2 + plotk3 + plotk4 +
   plotk5 + plotk6 + plotk7 +
   plotk8 + plotk9 + plotk10 +
@@ -397,4 +398,28 @@ plotk2 + plotk3 + plotk4 +
   guide_area() +
   plot_layout(guides = 'collect', ncol = 3)
 dev.off()
+
+
+
+#--------------------------------------------------
+# checking ghost admixture
+#--------------------------------------------------
+
+indivsk12 <- read.delim("AMP22_thesis_24feb25_entropy_list_k12_indivs_q.txt", sep = "\t", header = T)
+colnames(indivsk12) <- c("Mandeville_ID","Common_Name", "V01", "V02", "V03", "V04","V05","V06","V07","V08","V09","V10","V11","V12")
+
+
+max(indivsk12$V11)
+max(indivsk12$V12)
+min(indivsk12$V11)
+min(indivsk12$V12)
+
+# isolate the two ghost columns
+ghost11 <- as.data.frame(indivsk12[c(1,2,13)])
+ghost12 <- as.data.frame(indivsk12[c(1,2,14)])
+
+# retain inds w ancestry above 0.1%
+ghost11 <- filter(ghost11, V11 > 0.001)
+ghost12 <- filter(ghost12, V12 > 0.001)
+
 
