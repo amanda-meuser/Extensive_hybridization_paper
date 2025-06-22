@@ -1,0 +1,5 @@
+Geno_ID	mean_q_col1	mean_q_col2
+Common_Shiner	0.997048325844265	0.00295167461059225
+Common_Shiner x Western_Blacknose_Dace	0.608292854996522	0.391707145063745
+Western_Blacknose_Dace	0.00471265003709846	0.995287350446088
+Western_Blacknose_Dace x Common_Shiner	0.277919991095074	0.722080008922021
