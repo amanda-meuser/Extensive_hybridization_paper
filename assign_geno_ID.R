@@ -793,12 +793,12 @@ write.csv(x_metadata, paste0("old_AMP22_genoID_k",k,"_Jun2023.csv"), row.names =
       # Pulling in Q data
 #############################################################################################
 
-k2q_per_species <- read.delim("AMP22_CSxCC_woP13_entropy_list_k2_Geno_ID_q.txt", header = T, sep = "\t")
-k2qQ_values <- read.delim("AMP22_CSxCC_woP13_entropy_list_k2_indivs_q_Q.txt", header = T, sep = "\t")
+k2q_per_species <- read.delim("AMP22_BNDxCC_woP13_entropy_list_k2_Geno_ID_q.txt", header = T, sep = "\t")
+k2qQ_values <- read.delim("AMP22_BNDxCC_woP13_entropy_list_k2_indivs_q_Q.txt", header = T, sep = "\t")
 
 # filter out plate 13
 # load metadata
-metadata <- read.csv("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/Leuciscid_Metadata_May2023.csv")
+metadata <- read.csv("Leuciscid_Metadata_May2023.csv", sep = ";")
 # get list of and drop 84 inds from plate 13 inds
 # plate13inds <- filter(metadata, Plate == "AMP22_LP13")
 # plate13inds <- plate13inds[,4]
@@ -897,14 +897,11 @@ sumsQ <- xQ_count %>%
   summarise(n_sum = sum(n),
             .groups = 'drop')
 xQ_count <- merge(xQ_count, sumsQ, by='Waterbody_Code')
-getproportion <- function(row) {
-  return (row$n/row$n_sum)
-}
 xQ_count <- xQ_count %>% mutate(proportion = n / n_sum)
 
 # order by the frequency column
 xQ_count = xQ_count %>% 
-  group_by(Waterbody_Code) %>% 
+  group_by(Hybrid_Type) %>% 
   arrange(desc(Hybrid_Type))# what it sorts by OFTEN NEED TO CHANGE THIS TO EITHER PROPORTION OR HYBRID_TYPE
 
 # create the object w the levels in order
@@ -912,12 +909,29 @@ xQ_order = xQ_count[!duplicated(xQ_count$Waterbody_Code), ]$Waterbody_Code
 # tell it how we want the levels
 xQ_count$Waterbody_Code <- factor(xQ_count$Waterbody_Code, levels = xQ_order)
 
+# colour palettes per species pair
+##             BC1P1     BC1P2     F1         F2          F3      Other        P1       P2
+CCxCS  <- c("#996095","#CB6A62", "#8E0152", "#3B3136", "#D9D0D5","#3289bd","#A6CEE3","#FDBF6F")
+BNDxCC <- c("#FB9A99","#996095", "#8E0152", "#3B3136",           "#3289bd","#DF65B0","#A6CEE3")
+BNDxCS <- c("#CB6A62","#FB9A99", "#8E0152",                      "#3289bd","#DF65B0","#FDBF6F")
+
+# legend labels for each species pair
+CCxCS_labels <- c("Backcross with\nCreek Chub", "Backcross with\nCommon Shiner", "F1 Hybrid", "F2 Hybrid", "F3 Hybrid", "Other hybrid", "Creek Chub", "Common Shiner")
+BNDxCC_labels <- c("Backcross with\nWestern Blacknose Dace", "Backcross with\nCreek Chub", "F1 Hybrid", "F2 Hybrid","Other hybrid", "Western Blacknose Dace", "Creek Chub")
+BNDxCS_labels <- c("Backcross with\nCommon Shiner", "Backcross with\nWestern Blacknose Dace", "F1 Hybrid", "Other hybrid", "Western Blacknose Dace", "Common Shiner")
+
 # plot 
 (alltypes <- ggplot(xQ_count, aes(fill=Hybrid_Type, y=n, x=Waterbody_Code)) + 
   geom_bar(position="fill", stat="identity")+ 
   ylab("Proportion of total individuals") +
   xlab("Waterbody") + 
-  scale_fill_brewer(palette="Spectral", name="Hybrid Type"))
+  scale_fill_manual(values = BNDxCC, name="Hybrid Type", labels = BNDxCC_labels))
+  #scale_fill_brewer(palette="Spectral", name="Hybrid Type"))
+
+# save as pdf
+pdf("AMP22_BNDxCC_woP13_hybrid_types_newColours.pdf", width = 10, height = 6)
+alltypes
+dev.off()
 
 #------------------------------------------------------------
 # simplify hybrid type and replot
