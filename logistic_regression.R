@@ -13,9 +13,9 @@ library(RColorBrewer)
 
 
 #import site data and metadata
-site_data <- read.csv("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/Leuciscid_OFAT_May2023.csv")
+site_data <- read.csv("Leuciscid_OFAT_May2023.csv")
 colnames(site_data)[1:2] <- c("Waterbody", "Waterbody_Code")
-metadata <- read.csv("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/Leuciscid_Metadata_May2023.csv")
+metadata <- read.delim("Leuciscid_Metadata_May2023.csv", sep = ";")
 
 #edit site_data and metadata
 site_data <- site_data[1:30,] #remove blank rows
@@ -28,7 +28,7 @@ metadata$Waterbody_Code[metadata$Waterbody == "Costello_Creek"] <- "COS"
 metadata <- metadata[!(metadata$Waterbody_Code == "CC****"),]
 
 # import data on hybrids
-all_fish <- read.csv("C:/Users/ameus/Documents/Mandeville_lab_grad/Binf_work/entropy_target_old/old_AMP22_genoID_multispecies_k12_Jun2023.csv")
+all_fish <- read.csv("AMP22_genoID_multispecies_k12_Jun2023.csv")
 
 # simplify hybrid type and plot
 all_fish$Hybrid_Type_Simple = NA
@@ -103,9 +103,9 @@ cor <- cor((site_fish_logreg[-c(1:3)]), method = c("pearson"))
 #plot
 (corrplot <- corrplot(cor, method="color", type = "lower", tl.cex = 0.75))
 
-pdf("correlogram_logreg_33_variables.pdf", width = 8, height = 8)
-corrplot(cor, method="color", type = "lower", tl.cex = 0.75)
-dev.off()
+# pdf("correlogram_logreg_33_variables.pdf", width = 8, height = 8)
+# corrplot(cor, method="color", type = "lower", tl.cex = 0.75)
+# dev.off()
 
 #print 25 most correlated variables
 cor %>%
@@ -130,28 +130,28 @@ site_fish_logreg$Fen_percent = NULL
 # create a histogram of each variable used
 colours <- brewer.pal(8, "Set2")
 
-pdf("histograms_logreg_23_variables.pdf", height = 12, width = 9)
-par(mfrow = c(5,5))
-par(mar = c(4,4,1,1))
-
-for (col in names(site_fish_logreg)){
-  if (col != "n_Hybrids" & col != "n_Total_Fish" & col != "Waterbody_Code"){
-    hist(site_fish_logreg[[col]],
-         xlab = col,
-         ylab = "Frequency",
-         cex.lab = 0.6,
-         main = "",
-         col = colours)
-  }
-}
-dev.off()
+# pdf("histograms_logreg_23_variables.pdf", height = 12, width = 9)
+# par(mfrow = c(5,5))
+# par(mar = c(4,4,1,1))
+# 
+# for (col in names(site_fish_logreg)){
+#   if (col != "n_Hybrids" & col != "n_Total_Fish" & col != "Waterbody_Code"){
+#     hist(site_fish_logreg[[col]],
+#          xlab = col,
+#          ylab = "Frequency",
+#          cex.lab = 0.6,
+#          main = "",
+#          col = colours)
+#   }
+# }
+# dev.off()
 
 #reset to default
 par(mfrow = c(1,1))
 par(mar = c(5.1, 4.1, 4.1, 2.1))
 
 # run the model
-glm<-glm(n_Hybrids/n_Total_Fish ~ .,family = binomial(link=logit), weights = n_Total_Fish, data = site_fish_logreg)
+glm<-glm(n_Hybrids/n_Total_Fish ~ . -Waterbody_Code,family = binomial(link=logit), weights = n_Total_Fish, data = site_fish_logreg)
 summary(glm)
 
 # look at plots of residuals etc
@@ -172,56 +172,56 @@ plot(glm)
 (clear_open_water <- ggplot(site_fish_logreg, aes(x=Clear_Open_Water_percent, y=n_Hybrids/n_Total_Fish)) +
     geom_point() +
     stat_smooth(method="glm",colour="black", se=TRUE, method.args = list(family=binomial)) + 
-    labs(y = "Proportion of Hybrids") +
+    labs(y = "Proportion of Hybrids", x = "Clear Open Water Percent") +
     ylim(0,1) +
     theme_bw())
 
 (sparse_treed <-ggplot(site_fish_logreg, aes(x=Sparse_Treed_percent, y=n_Hybrids/n_Total_Fish)) +
     geom_point() +
     stat_smooth(method="glm",colour="black", se=TRUE, method.args = list(family=binomial)) + 
-    labs(y = "Proportion of Hybrids") +
+    labs(y = "Proportion of Hybrids", x = "Sparse Treed Percent") +
     ylim(0,1) +
     theme_bw())
 
 (deciduous_treed <-ggplot(site_fish_logreg, aes(x=Deciduous_Treed_percent, y=n_Hybrids/n_Total_Fish)) +
     geom_point() +
     stat_smooth(method="glm",colour="black", se=TRUE, method.args = list(family=binomial)) + 
-    labs(y = "Proportion of Hybrids") +
+    labs(y = "Proportion of Hybrids", x = "Deciduous Treed Percent") +
     ylim(0,1) +
     theme_bw())
 
 (mixed_treed <-ggplot(site_fish_logreg, aes(x=Mixed_Treed_percent, y=n_Hybrids/n_Total_Fish)) +
     geom_point() +
     stat_smooth(method="glm",colour="black", se=TRUE, method.args = list(family=binomial)) + 
-    labs(y = "Proportion of Hybrids") +
+    labs(y = "Proportion of Hybrids", x = "Mixed Treed Percent") +
     ylim(0,1) +
     theme_bw())
 
 (coniferous_treed <-ggplot(site_fish_logreg, aes(x=Coniferous_Treed_percent, y=n_Hybrids/n_Total_Fish)) +
     geom_point() +
     stat_smooth(method="glm",colour="black", se=TRUE, method.args = list(family=binomial)) + 
-    labs(y = "Proportion of Hybrids") +
+    labs(y = "Proportion of Hybrids", x = "Coniferous Treed Percent") +
     ylim(0,1) +
     theme_bw())
 
 (sand_gravel_mine <-ggplot(site_fish_logreg, aes(x=Sand_Gravel_Mine_Tailings_Extraction_percent, y=n_Hybrids/n_Total_Fish)) +
     geom_point() +
     stat_smooth(method="glm",colour="black", se=TRUE, method.args = list(family=binomial)) + 
-    labs(y = "Proportion of Hybrids") +
+    labs(y = "Proportion of Hybrids", x = "Gravel/Sand Mine Percent") +
     ylim(0,1) +
     theme_bw())
 
 (community_infrastructure <-ggplot(site_fish_logreg, aes(x=Community_Infrastructure_percent, y=n_Hybrids/n_Total_Fish)) +
     geom_point() +
     stat_smooth(method="glm",colour="black", se=TRUE, method.args = list(family=binomial)) + 
-    labs(y = "Proportion of Hybrids") +
+    labs(y = "Proportion of Hybrids", x = "Community Infrastructure Percent") +
     ylim(0,1) +
     theme_bw())
 
 (total_wetland <-ggplot(site_fish_logreg, aes(x=Total_wetland_percent, y=n_Hybrids/n_Total_Fish)) +
     geom_point() +
     stat_smooth(method="glm",colour="black", se=TRUE, method.args = list(family=binomial)) + 
-    labs(y = "Proportion of Hybrids") +
+    labs(y = "Proportion of Hybrids", x = "Wetland Percent") +
     ylim(0,1) +
     theme_bw())
 
@@ -262,7 +262,7 @@ summary(glm_cat)
     #stat_smooth(method="glm",colour="black", se=TRUE, method.args = list(family=binomial)) + 
     geom_violin(trim = T) +
     geom_point() +
-    labs(y = "Proportion of Hybrids") +
+    labs(y = "Proportion of Hybrids", x = "Disturbance Category") +
     ylim(0,1) +
     scale_fill_brewer(palette="Set2") +
     theme(legend.position="none"))
@@ -270,6 +270,15 @@ summary(glm_cat)
 # pdf("Logistic_regression_categories.pdf", height = 8, width = 8)
 # disturb_cat
 # dev.off()
+
+
+#save as a pdf with the 8 other plots
+pdf("Logistic_regression_plots_all.pdf", height = 10, width = 16)
+(clear_open_water | sparse_treed) / (deciduous_treed | mixed_treed) / (coniferous_treed | sand_gravel_mine) | (community_infrastructure | total_wetland) / disturb_cat +
+  plot_layout(widths = c(2, 1), heights = unit(c(7, 1), c('cm', 'null'))) 
+  #plot_annotation(tag_levels = 'A') # this doesn't work w the crazy layout that i'm doing
+dev.off()
+
 
 # perform an anova on glm object
 anova <- anova(glm_cat, test="Chisq")
