@@ -506,67 +506,67 @@ Sampling_date,Waterbody,AMP_ID,Common_Name,Species_Name,Length_cm,Sampling_Notes
 18-Jul,Laurel_Creek_Park,AMP22_0505,Western_Blacknose_Dace,Rhinichthys obtusus,7.7,,97.83,Amanda,2022-09-26,,46.8,,,,,,,,46.8,Amanda
 18-Jul,Laurel_Creek_Park,AMP22_0506,Longnose_Dace,Rhinichthys cataractae,11.9,,120.5,Amanda,2022-09-26,,29.45,,,,,,,,29.45,Amanda
 18-Jul,Laurel_Creek_Park,AMP22_0507,Western_Blacknose_Dace,Rhinichthys obtusus,2.7,,73.85,Amanda,2022-09-26,,21.84,,,,,,,,21.84,Amanda
-21-Jul,Clair_Creek ,AMP22_0508,Western_Blacknose_Dace,Rhinichthys obtusus,7.8,,126.9,Amanda,2022-09-26,,19.06,,,,,,,,19.06,Amanda
-21-Jul,Clair_Creek ,AMP22_0509,Western_Blacknose_Dace,Rhinichthys obtusus,3.2,,95.76,Amanda,2022-09-26,,16.45,84.3,Amanda,,,,,,84.3,Amanda
-21-Jul,Clair_Creek ,AMP22_0510,Western_Blacknose_Dace,Rhinichthys obtusus,7.3,,53.88,Amanda,2022-09-26,,19.18,,,,,,,,19.18,Amanda
-21-Jul,Clair_Creek ,AMP22_0511,Western_Blacknose_Dace,Rhinichthys obtusus,3.1,,136.7,Amanda,2022-09-26,,11.81,73.49,Amanda,,,,,,73.49,Amanda
-21-Jul,Clair_Creek ,AMP22_0512,Western_Blacknose_Dace,Rhinichthys obtusus,2.9,,16.99,Amanda,2022-09-26,,12.08,89.33,Amanda,,,,,,89.33,Amanda
-21-Jul,Clair_Creek ,AMP22_0513,Western_Blacknose_Dace,Rhinichthys obtusus,3.8,,115,Amanda,2022-09-26,,18.67,,,,,,,,18.67,Amanda
-21-Jul,Clair_Creek ,AMP22_0514,Longnose_Dace,Rhinichthys cataractae,4.6,,93.94,Amanda,2022-09-26,,29.8,,,,,,,,29.8,Amanda
-21-Jul,Clair_Creek ,AMP22_0515,Western_Blacknose_Dace,,8.6,,62.44,Amanda,2022-09-26,,32.44,,,,,,,,32.44,Amanda
-21-Jul,Clair_Creek ,AMP22_0516,Western_Blacknose_Dace,Rhinichthys obtusus,3.5,,124.4,Amanda,2022-09-26,,21.58,,,,,,,,21.58,Amanda
-21-Jul,Clair_Creek ,AMP22_0517,Western_Blacknose_Dace,Rhinichthys obtusus,3.9,,130.7,Amanda,2022-09-26,,9.078,71.43,Amanda,,,,,,71.43,Amanda
-21-Jul,Clair_Creek ,AMP22_0518,Western_Blacknose_Dace,Rhinichthys obtusus,3,,101,Amanda,2022-09-26,,11.73,94.57,Amanda,,,,,,94.57,Amanda
-21-Jul,Clair_Creek ,AMP22_0519,Western_Blacknose_Dace,Rhinichthys obtusus,3.2,,83.59,Amanda,2022-09-26,,19.2,,,,,,,,19.2,Amanda
-21-Jul,Clair_Creek ,AMP22_0520,Western_Blacknose_Dace,Rhinichthys obtusus,3.9,,51.52,Amanda,2022-09-26,,23.03,,,,,,,,23.03,Amanda
-21-Jul,Clair_Creek ,AMP22_0521,Western_Blacknose_Dace,Rhinichthys obtusus,NA,,56.83,Amanda,2022-09-26,,32.61,,,,,,,,32.61,Amanda
-21-Jul,Clair_Creek ,AMP22_0522,Western_Blacknose_Dace,Rhinichthys obtusus,3.1,,137.4,Amanda,2022-09-26,,9.692,70.69,Amanda,,,,,,70.69,Amanda
-21-Jul,Clair_Creek ,AMP22_0523,Western_Blacknose_Dace,Rhinichthys obtusus,3.2,,25.37,Amanda,2022-09-26,,15.56,91.69,Amanda,,,,,,91.69,Amanda
-21-Jul,Clair_Creek ,AMP22_0524,Western_Blacknose_Dace,Rhinichthys obtusus,2.8,,65.46,Amanda,2022-09-26,,14.31,99.54,Amanda,,,,,,99.54,Amanda
-21-Jul,Clair_Creek ,AMP22_0525,Western_Blacknose_Dace,Rhinichthys obtusus,3.5,,42.85,Amanda,2022-09-26,,11.2,62.58,Amanda,,,,,,62.58,Amanda
-21-Jul,Clair_Creek ,AMP22_0526,Western_Blacknose_Dace,Rhinichthys obtusus,3.3,,33.96,Amanda,2022-09-26,,7.728,85.42,Amanda,,,,,,85.42,Amanda
-21-Jul,Clair_Creek ,AMP22_0527,Western_Blacknose_Dace,Rhinichthys obtusus,3.3,,108.8,Amanda,2022-09-26,,12.3,90.96,Amanda,,,,,,90.96,Amanda
-21-Jul,Clair_Creek ,AMP22_0528,Western_Blacknose_Dace,Rhinichthys obtusus,3,,74.43,Amanda,2022-09-26,,13.53,73.97,Amanda,,,,,,73.97,Amanda
-21-Jul,Clair_Creek ,AMP22_0529,Western_Blacknose_Dace,Rhinichthys obtusus,3.5,,10.12,Amanda,2022-09-26,,12.46,,,,,,,,12.46,Amanda
-21-Jul,Clair_Creek ,AMP22_0530,Western_Blacknose_Dace,Rhinichthys obtusus,3.3,,42.71,Amanda,2022-09-26,,11.08,,,,,,,,11.08,Amanda
-21-Jul,Clair_Creek ,AMP22_0531,Western_Blacknose_Dace,Rhinichthys obtusus,3.1,,94.35,Amanda,2022-09-26,,14.86,92.02,Amanda,,,,,,92.02,Amanda
-21-Jul,Clair_Creek ,AMP22_0532,Western_Blacknose_Dace,Rhinichthys obtusus,4,,17.92,Amanda,2022-09-26,,12.58,142.2,Amanda,,,,,,142.2,Amanda
-21-Jul,Clair_Creek ,AMP22_0533,Western_Blacknose_Dace,Rhinichthys obtusus,3.2,,73.88,Amanda,2022-09-26,,16.69,82.11,Amanda,,,,,,82.11,Amanda
-21-Jul,Clair_Creek ,AMP22_0534,Western_Blacknose_Dace,Rhinichthys obtusus,3.3,,19.98,Amanda,2022-09-26,,11.21,66.25,Amanda,,,,,,66.25,Amanda
-21-Jul,Clair_Creek ,AMP22_0535,Western_Blacknose_Dace,Rhinichthys obtusus,3.7,,94.26,Amanda,2022-09-26,,11.23,136.3,Amanda,,,,,,136.3,Amanda
-21-Jul,Clair_Creek ,AMP22_0536,Western_Blacknose_Dace,Rhinichthys obtusus,3,,8.64,Amanda,2022-09-26,,8.865,92.28,Amanda,,,,,,92.28,Amanda
-21-Jul,Clair_Creek ,AMP22_0537,Western_Blacknose_Dace,Rhinichthys obtusus,3,,65.37,Amanda,2022-09-26,,9.271,100.7,Amanda,,,,,,100.7,Amanda
-21-Jul,Clair_Creek ,AMP22_0538,Western_Blacknose_Dace,Rhinichthys obtusus,3.1,,55.84,Amanda,2022-09-26,,9.476,52.71,Amanda,,,,,,52.71,Amanda
-21-Jul,Clair_Creek ,AMP22_0539,Creek_Chub,Semotilus atromaculatus,3.4,,59.4,Amanda,2022-09-26,,15.09,101.5,Amanda,,,,,,101.5,Amanda
-21-Jul,Clair_Creek ,AMP22_0540,Creek_Chub,Semotilus atromaculatus,3.4,,43.63,Amanda,2022-09-26,,11.96,107.6,Amanda,,,,,,107.6,Amanda
-21-Jul,Clair_Creek ,AMP22_0541,Creek_Chub,Semotilus atromaculatus,3.2,,48.31,Amanda,2022-09-26,,14.14,82.1,Amanda,,,,,,82.1,Amanda
-21-Jul,Clair_Creek ,AMP22_0542,Creek_Chub,Semotilus atromaculatus,3.5,,156.5,Amanda,2022-09-26,,17.54,135.7,Amanda,,,,,,135.7,Amanda
-21-Jul,Clair_Creek ,AMP22_0543,Creek_Chub,Semotilus atromaculatus,4,,49.56,Amanda,2022-09-26,,25.26,206.6,Amanda,,,,,,206.6,Amanda
-21-Jul,Clair_Creek ,AMP22_0544,Creek_Chub,Semotilus atromaculatus,3.2,,81.53,Amanda,2022-09-26,,7.841,79.5,Amanda,,,,,,79.5,Amanda
-21-Jul,Clair_Creek ,AMP22_0545,Creek_Chub,Semotilus atromaculatus,4.1,,47.79,Amanda,2022-09-26,,16.98,194.3,Amanda,,,,,,194.3,Amanda
-21-Jul,Clair_Creek ,AMP22_0546,Creek_Chub,Semotilus atromaculatus,3,,75.81,Amanda,2022-09-27,,26.26,,,,,,,,26.26,Amanda
-21-Jul,Clair_Creek ,AMP22_0547,Creek_Chub,Semotilus atromaculatus,3.3,,300,Amanda,2022-09-27,,25.38,,,,,,,,25.38,Amanda
-21-Jul,Clair_Creek ,AMP22_0548,Creek_Chub,Semotilus atromaculatus,4.3,,259,Amanda,2022-09-27,,47.04,,,,,,,,47.04,Amanda
-21-Jul,Clair_Creek ,AMP22_0549,Creek_Chub,Semotilus atromaculatus,8.5,,199.5,Amanda,2022-09-27,,29.19,,,,,,,,29.19,Amanda
-21-Jul,Clair_Creek ,AMP22_0550,Creek_Chub,Semotilus atromaculatus,3.7,,129,Amanda,2022-09-27,,35.4,,,,,,,,35.4,Amanda
-21-Jul,Clair_Creek ,AMP22_0551,Creek_Chub,Semotilus atromaculatus,3.1,,69.96,Amanda,2022-09-27,,20.1,,,,,,,,20.1,Amanda
-21-Jul,Clair_Creek ,AMP22_0552,Creek_Chub,Semotilus atromaculatus,4,,161.3,Amanda,2022-09-27,,58.8,,,,,,,,58.8,Amanda
-21-Jul,Clair_Creek ,AMP22_0553,Creek_Chub,Semotilus atromaculatus,3.4,,194.3,Amanda,2022-09-27,,28.65,,,,,,,,28.65,Amanda
-21-Jul,Clair_Creek ,AMP22_0554,Creek_Chub,Semotilus atromaculatus,3.6,,192.4,Amanda,2022-09-27,,32.09,,,,,,,,32.09,Amanda
-21-Jul,Clair_Creek ,AMP22_0555,Creek_Chub,Semotilus atromaculatus,3.2,,224.8,Amanda,2022-09-27,,26.81,,,,,,,,26.81,Amanda
-21-Jul,Clair_Creek ,AMP22_0556,Creek_Chub,Semotilus atromaculatus,3.2,,117.3,Amanda,2022-09-27,,31.73,,,,,,,,31.73,Amanda
-21-Jul,Clair_Creek ,AMP22_0557,Creek_Chub,Semotilus atromaculatus,3.2,,210.2,Amanda,2022-09-27,,18.91,90.17,Amanda,,,,,,90.17,Amanda
-21-Jul,Clair_Creek ,AMP22_0558,Creek_Chub,Semotilus atromaculatus,3.4,,103.4,Amanda,2022-09-27,,34.64,,,,,,,,34.64,Amanda
-21-Jul,Clair_Creek ,AMP22_0559,Creek_Chub,Semotilus atromaculatus,10.1,,229.3,Amanda,2022-09-27,,25.24,,,,,,,,25.24,Amanda
-21-Jul,Clair_Creek ,AMP22_0560,Creek_Chub,Semotilus atromaculatus,4,,109.3,Amanda,2022-09-27,,33.97,,,,,,,,33.97,Amanda
-21-Jul,Clair_Creek ,AMP22_0561,Creek_Chub,Semotilus atromaculatus,3.2,,75.07,Amanda,2022-09-27,,23.05,,,,,,,,23.05,Amanda
-21-Jul,Clair_Creek ,AMP22_0562,Creek_Chub,Semotilus atromaculatus,3.8,,210.6,Amanda,2022-09-27,,38.06,,,,,,,,38.06,Amanda
-21-Jul,Clair_Creek ,AMP22_0563,Creek_Chub,Semotilus atromaculatus,3.7,,259.5,Amanda,2022-09-27,,38.57,,,,,,,,38.57,Amanda
-21-Jul,Clair_Creek ,AMP22_0564,Creek_Chub,Semotilus atromaculatus,4.1,,46.31,Amanda,2022-09-27,,44.28,,,,,,,,44.28,Amanda
-21-Jul,Clair_Creek ,AMP22_0565,Creek_Chub,Semotilus atromaculatus,3.7,,85.5,Amanda,2022-09-27,,26.27,,,,,,,,26.27,Amanda
-21-Jul,Clair_Creek ,AMP22_0566,Creek_Chub,Semotilus atromaculatus,3.5,Approximate measurement,306.6,Amanda,2022-09-27,,25.34,,,,,,,,25.34,Amanda
-21-Jul,Clair_Creek ,AMP22_0567,Creek_Chub,Semotilus atromaculatus,3.6,,192.4,Amanda,2022-09-27,,34.22,,,,,,,,34.22,Amanda
-21-Jul,Clair_Creek ,AMP22_0568,Creek_Chub,Semotilus atromaculatus,3.6,,181.4,Amanda,2022-09-27,,40.4,,,,,,,,40.4,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0508,Western_Blacknose_Dace,Rhinichthys obtusus,7.8,,126.9,Amanda,2022-09-26,,19.06,,,,,,,,19.06,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0509,Western_Blacknose_Dace,Rhinichthys obtusus,3.2,,95.76,Amanda,2022-09-26,,16.45,84.3,Amanda,,,,,,84.3,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0510,Western_Blacknose_Dace,Rhinichthys obtusus,7.3,,53.88,Amanda,2022-09-26,,19.18,,,,,,,,19.18,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0511,Western_Blacknose_Dace,Rhinichthys obtusus,3.1,,136.7,Amanda,2022-09-26,,11.81,73.49,Amanda,,,,,,73.49,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0512,Western_Blacknose_Dace,Rhinichthys obtusus,2.9,,16.99,Amanda,2022-09-26,,12.08,89.33,Amanda,,,,,,89.33,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0513,Western_Blacknose_Dace,Rhinichthys obtusus,3.8,,115,Amanda,2022-09-26,,18.67,,,,,,,,18.67,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0514,Longnose_Dace,Rhinichthys cataractae,4.6,,93.94,Amanda,2022-09-26,,29.8,,,,,,,,29.8,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0515,Western_Blacknose_Dace,,8.6,,62.44,Amanda,2022-09-26,,32.44,,,,,,,,32.44,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0516,Western_Blacknose_Dace,Rhinichthys obtusus,3.5,,124.4,Amanda,2022-09-26,,21.58,,,,,,,,21.58,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0517,Western_Blacknose_Dace,Rhinichthys obtusus,3.9,,130.7,Amanda,2022-09-26,,9.078,71.43,Amanda,,,,,,71.43,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0518,Western_Blacknose_Dace,Rhinichthys obtusus,3,,101,Amanda,2022-09-26,,11.73,94.57,Amanda,,,,,,94.57,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0519,Western_Blacknose_Dace,Rhinichthys obtusus,3.2,,83.59,Amanda,2022-09-26,,19.2,,,,,,,,19.2,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0520,Western_Blacknose_Dace,Rhinichthys obtusus,3.9,,51.52,Amanda,2022-09-26,,23.03,,,,,,,,23.03,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0521,Western_Blacknose_Dace,Rhinichthys obtusus,NA,,56.83,Amanda,2022-09-26,,32.61,,,,,,,,32.61,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0522,Western_Blacknose_Dace,Rhinichthys obtusus,3.1,,137.4,Amanda,2022-09-26,,9.692,70.69,Amanda,,,,,,70.69,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0523,Western_Blacknose_Dace,Rhinichthys obtusus,3.2,,25.37,Amanda,2022-09-26,,15.56,91.69,Amanda,,,,,,91.69,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0524,Western_Blacknose_Dace,Rhinichthys obtusus,2.8,,65.46,Amanda,2022-09-26,,14.31,99.54,Amanda,,,,,,99.54,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0525,Western_Blacknose_Dace,Rhinichthys obtusus,3.5,,42.85,Amanda,2022-09-26,,11.2,62.58,Amanda,,,,,,62.58,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0526,Western_Blacknose_Dace,Rhinichthys obtusus,3.3,,33.96,Amanda,2022-09-26,,7.728,85.42,Amanda,,,,,,85.42,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0527,Western_Blacknose_Dace,Rhinichthys obtusus,3.3,,108.8,Amanda,2022-09-26,,12.3,90.96,Amanda,,,,,,90.96,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0528,Western_Blacknose_Dace,Rhinichthys obtusus,3,,74.43,Amanda,2022-09-26,,13.53,73.97,Amanda,,,,,,73.97,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0529,Western_Blacknose_Dace,Rhinichthys obtusus,3.5,,10.12,Amanda,2022-09-26,,12.46,,,,,,,,12.46,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0530,Western_Blacknose_Dace,Rhinichthys obtusus,3.3,,42.71,Amanda,2022-09-26,,11.08,,,,,,,,11.08,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0531,Western_Blacknose_Dace,Rhinichthys obtusus,3.1,,94.35,Amanda,2022-09-26,,14.86,92.02,Amanda,,,,,,92.02,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0532,Western_Blacknose_Dace,Rhinichthys obtusus,4,,17.92,Amanda,2022-09-26,,12.58,142.2,Amanda,,,,,,142.2,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0533,Western_Blacknose_Dace,Rhinichthys obtusus,3.2,,73.88,Amanda,2022-09-26,,16.69,82.11,Amanda,,,,,,82.11,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0534,Western_Blacknose_Dace,Rhinichthys obtusus,3.3,,19.98,Amanda,2022-09-26,,11.21,66.25,Amanda,,,,,,66.25,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0535,Western_Blacknose_Dace,Rhinichthys obtusus,3.7,,94.26,Amanda,2022-09-26,,11.23,136.3,Amanda,,,,,,136.3,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0536,Western_Blacknose_Dace,Rhinichthys obtusus,3,,8.64,Amanda,2022-09-26,,8.865,92.28,Amanda,,,,,,92.28,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0537,Western_Blacknose_Dace,Rhinichthys obtusus,3,,65.37,Amanda,2022-09-26,,9.271,100.7,Amanda,,,,,,100.7,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0538,Western_Blacknose_Dace,Rhinichthys obtusus,3.1,,55.84,Amanda,2022-09-26,,9.476,52.71,Amanda,,,,,,52.71,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0539,Creek_Chub,Semotilus atromaculatus,3.4,,59.4,Amanda,2022-09-26,,15.09,101.5,Amanda,,,,,,101.5,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0540,Creek_Chub,Semotilus atromaculatus,3.4,,43.63,Amanda,2022-09-26,,11.96,107.6,Amanda,,,,,,107.6,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0541,Creek_Chub,Semotilus atromaculatus,3.2,,48.31,Amanda,2022-09-26,,14.14,82.1,Amanda,,,,,,82.1,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0542,Creek_Chub,Semotilus atromaculatus,3.5,,156.5,Amanda,2022-09-26,,17.54,135.7,Amanda,,,,,,135.7,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0543,Creek_Chub,Semotilus atromaculatus,4,,49.56,Amanda,2022-09-26,,25.26,206.6,Amanda,,,,,,206.6,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0544,Creek_Chub,Semotilus atromaculatus,3.2,,81.53,Amanda,2022-09-26,,7.841,79.5,Amanda,,,,,,79.5,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0545,Creek_Chub,Semotilus atromaculatus,4.1,,47.79,Amanda,2022-09-26,,16.98,194.3,Amanda,,,,,,194.3,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0546,Creek_Chub,Semotilus atromaculatus,3,,75.81,Amanda,2022-09-27,,26.26,,,,,,,,26.26,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0547,Creek_Chub,Semotilus atromaculatus,3.3,,300,Amanda,2022-09-27,,25.38,,,,,,,,25.38,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0548,Creek_Chub,Semotilus atromaculatus,4.3,,259,Amanda,2022-09-27,,47.04,,,,,,,,47.04,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0549,Creek_Chub,Semotilus atromaculatus,8.5,,199.5,Amanda,2022-09-27,,29.19,,,,,,,,29.19,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0550,Creek_Chub,Semotilus atromaculatus,3.7,,129,Amanda,2022-09-27,,35.4,,,,,,,,35.4,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0551,Creek_Chub,Semotilus atromaculatus,3.1,,69.96,Amanda,2022-09-27,,20.1,,,,,,,,20.1,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0552,Creek_Chub,Semotilus atromaculatus,4,,161.3,Amanda,2022-09-27,,58.8,,,,,,,,58.8,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0553,Creek_Chub,Semotilus atromaculatus,3.4,,194.3,Amanda,2022-09-27,,28.65,,,,,,,,28.65,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0554,Creek_Chub,Semotilus atromaculatus,3.6,,192.4,Amanda,2022-09-27,,32.09,,,,,,,,32.09,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0555,Creek_Chub,Semotilus atromaculatus,3.2,,224.8,Amanda,2022-09-27,,26.81,,,,,,,,26.81,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0556,Creek_Chub,Semotilus atromaculatus,3.2,,117.3,Amanda,2022-09-27,,31.73,,,,,,,,31.73,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0557,Creek_Chub,Semotilus atromaculatus,3.2,,210.2,Amanda,2022-09-27,,18.91,90.17,Amanda,,,,,,90.17,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0558,Creek_Chub,Semotilus atromaculatus,3.4,,103.4,Amanda,2022-09-27,,34.64,,,,,,,,34.64,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0559,Creek_Chub,Semotilus atromaculatus,10.1,,229.3,Amanda,2022-09-27,,25.24,,,,,,,,25.24,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0560,Creek_Chub,Semotilus atromaculatus,4,,109.3,Amanda,2022-09-27,,33.97,,,,,,,,33.97,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0561,Creek_Chub,Semotilus atromaculatus,3.2,,75.07,Amanda,2022-09-27,,23.05,,,,,,,,23.05,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0562,Creek_Chub,Semotilus atromaculatus,3.8,,210.6,Amanda,2022-09-27,,38.06,,,,,,,,38.06,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0563,Creek_Chub,Semotilus atromaculatus,3.7,,259.5,Amanda,2022-09-27,,38.57,,,,,,,,38.57,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0564,Creek_Chub,Semotilus atromaculatus,4.1,,46.31,Amanda,2022-09-27,,44.28,,,,,,,,44.28,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0565,Creek_Chub,Semotilus atromaculatus,3.7,,85.5,Amanda,2022-09-27,,26.27,,,,,,,,26.27,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0566,Creek_Chub,Semotilus atromaculatus,3.5,Approximate measurement,306.6,Amanda,2022-09-27,,25.34,,,,,,,,25.34,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0567,Creek_Chub,Semotilus atromaculatus,3.6,,192.4,Amanda,2022-09-27,,34.22,,,,,,,,34.22,Amanda
+21-Jul,Clair_CreekÂ ,AMP22_0568,Creek_Chub,Semotilus atromaculatus,3.6,,181.4,Amanda,2022-09-27,,40.4,,,,,,,,40.4,Amanda
 26-Jul,Humber_River,AMP22_0569,Common_Shiner,Luxilus cornutus,6.2,,183.1,Amanda,2022-09-27,,19.28,,,,,,,,19.28,Amanda
 26-Jul,Humber_River,AMP22_0570,Common_Shiner,Luxilus cornutus,6.7,,33.46,Amanda,2022-09-27,,31.31,,,,,,,,31.31,Amanda
 26-Jul,Humber_River,AMP22_0571,Common_Shiner,Luxilus cornutus,6.4,,155.5,Amanda,2022-09-27,,21.82,,,,,,,,21.82,Amanda
@@ -789,7 +789,7 @@ Sampling_date,Waterbody,AMP_ID,Common_Name,Species_Name,Length_cm,Sampling_Notes
 28-Jul,Irvine_Creek,AMP22_0788,Hornyhead_Chub,Nocomis biguttatus,5.4,,,,,,,46.22,Amy,2022-12-06,,,,,46.22,Amy
 28-Jul,Irvine_Creek,AMP22_0789,Creek_Chub,Semotilus atromaculatus,8.3,,,,,,,42.52,Amy,2022-12-06,,,,,42.52,Amy
 28-Jul,Irvine_Creek,AMP22_0790,River_Chub,Nocomis micropogon,11.7,,,,,,,112.2,Amy,2022-12-06,,,,,112.2,Amy
-28-Jul,Irvine_Creek,AMP22_0791,River_Chub,Nocomis micropogon,12.6,In bag - heavily parasitized black kernel ,,,,,,131.6,Amy,2022-12-06,,,,,131.6,Amy
+28-Jul,Irvine_Creek,AMP22_0791,River_Chub,Nocomis micropogon,12.6,In bag - heavily parasitized black kernelÂ ,,,,,,131.6,Amy,2022-12-06,,,,,131.6,Amy
 28-Jul,Irvine_Creek,AMP22_0792,Hornyhead_Chub,Nocomis biguttatus,5.8,,,,,,,93.74,Amy,2022-12-06,,,,,93.74,Amy
 28-Jul,Irvine_Creek,AMP22_0793,River_Chub,Nocomis micropogon,9.9,,,,,,,98.13,Amy,2022-12-06,,,,,98.13,Amy
 28-Jul,Irvine_Creek,AMP22_0794,River_Chub,Nocomis micropogon,10.7,,,,,,,103,Amy,2022-12-06,,,,,103,Amy
