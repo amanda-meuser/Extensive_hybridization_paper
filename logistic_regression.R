@@ -157,6 +157,11 @@ summary(glm)
 # look at plots of residuals etc
 plot(glm)
 
+# apply Bonferroni Correction to p-values
+p_values <- c(0.26010, 0.18063, 0.97700, 0.52043, 0.85097, 0.80701, 0.88994, 0.43975, 0.65490, 0.73796, 0.34289, 0.02166, 0.04507, 0.11937, 0.03349, 0.03220, 0.03956, 0.13462, 0.29672, 0.61612, 0.01819, 0.00925, 0.18870, 0.01740)
+p_adjusted <- p.adjust(p_values, method = "bonferroni")
+p_adjusted
+
 # pdf("Logistic_regression_residuals.pdf")
 # layout(matrix(1:4, ncol = 2))
 # plot(glm)
