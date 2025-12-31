@@ -105,7 +105,7 @@ dim(q)
 
 #PLOTTING BY LOCATION   
 print("Read in metadata...")
-metadata_raw <- read.csv(metadata_file, header = T)
+metadata_raw <- read.csv(metadata_file, header = T, sep=';')
 
 #filter for inds in entropy files
 inds <- read.delim("./AMP22_thesis_24feb25/inds_AMP22_target_03may23_miss0.6_mac3_Q30_DP3_ind95_maf001.recode.txt", header = F)
@@ -261,7 +261,7 @@ for (i in 1:nrow(min_inds)){
 #box(bty="n")
 par(fig = c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
 plot(0, 0, type = 'l', bty = 'n', xaxt = 'n', yaxt = 'n')
-legend("right", legend = c("Common Shiner", "Central Stoneroller", "Hornyhead Chub", "Longnose Dace", "Striped Shiner", "River Chub", expression(italic("Pimephales sp.")), "Roseyface Shiner", "Creek Chub", "Western Blacknose Dace"), col = colour, pch=15, pt.cex=8, cex=2.5, ncol = 1, bty = "n", xpd = T)
+legend("right", legend = c("Common Shiner", "Central Stoneroller", "Hornyhead Chub", "Longnose Dace", "Striped Shiner", "River Chub", expression(italic("Pimephales sp.")), "Roseyface Shiner", "Creek Chub", "Western Blacknose Dace", "Clusters 11 and 12"), col = colour, pch=15, pt.cex=7, cex=2.5, ncol = 1, bty = "n", xpd = T)
 
 mtext("Proportion of Ancestry", side=1, cex=2, outer=T, line=-2, at = 0.43)
 mtext("Individuals", side=2, cex=2, outer=T, line=-3)
